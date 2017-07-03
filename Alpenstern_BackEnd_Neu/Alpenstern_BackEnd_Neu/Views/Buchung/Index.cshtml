@@ -3,5 +3,49 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
 
+<form action="/Buchungen/PersoenlicheDaten" method="post">
+    <h1 class="text-center"> Buchung Suchen</h1>
+
+
+    <div class="row text-center">
+        <div class="col-lg-3">
+            <h4>Nachname</h4>
+        </div>
+        <div class="col-lg-3">
+            <h4>Vorname</h4>
+
+        </div>
+        <div class="col-lg-3">
+            <h4>Buchungsnummer</h4>
+        </div>
+        <div class="col-lg-3">
+            <h4>Geburtsdatum</h4>
+        </div>
+    </div>
+
+    <div class="row text-center ">
+        <div class="col-lg-3">
+            <input type="text" name="nachname" class="form-control" />
+        </div>
+        <div class="col-lg-3">
+            <input type="text" name="vorname" class="form-control" />
+        </div>
+        <div class="col-lg-3">
+            <input type="text" name="buchungsnummer" class="form-control" />
+        </div>
+        <div class="col-lg-3">
+            <input type="text" name="geburtsdatum" class="form-control" />
+        </div>
+        <div class="row">
+            <input type="submit" name="anzeigen" value="anzeigen" />
+        </div>
+    </div>
+
+
+
+
+
+</form>
+
+</div>

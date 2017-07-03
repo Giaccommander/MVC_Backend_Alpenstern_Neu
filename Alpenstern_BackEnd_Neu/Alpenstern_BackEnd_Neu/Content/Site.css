@@ -1,6 +1,7 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background: url("images/Hindergrund.jpg") no-repeat; 
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -22,3 +23,48 @@ select,
 textarea {
     max-width: 280px;
 }
+
+
+
+
+
+/*#region Ankunft */
+
+/*body{
+    background-position: center;
+    background-attachment: fixed;
+    background-color: #f2ebde;
+    color: #5d4037;
+    font-family: Marcellus;
+}*/
+
+
+
+.glyphicon-chevron-left, .glyphicon-chevron-right {
+    font-size: 25px;
+    
+}
+
+#date {
+    font-size: 25px;
+    max-width: 100%;
+}
+#table{
+    border:solid black 1px;
+}
+#kundentable {
+    font-weight: bold;
+    font-size: x-large;
+    background-color: #f2ebde;
+}
+
+.kunden {
+    border: solid black 1px;
+    background-color: #f2ebde;
+}
+#padding{
+    padding-top:20px;
+}
+
+
+/*#endregion */

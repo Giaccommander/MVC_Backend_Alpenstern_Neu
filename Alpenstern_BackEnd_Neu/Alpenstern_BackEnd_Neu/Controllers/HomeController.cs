@@ -13,16 +13,16 @@ namespace Alpenstern_BackEnd_Neu.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult Ankunft()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Ankunft Übersicht";
 
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult Rueckruf()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Rückruf Service";
 
             return View();
         }

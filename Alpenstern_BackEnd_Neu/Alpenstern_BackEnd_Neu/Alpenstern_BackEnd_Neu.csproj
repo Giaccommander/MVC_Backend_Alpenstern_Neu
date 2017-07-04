@@ -148,7 +148,9 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BuchungController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SortimentController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -194,6 +196,9 @@
     <Content Include="Views\Home\Ankunft.cshtml" />
     <Content Include="Views\Home\Rueckruf.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Buchung\Index.cshtml" />
+    <Content Include="Views\Buchung\Persoenlichdaten.cshtml" />
+    <Content Include="Views\Sortiment\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

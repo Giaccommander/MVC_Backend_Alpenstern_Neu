@@ -1,0 +1,70 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<form action="/Buchung/Persoenlichdaten" method="post">
+    <h1 class="text-center"> Buchung Suchen</h1>
+
+
+    <div class="row text-center">
+        <div class="col-lg-3">
+            <h4>Nachname</h4>
+        </div>
+        <div class="col-lg-3">
+            <h4>Vorname</h4>
+
+        </div>
+        <div class="col-lg-3">
+            <h4>Buchungsnummer</h4>
+        </div>
+        <div class="col-lg-3">
+            <h4>Geburtsdatum</h4>
+        </div>
+    </div>
+    <!--Input-->
+    <div class="row text-center ">
+        <div class="col-lg-3">
+            <input type="text" name="nachname" class="form-control" />
+        </div>
+        <div class="col-lg-3">
+            <input type="text" name="vorname" class="form-control" />
+        </div>
+        <div class="col-lg-3">
+            <input type="text" name="buchungsnummer" class="form-control" />
+        </div>
+        <div class="col-lg-3">
+            <input type="date" name="geburtsdatum" class="form-control" />
+        </div>
+    </div>
+
+    <div class="row">
+        <!--Datum Von-BIS-->
+        <div class="col-lg-3 abstand">
+            <h4>VON</h4>
+            <input id="date" type="date" value="2017-01-01" class="form-control">
+        </div>
+        <div class="col-lg-3 abstand">
+            <h4>BIS</h4>
+            <input id="date" type="date" value="2017-01-01" class="form-control">
+        </div>
+        <!--Personen-->
+        <div class="col-lg-3 abstand">
+            <h4>PERSONEN</h4>
+            <input class="form-control" type="number" name="name" value="" />
+        </div>
+        <!--DropBox-->
+        <div class="col-lg-3 abstand">
+            <h4>Zimmer</h4>
+            <select class="selectpicker form-control">
+                <optgroup label="Zimmer">
+                    <option>Einzelzimmer</option>
+                    <option>Doppelzimmer</option>
+                    <option>etc....</option>
+                </optgroup>
+            </select>
+        </div>
+    </div>
+
+    <button type="submit">Abschicken</button>
+
+</form>

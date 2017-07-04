@@ -22,3 +22,62 @@ select,
 textarea {
     max-width: 280px;
 }
+
+
+
+/*#region Abreise */
+
+.glyphicon-chevron-left, .glyphicon-chevron-right {
+    font-size: 25px;
+}
+
+#date {
+    font-size: 25px;
+    max-width: 100%;
+}
+
+.abreise-overview {
+    font-weight: bold;
+    font-size:large;
+    background-color: #f2ebde;
+}
+
+#abreise-view {
+    background-color: #f2ebde;
+    
+}
+.abreise-checkOut{
+    font-weight: bold;
+    font-size:xx-large;
+    background-color: #f2ebde;
+}
+.abreiserahmen {
+   border: 1px solid black;
+}
+
+.abreiserahmen-o {
+    border-top: 1px solid black;
+}
+
+.abreiserahmen-r {
+    border-right: 1px solid black;
+}
+
+.abreiserahmen-u {
+    border-bottom: 1px solid black;
+}
+
+.abreiserahmen-l {
+   border-left: 1px solid black;
+}
+
+#padding {
+    padding-bottom: 20px;
+}
+
+
+.input1 {display: block !important;  border: 0 !important; width: 85% !important;  text-align: end; line-height: 1 !important; background-color: #f2ebde; height: 20px;}
+.input2 {display: block !important;  border: 0 !important; width: 85% !important;  text-align: end; line-height: 1 !important; height: 20px;}
+
+
+/*#endregion */

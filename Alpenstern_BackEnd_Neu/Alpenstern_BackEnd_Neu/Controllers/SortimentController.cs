@@ -13,5 +13,10 @@ namespace Alpenstern_BackEnd_Neu.Controllers
         {
             return View();
         }
+
+        public ActionResult Specials()
+        {
+            return View();
+        }
     }
 }

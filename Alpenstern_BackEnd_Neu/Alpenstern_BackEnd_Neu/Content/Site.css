@@ -1,7 +1,7 @@
 ﻿body {
     padding-top: 0px;
     padding-bottom: 20px;
-    background: url("images/Hindergrund.jpg") no-repeat;
+    background: url('Îmages/Hinterberger_Stausee.jpg') no-repeat;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -101,6 +101,10 @@ textarea {
 
 /*#endregion */
 
+.container{
+    background-color:lightgray;
+    
+}
 /*#region Buchen */
 /*#region Index */
 .abstand {

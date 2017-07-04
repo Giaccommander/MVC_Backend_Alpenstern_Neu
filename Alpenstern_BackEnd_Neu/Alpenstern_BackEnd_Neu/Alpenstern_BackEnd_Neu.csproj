@@ -160,6 +160,54 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\Bilder_Set_1\AlpenSpa_außen_1.jpg" />
+    <Content Include="Content\Images\Bilder_Set_1\AlpenSpa_außen_2.jpg" />
+    <Content Include="Content\Images\Bilder_Set_1\AlpenSpa_Caesarium.jpg" />
+    <Content Include="Content\Images\Bilder_Set_1\AlpenSpa_Dampfbad.jpg" />
+    <Content Include="Content\Images\Bilder_Set_1\AlpenSpa_Eingang_oben.jpg" />
+    <Content Include="Content\Images\Bilder_Set_1\AlpenSpa_Eingang_unten.jpg" />
+    <Content Include="Content\Images\Bilder_Set_1\AlpenSpa_Emotionarium_2000x750.jpg" />
+    <Content Include="Content\Images\Bilder_Set_1\AlpenSpa_Emotionarium_900x60.jpg" />
+    <Content Include="Content\Images\Bilder_Set_1\AlpenSpa_Emotionarium_orange.jpg" />
+    <Content Include="Content\Images\Bilder_Set_1\AlpenSpa_innen_1.jpg" />
+    <Content Include="Content\Images\Bilder_Set_1\AlpenSpa_Relaxarium_1.jpg" />
+    <Content Include="Content\Images\Bilder_Set_1\AlpenSpa_Relaxarium_2.jpg" />
+    <Content Include="Content\Images\Bilder_Set_1\AlpenSpa_Ruheraum_1.jpg" />
+    <Content Include="Content\Images\Bilder_Set_1\AlpenSpa_Ruheraum_2.jpg" />
+    <Content Include="Content\Images\Bilder_Set_1\AlpenSpa_Wuidera_Sauna_2000x750.jpg" />
+    <Content Include="Content\Images\Bilder_Set_1\AlpenSpa_Wuidera_Sauna_900x60.jpg" />
+    <Content Include="Content\Images\Bilder_Set_1\AlpenSpa_Wuidera_Sauna_Aufguss.jpg" />
+    <Content Include="Content\Images\Bilder_Set_1\Alpenstern_Fitness_Eingang.jpg" />
+    <Content Include="Content\Images\Bilder_Set_1\Alpenstern_Fruehstuecksbuffet.jpg" />
+    <Content Include="Content\Images\Bilder_Set_1\Alpenstern_Gourmet.jpg" />
+    <Content Include="Content\Images\Bilder_Set_1\Alpenstern_Hallenbad_2000x750.jpg" />
+    <Content Include="Content\Images\Bilder_Set_1\Alpenstern_Kulinarik_2000x750.jpg" />
+    <Content Include="Content\Images\Bilder_Set_1\Alpenstern_Kulinarik_900x600.jpg" />
+    <Content Include="Content\Images\Bilder_Set_1\Hinterberger_Gletscher_1.jpg" />
+    <Content Include="Content\Images\Bilder_Set_1\Hinterberger_Gletscher_2.jpg" />
+    <Content Include="Content\Images\Bilder_Set_1\Hinterberger_Stausee.jpg" />
+    <Content Include="Content\Images\Bilder_Set_2\Alpensternsuite_Badezimmer.jpg" />
+    <Content Include="Content\Images\Bilder_Set_2\Alpensternsuite_Skizze.jpg" />
+    <Content Include="Content\Images\Bilder_Set_2\Alpensternsuite_Wohnraum.jpg" />
+    <Content Include="Content\Images\Bilder_Set_2\Einzelzimmer.jpg" />
+    <Content Include="Content\Images\Bilder_Set_2\Einzelzimmer_Skizze.jpg" />
+    <Content Include="Content\Images\Bilder_Set_2\Gletschersuite_Badezimmer.jpg" />
+    <Content Include="Content\Images\Bilder_Set_2\Gletschersuite_Skizze.jpg" />
+    <Content Include="Content\Images\Bilder_Set_2\Gletschersuite_Wohnraum.jpg" />
+    <Content Include="Content\Images\Bilder_Set_2\Juniorsuite_2000x750.jpg" />
+    <Content Include="Content\Images\Bilder_Set_2\Juniorsuite_900x600.jpg" />
+    <Content Include="Content\Images\Bilder_Set_2\Juniorsuite_Skizze.jpg" />
+    <Content Include="Content\Images\Bilder_Set_2\Komfort Einzelzimmer_Skizze.jpg" />
+    <Content Include="Content\Images\Bilder_Set_2\Komforteinzelzimmer.jpg" />
+    <Content Include="Content\Images\Bilder_Set_2\Komforteinzelzimmer_Badezimmer.jpg" />
+    <Content Include="Content\Images\Bilder_Set_2\Suite Tirol_Gang.jpg" />
+    <Content Include="Content\Images\Bilder_Set_2\Suite Tirol_Skizze.jpg" />
+    <Content Include="Content\Images\Bilder_Set_2\Suite Tirol_Wohnraum.jpg" />
+    <Content Include="Content\Images\Bilder_Set_2\Zirbensuite_Badezimmer.jpg" />
+    <Content Include="Content\Images\Bilder_Set_2\Zirbensuite_Schlafzimmer.jpg" />
+    <Content Include="Content\Images\Bilder_Set_2\Zirbensuite_Skizze.jpg" />
+    <Content Include="Content\Images\Bilder_Set_2\Zirbensuite_Wohnbereich.jpg" />
+    <Content Include="Content\JavaScript.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -210,8 +258,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\Images\Bilder_Set_1\" />
-    <Folder Include="Content\Images\Bilder_Set_2\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

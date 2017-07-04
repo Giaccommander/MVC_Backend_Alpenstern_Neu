@@ -41,17 +41,22 @@ textarea {
 
 .ankunft-overview {
     font-weight: bold;
-    font-size:large;
+    font-size: large;
+    background-color: #f2ebde;
+}
+
+.ankunft-checkIn {
+    font-weight: bold;
+    font-size: xx-large;
     background-color: #f2ebde;
 }
 
 #ankunft-view {
     background-color: #f2ebde;
-    
 }
 
 .ankunftrahmen {
-   border: 1px solid black;
+    border: 1px solid black;
 }
 
 .ankunftrahmen-o {
@@ -67,7 +72,7 @@ textarea {
 }
 
 .ankunftrahmen-l {
-   border-left: 1px solid black;
+    border-left: 1px solid black;
 }
 
 #padding {
@@ -75,7 +80,23 @@ textarea {
 }
 
 
-.input1 {display: block !important;  border: 0 !important; width: 85% !important;  text-align: end; line-height: 1 !important; background-color: #f2ebde; height: 20px;}
-.input2 {display: block !important;  border: 0 !important; width: 85% !important;  text-align: end; line-height: 1 !important; height: 20px;}
+.input1 {
+    display: block !important;
+    border: 0 !important;
+    width: 85% !important;
+    text-align: end;
+    line-height: 1 !important;
+    background-color: #f2ebde;
+    height: 20px;
+}
+
+.input2 {
+    display: block !important;
+    border: 0 !important;
+    width: 85% !important;
+    text-align: end;
+    line-height: 1 !important;
+    height: 20px;
+}
 
 /*#endregion */

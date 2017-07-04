@@ -3,7 +3,140 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Extra Wünsche</h2>
+<div class="container">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="col-lg-6">
+                <h2 style="text-align:center;">Extra Wünsche</h2>
+
+                <div class="checkbox">
+                    <label><input type="checkbox" value="" />Tee</label>
+                </div>
+                <div class="checkbox">
+                    <label><input type="checkbox" value="" />Saft</label>
+                </div>
+                <div class="checkbox">
+                    <label><input type="checkbox" value="" />Bergquellwasser</label>
+                </div>
+                <div class="checkbox">
+                    <label><input type="checkbox" value="" />Obst</label>
+                </div>
+                <div class="checkbox">
+                    <label><input type="checkbox" value="" />Babybett</label>
+                </div>
+                <div class="checkbox">
+                    <label><input type="checkbox" value="" />Kinderstuhl</label>
+                </div>
+                <div class="checkbox">
+                    <label><input type="checkbox" value="" />Babyphone</label>
+                </div>
+                <div class="checkbox">
+                    <label><input type="checkbox" value="" />Kinderbetreuung</label>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <h2 style="text-align:center;">SPA</h2>
+
+                <div class="checkbox">
+                    <label><input type="checkbox" value="" />Alpiner Bergtraum</label>
+                </div>
+                <div class="checkbox">
+                    <label><input type="checkbox" value="" />Ganzkörpermassage</label>
+                </div>
+                <div class="checkbox">
+                    <label><input type="checkbox" value="" />Entspannter Rücken</label>
+                </div>
+                <div class="checkbox">
+                    <label><input type="checkbox" value="" />Gesichtsbehandlung</label>
+                </div>
+                <div style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif" ;>
+                    Beachten Sie unseren Genießer-Bonus. Ab € 150,00 erhalten Sie einen Rabatt in der Höhe von 10% auf Ihr Wohlfühlprogramm.
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-lg-12">
+            <h2 style="text-align:center;">Saison Packages</h2>
+            <div class="col-lg-6">
+                <h3>Verwöhnleistungen PLUS Winter</h3>
+                <button data-toggle="collapse" data-target="#winter">Info Winter PLUS</button>
+            </div>
+            <div class="col-lg-6">
+                <div id="winter" class="collapse">
+                    <div class="row">
+                        <ul>
+                            <li>Skipassservice - wir stellen ihren Wunschskipassan der Rezeption aus</li>
+                            <li>5x wöchentlich Skiguiding von montag bis Freitag ( ab Dezember )</li>
+                            <li>1x wöchentlich gemütlicher Rodelabend, Racletteabend</li>
+                            <li>Topmoderner Skikeller-jedes Zimmer hat seinen verschließbaren und beheizten Ski- und Schuhschrank</li>
+                            <li>Grats Shuttlebus zur Gletscherbahn ( ab Oktober bis Mai im 5-Minuten Takt; Haltestelle 50 m vom hotel entfernt)</li>
+                            <li>Zellertaler Sportbus durch das Zellertal im 15-Minuten Takt</li>
+                            <li>Zellertaler Nachtbus für Nachtschwärmer zwischen Dezember und April</li>
+                            <li>Skiservice der Firma "Sport Forster" über Nacht gegen Aufpreis</li>
+                            <li>Spezielle Ermässigungen für Gäste des Alpensterns auf den Skiverleih bei "Sport Nenner" und auf den Unterricht in der Skischule Zellertal</li>
+                        </ul>
+                        <div class="col-lg-4">
+                            <label for="datum">Datum</label>
+                            <br />
+                            <label for="personen">Personen</label>
+                        </div>
+                        <div class="col-lg-4">
+                            <input type="date" name="datum" />
+                            <input type="number" name="personen" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="col-lg-6">
+                <h3>Verwöhnleistungen PLUS Sommer</h3>
+                <button data-toggle="collapse" data-target="#sommer">Info Sommer PLUS</button>
+            </div>
+            <div class="col-lg-6">
+                <div id="sommer" class="collapse">
+                    <div class="row">
+                        <ul>
+                            <li>5-10 geführte Wanderungen pro Woche mit unseren Wanderführern; unterschiedliche Schwierigkeitsstufen</li>
+                            <li>1x wöchentlich Wanderungen auf die hauseigene Alm mit anschließender Bergjause</li>
+                            <li>kostenloser Mountenbike- & E-Bike-Verleih (nach Verfügbarkeit)</li>
+                            <li>Aktivprogramm mit Nordic Walking, Wassergymnastik und vielem mehr</li>
+                            <li>Wanderrucksack im Zimmer, auch für unsere kleinen Gäste</li>
+                            <li>Nordic Walking-Stöcke und Wanderstöcke an der Reception erhältlich</li>
+                            <li>1.200m² Alpengarten zum Faulenzen, Relaxen und Planschen</li>
+                        </ul>
+                        <div class="col-lg-4">
+                            <label for="datum">Datum</label>
+                            <br />
+                            <label for="personen">Personen</label>
+                        </div>
+                        <div class="col-lg-4">
+                            <input type="date" name="datum" />
+                            <input type="number" name="personen" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <br />
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="col-lg-2">
+                <input type="submit" name="Bestätigen" value="Bestätigen" />
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 
 
 

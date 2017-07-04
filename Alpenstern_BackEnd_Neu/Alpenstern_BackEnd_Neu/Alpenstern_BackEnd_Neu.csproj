@@ -204,9 +204,14 @@
     <Content Include="Views\Buchung\Index.cshtml" />
     <Content Include="Views\Buchung\Persoenlichdaten.cshtml" />
     <Content Include="Views\Sortiment\Index.cshtml" />
+    <Content Include="Views\Images\Galerien.cshtml" />
+    <Content Include="Views\Images\Upload.cshtml" />
+    <Content Include="Views\Images\Einstellungen.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Images\Bilder_Set_1\" />
+    <Folder Include="Content\Images\Bilder_Set_2\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

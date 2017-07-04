@@ -13,5 +13,17 @@ namespace Alpenstern_BackEnd_Neu.Controllers
         {
             return View();
         }
+        public ActionResult Galerien()
+        {
+            return View();
+        }
+        public ActionResult Upload()
+        {
+            return View();
+        }
+        public ActionResult Einstellungen()
+        {
+            return View();
+        }
     }
 }

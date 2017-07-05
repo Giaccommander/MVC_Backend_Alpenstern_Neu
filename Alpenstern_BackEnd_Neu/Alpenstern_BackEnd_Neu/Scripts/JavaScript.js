@@ -8,15 +8,15 @@
     }
 var theDate = Date.now();
 
-document.getElementById('date').innerText = getTheDate(theDate)
+document.getElementById('date2').innerText = getTheDate(theDate)
 
-document.getElementById('prev').addEventListener("click", function () {
+document.getElementById('prev2').addEventListener("click", function () {
     theDate -= 86400000;
-    document.getElementById('date').innerText = getTheDate(theDate)
+    document.getElementById('date2').innerText = getTheDate(theDate)
 })
-document.getElementById('next').addEventListener("click", function () {
+document.getElementById('next2').addEventListener("click", function () {
     theDate += 86400000;
-    document.getElementById('date').innerText = getTheDate(theDate)
+    document.getElementById('date2').innerText = getTheDate(theDate)
 })
 
 function getTheDate(getDate) {

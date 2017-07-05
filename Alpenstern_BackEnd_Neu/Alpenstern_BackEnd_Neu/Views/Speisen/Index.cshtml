@@ -3,41 +3,70 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Speisen</h2>
+
 @Html.Partial("~/Views/Home/_zfind.cshtml")
 
 
-    <div class="container">
+<div class="container">
+    <form>
+        <h2>Speisen</h2>
+        <div class="row">
+            <div class="col-lg-2">
+                <label class="checkbox-inline">
+                    <input type="checkbox" value="" />Frühstück
+                </label>
+            </div>
+            <div class="col-lg-3">
+                <label class="checkbox-inline">
+                    <input type="checkbox" value="" />Zellertaler Spezialitäten
+                </label>
+            </div>
+            <div class="col-lg-2">
+                <label class="checkbox-inline">
+                    <input type="checkbox" value="" />Galadinner
+                </label>
+            </div>
+            <div class="col-lg-2">
+                <label class="checkbox-inline">
+                    <input type="checkbox" value="" />Vitalmenü
+                </label>
+            </div>
+            <div class="col-lg-2">
+                <label class="checkbox-inline">
+                    <input type="checkbox" value="" />Degustationsmenü
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-2">
+                <label class="checkbox-inline">
+                    <input type="checkbox" value="" />Themenabende
+                </label>
+            </div>
+            <div class="col-lg-3">
+                <label class="checkbox-inline">
+                    <input type="checkbox" value="" />5-Gänge Gourmetmenü
+                </label>
+            </div>
+            <div class="col-lg-2">
+                <label class="checkbox-inline">
+                    <input type="checkbox" value="" />Vorspeise
+                </label>
+            </div>
+            <div class="col-lg-2">
+                <label class="checkbox-inline">
+                    <input type="checkbox" value="" />Salat & Dessertbufet
+                </label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-2">
+                <button type="submit" class="btn-sm">Submit</button>
+            </div>
+        </div>
+    </form>
 
-    @*<ul class="nav nav-tabs nav-justified">
-        <li class="active"><a href="#">Alpenstern</a></li>
-        <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Kreativer Genuß <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-                <li><a href="#">Submenu 1-1</a></li>
-                <li><a href="#">Submenu 1-2</a></li>
-                <li><a href="#">Submenu 1-3</a></li>
-            </ul>
-        </li>
-        <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Menu 2<span class="caret"></span></a>
-            <ul class="dropdown-menu">
-                <li><a href="#">Submenu 1-1</a></li>
-                <li><a href="#">Submenu 1-2</a></li>
-                <li><a href="#">Submenu 1-3</a></li>
-            </ul>
-        </li>
-        <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Menu 3<span class="caret"></span></a>
-            <ul class="dropdown-menu">
-                <li><a href="#">Submenu 1-1</a></li>
-                <li><a href="#">Submenu 1-2</a></li>
-                <li><a href="#">Submenu 1-3</a></li>
-            </ul>
-        </li>
-    </ul>*@
-
-</div>
+    </div>
 
 
 

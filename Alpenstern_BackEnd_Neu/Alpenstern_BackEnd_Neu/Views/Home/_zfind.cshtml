@@ -8,14 +8,30 @@
     <body>
         <div class="container">
             <form>
+                <h2>Schnellsuche</h2>
                 <div class="form-group">
-                    <label for="znr">Zimmernr.:</label>
-                    <input type="number" class="form-control" id="znr">
-                
-                    <label for="name">Name:</label>
-                    <input type="text" class="form-control" id="name">
-               
-                <button type="submit" class="btn btn-default">Submit</button>
+                    <div class="row">
+                        <div class="col-lg-2">
+                        <input type="number" class="form-control" id="znr"placeholder="ZimmerNr.">
+                    </div>
+                        <div class="col-lg-2">
+                            <input type="number" class="form-control" id="buchungsNr" placeholder="BuchungsNr.">
+                        </div>
+                        <div class="col-lg-2">
+                            <input type="text" class="form-control" id="vorname"placeholder="Max">
+                        </div>
+                        <div class="col-lg-2">
+                            <input type="text" class="form-control" id="nachname" placeholder="Muster">
+                        </div>
+                        <div class="col-lg-2">
+                            <input type="date" class="form-control" id="name">
+                        </div>
+
+                        <div class="col-lg-2">
+                            <button type="submit" class="btn-sm">Submit</button>
+                        </div>
+                    </div>
+                </div>
             </form>
         </div>
     </body>

@@ -182,8 +182,26 @@ button{
 }
 
 
-.input1 {display: block !important;  border: 0 !important; width: 85% !important;  text-align: end; line-height: 1 !important; background-color: #f2ebde; height: 20px;}
-.input2 {display: block !important;  border: 0 !important; width: 85% !important;  text-align: end; line-height: 1 !important; height: 20px;}
+.input1 {
+    display: block !important;  
+    border: 0 !important; 
+    width: 85% !important;  
+    text-align: end; 
+    line-height: 1 !important; 
+    background-color: #f2ebde; 
+    height: 20px;
+
+}
+.input2 {
+    display: block !important;  
+    border: 0 !important; 
+    width: 85% !important;  
+    text-align: end; 
+    line-height: 1 !important; 
+    background-color:lightgrey;
+    height: 20px;
+
+}
 
 
 /*#endregion */

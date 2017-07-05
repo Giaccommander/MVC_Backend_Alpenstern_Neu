@@ -1,0 +1,105 @@
+﻿
+@{
+    ViewBag.Title = "Speciale";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h2 style="text-align:center;">Zimmer- & gäste Suchen</h2>
+    </div>
+</div>
+
+@Html.Partial("~/Views/Home/_zfind.cshtml")
+
+<form action="~/Home/Index" method="post">
+    <div class="row">
+        <div class="col-lg-12">
+            <h2 style="text-align:center;">Saison Packages Buchen</h2>
+            <div class="col-lg-6">
+                <h3>Verwöhnleistungen PLUS Winter</h3>
+                <input type="button" name="infoWinterPlus" value="Info Winter PLUS" data-toggle="collapse" data-target=".winter" />
+                <br />
+                <br />
+                <div class="form-group collapse winter">
+                    <label for="buchen">Buchen am</label>
+                    <input type="date" class="form-control winter">
+                </div>
+                <div class="form-group collapse winter">
+                    <label for="personen">Personen</label>
+                    <input type="number" class="form-control winter" placeholder="1">
+                </div>
+                <div class="form-group collapse winter">
+                    <label for="preis">Preis</label>
+                    <input type="text" class="form-control winter" placeholder="255,50€">
+                    <button>Edit</button>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="collapse winter">
+                    <div class="row">
+                        <ul style="margin:20px;">
+                            <li>Skipassservice - wir stellen ihren Wunschskipassan der Rezeption aus</li>
+                            <li>5x wöchentlich Skiguiding von montag bis Freitag ( ab Dezember )</li>
+                            <li>1x wöchentlich gemütlicher Rodelabend, Racletteabend</li>
+                            <li>Topmoderner Skikeller-jedes Zimmer hat seinen verschließbaren und beheizten Ski- und Schuhschrank</li>
+                            <li>Grats Shuttlebus zur Gletscherbahn ( ab Oktober bis Mai im 5-Minuten Takt; Haltestelle 50 m vom hotel entfernt)</li>
+                            <li>Zellertaler Sportbus durch das Zellertal im 15-Minuten Takt</li>
+                            <li>Zellertaler Nachtbus für Nachtschwärmer zwischen Dezember und April</li>
+                            <li>Skiservice der Firma "Sport Forster" über Nacht gegen Aufpreis</li>
+                            <li>Spezielle Ermässigungen für Gäste des Alpensterns auf den Skiverleih bei "Sport Nenner" und auf den Unterricht in der Skischule Zellertal</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="col-lg-6">
+                <h3>Verwöhnleistungen PLUS Sommer</h3>
+                <input type="button" name="infoSommerPlus" value="Info Sommer PLUS" data-toggle="collapse" data-target=".sommer" />
+                <br />
+                <br />
+                <div class="form-group collapse sommer">
+                    <label for="buchen">Buchen am</label>
+                    <input type="date" class="form-control sommer">
+                </div>
+                <div class="form-group collapse sommer">
+                    <label for="personen">Personen</label>
+                    <input type="number" class="form-control sommer" placeholder="1">
+                </div>
+                <div class="form-group collapse sommer">
+                    <label for="preis">Preis</label>
+                    <input type="text" class="form-control sommer" placeholder="255,50€">
+                    <button>Edit</button>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="collapse sommer">
+                    <div class="row">
+                        <ul style="margin:20px;">
+                            <li>5-10 geführte Wanderungen pro Woche mit unseren Wanderführern; unterschiedliche Schwierigkeitsstufen</li>
+                            <li>1x wöchentlich Wanderungen auf die hauseigene Alm mit anschließender Bergjause</li>
+                            <li>kostenloser Mountenbike- & E-Bike-Verleih (nach Verfügbarkeit)</li>
+                            <li>Aktivprogramm mit Nordic Walking, Wassergymnastik und vielem mehr</li>
+                            <li>Wanderrucksack im Zimmer, auch für unsere kleinen Gäste</li>
+                            <li>Nordic Walking-Stöcke und Wanderstöcke an der Reception erhältlich</li>
+                            <li>1.200m² Alpengarten zum Faulenzen, Relaxen und Planschen</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 form-group">
+            <div class="col-lg-4"></div>
+            <div class="col-lg-4">
+                <button type="submit">Buchen</button>
+            </div>
+            <div class="col-lg-4"></div>
+        </div>
+    </div>
+</form>
+
+

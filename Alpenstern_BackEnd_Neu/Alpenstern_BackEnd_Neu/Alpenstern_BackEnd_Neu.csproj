@@ -207,6 +207,7 @@
     <Content Include="Views\Buchung\Persoenlichdaten.cshtml" />
     <Content Include="Views\Sortiment\Index.cshtml" />
     <Content Include="Views\Ankunft\Index.cshtml" />
+    <Content Include="Views\Sortiment\Speciale.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -3,7 +3,7 @@
 }
 
 <form action="/Buchung/Persoenlichdaten" method="post">
-    <h1 class="text-center">Buchungen</h1>
+    <h1 class="text-center"> Buchung Suchen</h1>
 
     <div class="container">
         <div class="row text-center">
@@ -56,15 +56,22 @@
             <div class="col-lg-3 abstand">
                 <h4>Zimmer</h4>
                 <select class="selectpicker form-control">
-                    <optgroup label="Zimmer">
+                    <group label="Zimmer">
                         <option>Einzelzimmer</option>
-                        <option>Doppelzimmer</option>
-                        <option>etc....</option>
-                    </optgroup>
+                        <option>Einzelzimmer Komfort</option>
+                        <option>Juniorsuite</option>
+                        <option>Suite Tirol</option>
+                        <option>Zirbensuite</option>
+                        <option>Gletschersuite</option>
+                        <option>Suite Alpenstern</option>
+                    </group>
                 </select>
             </div>
         </div>
+        <br />
+        <br />
+        <button type="submit">Weiter</button>
+
     </div>
-    <button type="submit">Weiter</button>
 
 </form>

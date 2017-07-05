@@ -96,6 +96,7 @@ textarea {
     width: 85% !important;
     text-align: end;
     line-height: 1 !important;
+    background-color:lightgrey;
     height: 20px;
 }
 

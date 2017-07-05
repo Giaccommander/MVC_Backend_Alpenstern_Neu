@@ -153,6 +153,7 @@
     <Compile Include="Controllers\BuchungController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SortimentController.cs" />
+    <Compile Include="Controllers\SpeisenController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -202,6 +203,8 @@
     <Content Include="Views\Home\Ankunft.cshtml" />
     <Content Include="Views\Home\Rueckruf.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Speisen\Index.cshtml" />
+    <Content Include="Views\Home\_zfind.cshtml" />
     <Content Include="Views\Abreise\Index.cshtml" />
     <Content Include="Views\Buchung\Index.cshtml" />
     <Content Include="Views\Buchung\Persoenlichdaten.cshtml" />

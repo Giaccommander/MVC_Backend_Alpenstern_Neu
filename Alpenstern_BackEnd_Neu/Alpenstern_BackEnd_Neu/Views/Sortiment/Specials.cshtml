@@ -11,13 +11,13 @@
 
 @Html.Partial("~/Views/Home/_zfind.cshtml")
 
-
+<form action="~/Home/Index" method="post">
     <div class="row">
         <div class="col-lg-12">
             <h2 style="text-align:center;">Saison Packages Buchen</h2>
             <div class="col-lg-6">
                 <h3>Verwöhnleistungen PLUS Winter</h3>
-                <button data-toggle="collapse" data-target=".winter">Info Winter PLUS</button>
+                <input type="button" name="infoWinterPlus" value="Info Winter PLUS" data-toggle="collapse" data-target=".winter" />
                 <br />
                 <br />
                 <div class="form-group collapse winter">
@@ -57,7 +57,7 @@
         <div class="col-lg-12">
             <div class="col-lg-6">
                 <h3>Verwöhnleistungen PLUS Sommer</h3>
-                <button data-toggle="collapse" data-target=".sommer">Info Sommer PLUS</button>
+                <input type="button" name="infoSommerPlus" value="Info Sommer PLUS" data-toggle="collapse" data-target=".sommer" />
                 <br />
                 <br />
                 <div class="form-group collapse sommer">
@@ -95,9 +95,9 @@
         <div class="col-lg-12 form-group">
             <div class="col-lg-4"></div>
             <div class="col-lg-4">
-                <input type="submit" class="form-control" name="Buchen" value="Buchen">
-                <button><a href="/Home/Index">Zurück</a></button>
-</div>
+                <button type="submit">Buchen</button>
+            </div>
             <div class="col-lg-4"></div>
         </div>
     </div>
+</form>

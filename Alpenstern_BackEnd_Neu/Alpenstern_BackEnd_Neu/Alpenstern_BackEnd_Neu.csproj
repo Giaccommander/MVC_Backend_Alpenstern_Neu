@@ -206,7 +206,6 @@
     <Content Include="Views\Abreise\Index.cshtml" />
     <Content Include="Views\Buchung\Index.cshtml" />
     <Content Include="Views\Buchung\Persoenlichdaten.cshtml" />
-    <Content Include="Views\Sortiment\Index.cshtml" />
     <Content Include="Views\Ankunft\Index.cshtml" />
     <Content Include="Views\Speisen\Index.cshtml" />
     <Content Include="Views\Home\_zfind.cshtml" />

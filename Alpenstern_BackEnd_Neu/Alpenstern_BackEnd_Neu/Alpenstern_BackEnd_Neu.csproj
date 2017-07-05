@@ -154,6 +154,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\SortimentController.cs" />
     <Compile Include="Controllers\SpeisenController.cs" />
+    <Compile Include="Controllers\MenuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -211,6 +212,8 @@
     <Content Include="Views\Sortiment\Index.cshtml" />
     <Content Include="Views\Ankunft\Index.cshtml" />
     <Content Include="Views\Sortiment\Speciale.cshtml" />
+    <Content Include="Views\Menues\Index.cshtml" />
+    <Content Include="Views\Menues\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

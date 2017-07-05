@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewBag.Title = "Edit";
+    
+}
+
+<h2>Menue Liste</h2>
+<form action="~/Menues/Index">
+    <div class="container" style="border-bottom:1px solid black;">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-2">Menue Name</div>
+                <div class="col-sm-4">Beschreibung</div>
+                <div class="col-sm-2">Preis</div>
+                <div class="col-sm-4">Aktionen</div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" placeholder="Kinder" disabled />
+                </div>
+                <div class="col-sm-4">
+                    <textarea class="form-control" rows="4" cols="500" id="menuebeschreibung" placeholder="Buchstabensuppe , Schnitzel mit Pommes , Vanille Pudding" style="max-width:100%;" disabled></textarea>
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" class="form-control" placeholder="60 euro" disabled />
+                </div>
+                <div class="col-sm-4">
+                    <div class="btn-group-vertical " align="center">
+                        <button type="button" class="btn btn-default">Bearbeiten</button>
+                        <button type="button" class="btn btn-default">Löschen</button>
+                    </div>
+                </div>              
+            </div>
+        </div>
+    </div>
+    <div class="container" style="padding-top:5px;">
+        <div id="menueneu">
+            <button type="submit">Neu</button>
+        </div>
+    </div>
+</form>

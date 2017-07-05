@@ -181,8 +181,13 @@ button{
    border-left: 1px solid black;
 }
 
-#padding {
+.padding-top {
+    
+    padding-top:20px;
+}
+.padding-bottom {
     padding-bottom: 20px;
+    
 }
 
 

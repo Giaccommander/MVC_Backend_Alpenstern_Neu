@@ -1,43 +1,4 @@
-﻿//#region Abreise
-
-
-    if (!Date.now) {
-        Date.now = function () {
-            return new Date().getTime();
-        }
-    }
-var theDate = Date.now();
-
-document.getElementById('date2').innerText = getTheDate(theDate)
-
-document.getElementById('prev2').addEventListener("click", function () {
-    theDate -= 86400000;
-    document.getElementById('date2').innerText = getTheDate(theDate)
-})
-document.getElementById('next2').addEventListener("click", function () {
-    theDate += 86400000;
-    document.getElementById('date2').innerText = getTheDate(theDate)
-})
-
-function getTheDate(getDate) {
-    var days = ["Sonntag", "Montag", "Dienstag",
-        "Mittwoch", "Donnerstag", "Freitag", "Samstag"
-    ];
-    var months = ["Januar", "Februar", "März",
-        "April", "Mai", "Juni", "Juli", "August",
-        "September", "Oktober", "November", "Dezember"
-    ];
-    var theCDate = new Date(getDate);
-    return days[theCDate.getDay()] + ',  ' + theCDate.getDate() + ' - ' + months[theCDate.getMonth()] + ' - ' + theCDate.getFullYear();
-}
-
-
-
-
-
-//#endregion
-
-//#region Ankunft
+﻿//#region Abreise/Ankunft
 
 
     if (!Date.now) {
@@ -75,6 +36,7 @@ function getTheDate(getDate) {
 
 
 //#endregion
+
 // #region buchung
 var dateControl = document.querySelector('input[type="date"]');
 dateControl.value = '2017-06-01';

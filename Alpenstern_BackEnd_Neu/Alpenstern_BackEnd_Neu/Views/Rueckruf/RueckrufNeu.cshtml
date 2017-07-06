@@ -1,0 +1,64 @@
+﻿
+@{
+    ViewBag.Title = "RueckrufNeu";
+}
+
+@Html.Partial("~/Views/Home/_zfind.cshtml")
+
+<h2>Persönliche Daten</h2>
+<div class="container">
+    <form action="/Rueckruf/Index" method="post">
+
+        <div class="row">
+            <div class="row">
+                <div class="col-lg-2 col-md-2">
+                    <label for="vorname">Vorname</label>
+                </div>
+                <div class="col-lg-10 col-md-10">
+                    <input type="text" class="form-control" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-2 col-md-2">
+                    <label for="nachname">Nachname</label>
+                </div>
+                <div class="col-lg-10 col-md-10">
+                    <input type="text" class="form-control" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-2 col-md-2">
+                    <label for="zimmer">Zimmer</label>
+                </div>
+                <div class="col-lg-10 col-md-10">
+                    <input type="number" class="form-control" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-2 col-md-2">
+                    <label for="datum">Datum</label>
+                </div>
+                <div class="col-lg-10 col-md-10">
+                    <input type="date" class="form-control" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-2 col-md-2">
+                    <label for="zeit">Uhrzeit</label>
+                </div>
+                <div class="col-lg-10 col-md-10">
+                    <input type="time" class="form-control" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-2 col-md-2">
+            </div>
+            <div class="col-lg-10 col-md-10">
+                <button type="submit" value="weiter" /> Weiter
+            </div>
+        </div>
+
+    </form>
+</div>
+

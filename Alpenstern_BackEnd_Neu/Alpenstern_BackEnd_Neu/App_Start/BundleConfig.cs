@@ -26,6 +26,11 @@ namespace Alpenstern_BackEnd_Neu
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/JavaScript").Include(
+            "~/Scripts/JavaScript.js"));
+
+
         }
     }
 }

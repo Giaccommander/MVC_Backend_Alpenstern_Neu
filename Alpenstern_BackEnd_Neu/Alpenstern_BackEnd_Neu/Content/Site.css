@@ -122,6 +122,12 @@ button{
     margin-top: 10px;
 }
 
+/*#region Upload Style */
+.upload-drop-zone {
+  height: 200px;
+  border-width: 2px;
+  margin-bottom: 20px;
+}
 
 
 /*#endregion */
@@ -214,3 +220,16 @@ button{
 
 
 /*#endregion */
+/* skin.css Style*/
+.upload-drop-zone {
+  color: #ccc;
+  border-style: dashed;
+  border-color: #ccc;
+  line-height: 200px;
+  text-align: center
+}
+.upload-drop-zone.drop {
+  color: #222;
+  border-color: #222;
+}
+/*#endregion*/

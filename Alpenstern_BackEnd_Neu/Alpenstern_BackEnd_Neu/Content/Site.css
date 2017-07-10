@@ -25,6 +25,16 @@ textarea {
     max-width: 280px;
 }
 
+/*#region Druckansicht */
+
+.schriftfett{
+    font-weight:bold;
+}
+
+
+
+/*#endregion */
+
 button {
     border-radius: 5px;
     background-color: green;

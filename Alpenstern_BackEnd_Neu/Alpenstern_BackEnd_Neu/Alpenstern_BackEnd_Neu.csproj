@@ -164,6 +164,7 @@
     <Compile Include="Controllers\AbreiseController.cs" />
     <Compile Include="Controllers\AnkunftController.cs" />
     <Compile Include="Controllers\BuchungController.cs" />
+    <Compile Include="Controllers\DruckansichtController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\RueckrufController.cs" />
     <Compile Include="Controllers\ImagesController.cs" />
@@ -229,6 +230,7 @@
     <Content Include="Content\Images\Zimmer\Zirbensuite_Skizze.jpg" />
     <Content Include="Content\Images\Zimmer\Zirbensuite_Wohnbereich.jpg" />
     <Content Include="Content\JavaScript.js" />
+    <Content Include="Content\Images\logo_alpenStern.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -285,6 +287,7 @@
     <Content Include="Views\Menues\Edit.cshtml" />
     <Content Include="Views\Zimmer\Index.cshtml" />
     <Content Include="Views\Spa\Index.cshtml" />
+    <Content Include="Views\Druckansicht\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

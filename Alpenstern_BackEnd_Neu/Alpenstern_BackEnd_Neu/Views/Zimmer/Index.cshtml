@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Zimmer bearbeiten:</h2>
+
+<form>
+    <div class="container" style="border-bottom:2px solid black">
+        <div class="row">
+            <div class="col-sm-2">                
+                <div class="dropdown">
+                    <label for="zimmerdropdown">Kategorie:</label>
+                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" id="zimmerdropdown">
+                        Kategorie
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" style="text-align:center;">
+                        <li><a href="#">Einzelzimmer</a></li>
+                        <li><a href="#">Komfort Einzelzimmer</a></li>
+                        <li><a href="#">Juniorsuite</a></li>
+                        <li><a href="#">Suite Tirol</a></li>
+                        <li><a href="#">Zirbensuite</a></li>
+                        <li><a href="#">Gletschersuite</a></li>
+                        <li><a href="#">Suite Alpenstern</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <label for="bildbeschreibung">Image:</label>
+                <img src="~/Content/Îmages/Hinterberger_Stausee.jpg" class="img-responsive" id="bildbeschreibung" />
+                <input type="file" style="padding:5px 0 5px 0;"/>
+            </div>
+            <div class="col-sm-4">
+                <label for="zbeschreibung">Beschreibung</label>
+                <textarea class="form-control" id="zbeschreibung" placeholder="Hier eingeben..." rows="5" cols="500" style="max-width:100%;"></textarea>
+            </div>
+            <div class="col-sm-2">
+                <label for="zimmerpreis">Preis:</label>
+                <input type="text" class="form-control" placeholder="*** &euro;" id="zimmerpreis" style="width:80px;" />
+            </div>
+            <div class="col-sm-2" style="padding-top:50px;">
+                <div class="btn-group-vertical " align="center">
+                    <button type="submit">Fertig!</button>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="container" style="padding-top:5px;">
+        
+            <button type="submit">Neu</button>
+        
+    </div>
+</form>
+

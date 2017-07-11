@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "zimmerListe";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+    <h2>Zimmer Liste</h2>
+
+    <form action="/Zimmer/Index" method="post">
+        <div class="container" style="border-bottom:2px solid black">
+            <div class="row">
+                <div class="col-sm-2">
+                    <div class="dropdown">
+                        <label for="zimmerdropdown">Kategorie</label>                       
+                        <select style="text-align:center;">
+                            <option selected>Einzelzimmer</option>
+                            <option>Komfort Einzelzimmer</option>
+                            <option>Juniorsuite</option>
+                            <option>Suite Tirol</option>
+                            <option>Zirbensuite</option>
+                            <option>Gletschersuite</option>
+                            <option>Suite Alpenstern</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <label for="bildbeschreibung">Image</label>                    
+                    <img src="~/Content/Images/Zimmer/Einzelzimmer.jpg" class="img-responsive" id="bildbeschreibung" />                   
+                </div>
+                <div class="col-sm-4">
+                    <label for="zbeschreibung">Beschreibung</label>
+                    <textarea class="form-control" id="zbeschreibung" placeholder="Wunderschönes Einzelzimmer ..." rows="5" cols="500" style="max-width:100%;"></textarea>
+                </div>
+                <div class="col-sm-2">
+                    <label for="zimmerpreis">Preis</label>
+                    <input type="text" class="form-control" placeholder="63 &euro;" id="zimmerpreis" style="width:80px;" />
+                </div>                
+            </div>
+        </div>
+        <div class="container" style="padding-top:5px;">
+            <button type="submit">Neu</button>
+        </div>
+    </form>
+
+

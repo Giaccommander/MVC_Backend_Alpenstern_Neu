@@ -6,25 +6,21 @@
 
 <h2>Zimmer bearbeiten:</h2>
 
-<form>
+<form action="/Zimmer/zimmerListe" method="post">
     <div class="container" style="border-bottom:2px solid black">
         <div class="row">
             <div class="col-sm-2">                
                 <div class="dropdown">
                     <label for="zimmerdropdown">Kategorie:</label>
-                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" id="zimmerdropdown">
-                        Kategorie
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" style="text-align:center;">
-                        <li><a href="#">Einzelzimmer</a></li>
-                        <li><a href="#">Komfort Einzelzimmer</a></li>
-                        <li><a href="#">Juniorsuite</a></li>
-                        <li><a href="#">Suite Tirol</a></li>
-                        <li><a href="#">Zirbensuite</a></li>
-                        <li><a href="#">Gletschersuite</a></li>
-                        <li><a href="#">Suite Alpenstern</a></li>
-                    </ul>
+                    <select style="text-align:center;">
+                        <option>Einzelzimmer</option>
+                        <option>Komfort Einzelzimmer</option>
+                        <option>Juniorsuite</option>
+                        <option>Suite Tirol</option>
+                        <option>Zirbensuite</option>
+                        <option>Gletschersuite</option>
+                        <option>Suite Alpenstern</option>
+                    </select>
                 </div>
             </div>
             <div class="col-sm-2">
@@ -45,14 +41,7 @@
                     <button type="submit">Fertig!</button>
                 </div>
             </div>
-
-
         </div>
-    </div>
-    <div class="container" style="padding-top:5px;">
-        
-            <button type="submit">Neu</button>
-        
-    </div>
+    </div>   
 </form>
 

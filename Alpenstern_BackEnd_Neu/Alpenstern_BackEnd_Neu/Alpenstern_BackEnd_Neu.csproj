@@ -288,6 +288,7 @@
     <Content Include="Views\Zimmer\Index.cshtml" />
     <Content Include="Views\Spa\Index.cshtml" />
     <Content Include="Views\Druckansicht\Index.cshtml" />
+    <Content Include="Views\Zimmer\zimmerListe.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

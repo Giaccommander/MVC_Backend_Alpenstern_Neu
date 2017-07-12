@@ -2,47 +2,33 @@
 @{
     ViewBag.Title = "Speciale";
 }
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/SpecialeBearbeiten.js"></script>
 
-<div class="row">
-    <div class="col-lg-12">
-        <h2 style="text-align:center;">Zimmer- & gäste Suchen</h2>
-    </div>
-</div>
-
-@Html.Partial("~/Views/Home/_zfind.cshtml")
-
-<form action="~/Druckansicht/Index" method="post">
+@*<form action="#" method="post">*@
     <div class="row">
         <div class="col-lg-12">
-            <h2 style="text-align:center;">Saison Packages Buchen</h2>
+            <h2 style="text-align:center;">Saison Packages bearbeiten</h2>
             <div class="col-lg-6">
                 <h3>Verwöhnleistungen PLUS Winter</h3>
                 <input type="button" name="infoWinterPlus" value="Info Winter PLUS" data-toggle="collapse" data-target=".winter" />
                 <br />
-                <br />
-                <div class="form-group collapse winter">
-                    <label for="buchen">Buchen am</label>
-                    <input type="date" class="form-control winter">
-                </div>
-                <div class="form-group collapse winter">
-                    <label for="personen">Personen</label>
-                    <input type="number" class="form-control winter" placeholder="1">
-                </div>
+                <br />               
                 <div class="form-group collapse winter">
                     <label for="preis">Preis</label>
-                    <input type="text" class="form-control winter" placeholder="255,50€">
-                    <button>Edit</button>
+                    <input type="text" class="form-control winter" placeholder="255,50€" id="winterPrice">
+                    <button id="winterButton">Edit</button>
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="collapse winter">
-                    <div class="row">
+                    <div class="row" id="winterBlock">
                         <ul style="margin:20px;">
                             <li>Skipassservice - wir stellen ihren Wunschskipassan der Rezeption aus</li>
                             <li>5x wöchentlich Skiguiding von montag bis Freitag ( ab Dezember )</li>
                             <li>1x wöchentlich gemütlicher Rodelabend, Racletteabend</li>
                             <li>Topmoderner Skikeller-jedes Zimmer hat seinen verschließbaren und beheizten Ski- und Schuhschrank</li>
-                            <li>Grats Shuttlebus zur Gletscherbahn ( ab Oktober bis Mai im 5-Minuten Takt; Haltestelle 50 m vom hotel entfernt)</li>
+                            <li>Gratis Shuttlebus zur Gletscherbahn ( ab Oktober bis Mai im 5-Minuten Takt; Haltestelle 50 m vom hotel entfernt)</li>
                             <li>Zellertaler Sportbus durch das Zellertal im 15-Minuten Takt</li>
                             <li>Zellertaler Nachtbus für Nachtschwärmer zwischen Dezember und April</li>
                             <li>Skiservice der Firma "Sport Forster" über Nacht gegen Aufpreis</li>
@@ -59,24 +45,16 @@
                 <h3>Verwöhnleistungen PLUS Sommer</h3>
                 <input type="button" name="infoSommerPlus" value="Info Sommer PLUS" data-toggle="collapse" data-target=".sommer" />
                 <br />
-                <br />
-                <div class="form-group collapse sommer">
-                    <label for="buchen">Buchen am</label>
-                    <input type="date" class="form-control sommer">
-                </div>
-                <div class="form-group collapse sommer">
-                    <label for="personen">Personen</label>
-                    <input type="number" class="form-control sommer" placeholder="1">
-                </div>
+                <br />               
                 <div class="form-group collapse sommer">
                     <label for="preis">Preis</label>
-                    <input type="text" class="form-control sommer" placeholder="255,50€">
+                    <input type="text" class="form-control sommer" placeholder="255,50€" id="sommerPrice">
                     <button>Edit</button>
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="collapse sommer">
-                    <div class="row">
+                    <div class="row" id="sommerBlock">
                         <ul style="margin:20px;">
                             <li>5-10 geführte Wanderungen pro Woche mit unseren Wanderführern; unterschiedliche Schwierigkeitsstufen</li>
                             <li>1x wöchentlich Wanderungen auf die hauseigene Alm mit anschließender Bergjause</li>
@@ -90,16 +68,7 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-12 form-group">
-            <div class="col-lg-4"></div>
-            <div class="col-lg-4">
-                <button type="submit">Buchen</button>
-            </div>
-            <div class="col-lg-4"></div>
-        </div>
-    </div>
-</form>
+    </div>    
+@*</form>*@
 
 

@@ -111,3 +111,7 @@ $(document).ready(function () {
 
 
 })
+
+function goBack(loc) {
+    window.location.href = loc;
+}

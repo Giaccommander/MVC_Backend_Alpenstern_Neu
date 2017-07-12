@@ -1,7 +1,4 @@
-﻿//#region Abreise/Ankunft
-
-
-if (!Date.now) {
+﻿if (!Date.now) {
     Date.now = function () {
         return new Date().getTime();
     }
@@ -59,5 +56,6 @@ function pasuser(form) {
     } else {  alert("Invalid UserID")
     }
 }
+
 
 

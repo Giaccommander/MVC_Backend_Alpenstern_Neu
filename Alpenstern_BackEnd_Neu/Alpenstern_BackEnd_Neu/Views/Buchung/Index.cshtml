@@ -1,7 +1,14 @@
-﻿@{
+﻿
+
+
+@{
     ViewBag.Title = "Index";
 }
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+
 <script src="~/Scripts/02_BuchenJava.js"></script>
+
+
 <form action="/Buchung/Persoenlichdaten" method="post">
     <h1 class="text-center"> Buchung Suchen</h1>
 
@@ -72,73 +79,91 @@
         <div class="row">
 
             <div class="row">
-                <div class="col col-lg-4 ">
+                <div class="col-lg-3">
+
+                </div>
+                <div class="col col-lg-3 ">
                     <h3>Nachname</h3>
                 </div>
-                <div class="col col-lg-4 ">
+                <div class="col col-lg-3 ">
                     <h3>Vorname</h3>
                 </div>
-                <div class="col col-lg-4 ">
+                <div class="col col-lg-3 ">
                     <h3>Buchungsnummer</h3>
                 </div>
             </div>
 
             <br /><br />
-            <div class="row">
+            <div class="row" id="row1">
                 <div class="table table-bordered">
-                    <div class="col col-lg-4 zeilenHoehe">
+                    <div class="col col-lg-3 zeilenHoehe">
+                        <input type="radio" id="checked1" name="fertig"/>
+                    </div>
+
+                    <div class="col col-lg-3 zeilenHoehe">
                         <p id="nachname0"></p>
                     </div>
-                    <div class="col col-lg-4 zeilenHoehe">
+                    <div class="col col-lg-3 zeilenHoehe">
                         <p id="vorname0"></p>
                     </div>
 
-                    <div class="col col-lg-4 zeilenHoehe">
+                    <div class="col col-lg-3 zeilenHoehe">
                         <p id="buchungsnummer0"></p>
                     </div>
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row" id="row2">
                 <div class="table table-bordered">
-                    <div class="col col-lg-4 zeilenHoehe">
+                    <div class="col col-lg-3 zeilenHoehe">
+                        <input type="radio" id="checked2" name="fertig" />
+                    </div>
+
+                    <div class="col col-lg-3 zeilenHoehe">
                         <p id="nachname1"></p>
                     </div>
-                    <div class="col col-lg-4 zeilenHoehe">
+                    <div class="col col-lg-3 zeilenHoehe">
                         <p id="vorname1"></p>
                     </div>
 
-                    <div class="col col-lg-4 zeilenHoehe">
+                    <div class="col col-lg-3 zeilenHoehe">
                         <p id="buchungsnummer1"></p>
                     </div>
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row" id="row3">
                 <div class="table table-bordered">
-                    <div class="col col-lg-4 zeilenHoehe">
+                    <div class="col col-lg-3 zeilenHoehe">
+                        <input type="radio" id="checked3" name="fertig"/>
+                    </div>
+                    <div class="col col-lg-3 zeilenHoehe">
                         <p id="nachname2"></p>
                     </div>
-                    <div class="col col-lg-4 zeilenHoehe">
+                    <div class="col col-lg-3 zeilenHoehe">
                         <p id="vorname2"></p>
                     </div>
 
-                    <div class="col col-lg-4 zeilenHoehe">
+                    <div class="col col-lg-3 zeilenHoehe">
                         <p id="buchungsnummer2"></p>
                     </div>
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row" id="row4">
                 <div class="table table-bordered">
-                    <div class="col col-lg-4 zeilenHoehe">
+                    <div class="col col-lg-3 zeilenHoehe">
+                        <input type="radio" id="checked4" name="fertig" />
+                    </div>
+
+                    <div class="col col-lg-3 zeilenHoehe">
                         <p id="nachname3"></p>
                     </div>
-                    <div class="col col-lg-4 zeilenHoehe">
+                    <div class="col col-lg-3 zeilenHoehe">
                         <p id="vorname3"></p>
                     </div>
 
-                    <div class="col col-lg-4 zeilenHoehe">
+                    <div class="col col-lg-3 zeilenHoehe">
                         <p id="buchungsnummer3"></p>
                     </div>
                 </div>

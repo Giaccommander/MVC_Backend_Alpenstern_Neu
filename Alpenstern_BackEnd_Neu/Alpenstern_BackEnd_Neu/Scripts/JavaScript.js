@@ -1,11 +1,8 @@
-﻿//#region Abreise/Ankunft
-
-
-    if (!Date.now) {
-        Date.now = function () {
-            return new Date().getTime();
-        }
+﻿if (!Date.now) {
+    Date.now = function () {
+        return new Date().getTime();
     }
+}
 var theDate = Date.now();
 
 document.getElementById('date').innerText = getTheDate(theDate)
@@ -31,13 +28,6 @@ function getTheDate(getDate) {
     return days[theCDate.getDay()] + ',  ' + theCDate.getDate() + ' - ' + months[theCDate.getMonth()] + ' - ' + theCDate.getFullYear();
 }
 
-
-
-
-
-//#endregion
-
-// #region buchung
 var dateControl = document.querySelector('input[type="date"]');
 dateControl.value = '2017-06-01';
 
@@ -46,4 +36,4 @@ function goBack(loc) {
 }
 
 
-// #endregion
+

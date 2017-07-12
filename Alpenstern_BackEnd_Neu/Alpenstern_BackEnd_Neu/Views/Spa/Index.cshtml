@@ -2,53 +2,59 @@
     ViewBag.Title = "Index";
 }
 
-
-<div>
-    <div class="container padding-bottom padding-top">
-        <div class="row text-center abreiserahmen abreise-overview">
-            <div class="col-xs-2"><span class="glyphicon glyphicon-chevron-left" id="prev"></span></div>
-            <div class="col-xs-8" id="date"></div>
-            <div class="col-xs-2"><span class="glyphicon glyphicon-chevron-right" id="next"></span></div>
+<form action="~/Buchung/Index" method="post">
+    <div>
+        <div class="container padding-bottom padding-top">
+            <div class="row text-center abreiserahmen abreise-overview">
+                <div class="col-xs-2"><span class="glyphicon glyphicon-chevron-left" id="prev"></span></div>
+                <div class="col-xs-8" id="date"></div>
+                <div class="col-xs-2"><span class="glyphicon glyphicon-chevron-right" id="next"></span></div>
+            </div>
+        </div>
+        <div class="container padding-bottom">
+            <div class="row text-center abreiserahmen abreise-checkOut">
+                <span>Spa & Wellness</span>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row text-center ">
+                <div class="col-xs-3"></div>
+                <div class="col-xs-3 spa-text">Alpiner Bergtraum</div>
+                <div class="col-xs-2 input-group"><input type="number" step="0.01" value="500" class="form-control" /><span class="input-group-addon">€</span></div>
+                <div class="col-xs-1 btn btn-default">Edit</div>
+                <div class="col-xs-3"></div>
+            </div>
+            <div class="row text-center ">
+                <div class="col-xs-3"></div>
+                <div class="col-xs-3 spa-text">Ganzkörper Massage</div>
+                <div class="col-xs-2 input-group"><input type="number" step="0.01" value="250" class="form-control" /><span class="input-group-addon">€</span></div>
+                <div class="col-xs-1 btn btn-default">Edit</div>
+                <div class="col-xs-3"></div>
+            </div>
+            <div class="row text-center ">
+                <div class="col-xs-3"></div>
+                <div class="col-xs-3 spa-text">Entspannter Rücken</div>
+                <div class="col-xs-2 input-group"><input type="number" step="0.01" value="150" class="form-control" /><span class="input-group-addon">€</span></div>
+                <div class="col-xs-1 btn btn-default">Edit</div>
+                <div class="col-xs-3"></div>
+            </div>
+            <div class="row text-center ">
+                <div class="col-xs-3"></div>
+                <div class="col-xs-3 spa-text">Gesichtsbehandlung</div>
+                <div class="col-xs-2 input-group"><input type="number" step="0.01" value="100" class="form-control" /><span class="input-group-addon">€</span></div>
+                <div class="col-xs-1 btn btn-default">Edit</div>
+                <div class="col-xs-3"></div>
+            </div>
         </div>
     </div>
-    <div class="container padding-bottom">
-        <div class="row text-center abreiserahmen abreise-checkOut">
-            <span>Spa & Wellness</span>
+    <div class="row">
+        <div class="col-lg-2 col-md-2">
+        </div>
+        <div class="col-lg-10 col-md-10">
+            <button type="submit" value="weiter" /> Bestätigen
         </div>
     </div>
-    <div class="container">
-        <div class="row text-center ">
-            <div class="col-xs-3"></div>
-            <div class="col-xs-3 spa-text">Alpiner Bergtraum</div>
-            <div class="col-xs-2 input-group"><input type="number" step="0.01" value="500" class="form-control" /><span class="input-group-addon">€</span></div>
-            <div class="col-xs-1 btn btn-default">Edit</div>
-            <div class="col-xs-3"></div>
-        </div>
-        <div class="row text-center ">
-            <div class="col-xs-3"></div>
-            <div class="col-xs-3 spa-text">Ganzkörper Massage</div>
-            <div class="col-xs-2 input-group"><input type="number" step="0.01" value="250" class="form-control" /><span class="input-group-addon">€</span></div>
-            <div class="col-xs-1 btn btn-default">Edit</div>
-            <div class="col-xs-3"></div>
-        </div>
-        <div class="row text-center ">
-            <div class="col-xs-3"></div>
-            <div class="col-xs-3 spa-text">Entspannter Rücken</div>
-            <div class="col-xs-2 input-group"><input type="number" step="0.01" value="150" class="form-control" /><span class="input-group-addon">€</span></div>
-            <div class="col-xs-1 btn btn-default">Edit</div>
-            <div class="col-xs-3"></div>
-        </div>
-        <div class="row text-center ">
-            <div class="col-xs-3"></div>
-            <div class="col-xs-3 spa-text">Gesichtsbehandlung</div>
-            <div class="col-xs-2 input-group"><input type="number" step="0.01" value="100" class="form-control" /><span class="input-group-addon">€</span></div>
-            <div class="col-xs-1 btn btn-default">Edit</div>
-            <div class="col-xs-3"></div>
-        </div>
-    </div>
-</div>
+</form>
 
 
 
-
-<script src="~/Scripts/JavaScript.js"></script>

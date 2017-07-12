@@ -1,7 +1,7 @@
 ﻿body {
     padding-top: 0px;
     padding-bottom: 20px;
-    background: url('Îmages/Hinterberger_Stausee.jpg') no-repeat;
+    background: url('Images/Hotel/Hinterberger_Stausee.jpg') no-repeat;
     background-size: cover;
 }
 
@@ -139,23 +139,7 @@ button {
   margin-bottom: 20px;
 }
 
-
-/*#endregion */
-/*#region Persoenlichdaten */
-
-
-
-/*#endregion */
-
-/*#endregion */
-
-
-
 /*#region Abreise */
-
-
-
-
 
 .abreise-overview {
     font-weight: bold;

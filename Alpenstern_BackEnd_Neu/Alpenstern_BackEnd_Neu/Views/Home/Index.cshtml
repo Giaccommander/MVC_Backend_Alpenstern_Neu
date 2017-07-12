@@ -4,22 +4,7 @@
 
 <h1>Dashboard</h1>
 
-<script language="javascript">
-<!--//
-/*This Script allows people to enter by using a form that asks for a
-UserID and Password*/
-function pasuser(form) {
-if (form.id.value=="admin") {
-if (form.pass.value=="123") {
-    location.href="../Buchung/Index"
-} else {
-alert("Invalid Password")
-}
-} else {  alert("Invalid UserID")
-}
-}
-//-->
-</script>
+
 
 <center>
     <form action="~/Buchung/Index.cshtml">

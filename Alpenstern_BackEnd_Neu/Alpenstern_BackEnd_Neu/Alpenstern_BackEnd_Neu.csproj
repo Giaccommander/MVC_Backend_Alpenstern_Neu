@@ -229,7 +229,6 @@
     <Content Include="Content\Images\Zimmer\Zirbensuite_Schlafzimmer.jpg" />
     <Content Include="Content\Images\Zimmer\Zirbensuite_Skizze.jpg" />
     <Content Include="Content\Images\Zimmer\Zirbensuite_Wohnbereich.jpg" />
-    <Content Include="Content\JavaScript.js" />
     <Content Include="Content\Images\logo_alpenStern.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />

@@ -8,6 +8,8 @@ if (!Date.now) {
 }
 var theDate = Date.now();
 
+
+
 document.getElementById('date').innerText = getTheDate(theDate)
 
 document.getElementById('prev').addEventListener("click", function () {

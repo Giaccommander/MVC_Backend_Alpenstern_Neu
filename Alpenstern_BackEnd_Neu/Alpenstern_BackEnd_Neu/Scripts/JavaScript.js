@@ -46,16 +46,16 @@ function goBack(loc) {
 
 
 
-function pasuser(form) {
-    if (form.id.value=="admin") {
-        if (form.pass.value=="123") {
-            location.href="../Buchung/Index"
-        } else {
-            alert("Invalid Password")
-        }
-    } else {  alert("Invalid UserID")
-    }
-}
+//function pasuser(form) {
+//    if (form.id.value=="admin") {
+//        if (form.pass.value=="123") {
+//            location.href="../Buchung/Index"
+//        } else {
+//            alert("Invalid Password")
+//        }
+//    } else {  alert("Invalid UserID")
+//    }
+//}
 
 
 

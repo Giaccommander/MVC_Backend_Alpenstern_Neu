@@ -44,6 +44,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -84,6 +92,8 @@
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -172,9 +182,82 @@
     <Compile Include="Controllers\SpaController.cs" />
     <Compile Include="Controllers\SpeisenController.cs" />
     <Compile Include="Controllers\MenuesController.cs" />
+    <Compile Include="Controllers\Vorlage_LoginsController.cs" />
     <Compile Include="Controllers\ZimmerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AlpensternDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AlpensternDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AlpensternDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AlpensternDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AlpensternDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AlpensternDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Anfrage.cs">
+      <DependentUpon>AlpensternDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Ausstattung.cs">
+      <DependentUpon>AlpensternDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Bilder.cs">
+      <DependentUpon>AlpensternDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Gast.cs">
+      <DependentUpon>AlpensternDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Gastlogin.cs">
+      <DependentUpon>AlpensternDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Kategorie.cs">
+      <DependentUpon>AlpensternDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Kategorieanfrage.cs">
+      <DependentUpon>AlpensternDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Kategorieausstattung.cs">
+      <DependentUpon>AlpensternDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Komplettbuchung.cs">
+      <DependentUpon>AlpensternDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Komplettpaket.cs">
+      <DependentUpon>AlpensternDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Land.cs">
+      <DependentUpon>AlpensternDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Login.cs">
+      <DependentUpon>AlpensternDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Mitarbeiter.cs">
+      <DependentUpon>AlpensternDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Rechnung.cs">
+      <DependentUpon>AlpensternDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Rueckruf.cs">
+      <DependentUpon>AlpensternDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Saison.cs">
+      <DependentUpon>AlpensternDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Stadt.cs">
+      <DependentUpon>AlpensternDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Zimmer.cs">
+      <DependentUpon>AlpensternDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Zimmerbuchung.cs">
+      <DependentUpon>AlpensternDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -235,6 +318,16 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\AlpensternDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AlpensternDB.edmx</DependentUpon>
+      <LastGenOutput>AlpensternDB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\AlpensternDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AlpensternDB.edmx</DependentUpon>
+      <LastGenOutput>AlpensternDB.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\02_BuchenJava.js" />
     <Content Include="Scripts\ai.0.22.19-build00125.js" />
     <Content Include="Scripts\ai.0.22.19-build00125.min.js" />
@@ -244,6 +337,13 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <EntityDeploy Include="Models\AlpensternDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>AlpensternDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\AlpensternDB.edmx.diagram">
+      <DependentUpon>AlpensternDB.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\JavaScript.js" />
@@ -291,10 +391,14 @@
     <Content Include="Views\Spa\Index.cshtml" />
     <Content Include="Views\Druckansicht\Index.cshtml" />
     <Content Include="Views\Zimmer\zimmerListe.cshtml" />
+    <Content Include="Views\Vorlage_Logins\Create.cshtml" />
+    <Content Include="Views\Vorlage_Logins\Delete.cshtml" />
+    <Content Include="Views\Vorlage_Logins\Details.cshtml" />
+    <Content Include="Views\Vorlage_Logins\Edit.cshtml" />
+    <Content Include="Views\Vorlage_Logins\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -303,6 +407,9 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

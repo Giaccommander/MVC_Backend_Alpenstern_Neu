@@ -1,0 +1,1208 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="alpensternModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Anfrage">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="gast_id" Type="int" Nullable="false" />
+          <Property Name="datumVon" Type="date" Nullable="false" />
+          <Property Name="datumBis" Type="date" Nullable="false" />
+          <Property Name="datumAnfrage" Type="datetime" Nullable="false" />
+          <Property Name="datumBearbeitet" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Ausstattung">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bezeichnung" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Bilder">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bilderart" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="pfad" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Gast">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="stadt_id" Type="int" Nullable="false" />
+          <Property Name="vorname" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="nachname" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="geburtsdatum" Type="datetime" Nullable="false" />
+          <Property Name="straße" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="telefonnummer" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="reisepassnummer" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <!--Während der Generierung sind Fehler aufgetreten:
+Warnung 6002: Für Tabelle/Sicht 'alpenstern.dbo.Gastlogin' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
+        <EntityType Name="Gastlogin">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="gast_id" />
+            <PropertyRef Name="login_id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="gast_id" Type="int" Nullable="false" />
+          <Property Name="login_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Kategorie">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bezeichnung" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="preis" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="personenAnzahl" Type="int" Nullable="false" />
+          <Property Name="groesse" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Kategorieanfrage">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kategorie_id" Type="int" Nullable="false" />
+          <Property Name="anfrage_id" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Während der Generierung sind Fehler aufgetreten:
+Warnung 6002: Für Tabelle/Sicht 'alpenstern.dbo.Kategorieausstattung' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
+        <EntityType Name="Kategorieausstattung">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="ausstattung_id" />
+            <PropertyRef Name="kategorie_id" />
+            <PropertyRef Name="anzahl" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ausstattung_id" Type="int" Nullable="false" />
+          <Property Name="kategorie_id" Type="int" Nullable="false" />
+          <Property Name="anzahl" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <!--Während der Generierung sind Fehler aufgetreten:
+Warnung 6002: Für Tabelle/Sicht 'alpenstern.dbo.Komplettbuchung' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
+        <EntityType Name="Komplettbuchung">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="kategorieanfrage_id" />
+            <PropertyRef Name="komplettpaket_id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kategorieanfrage_id" Type="int" Nullable="false" />
+          <Property Name="komplettpaket_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Komplettpaket">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bezeichnung" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="zuschlagProTag" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Land">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bezeichnung" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Login">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="benutzername" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="passwort" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Mitarbeiter">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="vorname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="nachname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="passwort" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rechnung">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="anfrage_id" Type="int" Nullable="false" />
+          <Property Name="gesamtpreis" Type="decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="anzahlPersonen" Type="tinyint" Nullable="false" />
+          <Property Name="anzahlNaechte" Type="tinyint" Nullable="false" />
+          <Property Name="datumAktualisiert" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rueckruf">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="telefon" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="grund" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="datum_erhalten" Type="datetime" Nullable="false" />
+          <Property Name="datum_erledigt" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Saison">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bezeichnung" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="monatVon" Type="tinyint" Nullable="false" />
+          <Property Name="monatBis" Type="tinyint" Nullable="false" />
+          <Property Name="preisProzent" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Stadt">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="land_id" Type="int" Nullable="false" />
+          <Property Name="bezeichnung" Type="varchar" MaxLength="50" />
+          <Property Name="plz" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Zimmer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kategorie_id" Type="int" Nullable="false" />
+          <Property Name="zimmerNummer" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Zimmerbuchung">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="zimmer_id" Type="int" Nullable="false" />
+          <Property Name="mitarbeiter_id" Type="int" Nullable="false" />
+          <Property Name="kategorieanfrage_id" Type="int" Nullable="false" />
+          <Property Name="checkedStatus" Type="bit" />
+        </EntityType>
+        <Association Name="fk__Anfrage__Gast">
+          <End Role="Gast" Type="Self.Gast" Multiplicity="1" />
+          <End Role="Anfrage" Type="Self.Anfrage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gast">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Anfrage">
+              <PropertyRef Name="gast_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk__Gast__Stadt">
+          <End Role="Stadt" Type="Self.Stadt" Multiplicity="1" />
+          <End Role="Gast" Type="Self.Gast" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stadt">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Gast">
+              <PropertyRef Name="stadt_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk__Gastlogin__Gast">
+          <End Role="Gast" Type="Self.Gast" Multiplicity="1" />
+          <End Role="Gastlogin" Type="Self.Gastlogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gast">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Gastlogin">
+              <PropertyRef Name="gast_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk__Gastlogin__login">
+          <End Role="Login" Type="Self.Login" Multiplicity="1" />
+          <End Role="Gastlogin" Type="Self.Gastlogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Login">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Gastlogin">
+              <PropertyRef Name="login_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk__Kategoireausstattung__Kategorie">
+          <End Role="Kategorie" Type="Self.Kategorie" Multiplicity="1" />
+          <End Role="Kategorieausstattung" Type="Self.Kategorieausstattung" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategorie">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Kategorieausstattung">
+              <PropertyRef Name="kategorie_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk__Kategorieanfrage__Anfrage">
+          <End Role="Anfrage" Type="Self.Anfrage" Multiplicity="1" />
+          <End Role="Kategorieanfrage" Type="Self.Kategorieanfrage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Anfrage">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Kategorieanfrage">
+              <PropertyRef Name="anfrage_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk__Kategorieanfrage__Kategorie">
+          <End Role="Kategorie" Type="Self.Kategorie" Multiplicity="1" />
+          <End Role="Kategorieanfrage" Type="Self.Kategorieanfrage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategorie">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Kategorieanfrage">
+              <PropertyRef Name="kategorie_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk__Kategorieausstattung__Ausstattung">
+          <End Role="Ausstattung" Type="Self.Ausstattung" Multiplicity="1" />
+          <End Role="Kategorieausstattung" Type="Self.Kategorieausstattung" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ausstattung">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Kategorieausstattung">
+              <PropertyRef Name="ausstattung_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk__Komplettbuchung__Kategorieanfrage">
+          <End Role="Kategorieanfrage" Type="Self.Kategorieanfrage" Multiplicity="1" />
+          <End Role="Komplettbuchung" Type="Self.Komplettbuchung" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategorieanfrage">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Komplettbuchung">
+              <PropertyRef Name="kategorieanfrage_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk__Komplettbuchung__Komplettpaket">
+          <End Role="Komplettpaket" Type="Self.Komplettpaket" Multiplicity="1" />
+          <End Role="Komplettbuchung" Type="Self.Komplettbuchung" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Komplettpaket">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Komplettbuchung">
+              <PropertyRef Name="komplettpaket_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk__Rechnung__Anfrage">
+          <End Role="Anfrage" Type="Self.Anfrage" Multiplicity="1" />
+          <End Role="Rechnung" Type="Self.Rechnung" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Anfrage">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Rechnung">
+              <PropertyRef Name="anfrage_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk__Stadt__Land">
+          <End Role="Land" Type="Self.Land" Multiplicity="1" />
+          <End Role="Stadt" Type="Self.Stadt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Land">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Stadt">
+              <PropertyRef Name="land_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk__Zimmer__Kategorie">
+          <End Role="Kategorie" Type="Self.Kategorie" Multiplicity="1" />
+          <End Role="Zimmer" Type="Self.Zimmer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategorie">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Zimmer">
+              <PropertyRef Name="kategorie_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk__Zimmerbuchung__Kategorieanfrage">
+          <End Role="Kategorieanfrage" Type="Self.Kategorieanfrage" Multiplicity="1" />
+          <End Role="Zimmerbuchung" Type="Self.Zimmerbuchung" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategorieanfrage">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Zimmerbuchung">
+              <PropertyRef Name="kategorieanfrage_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk__Zimmerbuchung__Mitarbeiter">
+          <End Role="Mitarbeiter" Type="Self.Mitarbeiter" Multiplicity="1" />
+          <End Role="Zimmerbuchung" Type="Self.Zimmerbuchung" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mitarbeiter">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Zimmerbuchung">
+              <PropertyRef Name="mitarbeiter_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk__Zimmerbuchung__Zimmer">
+          <End Role="Zimmer" Type="Self.Zimmer" Multiplicity="1" />
+          <End Role="Zimmerbuchung" Type="Self.Zimmerbuchung" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zimmer">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Zimmerbuchung">
+              <PropertyRef Name="zimmer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="alpensternModelStoreContainer">
+          <EntitySet Name="Anfrage" EntityType="Self.Anfrage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ausstattung" EntityType="Self.Ausstattung" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bilder" EntityType="Self.Bilder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gast" EntityType="Self.Gast" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kategorie" EntityType="Self.Kategorie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kategorieanfrage" EntityType="Self.Kategorieanfrage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Komplettpaket" EntityType="Self.Komplettpaket" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Land" EntityType="Self.Land" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Login" EntityType="Self.Login" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mitarbeiter" EntityType="Self.Mitarbeiter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rechnung" EntityType="Self.Rechnung" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rueckruf" EntityType="Self.Rueckruf" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Saison" EntityType="Self.Saison" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Stadt" EntityType="Self.Stadt" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Zimmer" EntityType="Self.Zimmer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Zimmerbuchung" EntityType="Self.Zimmerbuchung" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gastlogin" EntityType="Self.Gastlogin" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Gastlogin].[id] AS [id], 
+    [Gastlogin].[gast_id] AS [gast_id], 
+    [Gastlogin].[login_id] AS [login_id]
+    FROM [dbo].[Gastlogin] AS [Gastlogin]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Kategorieausstattung" EntityType="Self.Kategorieausstattung" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Kategorieausstattung].[id] AS [id], 
+    [Kategorieausstattung].[ausstattung_id] AS [ausstattung_id], 
+    [Kategorieausstattung].[kategorie_id] AS [kategorie_id], 
+    [Kategorieausstattung].[anzahl] AS [anzahl]
+    FROM [dbo].[Kategorieausstattung] AS [Kategorieausstattung]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Komplettbuchung" EntityType="Self.Komplettbuchung" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Komplettbuchung].[id] AS [id], 
+    [Komplettbuchung].[kategorieanfrage_id] AS [kategorieanfrage_id], 
+    [Komplettbuchung].[komplettpaket_id] AS [komplettpaket_id]
+    FROM [dbo].[Komplettbuchung] AS [Komplettbuchung]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="fk__Anfrage__Gast" Association="Self.fk__Anfrage__Gast">
+            <End Role="Gast" EntitySet="Gast" />
+            <End Role="Anfrage" EntitySet="Anfrage" />
+          </AssociationSet>
+          <AssociationSet Name="fk__Gast__Stadt" Association="Self.fk__Gast__Stadt">
+            <End Role="Stadt" EntitySet="Stadt" />
+            <End Role="Gast" EntitySet="Gast" />
+          </AssociationSet>
+          <AssociationSet Name="fk__Gastlogin__Gast" Association="Self.fk__Gastlogin__Gast">
+            <End Role="Gast" EntitySet="Gast" />
+            <End Role="Gastlogin" EntitySet="Gastlogin" />
+          </AssociationSet>
+          <AssociationSet Name="fk__Gastlogin__login" Association="Self.fk__Gastlogin__login">
+            <End Role="Login" EntitySet="Login" />
+            <End Role="Gastlogin" EntitySet="Gastlogin" />
+          </AssociationSet>
+          <AssociationSet Name="fk__Kategoireausstattung__Kategorie" Association="Self.fk__Kategoireausstattung__Kategorie">
+            <End Role="Kategorie" EntitySet="Kategorie" />
+            <End Role="Kategorieausstattung" EntitySet="Kategorieausstattung" />
+          </AssociationSet>
+          <AssociationSet Name="fk__Kategorieanfrage__Anfrage" Association="Self.fk__Kategorieanfrage__Anfrage">
+            <End Role="Anfrage" EntitySet="Anfrage" />
+            <End Role="Kategorieanfrage" EntitySet="Kategorieanfrage" />
+          </AssociationSet>
+          <AssociationSet Name="fk__Kategorieanfrage__Kategorie" Association="Self.fk__Kategorieanfrage__Kategorie">
+            <End Role="Kategorie" EntitySet="Kategorie" />
+            <End Role="Kategorieanfrage" EntitySet="Kategorieanfrage" />
+          </AssociationSet>
+          <AssociationSet Name="fk__Kategorieausstattung__Ausstattung" Association="Self.fk__Kategorieausstattung__Ausstattung">
+            <End Role="Ausstattung" EntitySet="Ausstattung" />
+            <End Role="Kategorieausstattung" EntitySet="Kategorieausstattung" />
+          </AssociationSet>
+          <AssociationSet Name="fk__Komplettbuchung__Kategorieanfrage" Association="Self.fk__Komplettbuchung__Kategorieanfrage">
+            <End Role="Kategorieanfrage" EntitySet="Kategorieanfrage" />
+            <End Role="Komplettbuchung" EntitySet="Komplettbuchung" />
+          </AssociationSet>
+          <AssociationSet Name="fk__Komplettbuchung__Komplettpaket" Association="Self.fk__Komplettbuchung__Komplettpaket">
+            <End Role="Komplettpaket" EntitySet="Komplettpaket" />
+            <End Role="Komplettbuchung" EntitySet="Komplettbuchung" />
+          </AssociationSet>
+          <AssociationSet Name="fk__Rechnung__Anfrage" Association="Self.fk__Rechnung__Anfrage">
+            <End Role="Anfrage" EntitySet="Anfrage" />
+            <End Role="Rechnung" EntitySet="Rechnung" />
+          </AssociationSet>
+          <AssociationSet Name="fk__Stadt__Land" Association="Self.fk__Stadt__Land">
+            <End Role="Land" EntitySet="Land" />
+            <End Role="Stadt" EntitySet="Stadt" />
+          </AssociationSet>
+          <AssociationSet Name="fk__Zimmer__Kategorie" Association="Self.fk__Zimmer__Kategorie">
+            <End Role="Kategorie" EntitySet="Kategorie" />
+            <End Role="Zimmer" EntitySet="Zimmer" />
+          </AssociationSet>
+          <AssociationSet Name="fk__Zimmerbuchung__Kategorieanfrage" Association="Self.fk__Zimmerbuchung__Kategorieanfrage">
+            <End Role="Kategorieanfrage" EntitySet="Kategorieanfrage" />
+            <End Role="Zimmerbuchung" EntitySet="Zimmerbuchung" />
+          </AssociationSet>
+          <AssociationSet Name="fk__Zimmerbuchung__Mitarbeiter" Association="Self.fk__Zimmerbuchung__Mitarbeiter">
+            <End Role="Mitarbeiter" EntitySet="Mitarbeiter" />
+            <End Role="Zimmerbuchung" EntitySet="Zimmerbuchung" />
+          </AssociationSet>
+          <AssociationSet Name="fk__Zimmerbuchung__Zimmer" Association="Self.fk__Zimmerbuchung__Zimmer">
+            <End Role="Zimmer" EntitySet="Zimmer" />
+            <End Role="Zimmerbuchung" EntitySet="Zimmerbuchung" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="alpensternModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Anfrage">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="gast_id" Type="Int32" Nullable="false" />
+          <Property Name="datumVon" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="datumBis" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="datumAnfrage" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="datumBearbeitet" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Gast" Relationship="Self.fk__Anfrage__Gast" FromRole="Anfrage" ToRole="Gast" />
+          <NavigationProperty Name="Kategorieanfrage" Relationship="Self.fk__Kategorieanfrage__Anfrage" FromRole="Anfrage" ToRole="Kategorieanfrage" />
+          <NavigationProperty Name="Rechnung" Relationship="Self.fk__Rechnung__Anfrage" FromRole="Anfrage" ToRole="Rechnung" />
+        </EntityType>
+        <EntityType Name="Ausstattung">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="bezeichnung" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Kategorieausstattung" Relationship="Self.fk__Kategorieausstattung__Ausstattung" FromRole="Ausstattung" ToRole="Kategorieausstattung" />
+        </EntityType>
+        <EntityType Name="Bilder">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="bilderart" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="pfad" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Gast">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="stadt_id" Type="Int32" Nullable="false" />
+          <Property Name="vorname" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nachname" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="geburtsdatum" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="straße" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="telefonnummer" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="reisepassnummer" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Anfrage" Relationship="Self.fk__Anfrage__Gast" FromRole="Gast" ToRole="Anfrage" />
+          <NavigationProperty Name="Stadt" Relationship="Self.fk__Gast__Stadt" FromRole="Gast" ToRole="Stadt" />
+          <NavigationProperty Name="Gastlogin" Relationship="Self.fk__Gastlogin__Gast" FromRole="Gast" ToRole="Gastlogin" />
+        </EntityType>
+        <EntityType Name="Kategorie">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="bezeichnung" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="preis" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="personenAnzahl" Type="Int32" Nullable="false" />
+          <Property Name="groesse" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Kategorieausstattung" Relationship="Self.fk__Kategoireausstattung__Kategorie" FromRole="Kategorie" ToRole="Kategorieausstattung" />
+          <NavigationProperty Name="Kategorieanfrage" Relationship="Self.fk__Kategorieanfrage__Kategorie" FromRole="Kategorie" ToRole="Kategorieanfrage" />
+          <NavigationProperty Name="Zimmer" Relationship="Self.fk__Zimmer__Kategorie" FromRole="Kategorie" ToRole="Zimmer" />
+        </EntityType>
+        <EntityType Name="Kategorieanfrage">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kategorie_id" Type="Int32" Nullable="false" />
+          <Property Name="anfrage_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Anfrage" Relationship="Self.fk__Kategorieanfrage__Anfrage" FromRole="Kategorieanfrage" ToRole="Anfrage" />
+          <NavigationProperty Name="Kategorie" Relationship="Self.fk__Kategorieanfrage__Kategorie" FromRole="Kategorieanfrage" ToRole="Kategorie" />
+          <NavigationProperty Name="Komplettbuchung" Relationship="Self.fk__Komplettbuchung__Kategorieanfrage" FromRole="Kategorieanfrage" ToRole="Komplettbuchung" />
+          <NavigationProperty Name="Zimmerbuchung" Relationship="Self.fk__Zimmerbuchung__Kategorieanfrage" FromRole="Kategorieanfrage" ToRole="Zimmerbuchung" />
+        </EntityType>
+        <EntityType Name="Komplettpaket">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="bezeichnung" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="zuschlagProTag" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <NavigationProperty Name="Komplettbuchung" Relationship="Self.fk__Komplettbuchung__Komplettpaket" FromRole="Komplettpaket" ToRole="Komplettbuchung" />
+        </EntityType>
+        <EntityType Name="Land">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="bezeichnung" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Stadt" Relationship="Self.fk__Stadt__Land" FromRole="Land" ToRole="Stadt" />
+        </EntityType>
+        <EntityType Name="Login">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="benutzername" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="passwort" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Gastlogin" Relationship="Self.fk__Gastlogin__login" FromRole="Login" ToRole="Gastlogin" />
+        </EntityType>
+        <EntityType Name="Mitarbeiter">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="vorname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nachname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="passwort" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Zimmerbuchung" Relationship="Self.fk__Zimmerbuchung__Mitarbeiter" FromRole="Mitarbeiter" ToRole="Zimmerbuchung" />
+        </EntityType>
+        <EntityType Name="Rechnung">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="anfrage_id" Type="Int32" Nullable="false" />
+          <Property Name="gesamtpreis" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="anzahlPersonen" Type="Byte" Nullable="false" />
+          <Property Name="anzahlNaechte" Type="Byte" Nullable="false" />
+          <Property Name="datumAktualisiert" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Anfrage" Relationship="Self.fk__Rechnung__Anfrage" FromRole="Rechnung" ToRole="Anfrage" />
+        </EntityType>
+        <EntityType Name="Rueckruf">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="telefon" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="grund" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="datum_erhalten" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="datum_erledigt" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Saison">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="bezeichnung" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="monatVon" Type="Byte" Nullable="false" />
+          <Property Name="monatBis" Type="Byte" Nullable="false" />
+          <Property Name="preisProzent" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Stadt">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="land_id" Type="Int32" Nullable="false" />
+          <Property Name="bezeichnung" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="plz" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Gast" Relationship="Self.fk__Gast__Stadt" FromRole="Stadt" ToRole="Gast" />
+          <NavigationProperty Name="Land" Relationship="Self.fk__Stadt__Land" FromRole="Stadt" ToRole="Land" />
+        </EntityType>
+        <EntityType Name="Zimmer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kategorie_id" Type="Int32" Nullable="false" />
+          <Property Name="zimmerNummer" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Kategorie" Relationship="Self.fk__Zimmer__Kategorie" FromRole="Zimmer" ToRole="Kategorie" />
+          <NavigationProperty Name="Zimmerbuchung" Relationship="Self.fk__Zimmerbuchung__Zimmer" FromRole="Zimmer" ToRole="Zimmerbuchung" />
+        </EntityType>
+        <EntityType Name="Zimmerbuchung">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="zimmer_id" Type="Int32" Nullable="false" />
+          <Property Name="mitarbeiter_id" Type="Int32" Nullable="false" />
+          <Property Name="kategorieanfrage_id" Type="Int32" Nullable="false" />
+          <Property Name="checkedStatus" Type="Boolean" />
+          <NavigationProperty Name="Kategorieanfrage" Relationship="Self.fk__Zimmerbuchung__Kategorieanfrage" FromRole="Zimmerbuchung" ToRole="Kategorieanfrage" />
+          <NavigationProperty Name="Mitarbeiter" Relationship="Self.fk__Zimmerbuchung__Mitarbeiter" FromRole="Zimmerbuchung" ToRole="Mitarbeiter" />
+          <NavigationProperty Name="Zimmer" Relationship="Self.fk__Zimmerbuchung__Zimmer" FromRole="Zimmerbuchung" ToRole="Zimmer" />
+        </EntityType>
+        <EntityType Name="Gastlogin">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="gast_id" />
+            <PropertyRef Name="login_id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="gast_id" Type="Int32" Nullable="false" />
+          <Property Name="login_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Gast" Relationship="Self.fk__Gastlogin__Gast" FromRole="Gastlogin" ToRole="Gast" />
+          <NavigationProperty Name="Login" Relationship="Self.fk__Gastlogin__login" FromRole="Gastlogin" ToRole="Login" />
+        </EntityType>
+        <EntityType Name="Kategorieausstattung">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="ausstattung_id" />
+            <PropertyRef Name="kategorie_id" />
+            <PropertyRef Name="anzahl" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ausstattung_id" Type="Int32" Nullable="false" />
+          <Property Name="kategorie_id" Type="Int32" Nullable="false" />
+          <Property Name="anzahl" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="Ausstattung" Relationship="Self.fk__Kategorieausstattung__Ausstattung" FromRole="Kategorieausstattung" ToRole="Ausstattung" />
+          <NavigationProperty Name="Kategorie" Relationship="Self.fk__Kategoireausstattung__Kategorie" FromRole="Kategorieausstattung" ToRole="Kategorie" />
+        </EntityType>
+        <EntityType Name="Komplettbuchung">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="kategorieanfrage_id" />
+            <PropertyRef Name="komplettpaket_id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kategorieanfrage_id" Type="Int32" Nullable="false" />
+          <Property Name="komplettpaket_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Kategorieanfrage" Relationship="Self.fk__Komplettbuchung__Kategorieanfrage" FromRole="Komplettbuchung" ToRole="Kategorieanfrage" />
+          <NavigationProperty Name="Komplettpaket" Relationship="Self.fk__Komplettbuchung__Komplettpaket" FromRole="Komplettbuchung" ToRole="Komplettpaket" />
+        </EntityType>
+        <Association Name="fk__Anfrage__Gast">
+          <End Role="Gast" Type="Self.Gast" Multiplicity="1" />
+          <End Role="Anfrage" Type="Self.Anfrage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gast">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Anfrage">
+              <PropertyRef Name="gast_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk__Kategorieanfrage__Anfrage">
+          <End Role="Anfrage" Type="Self.Anfrage" Multiplicity="1" />
+          <End Role="Kategorieanfrage" Type="Self.Kategorieanfrage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Anfrage">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Kategorieanfrage">
+              <PropertyRef Name="anfrage_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk__Rechnung__Anfrage">
+          <End Role="Anfrage" Type="Self.Anfrage" Multiplicity="1" />
+          <End Role="Rechnung" Type="Self.Rechnung" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Anfrage">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Rechnung">
+              <PropertyRef Name="anfrage_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk__Kategorieausstattung__Ausstattung">
+          <End Role="Ausstattung" Type="Self.Ausstattung" Multiplicity="1" />
+          <End Role="Kategorieausstattung" Type="Self.Kategorieausstattung" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ausstattung">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Kategorieausstattung">
+              <PropertyRef Name="ausstattung_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk__Gast__Stadt">
+          <End Role="Stadt" Type="Self.Stadt" Multiplicity="1" />
+          <End Role="Gast" Type="Self.Gast" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stadt">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Gast">
+              <PropertyRef Name="stadt_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk__Gastlogin__Gast">
+          <End Role="Gast" Type="Self.Gast" Multiplicity="1" />
+          <End Role="Gastlogin" Type="Self.Gastlogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gast">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Gastlogin">
+              <PropertyRef Name="gast_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk__Kategoireausstattung__Kategorie">
+          <End Role="Kategorie" Type="Self.Kategorie" Multiplicity="1" />
+          <End Role="Kategorieausstattung" Type="Self.Kategorieausstattung" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategorie">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Kategorieausstattung">
+              <PropertyRef Name="kategorie_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk__Kategorieanfrage__Kategorie">
+          <End Role="Kategorie" Type="Self.Kategorie" Multiplicity="1" />
+          <End Role="Kategorieanfrage" Type="Self.Kategorieanfrage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategorie">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Kategorieanfrage">
+              <PropertyRef Name="kategorie_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk__Zimmer__Kategorie">
+          <End Role="Kategorie" Type="Self.Kategorie" Multiplicity="1" />
+          <End Role="Zimmer" Type="Self.Zimmer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategorie">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Zimmer">
+              <PropertyRef Name="kategorie_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk__Komplettbuchung__Kategorieanfrage">
+          <End Role="Kategorieanfrage" Type="Self.Kategorieanfrage" Multiplicity="1" />
+          <End Role="Komplettbuchung" Type="Self.Komplettbuchung" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategorieanfrage">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Komplettbuchung">
+              <PropertyRef Name="kategorieanfrage_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk__Zimmerbuchung__Kategorieanfrage">
+          <End Role="Kategorieanfrage" Type="Self.Kategorieanfrage" Multiplicity="1" />
+          <End Role="Zimmerbuchung" Type="Self.Zimmerbuchung" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategorieanfrage">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Zimmerbuchung">
+              <PropertyRef Name="kategorieanfrage_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk__Komplettbuchung__Komplettpaket">
+          <End Role="Komplettpaket" Type="Self.Komplettpaket" Multiplicity="1" />
+          <End Role="Komplettbuchung" Type="Self.Komplettbuchung" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Komplettpaket">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Komplettbuchung">
+              <PropertyRef Name="komplettpaket_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk__Stadt__Land">
+          <End Role="Land" Type="Self.Land" Multiplicity="1" />
+          <End Role="Stadt" Type="Self.Stadt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Land">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Stadt">
+              <PropertyRef Name="land_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk__Gastlogin__login">
+          <End Role="Login" Type="Self.Login" Multiplicity="1" />
+          <End Role="Gastlogin" Type="Self.Gastlogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Login">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Gastlogin">
+              <PropertyRef Name="login_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk__Zimmerbuchung__Mitarbeiter">
+          <End Role="Mitarbeiter" Type="Self.Mitarbeiter" Multiplicity="1" />
+          <End Role="Zimmerbuchung" Type="Self.Zimmerbuchung" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mitarbeiter">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Zimmerbuchung">
+              <PropertyRef Name="mitarbeiter_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk__Zimmerbuchung__Zimmer">
+          <End Role="Zimmer" Type="Self.Zimmer" Multiplicity="1" />
+          <End Role="Zimmerbuchung" Type="Self.Zimmerbuchung" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zimmer">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Zimmerbuchung">
+              <PropertyRef Name="zimmer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="alpensternEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Anfrage" EntityType="Self.Anfrage" />
+          <EntitySet Name="Ausstattung" EntityType="Self.Ausstattung" />
+          <EntitySet Name="Bilder" EntityType="Self.Bilder" />
+          <EntitySet Name="Gast" EntityType="Self.Gast" />
+          <EntitySet Name="Kategorie" EntityType="Self.Kategorie" />
+          <EntitySet Name="Kategorieanfrage" EntityType="Self.Kategorieanfrage" />
+          <EntitySet Name="Komplettpaket" EntityType="Self.Komplettpaket" />
+          <EntitySet Name="Land" EntityType="Self.Land" />
+          <EntitySet Name="Login" EntityType="Self.Login" />
+          <EntitySet Name="Mitarbeiter" EntityType="Self.Mitarbeiter" />
+          <EntitySet Name="Rechnung" EntityType="Self.Rechnung" />
+          <EntitySet Name="Rueckruf" EntityType="Self.Rueckruf" />
+          <EntitySet Name="Saison" EntityType="Self.Saison" />
+          <EntitySet Name="Stadt" EntityType="Self.Stadt" />
+          <EntitySet Name="Zimmer" EntityType="Self.Zimmer" />
+          <EntitySet Name="Zimmerbuchung" EntityType="Self.Zimmerbuchung" />
+          <EntitySet Name="Gastlogin" EntityType="Self.Gastlogin" />
+          <EntitySet Name="Kategorieausstattung" EntityType="Self.Kategorieausstattung" />
+          <EntitySet Name="Komplettbuchung" EntityType="Self.Komplettbuchung" />
+          <AssociationSet Name="fk__Anfrage__Gast" Association="Self.fk__Anfrage__Gast">
+            <End Role="Gast" EntitySet="Gast" />
+            <End Role="Anfrage" EntitySet="Anfrage" />
+          </AssociationSet>
+          <AssociationSet Name="fk__Kategorieanfrage__Anfrage" Association="Self.fk__Kategorieanfrage__Anfrage">
+            <End Role="Anfrage" EntitySet="Anfrage" />
+            <End Role="Kategorieanfrage" EntitySet="Kategorieanfrage" />
+          </AssociationSet>
+          <AssociationSet Name="fk__Rechnung__Anfrage" Association="Self.fk__Rechnung__Anfrage">
+            <End Role="Anfrage" EntitySet="Anfrage" />
+            <End Role="Rechnung" EntitySet="Rechnung" />
+          </AssociationSet>
+          <AssociationSet Name="fk__Kategorieausstattung__Ausstattung" Association="Self.fk__Kategorieausstattung__Ausstattung">
+            <End Role="Ausstattung" EntitySet="Ausstattung" />
+            <End Role="Kategorieausstattung" EntitySet="Kategorieausstattung" />
+          </AssociationSet>
+          <AssociationSet Name="fk__Gast__Stadt" Association="Self.fk__Gast__Stadt">
+            <End Role="Stadt" EntitySet="Stadt" />
+            <End Role="Gast" EntitySet="Gast" />
+          </AssociationSet>
+          <AssociationSet Name="fk__Gastlogin__Gast" Association="Self.fk__Gastlogin__Gast">
+            <End Role="Gast" EntitySet="Gast" />
+            <End Role="Gastlogin" EntitySet="Gastlogin" />
+          </AssociationSet>
+          <AssociationSet Name="fk__Kategoireausstattung__Kategorie" Association="Self.fk__Kategoireausstattung__Kategorie">
+            <End Role="Kategorie" EntitySet="Kategorie" />
+            <End Role="Kategorieausstattung" EntitySet="Kategorieausstattung" />
+          </AssociationSet>
+          <AssociationSet Name="fk__Kategorieanfrage__Kategorie" Association="Self.fk__Kategorieanfrage__Kategorie">
+            <End Role="Kategorie" EntitySet="Kategorie" />
+            <End Role="Kategorieanfrage" EntitySet="Kategorieanfrage" />
+          </AssociationSet>
+          <AssociationSet Name="fk__Zimmer__Kategorie" Association="Self.fk__Zimmer__Kategorie">
+            <End Role="Kategorie" EntitySet="Kategorie" />
+            <End Role="Zimmer" EntitySet="Zimmer" />
+          </AssociationSet>
+          <AssociationSet Name="fk__Komplettbuchung__Kategorieanfrage" Association="Self.fk__Komplettbuchung__Kategorieanfrage">
+            <End Role="Kategorieanfrage" EntitySet="Kategorieanfrage" />
+            <End Role="Komplettbuchung" EntitySet="Komplettbuchung" />
+          </AssociationSet>
+          <AssociationSet Name="fk__Zimmerbuchung__Kategorieanfrage" Association="Self.fk__Zimmerbuchung__Kategorieanfrage">
+            <End Role="Kategorieanfrage" EntitySet="Kategorieanfrage" />
+            <End Role="Zimmerbuchung" EntitySet="Zimmerbuchung" />
+          </AssociationSet>
+          <AssociationSet Name="fk__Komplettbuchung__Komplettpaket" Association="Self.fk__Komplettbuchung__Komplettpaket">
+            <End Role="Komplettpaket" EntitySet="Komplettpaket" />
+            <End Role="Komplettbuchung" EntitySet="Komplettbuchung" />
+          </AssociationSet>
+          <AssociationSet Name="fk__Stadt__Land" Association="Self.fk__Stadt__Land">
+            <End Role="Land" EntitySet="Land" />
+            <End Role="Stadt" EntitySet="Stadt" />
+          </AssociationSet>
+          <AssociationSet Name="fk__Gastlogin__login" Association="Self.fk__Gastlogin__login">
+            <End Role="Login" EntitySet="Login" />
+            <End Role="Gastlogin" EntitySet="Gastlogin" />
+          </AssociationSet>
+          <AssociationSet Name="fk__Zimmerbuchung__Mitarbeiter" Association="Self.fk__Zimmerbuchung__Mitarbeiter">
+            <End Role="Mitarbeiter" EntitySet="Mitarbeiter" />
+            <End Role="Zimmerbuchung" EntitySet="Zimmerbuchung" />
+          </AssociationSet>
+          <AssociationSet Name="fk__Zimmerbuchung__Zimmer" Association="Self.fk__Zimmerbuchung__Zimmer">
+            <End Role="Zimmer" EntitySet="Zimmer" />
+            <End Role="Zimmerbuchung" EntitySet="Zimmerbuchung" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="alpensternModelStoreContainer" CdmEntityContainer="alpensternEntities">
+          <EntitySetMapping Name="Anfrage">
+            <EntityTypeMapping TypeName="alpensternModel.Anfrage">
+              <MappingFragment StoreEntitySet="Anfrage">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="gast_id" ColumnName="gast_id" />
+                <ScalarProperty Name="datumVon" ColumnName="datumVon" />
+                <ScalarProperty Name="datumBis" ColumnName="datumBis" />
+                <ScalarProperty Name="datumAnfrage" ColumnName="datumAnfrage" />
+                <ScalarProperty Name="datumBearbeitet" ColumnName="datumBearbeitet" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ausstattung">
+            <EntityTypeMapping TypeName="alpensternModel.Ausstattung">
+              <MappingFragment StoreEntitySet="Ausstattung">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="bezeichnung" ColumnName="bezeichnung" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bilder">
+            <EntityTypeMapping TypeName="alpensternModel.Bilder">
+              <MappingFragment StoreEntitySet="Bilder">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="bilderart" ColumnName="bilderart" />
+                <ScalarProperty Name="pfad" ColumnName="pfad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gast">
+            <EntityTypeMapping TypeName="alpensternModel.Gast">
+              <MappingFragment StoreEntitySet="Gast">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="stadt_id" ColumnName="stadt_id" />
+                <ScalarProperty Name="vorname" ColumnName="vorname" />
+                <ScalarProperty Name="nachname" ColumnName="nachname" />
+                <ScalarProperty Name="geburtsdatum" ColumnName="geburtsdatum" />
+                <ScalarProperty Name="straße" ColumnName="straße" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="telefonnummer" ColumnName="telefonnummer" />
+                <ScalarProperty Name="reisepassnummer" ColumnName="reisepassnummer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kategorie">
+            <EntityTypeMapping TypeName="alpensternModel.Kategorie">
+              <MappingFragment StoreEntitySet="Kategorie">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="bezeichnung" ColumnName="bezeichnung" />
+                <ScalarProperty Name="preis" ColumnName="preis" />
+                <ScalarProperty Name="personenAnzahl" ColumnName="personenAnzahl" />
+                <ScalarProperty Name="groesse" ColumnName="groesse" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kategorieanfrage">
+            <EntityTypeMapping TypeName="alpensternModel.Kategorieanfrage">
+              <MappingFragment StoreEntitySet="Kategorieanfrage">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="kategorie_id" ColumnName="kategorie_id" />
+                <ScalarProperty Name="anfrage_id" ColumnName="anfrage_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Komplettpaket">
+            <EntityTypeMapping TypeName="alpensternModel.Komplettpaket">
+              <MappingFragment StoreEntitySet="Komplettpaket">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="bezeichnung" ColumnName="bezeichnung" />
+                <ScalarProperty Name="zuschlagProTag" ColumnName="zuschlagProTag" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Land">
+            <EntityTypeMapping TypeName="alpensternModel.Land">
+              <MappingFragment StoreEntitySet="Land">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="bezeichnung" ColumnName="bezeichnung" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Login">
+            <EntityTypeMapping TypeName="alpensternModel.Login">
+              <MappingFragment StoreEntitySet="Login">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="benutzername" ColumnName="benutzername" />
+                <ScalarProperty Name="passwort" ColumnName="passwort" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mitarbeiter">
+            <EntityTypeMapping TypeName="alpensternModel.Mitarbeiter">
+              <MappingFragment StoreEntitySet="Mitarbeiter">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="vorname" ColumnName="vorname" />
+                <ScalarProperty Name="nachname" ColumnName="nachname" />
+                <ScalarProperty Name="passwort" ColumnName="passwort" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rechnung">
+            <EntityTypeMapping TypeName="alpensternModel.Rechnung">
+              <MappingFragment StoreEntitySet="Rechnung">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="anfrage_id" ColumnName="anfrage_id" />
+                <ScalarProperty Name="gesamtpreis" ColumnName="gesamtpreis" />
+                <ScalarProperty Name="anzahlPersonen" ColumnName="anzahlPersonen" />
+                <ScalarProperty Name="anzahlNaechte" ColumnName="anzahlNaechte" />
+                <ScalarProperty Name="datumAktualisiert" ColumnName="datumAktualisiert" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rueckruf">
+            <EntityTypeMapping TypeName="alpensternModel.Rueckruf">
+              <MappingFragment StoreEntitySet="Rueckruf">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="telefon" ColumnName="telefon" />
+                <ScalarProperty Name="grund" ColumnName="grund" />
+                <ScalarProperty Name="datum_erhalten" ColumnName="datum_erhalten" />
+                <ScalarProperty Name="datum_erledigt" ColumnName="datum_erledigt" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Saison">
+            <EntityTypeMapping TypeName="alpensternModel.Saison">
+              <MappingFragment StoreEntitySet="Saison">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="bezeichnung" ColumnName="bezeichnung" />
+                <ScalarProperty Name="monatVon" ColumnName="monatVon" />
+                <ScalarProperty Name="monatBis" ColumnName="monatBis" />
+                <ScalarProperty Name="preisProzent" ColumnName="preisProzent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stadt">
+            <EntityTypeMapping TypeName="alpensternModel.Stadt">
+              <MappingFragment StoreEntitySet="Stadt">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="land_id" ColumnName="land_id" />
+                <ScalarProperty Name="bezeichnung" ColumnName="bezeichnung" />
+                <ScalarProperty Name="plz" ColumnName="plz" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Zimmer">
+            <EntityTypeMapping TypeName="alpensternModel.Zimmer">
+              <MappingFragment StoreEntitySet="Zimmer">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="kategorie_id" ColumnName="kategorie_id" />
+                <ScalarProperty Name="zimmerNummer" ColumnName="zimmerNummer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Zimmerbuchung">
+            <EntityTypeMapping TypeName="alpensternModel.Zimmerbuchung">
+              <MappingFragment StoreEntitySet="Zimmerbuchung">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="zimmer_id" ColumnName="zimmer_id" />
+                <ScalarProperty Name="mitarbeiter_id" ColumnName="mitarbeiter_id" />
+                <ScalarProperty Name="kategorieanfrage_id" ColumnName="kategorieanfrage_id" />
+                <ScalarProperty Name="checkedStatus" ColumnName="checkedStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gastlogin">
+            <EntityTypeMapping TypeName="alpensternModel.Gastlogin">
+              <MappingFragment StoreEntitySet="Gastlogin">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="gast_id" ColumnName="gast_id" />
+                <ScalarProperty Name="login_id" ColumnName="login_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kategorieausstattung">
+            <EntityTypeMapping TypeName="alpensternModel.Kategorieausstattung">
+              <MappingFragment StoreEntitySet="Kategorieausstattung">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ausstattung_id" ColumnName="ausstattung_id" />
+                <ScalarProperty Name="kategorie_id" ColumnName="kategorie_id" />
+                <ScalarProperty Name="anzahl" ColumnName="anzahl" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Komplettbuchung">
+            <EntityTypeMapping TypeName="alpensternModel.Komplettbuchung">
+              <MappingFragment StoreEntitySet="Komplettbuchung">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="kategorieanfrage_id" ColumnName="kategorieanfrage_id" />
+                <ScalarProperty Name="komplettpaket_id" ColumnName="komplettpaket_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Kein" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

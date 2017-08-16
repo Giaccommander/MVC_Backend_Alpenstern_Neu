@@ -187,6 +187,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AbreiseViewModel.cs" />
     <Compile Include="Models\AlpensternDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -238,6 +239,7 @@
     <Compile Include="Models\Login.cs">
       <DependentUpon>AlpensternDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\LoginViewModel.cs" />
     <Compile Include="Models\Mitarbeiter.cs">
       <DependentUpon>AlpensternDB.tt</DependentUpon>
     </Compile>

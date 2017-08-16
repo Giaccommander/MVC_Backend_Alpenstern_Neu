@@ -1,4 +1,6 @@
-﻿@{
+﻿@model  Alpenstern_BackEnd_Neu.Models.LoginViewModel
+
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -26,13 +28,13 @@
             <tr>
                 <td><h1><i><b>UserID:</b></i></h1></td>
                 <td>
-                    <input name="id" type="text">
+                    @Html.EditorFor(e => e.Login)
                 </td>
             </tr>
             <tr>
                 <td><h1><i><b>Password:</b></i></h1></td>
                 <td>
-                    <input name="pass" type="password">
+                    @Html.PasswordFor(e => e.Passwort)
                 </td>
             </tr>
             <tr>

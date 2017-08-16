@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Alpenstern_BackEnd_Neu.Models;
 
 namespace Alpenstern_BackEnd_Neu.Controllers
 {
@@ -11,7 +12,12 @@ namespace Alpenstern_BackEnd_Neu.Controllers
         // GET: Abreise
         public ActionResult Index()
         {
-            return View();
+            List<AbreiseViewModel> abreisen = new List<AbreiseViewModel>();
+
+
+
+
+            return View(abreisen);
         }
     }
 }

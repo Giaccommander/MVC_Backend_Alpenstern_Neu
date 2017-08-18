@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="alpensternModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="alpensternModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Anfrage">
           <Key>
             <PropertyRef Name="id" />
@@ -45,8 +45,8 @@
           <Property Name="telefonnummer" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="reisepassnummer" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
-        <!--Während der Generierung sind Fehler aufgetreten:
-Warnung 6002: Für Tabelle/Sicht 'alpenstern.dbo.Gastlogin' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'alpenstern.dbo.Gastlogin' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Gastlogin">
           <Key>
             <PropertyRef Name="id" />
@@ -75,8 +75,8 @@ Warnung 6002: Für Tabelle/Sicht 'alpenstern.dbo.Gastlogin' ist kein Primärschl
           <Property Name="kategorie_id" Type="int" Nullable="false" />
           <Property Name="anfrage_id" Type="int" Nullable="false" />
         </EntityType>
-        <!--Während der Generierung sind Fehler aufgetreten:
-Warnung 6002: Für Tabelle/Sicht 'alpenstern.dbo.Kategorieausstattung' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'alpenstern.dbo.Kategorieausstattung' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Kategorieausstattung">
           <Key>
             <PropertyRef Name="id" />
@@ -89,8 +89,8 @@ Warnung 6002: Für Tabelle/Sicht 'alpenstern.dbo.Kategorieausstattung' ist kein 
           <Property Name="kategorie_id" Type="int" Nullable="false" />
           <Property Name="anzahl" Type="tinyint" Nullable="false" />
         </EntityType>
-        <!--Während der Generierung sind Fehler aufgetreten:
-Warnung 6002: Für Tabelle/Sicht 'alpenstern.dbo.Komplettbuchung' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'alpenstern.dbo.Komplettbuchung' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Komplettbuchung">
           <Key>
             <PropertyRef Name="id" />
@@ -122,7 +122,8 @@ Warnung 6002: Für Tabelle/Sicht 'alpenstern.dbo.Komplettbuchung' ist kein Prim�
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="benutzername" Type="varchar" MaxLength="40" Nullable="false" />
-          <Property Name="passwort" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="passwort" Type="char" MaxLength="64" Nullable="false" />
+          <Property Name="salt" Type="char" MaxLength="64" Nullable="false" />
         </EntityType>
         <EntityType Name="Mitarbeiter">
           <Key>
@@ -131,7 +132,8 @@ Warnung 6002: Für Tabelle/Sicht 'alpenstern.dbo.Komplettbuchung' ist kein Prim�
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="vorname" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="nachname" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="passwort" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="passwort" Type="char" MaxLength="64" Nullable="false" />
+          <Property Name="salt" Type="char" MaxLength="64" Nullable="false" />
         </EntityType>
         <EntityType Name="Rechnung">
           <Key>
@@ -488,8 +490,7 @@ Warnung 6002: Für Tabelle/Sicht 'alpenstern.dbo.Komplettbuchung' ist kein Prim�
             <End Role="Zimmerbuchung" EntitySet="Zimmerbuchung" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="alpensternModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -588,8 +589,9 @@ Warnung 6002: Für Tabelle/Sicht 'alpenstern.dbo.Komplettbuchung' ist kein Prim�
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="benutzername" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="passwort" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="passwort" Type="String" MaxLength="64" FixedLength="true" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Gastlogin" Relationship="Self.fk__Gastlogin__login" FromRole="Login" ToRole="Gastlogin" />
+          <Property Name="salt" Type="String" Nullable="false" MaxLength="64" FixedLength="true" Unicode="false" />
         </EntityType>
         <EntityType Name="Mitarbeiter">
           <Key>
@@ -598,8 +600,9 @@ Warnung 6002: Für Tabelle/Sicht 'alpenstern.dbo.Komplettbuchung' ist kein Prim�
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="vorname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="nachname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="passwort" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="passwort" Type="String" MaxLength="64" FixedLength="true" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Zimmerbuchung" Relationship="Self.fk__Zimmerbuchung__Mitarbeiter" FromRole="Mitarbeiter" ToRole="Zimmerbuchung" />
+          <Property Name="salt" Type="String" Nullable="false" MaxLength="64" FixedLength="true" Unicode="false" />
         </EntityType>
         <EntityType Name="Rechnung">
           <Key>
@@ -1073,6 +1076,7 @@ Warnung 6002: Für Tabelle/Sicht 'alpenstern.dbo.Komplettbuchung' ist kein Prim�
           <EntitySetMapping Name="Login">
             <EntityTypeMapping TypeName="alpensternModel.Login">
               <MappingFragment StoreEntitySet="Login">
+                <ScalarProperty Name="salt" ColumnName="salt" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="benutzername" ColumnName="benutzername" />
                 <ScalarProperty Name="passwort" ColumnName="passwort" />
@@ -1082,6 +1086,7 @@ Warnung 6002: Für Tabelle/Sicht 'alpenstern.dbo.Komplettbuchung' ist kein Prim�
           <EntitySetMapping Name="Mitarbeiter">
             <EntityTypeMapping TypeName="alpensternModel.Mitarbeiter">
               <MappingFragment StoreEntitySet="Mitarbeiter">
+                <ScalarProperty Name="salt" ColumnName="salt" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="vorname" ColumnName="vorname" />
                 <ScalarProperty Name="nachname" ColumnName="nachname" />
@@ -1199,7 +1204,7 @@ Warnung 6002: Für Tabelle/Sicht 'alpenstern.dbo.Komplettbuchung' ist kein Prim�
         <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
-        <DesignerProperty Name="CodeGenerationStrategy" Value="Kein" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->

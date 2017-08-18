@@ -14,6 +14,11 @@
 @*@Model.geburtsdatum*@
 
 
+@if(Context.User.Identity.IsAuthenticated)
+{
+    <h1>Name: @Context.User.Identity.Name</h1>
+}
+
 @using (Html.BeginForm())
 {
 

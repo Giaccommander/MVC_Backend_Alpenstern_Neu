@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Alpenstern_BackEnd_Neu.Models;
 using Alpenstern_BackEnd_Neu.Helper;
+using System.Web.Security;
 
 namespace Alpenstern_BackEnd_Neu.Controllers
 {
@@ -48,6 +49,13 @@ namespace Alpenstern_BackEnd_Neu.Controllers
             }
 
             return RedirectToAction("Index","Home");
+        }
+
+        [HttpGet]
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index", "Home");
         }
     }
 }

@@ -42,7 +42,7 @@ namespace Alpenstern_BackEnd_Neu.Controllers
             dbMitarbeiter.passwort = Hashes.HashBerechnen(dbMitarbeiter.passwort);
 
             //Entitaet in der DB abspeichern
-            using (var db = new alpensternEntities())
+            using (var db = new alpenstern_finalEntities())
             {
                 db.Mitarbeiter.Add(dbMitarbeiter);
                 db.SaveChanges();

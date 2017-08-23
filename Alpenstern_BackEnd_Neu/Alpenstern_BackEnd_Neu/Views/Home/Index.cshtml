@@ -21,10 +21,16 @@
 
 @using (Html.BeginForm())
 {
+    <div>        
+        @Html.EditorFor(e => e.Login)
+        <label for="Login">Login</label>
+    </div>
 
-    @Html.EditorFor(e => e.Login)
-
-    @Html.PasswordFor(e => e.Passwort)
-    
+    <div>
+        @Html.PasswordFor(e => e.Passwort)
+        <label for="passwort">Passwort</label>
+    </div>
+                              
+    <br />
     <input type="submit" value="Login" />
 }

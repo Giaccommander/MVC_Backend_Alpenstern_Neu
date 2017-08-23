@@ -21,31 +21,30 @@
                 </button>
                 <a class="navbar-brand" href="/Home/Index">Login</a>
             </div>
-            <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a href="/Authentifizierung/MitarbeiterAnlegen">MA Anlegen</a></li>
-                    <li><a href="/Druckansicht/Index">Dashboard</a></li>
-                    <li><a href="/Buchung/Index">Buchungen</a></li>
-                    <li><a href="/Abreise/Index">Abreise</a></li>
-                    <li><a href="/Home/Ankunft">Ankunft</a></li>
-                    <li><a href="/Home/Rueckruf">Rückruf</a></li>
-                                       
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Preise bearbeiten<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="/Menues/Edit">Restaurant</a></li>                            
-                            <li><a href="/Spa/Index">Spa - Wellness</a></li>                            
-                            <li role="separator" class="divider"></li>
-                            <li><a href="/Zimmer/zimmerListe">Zimmer</a></li>
-                            <li><a href="/Sortiment/Speciale">Specials</a></li>                       
-                        </ul>
-                    </li>                                    
-                </ul>
-                
-                <ul class="nav navbar-nav navbar-right">
+            <div id="navbar" class="navbar-collapse collapse">                               
+               
                     @if (Context.User.Identity.IsAuthenticated)
                     {
-                    <li class="active"><a href="/Authentifizierung/Logout">Logout <span class="sr-only">(current)</span></a></li>
+                        <ul class="nav navbar-nav">
+                            <li><a href="/Authentifizierung/MitarbeiterAnlegen">MA Anlegen<span class="sr-only">(current)</span></a></li>
+                            <li><a href="/Druckansicht/Index">Dashboard<span class="sr-only">(current)</span></a></li>
+                            <li><a href="/Buchung/Index">Buchungen<span class="sr-only">(current)</span></a></li>
+                            <li><a href="/Abreise/Index">Abreise<span class="sr-only">(current)</span></a></li>
+                            <li><a href="/Home/Ankunft">Ankunft<span class="sr-only">(current)</span></a></li>
+                            <li><a href="/Home/Rueckruf">Rückruf<span class="sr-only">(current)</span></a></li>
+
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Preise bearbeiten<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/Menues/Edit">Restaurant<span class="sr-only">(current)</span></a></li>
+                                    <li><a href="/Spa/Index">Spa - Wellness<span class="sr-only">(current)</span></a></li>                                   
+                                    <li><a href="/Zimmer/zimmerListe">Zimmer<span class="sr-only">(current)</span></a></li>
+                                    <li><a href="/Sortiment/Speciale">Specials<span class="sr-only">(current)</span></a></li>
+                                </ul>
+                            </li>
+                            <li class="active"><a href="/Authentifizierung/Logout">Logout <span class="sr-only">(current)</span></a></li>
+                        </ul>
+                    
                     }
                 </ul>
             </div><!--/.nav-collapse -->

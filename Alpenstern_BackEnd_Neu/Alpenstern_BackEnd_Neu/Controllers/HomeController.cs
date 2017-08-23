@@ -55,7 +55,7 @@ namespace Alpenstern_BackEnd_Neu.Controllers
             //6. Authorisierung vornehmen
 
 
-            using (var datenbank = new alpensternEntities())
+            using (var datenbank = new alpenstern_finalEntities())
             {
                 var loginStrings = lvm.Login.Split('.');
                 var vmVorname = loginStrings[0];

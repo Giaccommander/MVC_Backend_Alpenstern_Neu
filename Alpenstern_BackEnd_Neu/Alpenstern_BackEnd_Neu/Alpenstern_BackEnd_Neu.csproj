@@ -204,68 +204,87 @@
       <DependentUpon>AlpensternDB.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Anfrage.cs">
-      <DependentUpon>AlpensternDB.tt</DependentUpon>
+      <DependentUpon>Testmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Ausstattung.cs">
-      <DependentUpon>AlpensternDB.tt</DependentUpon>
+      <DependentUpon>Testmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Bilder.cs">
-      <DependentUpon>AlpensternDB.tt</DependentUpon>
+      <DependentUpon>Testmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Gast.cs">
-      <DependentUpon>AlpensternDB.tt</DependentUpon>
+      <DependentUpon>Testmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Gastlogin.cs">
-      <DependentUpon>AlpensternDB.tt</DependentUpon>
+      <DependentUpon>Testmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\GastVM.cs" />
     <Compile Include="Models\Kategorie.cs">
-      <DependentUpon>AlpensternDB.tt</DependentUpon>
+      <DependentUpon>Testmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Kategorieanfrage.cs">
-      <DependentUpon>AlpensternDB.tt</DependentUpon>
+      <DependentUpon>Testmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Kategorieausstattung.cs">
-      <DependentUpon>AlpensternDB.tt</DependentUpon>
+      <DependentUpon>Testmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Komplettbuchung.cs">
-      <DependentUpon>AlpensternDB.tt</DependentUpon>
+      <DependentUpon>Testmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Komplettpaket.cs">
-      <DependentUpon>AlpensternDB.tt</DependentUpon>
+      <DependentUpon>Testmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Land.cs">
-      <DependentUpon>AlpensternDB.tt</DependentUpon>
+      <DependentUpon>Testmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Login.cs">
-      <DependentUpon>AlpensternDB.tt</DependentUpon>
+      <DependentUpon>Testmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LoginVM.cs" />
     <Compile Include="Models\Mitarbeiter.cs">
-      <DependentUpon>AlpensternDB.tt</DependentUpon>
+      <DependentUpon>Testmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MitarbeiterAnlegenVM.cs" />
     <Compile Include="Models\Rechnung.cs">
-      <DependentUpon>AlpensternDB.tt</DependentUpon>
+      <DependentUpon>Testmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Rueckruf.cs">
-      <DependentUpon>AlpensternDB.tt</DependentUpon>
+      <DependentUpon>Testmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Saison.cs">
-      <DependentUpon>AlpensternDB.tt</DependentUpon>
+      <DependentUpon>Testmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Stadt.cs">
-      <DependentUpon>AlpensternDB.tt</DependentUpon>
+      <DependentUpon>Testmodel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Testmodel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Testmodel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Testmodel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Testmodel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Testmodel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Testmodel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Zimmer.cs">
-      <DependentUpon>AlpensternDB.tt</DependentUpon>
+      <DependentUpon>Testmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Zimmerbuchung.cs">
-      <DependentUpon>AlpensternDB.tt</DependentUpon>
+      <DependentUpon>Testmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\DBalpenstern.mdf" />
+    <Content Include="App_Data\DBalpenstern_log.ldf">
+      <DependentUpon>DBalpenstern.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\alpenKlein.png" />
@@ -332,6 +351,16 @@
       <DependentUpon>AlpensternDB.edmx</DependentUpon>
       <LastGenOutput>AlpensternDB.cs</LastGenOutput>
     </Content>
+    <Content Include="Models\Testmodel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Testmodel.edmx</DependentUpon>
+      <LastGenOutput>Testmodel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Testmodel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Testmodel.edmx</DependentUpon>
+      <LastGenOutput>Testmodel.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\02_BuchenJava.js" />
     <Content Include="Scripts\ai.0.22.19-build00125.js" />
     <Content Include="Scripts\ai.0.22.19-build00125.min.js" />
@@ -348,6 +377,13 @@
     </EntityDeploy>
     <Content Include="Models\AlpensternDB.edmx.diagram">
       <DependentUpon>AlpensternDB.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\Testmodel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Testmodel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Testmodel.edmx.diagram">
+      <DependentUpon>Testmodel.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\JavaScript.js" />
@@ -402,9 +438,7 @@
     <Content Include="Views\Vorlage_Logins\Index.cshtml" />
     <Content Include="Views\Authentifizierung\MitarbeiterAnlegen.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />

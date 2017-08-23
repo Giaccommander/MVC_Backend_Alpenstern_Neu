@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using System.Web.Security;
+using System.Security.Principal;
 
 namespace Alpenstern_BackEnd_Neu
 {
@@ -16,6 +18,29 @@ namespace Alpenstern_BackEnd_Neu
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+        }
+
+        protected void Application_AuthenticateRequest(Object sender, EventArgs e)
+        {
+            HttpCookie authCookie = Context.Request.Cookies[FormsAuthentication.FormsCookieName];
+
+            if (authCookie == null || authCookie.Value == "")
+                return;
+
+            FormsAuthenticationTicket authTicket;
+
+            try
+            {
+                authTicket = FormsAuthentication.Decrypt(authCookie.Value);
+            }
+            catch
+            {
+                return;
+            }
+
+            //Userdata verarbeiten (Erweiterung um Rollen)
+
+            Context.User = new GenericPrincipal(new GenericIdentity(authTicket.Name), null);
         }
     }
 }

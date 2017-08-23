@@ -173,6 +173,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AbreiseController.cs" />
     <Compile Include="Controllers\AnkunftController.cs" />
+    <Compile Include="Controllers\AuthentifizierungController.cs" />
     <Compile Include="Controllers\BuchungController.cs" />
     <Compile Include="Controllers\DruckansichtController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -186,6 +187,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\Hashes.cs" />
     <Compile Include="Models\AlpensternDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -216,6 +218,7 @@
     <Compile Include="Models\Gastlogin.cs">
       <DependentUpon>AlpensternDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\GastVM.cs" />
     <Compile Include="Models\Kategorie.cs">
       <DependentUpon>AlpensternDB.tt</DependentUpon>
     </Compile>
@@ -237,9 +240,11 @@
     <Compile Include="Models\Login.cs">
       <DependentUpon>AlpensternDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\LoginVM.cs" />
     <Compile Include="Models\Mitarbeiter.cs">
       <DependentUpon>AlpensternDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\MitarbeiterAnlegenVM.cs" />
     <Compile Include="Models\Rechnung.cs">
       <DependentUpon>AlpensternDB.tt</DependentUpon>
     </Compile>
@@ -390,6 +395,12 @@
     <Content Include="Views\Spa\Index.cshtml" />
     <Content Include="Views\Druckansicht\Index.cshtml" />
     <Content Include="Views\Zimmer\zimmerListe.cshtml" />
+    <Content Include="Views\Vorlage_Logins\Create.cshtml" />
+    <Content Include="Views\Vorlage_Logins\Delete.cshtml" />
+    <Content Include="Views\Vorlage_Logins\Details.cshtml" />
+    <Content Include="Views\Vorlage_Logins\Edit.cshtml" />
+    <Content Include="Views\Vorlage_Logins\Index.cshtml" />
+    <Content Include="Views\Authentifizierung\MitarbeiterAnlegen.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

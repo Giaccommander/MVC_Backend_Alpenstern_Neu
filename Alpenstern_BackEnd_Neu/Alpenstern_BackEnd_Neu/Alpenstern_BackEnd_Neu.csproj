@@ -177,6 +177,7 @@
     <Compile Include="Controllers\BuchungController.cs" />
     <Compile Include="Controllers\DruckansichtController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OrtController.cs" />
     <Compile Include="Controllers\RueckrufController.cs" />
     <Compile Include="Controllers\ImagesController.cs" />
     <Compile Include="Controllers\SortimentController.cs" />
@@ -210,6 +211,9 @@
     <Compile Include="Models\Ausstattung.cs">
       <DependentUpon>AlpensternDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\AusstattungAnlegenVM.cs" />
+    <Compile Include="Models\AusstattungListeAnzeigenVM.cs" />
+    <Compile Include="Models\AusstattungVM.cs" />
     <Compile Include="Models\Bilder.cs">
       <DependentUpon>AlpensternDB.tt</DependentUpon>
     </Compile>
@@ -238,6 +242,8 @@
     <Compile Include="Models\Land.cs">
       <DependentUpon>AlpensternDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\LandDetailsVM.cs" />
+    <Compile Include="Models\LandListeVM.cs" />
     <Compile Include="Models\Login.cs">
       <DependentUpon>AlpensternDB.tt</DependentUpon>
     </Compile>
@@ -258,6 +264,7 @@
     <Compile Include="Models\Stadt.cs">
       <DependentUpon>AlpensternDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\StadtVM.cs" />
     <Compile Include="Models\Zimmer.cs">
       <DependentUpon>AlpensternDB.tt</DependentUpon>
     </Compile>
@@ -402,6 +409,10 @@
     <Content Include="Views\Vorlage_Logins\Edit.cshtml" />
     <Content Include="Views\Vorlage_Logins\Index.cshtml" />
     <Content Include="Views\Authentifizierung\MitarbeiterAnlegen.cshtml" />
+    <Content Include="Views\Zimmer\AusstattungAnlegen.cshtml" />
+    <Content Include="Views\Zimmer\AusstattungListe.cshtml" />
+    <Content Include="Views\Ort\LandListe.cshtml" />
+    <Content Include="Views\Ort\LandDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

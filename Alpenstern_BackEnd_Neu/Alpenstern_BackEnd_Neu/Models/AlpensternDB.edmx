@@ -46,12 +46,10 @@
           <Property Name="reisepassnummer" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'alpenstern.dbo.Gastlogin' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'alpenstern_final.dbo.Gastlogin' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Gastlogin">
           <Key>
             <PropertyRef Name="id" />
-            <PropertyRef Name="gast_id" />
-            <PropertyRef Name="login_id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="gast_id" Type="int" Nullable="false" />
@@ -76,13 +74,10 @@ warning 6002: The table/view 'alpenstern.dbo.Gastlogin' does not have a primary 
           <Property Name="anfrage_id" Type="int" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'alpenstern.dbo.Kategorieausstattung' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'alpenstern_final.dbo.Kategorieausstattung' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Kategorieausstattung">
           <Key>
             <PropertyRef Name="id" />
-            <PropertyRef Name="ausstattung_id" />
-            <PropertyRef Name="kategorie_id" />
-            <PropertyRef Name="anzahl" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ausstattung_id" Type="int" Nullable="false" />
@@ -90,12 +85,10 @@ warning 6002: The table/view 'alpenstern.dbo.Kategorieausstattung' does not have
           <Property Name="anzahl" Type="tinyint" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'alpenstern.dbo.Komplettbuchung' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'alpenstern_final.dbo.Komplettbuchung' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Komplettbuchung">
           <Key>
             <PropertyRef Name="id" />
-            <PropertyRef Name="kategorieanfrage_id" />
-            <PropertyRef Name="komplettpaket_id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="kategorieanfrage_id" Type="int" Nullable="false" />
@@ -122,8 +115,8 @@ warning 6002: The table/view 'alpenstern.dbo.Komplettbuchung' does not have a pr
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="benutzername" Type="varchar" MaxLength="40" Nullable="false" />
-          <Property Name="passwort" Type="char" MaxLength="64" Nullable="false" />
-          <Property Name="salt" Type="char" MaxLength="64" Nullable="false" />
+          <Property Name="passwort" Type="varchar" MaxLength="64" />
+          <Property Name="salt" Type="varchar" MaxLength="64" />
         </EntityType>
         <EntityType Name="Mitarbeiter">
           <Key>
@@ -132,8 +125,8 @@ warning 6002: The table/view 'alpenstern.dbo.Komplettbuchung' does not have a pr
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="vorname" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="nachname" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="passwort" Type="char" MaxLength="64" Nullable="false" />
-          <Property Name="salt" Type="char" MaxLength="64" Nullable="false" />
+          <Property Name="passwort" Type="varchar" MaxLength="64" />
+          <Property Name="salt" Type="varchar" MaxLength="64" />
         </EntityType>
         <EntityType Name="Rechnung">
           <Key>
@@ -589,9 +582,9 @@ warning 6002: The table/view 'alpenstern.dbo.Komplettbuchung' does not have a pr
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="benutzername" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="passwort" Type="String" MaxLength="64" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="passwort" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Gastlogin" Relationship="Self.fk__Gastlogin__login" FromRole="Login" ToRole="Gastlogin" />
-          <Property Name="salt" Type="String" Nullable="false" MaxLength="64" FixedLength="true" Unicode="false" />
+          <Property Name="salt" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Mitarbeiter">
           <Key>
@@ -600,9 +593,9 @@ warning 6002: The table/view 'alpenstern.dbo.Komplettbuchung' does not have a pr
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="vorname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="nachname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="passwort" Type="String" MaxLength="64" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="passwort" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Zimmerbuchung" Relationship="Self.fk__Zimmerbuchung__Mitarbeiter" FromRole="Mitarbeiter" ToRole="Zimmerbuchung" />
-          <Property Name="salt" Type="String" Nullable="false" MaxLength="64" FixedLength="true" Unicode="false" />
+          <Property Name="salt" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Rechnung">
           <Key>
@@ -674,8 +667,6 @@ warning 6002: The table/view 'alpenstern.dbo.Komplettbuchung' does not have a pr
         <EntityType Name="Gastlogin">
           <Key>
             <PropertyRef Name="id" />
-            <PropertyRef Name="gast_id" />
-            <PropertyRef Name="login_id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="gast_id" Type="Int32" Nullable="false" />
@@ -686,9 +677,6 @@ warning 6002: The table/view 'alpenstern.dbo.Komplettbuchung' does not have a pr
         <EntityType Name="Kategorieausstattung">
           <Key>
             <PropertyRef Name="id" />
-            <PropertyRef Name="ausstattung_id" />
-            <PropertyRef Name="kategorie_id" />
-            <PropertyRef Name="anzahl" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ausstattung_id" Type="Int32" Nullable="false" />
@@ -700,8 +688,6 @@ warning 6002: The table/view 'alpenstern.dbo.Komplettbuchung' does not have a pr
         <EntityType Name="Komplettbuchung">
           <Key>
             <PropertyRef Name="id" />
-            <PropertyRef Name="kategorieanfrage_id" />
-            <PropertyRef Name="komplettpaket_id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="kategorieanfrage_id" Type="Int32" Nullable="false" />

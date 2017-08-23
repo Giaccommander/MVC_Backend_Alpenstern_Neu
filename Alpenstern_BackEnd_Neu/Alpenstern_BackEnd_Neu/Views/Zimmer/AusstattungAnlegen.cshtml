@@ -1,0 +1,15 @@
+﻿@model Alpenstern_BackEnd_Neu.Models.AusstattungAnlegenVM
+
+@{
+    ViewBag.Title = "AusstattungAnlegen";
+}
+
+<h2>AusstattungAnlegen</h2>
+
+@using(Html.BeginForm())
+{
+    <span>Beschreibung: @Html.EditorFor(e => e.Beschreibung) </span>
+    <p>
+        <input type="submit" value="Ausstattung hinzufuegen" />
+    </p> 
+}

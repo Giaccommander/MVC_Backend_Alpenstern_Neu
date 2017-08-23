@@ -1,0 +1,14 @@
+﻿@model Alpenstern_BackEnd_Neu.Models.AusstattungListeAnzeigenVM
+
+@{
+    ViewBag.Title = "AusstattungListe";
+}
+
+<h2>AusstattungListe</h2>
+
+@Html.ActionLink("Neue Ausstattung hinzufuegen","AusstattungAnlegen")
+<br />
+@foreach(var a in Model.Liste)
+{
+    <p>Beschreibung: @a.Beschreibung</p>
+}

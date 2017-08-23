@@ -1,0 +1,14 @@
+﻿@model Alpenstern_BackEnd_Neu.Models.LandListeVM
+
+@{
+    ViewBag.Title = "LandListe";
+}
+
+<h2>AusstattungListe</h2>
+
+@*@Html.ActionLink("Neues Land hinzufuegen", "AusstattungAnlegen")*@
+<br />
+@foreach (var a in Model.Liste)
+{
+    <p>Beschreibung: @a.Bezeichnung, @Html.ActionLink("Details","LandDetails", new { id = a.LandId } )</p>
+}

@@ -1,0 +1,16 @@
+﻿@model Alpenstern_BackEnd_Neu.Models.LandDetailsVM
+@{
+    ViewBag.Title = "LandDetails";
+}
+
+<h2>LandDetails</h2>
+
+<h2>Land: @Model.Bezeichnung</h2>
+<p>ID: @Model.LandId</p>
+
+<h1>Städteliste</h1>
+
+@foreach (var a in Model.StadtListe)
+{
+    <p>Beschreibung: @a.Bezeichnung, PLZ: @a.PLZ</p>
+}

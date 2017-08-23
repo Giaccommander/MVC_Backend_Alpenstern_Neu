@@ -182,7 +182,6 @@
     <Compile Include="Controllers\SpaController.cs" />
     <Compile Include="Controllers\SpeisenController.cs" />
     <Compile Include="Controllers\MenuesController.cs" />
-    <Compile Include="Controllers\Vorlage_LoginsController.cs" />
     <Compile Include="Controllers\ZimmerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -391,11 +390,6 @@
     <Content Include="Views\Spa\Index.cshtml" />
     <Content Include="Views\Druckansicht\Index.cshtml" />
     <Content Include="Views\Zimmer\zimmerListe.cshtml" />
-    <Content Include="Views\Vorlage_Logins\Create.cshtml" />
-    <Content Include="Views\Vorlage_Logins\Delete.cshtml" />
-    <Content Include="Views\Vorlage_Logins\Details.cshtml" />
-    <Content Include="Views\Vorlage_Logins\Edit.cshtml" />
-    <Content Include="Views\Vorlage_Logins\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

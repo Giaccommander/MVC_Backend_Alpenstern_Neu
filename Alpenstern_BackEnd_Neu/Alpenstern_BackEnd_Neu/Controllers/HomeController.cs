@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Net;
 using System.Web.Mvc;
+using System.Web.Security;
 using Alpenstern_BackEnd_Neu.Models;
 using System.Web.Security;
 
@@ -13,7 +14,53 @@ namespace Alpenstern_BackEnd_Neu.Controllers
 {
     public class HomeController : Controller
     {
-        private alpensternEntities db = new alpensternEntities();
+        [HttpGet]
+        public ActionResult Index()
+        {
+
+            //Gast gast = new Gast();
+
+            //gast.nachname = "Mustermann";
+            //gast.vorname = "Max";
+
+            //using (var datenbank = new alpensternEntities())
+            //{
+            //    var gast = datenbank.Gast.Find(1);
+
+            //    //var zinr = gast.Anfrage.ToList()[0].Kategorieanfrage.ToList()[0]
+            //    //    .Zimmerbuchung.ToList()[0].Zimmer.zimmerNummer;
+
+            //    var gastVM = new GastVM();
+
+            //    gastVM.Nachname = gast.nachname;
+            //    gastVM.Vorname = gast.vorname;
+
+            //    return View(gastVM);
+            //}
+
+            return View();
+                
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public ActionResult Index(LoginVM lvm)
+        {
+
+            //1. Existiert der Login? Wenn nicht, "return", wenn ja: 2
+            //2. Mitarbeiter aus der DB holen
+            //3. Salt an das eingegebene PW anhaengen
+            //4. PW+Salt hashen 
+            //5. Hashes vergleichen, Wenn gleich: 6, wenn ungleich: "return"
+            
+            //6. Authorisierung vornehmen
+
+
+            using (var datenbank = new alpenstern_finalEntities())
+            {
+                var loginStrings = lvm.Login.Split('.');
+                var vmVorname = loginStrings[0];
+                var vmNachname = loginStrings[1];
 
         [HttpGet]
         public ActionResult Index()
@@ -78,7 +125,7 @@ namespace Alpenstern_BackEnd_Neu.Controllers
 
             return View();
         }
-
+        [Authorize]
         public ActionResult Rueckruf()
         {
             ViewBag.Message = "Rückruf Service";

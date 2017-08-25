@@ -4,57 +4,33 @@
     ViewBag.Title = "Home Page";
 }
 
+<h1>Login</h1>
 
 
-<h1>Dashboard</h1>
+@*@Model.Nachname
 
-@using (Html.BeginForm("Index", "Home", FormMethod.Post))
+    @Model.Vorname*@
+
+@*@Model.geburtsdatum*@
+
+
+@if(Context.User.Identity.IsAuthenticated)
 {
+    <h1>Name: @Context.User.Identity.Name</h1>
+}
 
-    <center>
-        <form>
-            <table bgcolor="white" cellpadding="12" border="1">
-                <tr>
-                    <td colspan="2">
-                        <center>
-                            <h1>
-                                <i>
-                                    <b>
-                                        Login
-                                        Area
-                                    </b>
-                                </i>
-                            </h1>
-                        </center>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Benutzername
-                    </td>
-                    <td>
-                        @Html.EditorFor(e => e.benutzerName)
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Passwort
-                    </td>
-                    <td>
-                        @Html.PasswordFor(e => e.passwort)
-                    </td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>
-                        <center>
-                            <button type="submit" value="Login">
-                                Login
-                            </button>
-                        </center>
-                    </td>
-                </tr>
-            </table>
-        </form>
-    </center>
+@using (Html.BeginForm())
+{
+    <div>        
+        @Html.EditorFor(e => e.Login)
+        <label for="Login">Login</label>
+    </div>
+
+    <div>
+        @Html.PasswordFor(e => e.Passwort)
+        <label for="passwort">Passwort</label>
+    </div>
+                              
+    <br />
+    <input type="submit" value="Login" />
 }

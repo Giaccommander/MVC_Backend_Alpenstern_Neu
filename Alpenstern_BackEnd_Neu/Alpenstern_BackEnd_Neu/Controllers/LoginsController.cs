@@ -10,17 +10,17 @@ using Alpenstern_BackEnd_Neu.Models;
 
 namespace Alpenstern_BackEnd_Neu.Controllers
 {
-    public class Vorlage_LoginsController : Controller
+    public class LoginsController : Controller
     {
-        private alpensternEntities db = new alpensternEntities();
+        private alpenstern_finalEntities db = new alpenstern_finalEntities();
 
-        // GET: Vorlage_Logins
+        // GET: Logins
         public ActionResult Index()
         {
             return View(db.Login.ToList());
         }
 
-        // GET: Vorlage_Logins/Details/5
+        // GET: Logins/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -35,18 +35,18 @@ namespace Alpenstern_BackEnd_Neu.Controllers
             return View(login);
         }
 
-        // GET: Vorlage_Logins/Create
+        // GET: Logins/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Vorlage_Logins/Create
-        // Aktivieren Sie zum Schutz vor übermäßigem Senden von Angriffen die spezifischen Eigenschaften, mit denen eine Bindung erfolgen soll. Weitere Informationen 
-        // finden Sie unter http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Logins/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,benutzername,passwort")] Login login)
+        public ActionResult Create([Bind(Include = "id,benutzername,passwort,salt")] Login login)
         {
             if (ModelState.IsValid)
             {
@@ -58,7 +58,7 @@ namespace Alpenstern_BackEnd_Neu.Controllers
             return View(login);
         }
 
-        // GET: Vorlage_Logins/Edit/5
+        // GET: Logins/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -73,12 +73,12 @@ namespace Alpenstern_BackEnd_Neu.Controllers
             return View(login);
         }
 
-        // POST: Vorlage_Logins/Edit/5
-        // Aktivieren Sie zum Schutz vor übermäßigem Senden von Angriffen die spezifischen Eigenschaften, mit denen eine Bindung erfolgen soll. Weitere Informationen 
-        // finden Sie unter http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Logins/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,benutzername,passwort")] Login login)
+        public ActionResult Edit([Bind(Include = "id,benutzername,passwort,salt")] Login login)
         {
             if (ModelState.IsValid)
             {
@@ -89,7 +89,7 @@ namespace Alpenstern_BackEnd_Neu.Controllers
             return View(login);
         }
 
-        // GET: Vorlage_Logins/Delete/5
+        // GET: Logins/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -104,7 +104,7 @@ namespace Alpenstern_BackEnd_Neu.Controllers
             return View(login);
         }
 
-        // POST: Vorlage_Logins/Delete/5
+        // POST: Logins/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

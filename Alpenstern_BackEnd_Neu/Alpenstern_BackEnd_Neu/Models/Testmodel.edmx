@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="alpensternModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="alpenstern_finalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Anfrage">
           <Key>
             <PropertyRef Name="id" />
@@ -45,8 +45,8 @@
           <Property Name="telefonnummer" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="reisepassnummer" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'alpenstern.dbo.Gastlogin' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--Während der Generierung sind Fehler aufgetreten:
+Warnung 6002: Für Tabelle/Sicht 'alpenstern_final.dbo.Gastlogin' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
         <EntityType Name="Gastlogin">
           <Key>
             <PropertyRef Name="id" />
@@ -75,8 +75,8 @@ warning 6002: The table/view 'alpenstern.dbo.Gastlogin' does not have a primary 
           <Property Name="kategorie_id" Type="int" Nullable="false" />
           <Property Name="anfrage_id" Type="int" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'alpenstern.dbo.Kategorieausstattung' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--Während der Generierung sind Fehler aufgetreten:
+Warnung 6002: Für Tabelle/Sicht 'alpenstern_final.dbo.Kategorieausstattung' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
         <EntityType Name="Kategorieausstattung">
           <Key>
             <PropertyRef Name="id" />
@@ -89,8 +89,8 @@ warning 6002: The table/view 'alpenstern.dbo.Kategorieausstattung' does not have
           <Property Name="kategorie_id" Type="int" Nullable="false" />
           <Property Name="anzahl" Type="tinyint" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'alpenstern.dbo.Komplettbuchung' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <!--Während der Generierung sind Fehler aufgetreten:
+Warnung 6002: Für Tabelle/Sicht 'alpenstern_final.dbo.Komplettbuchung' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
         <EntityType Name="Komplettbuchung">
           <Key>
             <PropertyRef Name="id" />
@@ -123,7 +123,7 @@ warning 6002: The table/view 'alpenstern.dbo.Komplettbuchung' does not have a pr
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="benutzername" Type="varchar" MaxLength="40" Nullable="false" />
           <Property Name="passwort" Type="char" MaxLength="64" Nullable="false" />
-          <Property Name="salt" Type="char" MaxLength="64" Nullable="false" />
+          <Property Name="salt" Type="char" MaxLength="64" />
         </EntityType>
         <EntityType Name="Mitarbeiter">
           <Key>
@@ -133,7 +133,7 @@ warning 6002: The table/view 'alpenstern.dbo.Komplettbuchung' does not have a pr
           <Property Name="vorname" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="nachname" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="passwort" Type="char" MaxLength="64" Nullable="false" />
-          <Property Name="salt" Type="char" MaxLength="64" Nullable="false" />
+          <Property Name="salt" Type="char" MaxLength="64" />
         </EntityType>
         <EntityType Name="Rechnung">
           <Key>
@@ -386,7 +386,7 @@ warning 6002: The table/view 'alpenstern.dbo.Komplettbuchung' does not have a pr
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="alpensternModelStoreContainer">
+        <EntityContainer Name="alpenstern_finalModelStoreContainer">
           <EntitySet Name="Anfrage" EntityType="Self.Anfrage" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ausstattung" EntityType="Self.Ausstattung" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Bilder" EntityType="Self.Bilder" Schema="dbo" store:Type="Tables" />
@@ -490,10 +490,11 @@ warning 6002: The table/view 'alpenstern.dbo.Komplettbuchung' does not have a pr
             <End Role="Zimmerbuchung" EntitySet="Zimmerbuchung" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="alpensternModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="alpenstern_finalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Anfrage">
           <Key>
             <PropertyRef Name="id" />
@@ -590,8 +591,8 @@ warning 6002: The table/view 'alpenstern.dbo.Komplettbuchung' does not have a pr
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="benutzername" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="passwort" Type="String" MaxLength="64" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="salt" Type="String" MaxLength="64" FixedLength="true" Unicode="false" />
           <NavigationProperty Name="Gastlogin" Relationship="Self.fk__Gastlogin__login" FromRole="Login" ToRole="Gastlogin" />
-          <Property Name="salt" Type="String" Nullable="false" MaxLength="64" FixedLength="true" Unicode="false" />
         </EntityType>
         <EntityType Name="Mitarbeiter">
           <Key>
@@ -601,8 +602,8 @@ warning 6002: The table/view 'alpenstern.dbo.Komplettbuchung' does not have a pr
           <Property Name="vorname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="nachname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="passwort" Type="String" MaxLength="64" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="salt" Type="String" MaxLength="64" FixedLength="true" Unicode="false" />
           <NavigationProperty Name="Zimmerbuchung" Relationship="Self.fk__Zimmerbuchung__Mitarbeiter" FromRole="Mitarbeiter" ToRole="Zimmerbuchung" />
-          <Property Name="salt" Type="String" Nullable="false" MaxLength="64" FixedLength="true" Unicode="false" />
         </EntityType>
         <EntityType Name="Rechnung">
           <Key>
@@ -901,7 +902,7 @@ warning 6002: The table/view 'alpenstern.dbo.Komplettbuchung' does not have a pr
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="alpensternEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="alpenstern_finalEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Anfrage" EntityType="Self.Anfrage" />
           <EntitySet Name="Ausstattung" EntityType="Self.Ausstattung" />
           <EntitySet Name="Bilder" EntityType="Self.Bilder" />
@@ -991,9 +992,9 @@ warning 6002: The table/view 'alpenstern.dbo.Komplettbuchung' does not have a pr
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="alpensternModelStoreContainer" CdmEntityContainer="alpensternEntities">
+        <EntityContainerMapping StorageEntityContainer="alpenstern_finalModelStoreContainer" CdmEntityContainer="alpenstern_finalEntities">
           <EntitySetMapping Name="Anfrage">
-            <EntityTypeMapping TypeName="alpensternModel.Anfrage">
+            <EntityTypeMapping TypeName="alpenstern_finalModel.Anfrage">
               <MappingFragment StoreEntitySet="Anfrage">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="gast_id" ColumnName="gast_id" />
@@ -1005,7 +1006,7 @@ warning 6002: The table/view 'alpenstern.dbo.Komplettbuchung' does not have a pr
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Ausstattung">
-            <EntityTypeMapping TypeName="alpensternModel.Ausstattung">
+            <EntityTypeMapping TypeName="alpenstern_finalModel.Ausstattung">
               <MappingFragment StoreEntitySet="Ausstattung">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="bezeichnung" ColumnName="bezeichnung" />
@@ -1013,7 +1014,7 @@ warning 6002: The table/view 'alpenstern.dbo.Komplettbuchung' does not have a pr
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Bilder">
-            <EntityTypeMapping TypeName="alpensternModel.Bilder">
+            <EntityTypeMapping TypeName="alpenstern_finalModel.Bilder">
               <MappingFragment StoreEntitySet="Bilder">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="bilderart" ColumnName="bilderart" />
@@ -1022,7 +1023,7 @@ warning 6002: The table/view 'alpenstern.dbo.Komplettbuchung' does not have a pr
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Gast">
-            <EntityTypeMapping TypeName="alpensternModel.Gast">
+            <EntityTypeMapping TypeName="alpenstern_finalModel.Gast">
               <MappingFragment StoreEntitySet="Gast">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="stadt_id" ColumnName="stadt_id" />
@@ -1037,7 +1038,7 @@ warning 6002: The table/view 'alpenstern.dbo.Komplettbuchung' does not have a pr
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Kategorie">
-            <EntityTypeMapping TypeName="alpensternModel.Kategorie">
+            <EntityTypeMapping TypeName="alpenstern_finalModel.Kategorie">
               <MappingFragment StoreEntitySet="Kategorie">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="bezeichnung" ColumnName="bezeichnung" />
@@ -1048,7 +1049,7 @@ warning 6002: The table/view 'alpenstern.dbo.Komplettbuchung' does not have a pr
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Kategorieanfrage">
-            <EntityTypeMapping TypeName="alpensternModel.Kategorieanfrage">
+            <EntityTypeMapping TypeName="alpenstern_finalModel.Kategorieanfrage">
               <MappingFragment StoreEntitySet="Kategorieanfrage">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="kategorie_id" ColumnName="kategorie_id" />
@@ -1057,7 +1058,7 @@ warning 6002: The table/view 'alpenstern.dbo.Komplettbuchung' does not have a pr
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Komplettpaket">
-            <EntityTypeMapping TypeName="alpensternModel.Komplettpaket">
+            <EntityTypeMapping TypeName="alpenstern_finalModel.Komplettpaket">
               <MappingFragment StoreEntitySet="Komplettpaket">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="bezeichnung" ColumnName="bezeichnung" />
@@ -1066,7 +1067,7 @@ warning 6002: The table/view 'alpenstern.dbo.Komplettbuchung' does not have a pr
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Land">
-            <EntityTypeMapping TypeName="alpensternModel.Land">
+            <EntityTypeMapping TypeName="alpenstern_finalModel.Land">
               <MappingFragment StoreEntitySet="Land">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="bezeichnung" ColumnName="bezeichnung" />
@@ -1074,28 +1075,28 @@ warning 6002: The table/view 'alpenstern.dbo.Komplettbuchung' does not have a pr
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Login">
-            <EntityTypeMapping TypeName="alpensternModel.Login">
+            <EntityTypeMapping TypeName="alpenstern_finalModel.Login">
               <MappingFragment StoreEntitySet="Login">
-                <ScalarProperty Name="salt" ColumnName="salt" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="benutzername" ColumnName="benutzername" />
                 <ScalarProperty Name="passwort" ColumnName="passwort" />
+                <ScalarProperty Name="salt" ColumnName="salt" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Mitarbeiter">
-            <EntityTypeMapping TypeName="alpensternModel.Mitarbeiter">
+            <EntityTypeMapping TypeName="alpenstern_finalModel.Mitarbeiter">
               <MappingFragment StoreEntitySet="Mitarbeiter">
-                <ScalarProperty Name="salt" ColumnName="salt" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="vorname" ColumnName="vorname" />
                 <ScalarProperty Name="nachname" ColumnName="nachname" />
                 <ScalarProperty Name="passwort" ColumnName="passwort" />
+                <ScalarProperty Name="salt" ColumnName="salt" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Rechnung">
-            <EntityTypeMapping TypeName="alpensternModel.Rechnung">
+            <EntityTypeMapping TypeName="alpenstern_finalModel.Rechnung">
               <MappingFragment StoreEntitySet="Rechnung">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="anfrage_id" ColumnName="anfrage_id" />
@@ -1107,7 +1108,7 @@ warning 6002: The table/view 'alpenstern.dbo.Komplettbuchung' does not have a pr
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Rueckruf">
-            <EntityTypeMapping TypeName="alpensternModel.Rueckruf">
+            <EntityTypeMapping TypeName="alpenstern_finalModel.Rueckruf">
               <MappingFragment StoreEntitySet="Rueckruf">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -1119,7 +1120,7 @@ warning 6002: The table/view 'alpenstern.dbo.Komplettbuchung' does not have a pr
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Saison">
-            <EntityTypeMapping TypeName="alpensternModel.Saison">
+            <EntityTypeMapping TypeName="alpenstern_finalModel.Saison">
               <MappingFragment StoreEntitySet="Saison">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="bezeichnung" ColumnName="bezeichnung" />
@@ -1130,7 +1131,7 @@ warning 6002: The table/view 'alpenstern.dbo.Komplettbuchung' does not have a pr
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Stadt">
-            <EntityTypeMapping TypeName="alpensternModel.Stadt">
+            <EntityTypeMapping TypeName="alpenstern_finalModel.Stadt">
               <MappingFragment StoreEntitySet="Stadt">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="land_id" ColumnName="land_id" />
@@ -1140,7 +1141,7 @@ warning 6002: The table/view 'alpenstern.dbo.Komplettbuchung' does not have a pr
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Zimmer">
-            <EntityTypeMapping TypeName="alpensternModel.Zimmer">
+            <EntityTypeMapping TypeName="alpenstern_finalModel.Zimmer">
               <MappingFragment StoreEntitySet="Zimmer">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="kategorie_id" ColumnName="kategorie_id" />
@@ -1149,7 +1150,7 @@ warning 6002: The table/view 'alpenstern.dbo.Komplettbuchung' does not have a pr
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Zimmerbuchung">
-            <EntityTypeMapping TypeName="alpensternModel.Zimmerbuchung">
+            <EntityTypeMapping TypeName="alpenstern_finalModel.Zimmerbuchung">
               <MappingFragment StoreEntitySet="Zimmerbuchung">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="zimmer_id" ColumnName="zimmer_id" />
@@ -1160,7 +1161,7 @@ warning 6002: The table/view 'alpenstern.dbo.Komplettbuchung' does not have a pr
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Gastlogin">
-            <EntityTypeMapping TypeName="alpensternModel.Gastlogin">
+            <EntityTypeMapping TypeName="alpenstern_finalModel.Gastlogin">
               <MappingFragment StoreEntitySet="Gastlogin">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="gast_id" ColumnName="gast_id" />
@@ -1169,7 +1170,7 @@ warning 6002: The table/view 'alpenstern.dbo.Komplettbuchung' does not have a pr
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Kategorieausstattung">
-            <EntityTypeMapping TypeName="alpensternModel.Kategorieausstattung">
+            <EntityTypeMapping TypeName="alpenstern_finalModel.Kategorieausstattung">
               <MappingFragment StoreEntitySet="Kategorieausstattung">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="ausstattung_id" ColumnName="ausstattung_id" />
@@ -1179,7 +1180,7 @@ warning 6002: The table/view 'alpenstern.dbo.Komplettbuchung' does not have a pr
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Komplettbuchung">
-            <EntityTypeMapping TypeName="alpensternModel.Komplettbuchung">
+            <EntityTypeMapping TypeName="alpenstern_finalModel.Komplettbuchung">
               <MappingFragment StoreEntitySet="Komplettbuchung">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="kategorieanfrage_id" ColumnName="kategorieanfrage_id" />
@@ -1204,7 +1205,7 @@ warning 6002: The table/view 'alpenstern.dbo.Komplettbuchung' does not have a pr
         <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
-        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Kein" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->

@@ -238,6 +238,7 @@
     <Compile Include="Models\Login.cs">
       <DependentUpon>AlpensternDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\LoginVM.cs" />
     <Compile Include="Models\Mitarbeiter.cs">
       <DependentUpon>AlpensternDB.tt</DependentUpon>
     </Compile>

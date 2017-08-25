@@ -1,51 +1,60 @@
-﻿@{
+﻿@model Alpenstern_BackEnd_Neu.Models.LoginVM
+
+@{
     ViewBag.Title = "Home Page";
 }
 
+
+
 <h1>Dashboard</h1>
 
+@using (Html.BeginForm("Index", "Home", FormMethod.Post))
+{
 
-
-<center>
-    <form action="~/Buchung/Index.cshtml">
-        <table bgcolor="white" cellpadding="12" border="1">
-            <tr>
-                <td colspan="2">
-                    <center>
-                        <h1>
-                            <i>
-                                <b>
-                                    Login
-                                    Area
-                                </b>
-                            </i>
-                        </h1>
-                    </center>
-                </td>
-            </tr>
-            <tr>
-                <td><h1><i><b>UserID:</b></i></h1></td>
-                <td>                   
-                    <input name="id" type="text">
-                </td>
-            </tr>
-            <tr>
-                <td><h1><i><b>Password:</b></i></h1></td>
-                <td>
-                    <input name="pass" type="password">
-                </td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>
-                    <center>
-                        <button type="submit" value="Login">
-                            Login
-                        </button>
-                    </center>
-                </td>
-            </tr>
-        </table>
-    </form>
-</center> 
-<script src="~/Scripts/JavaScript.js"></script>
+    <center>
+        <form>
+            <table bgcolor="white" cellpadding="12" border="1">
+                <tr>
+                    <td colspan="2">
+                        <center>
+                            <h1>
+                                <i>
+                                    <b>
+                                        Login
+                                        Area
+                                    </b>
+                                </i>
+                            </h1>
+                        </center>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Benutzername
+                    </td>
+                    <td>
+                        @Html.EditorFor(e => e.benutzerName)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Passwort
+                    </td>
+                    <td>
+                        @Html.PasswordFor(e => e.passwort)
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <center>
+                            <button type="submit" value="Login">
+                                Login
+                            </button>
+                        </center>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </center>
+}

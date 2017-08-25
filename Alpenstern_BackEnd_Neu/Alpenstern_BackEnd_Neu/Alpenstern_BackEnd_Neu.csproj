@@ -254,6 +254,7 @@
     <Compile Include="Models\Rueckruf.cs">
       <DependentUpon>alpensterndb.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\RueckrufVM.cs" />
     <Compile Include="Models\Saison.cs">
       <DependentUpon>alpensterndb.tt</DependentUpon>
     </Compile>
@@ -418,7 +419,6 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Ankunft.cshtml" />
-    <Content Include="Views\Home\Rueckruf.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Speisen\Index.cshtml" />
     <Content Include="Views\Home\_zfind.cshtml" />

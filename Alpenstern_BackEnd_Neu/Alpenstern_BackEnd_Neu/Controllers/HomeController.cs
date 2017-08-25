@@ -98,12 +98,5 @@ namespace Alpenstern_BackEnd_Neu.Controllers
 
             return View();
         }
-        [Authorize]
-        public ActionResult Rueckruf()
-        {
-            ViewBag.Message = "Rückruf Service";
-
-            return View();
-        }
     }
 }

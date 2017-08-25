@@ -8,7 +8,6 @@ using System.Net;
 using System.Web.Mvc;
 using System.Web.Security;
 using Alpenstern_BackEnd_Neu.Models;
-using System.Web.Security;
 
 namespace Alpenstern_BackEnd_Neu.Controllers
 {
@@ -42,40 +41,12 @@ namespace Alpenstern_BackEnd_Neu.Controllers
                 
         }
 
-        [HttpPost]
-        [AllowAnonymous]
-        public ActionResult Index(LoginVM lvm)
-        {
-
-            //1. Existiert der Login? Wenn nicht, "return", wenn ja: 2
-            //2. Mitarbeiter aus der DB holen
-            //3. Salt an das eingegebene PW anhaengen
-            //4. PW+Salt hashen 
-            //5. Hashes vergleichen, Wenn gleich: 6, wenn ungleich: "return"
-            
-            //6. Authorisierung vornehmen
-
-
-            using (var datenbank = new alpenstern_finalEntities())
-            {
-                var loginStrings = lvm.Login.Split('.');
-                var vmVorname = loginStrings[0];
-                var vmNachname = loginStrings[1];
-
-        [HttpGet]
-        public ActionResult Index()
-        {
-            using (var datenbank = new alpensternEntities())
-            {
-                return View();
-            }
-        }
 
         [HttpPost]
         [AllowAnonymous]
         public ActionResult Index(LoginVM lvm)
         {
-            using (var datenbank = new alpensternEntities())
+            using (var datenbank = new alpensternEntities_Neu())
             {
                 //Login getrennt durch .
                 var loginString = lvm.Login.Split('.');
@@ -93,7 +64,7 @@ namespace Alpenstern_BackEnd_Neu.Controllers
                     //2
                     var dbMitarbeiter = datenbank.Mitarbeiter.Where((n => n.nachname == vmNachname && n.vorname == vmVorname)).FirstOrDefault();
                     //3
-                    lvm.passwort += dbMitarbeiter.salt;
+                    lvm.Passwort += dbMitarbeiter.salt;
                     //4
                     var eingegPWHash = Helper.Hashes.HashBerechnen(lvm.Passwort);
                     //5
@@ -110,6 +81,8 @@ namespace Alpenstern_BackEnd_Neu.Controllers
                                                     );
                         var encryptedTicket = FormsAuthentication.Encrypt(authTicket);
                         var authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
+
+                        System.Web.HttpContext.Current.Response.Cookies.Add(authCookie);
 
                         return RedirectToAction("Ankunft");
                     }

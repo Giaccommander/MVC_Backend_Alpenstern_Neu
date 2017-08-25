@@ -8,8 +8,7 @@ namespace Alpenstern_BackEnd_Neu.Models
 {
     public class LoginVM
     {
-        public string Login;
-        public string benutzerName { get; set; }
-        public string passwort { get; set; }
+        public string Login { get; set; }
+        public string Passwort { get; set; }
     }
 }

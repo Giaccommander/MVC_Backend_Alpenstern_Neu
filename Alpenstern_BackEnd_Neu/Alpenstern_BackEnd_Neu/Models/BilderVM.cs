@@ -9,11 +9,11 @@ namespace Alpenstern_BackEnd_Neu.Models
 {
     public class BilderVM
     {
-        [Required]
-        [Display(Name ="Anzeige wählen")]
+        public int id {get;set;}
+        
         public string bilderart { get; set; }
-        [Required]
-        [Display(Name ="Bild auswählen")]
+        
+        
         public string pfad { get; set; }
     }
 }

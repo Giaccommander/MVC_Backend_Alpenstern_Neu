@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using Alpenstern_BackEnd_Neu.Models;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.IO;
 
 namespace Alpenstern_BackEnd_Neu.Controllers
 {
@@ -19,9 +20,22 @@ namespace Alpenstern_BackEnd_Neu.Controllers
         // GET: Bilder
         public ActionResult Index()
         {
+            var vmListe = new List<BilderVM>();
+            var dbBilderListe = db.Bilder.ToList();
+
+            foreach (var b in dbBilderListe)
+            {
+                var vmbild = new BilderVM();
+
+                vmbild.id = b.id;
+                vmbild.bilderart = b.bilderart;
+                vmbild.pfad = b.pfad;
+
+                vmListe.Add(vmbild);
+            }
 
 
-            return View(db.Bilder.ToList());
+            return View(vmListe);
         }
 
         // GET: Bilder/Details/5
@@ -53,27 +67,31 @@ namespace Alpenstern_BackEnd_Neu.Controllers
         // finden Sie unter http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,bilderart,pfad")] Bilder bilder, HttpPostedFileBase file)
+        public ActionResult Create( BilderVM img, HttpPostedFileBase file)
         {
-            if (ModelState.IsValid)
+            var dbbilder = new Bilder();
+            if (ModelState.IsValid && file != null)
             {
-                if(file != null)
-                {
-                    file.SaveAs(HttpContext.Server.MapPath("~/Content/Images/upload") + file.FileName);
-                    bilder.pfad = file.FileName;
-                    bilder.bilderart = bilder.bilderart;
-                }
-                db.Bilder.Add(bilder);
+                var fileName = Path.GetFileName(file.FileName);
+                var destinationFullPath = Path.Combine(Server.MapPath("~/Content/images/upload/"), fileName);
+
+                file.SaveAs(destinationFullPath);
+
+                dbbilder.bilderart = img.bilderart;
+                dbbilder.pfad = "/Content/images/upload/"+fileName;
+
+                db.Bilder.Add(dbbilder);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(bilder);
+            return View(img);
         }
 
         // GET: Bilder/Edit/5
         public ActionResult Edit(int? id)
         {
+            
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

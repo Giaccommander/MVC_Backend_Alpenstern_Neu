@@ -254,6 +254,9 @@
     <Compile Include="Models\Stadt.cs">
       <DependentUpon>AlpensternDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>AlpensternDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Zimmer.cs">
       <DependentUpon>AlpensternDB.tt</DependentUpon>
     </Compile>

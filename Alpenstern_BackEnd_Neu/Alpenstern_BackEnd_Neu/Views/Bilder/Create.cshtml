@@ -7,59 +7,54 @@
 <h2>Create</h2>
 
 
-@using (Html.BeginForm("Create", "Bilder", null, FormMethod.Post,
-                                          new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Create", "Bilder", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
+   
+        <div class="form-horizontal">
+            <h4>Bilder</h4>
+            <hr />
 
-    <div class="form-horizontal">
-        <h4>Bilder</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            <div class="control-label col-md-2">
-                <label for="art">Anzeige wählen</label> 
-            </div>     
-    @*@Html.LabelFor(model => model.bilderart, htmlAttributes: new { @class = "control-label " })*@
-            <div class="col-md-5">
-                @*@Html.EditorFor(model => model.bilderart, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.bilderart, "", new { @class = "text-danger" })*@
-                <input type="radio" id="startseite" name="art" value="carousel" />
-                <label for="startseite">Startseite</label><br />
-                <input type="radio" id="galerie" name="art" value="carousel" />
-                <label for="Galerie">Galerie</label><br />
-                <input type="radio" id="ezimmer" name="art" value="carousel" />
-                <label for="ezimmer">Einzelzimmer</label><br />
-                <input type="radio" id="kzimmer" name="art" value="carousel" />
-                <label for="kzimmer">Komfort Einzelzimmer</label>
-            </div>
-            <div class="col-md-5">
-                <input type="radio" id="juniorsuite" name="art" value="carousel" />
-                <label for="juniorsuite">Juniorsuite</label><br />
-                <input type="radio" id="galerie" name="art" value="carousel" />
-                <label for="Galerie">Galerie</label><br />
-                <input type="radio" id="ezimmer" name="art" value="carousel" />
-                <label for="ezimmer">Einzelzimmer</label><br />
-                <input type="radio" id="kzimmer" name="art" value="carousel" />
-                <label for="kzimmer">Komfort Einzelzimmer</label>
-            </div>
-            </div>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <div class="col-md-offset-2">
+                    <label for="art">Anzeige wählen</label>
+                </div>
+                @*@Html.LabelFor(model => model.bilderart, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                <div class="col-md-offset-2 col-md-5">
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.pfad, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <input type="file" id="file" name="file" />
-                @*@Html.EditorFor(model => model.pfad, new { htmlAttributes = new { @class = "form-control" } })*@
-                @Html.ValidationMessageFor(model => model.pfad, "", new { @class = "text-danger" })
+
+                    @*@Html.EditorFor(model => model.bilderart, new { htmlAttributes = new { @class = "form-control" } })*@
+                    <select name="bilderart" class="form-control">
+                        <option value="">Bitte wählen!</option>
+                        <option value="Startseite">Startseite</option>
+                        <option value="Galerie">Galerie</option>
+                        <option value="value">text</option>
+                        
+                    </select>
+                    @Html.ValidationMessageFor(model => model.bilderart, "", new { @class = "text-danger" })
+
+                </div>
+
+                <div class="form-group">
+                    @*@Html.LabelFor(model => model.pfad, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                    <div class="col-md-offset-2 col-md-10">
+                        <label for="file">Upload: </label>
+                        <input class="form-control" type="file" id="file" name="file" />
+                        @*@Html.EditorFor(model => model.pfad, new { htmlAttributes = new { @class = "form-control" } })*@
+                        @Html.ValidationMessageFor(model => model.pfad, "", new { @class = "text-danger" })
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Bild eintragen" class="btn btn-primary" />
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Bild eintragen" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
 }
 
 <div>

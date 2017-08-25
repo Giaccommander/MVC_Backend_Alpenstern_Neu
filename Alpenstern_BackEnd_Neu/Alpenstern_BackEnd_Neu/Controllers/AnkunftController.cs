@@ -14,19 +14,28 @@ namespace Alpenstern_BackEnd_Neu.Controllers
         {
             using (var db = new alpensternEntities())
             {
-               
-                
-               
+
+                var VMKundenListe = new List<AnkunftVM>();
+                var dbKundenListe = db.Gast.ToList();
+                var dbZimmerNummer = db.Zimmer.ToList();
+
+                foreach (var k in dbKundenListe)
+                {
+                    var ankunftsListe = new AnkunftVM();
+                    ankunftsListe.id = k.id;
+                    ankunftsListe.nachname = k.nachname;
+                    ankunftsListe.vorname = k.vorname;
+                    ankunftsListe.geburtsdatum = k.geburtsdatum;
+                    ankunftsListe.email = k.email;
+                    foreach (var z in dbZimmerNummer)
+                    {
+                        ankunftsListe.zimmernummer = z.zimmerNummer;
+                    }
+                    VMKundenListe.Add(ankunftsListe);
+                }
 
 
-                //ankunft.nachname = kunde.nachname;
-                //ankunft.vorname = kunde.vorname;
-                //ankunft.email = kunde.email;
-                //ankunft.geburtsdatum = kunde.geburtsdatum;
-                //ankunft.zimmernummer = zimmernummer.zimmerNummer;
-
-
-                return View();
+                return View(VMKundenListe);
             }
 
 

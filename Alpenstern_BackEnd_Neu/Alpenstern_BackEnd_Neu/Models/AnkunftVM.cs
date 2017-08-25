@@ -7,7 +7,11 @@ namespace Alpenstern_BackEnd_Neu.Models
 {
     public class AnkunftVM
     {
-        public List<Gast> dbKundenListe { get; set; }
+        public int id { get; set; }
+        public string vorname{ get; set; }
+        public string nachname { get; set; }
+        public DateTime geburtsdatum { get; set; }
+        public string email { get; set; }
         public int zimmernummer { get; set; }
     }
 }

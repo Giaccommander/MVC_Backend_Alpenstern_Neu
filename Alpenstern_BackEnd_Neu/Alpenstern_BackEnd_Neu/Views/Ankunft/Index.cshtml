@@ -1,5 +1,5 @@
 ﻿
-@model Alpenstern_BackEnd_Neu.Models.AnkunftVM
+@model List<Alpenstern_BackEnd_Neu.Models.AnkunftVM>
 
 @{
     ViewBag.Title = "Index";
@@ -19,30 +19,6 @@
             <span>Check-In</span>
         </div>
     </div>
-    @using (Html.BeginForm()) { 
-    foreach (var item in )
-    {
-        <table>
-            <tr>
-                <td>
-                    @Html.DisplayNameFor(modelItem => item.nachname)<br />
-                </td>
-                <td>
-                    @Html.DisplayNameFor(modelItem => item.vorname)<br />
-                </td>
-                <td>
-                    @Html.DisplayNameFor(modelItem => item.geburtsdatum)<br />
-                </td>
-                <td>
-                    @Html.DisplayNameFor(modelItem => item.email)<br />
-                </td>
-                <td>
-                    @Html.DisplayNameFor(modelItem => item.telefonnummer)<br />
-                </td>
-            </tr>
-        </table>
-    }
-    }
     <div class="container">
         <div class="row text-center ankunft-overview">
             <div class="col-xs-2 ankunftrahmen-l ankunftrahmen-o ankunftrahmen-r ankunftrahmen-u">Nachname</div>
@@ -51,100 +27,36 @@
             <div class="col-xs-3 ankunftrahmen-l ankunftrahmen-o ankunftrahmen-r ankunftrahmen-u">e-Mail</div>
             <div class="col-xs-2 ankunftrahmen-o ankunftrahmen-r ankunftrahmen-u">ZimmerNummer</div>
         </div>
-        @*<div class="row text-center" id="ankunft-view">
-            <div class="col-xs-2 ankunftrahmen-l ankunftrahmen-u ankunftrahmen-r">@Html.(e => e.nachname)</div>
-            <div class="col-xs-2 ankunftrahmen-u ankunftrahmen-r">@Html.DisplayFor(e => e.vorname)</div>
-            <div class="col-xs-3 ankunftrahmen-u">@Html.DisplayFor(e => e.geburtsdatum)</div>
-            <div class="col-xs-3 ankunftrahmen-l ankunftrahmen-u ankunftrahmen-r">@Html.DisplayFor(e => e.email)</div>
-            <div class="col-xs-2 ankunftrahmen-u ankunftrahmen-r">@Html.DisplayFor(e => e.zimmernummer)</div>
-        </div>
-        <div class="row text-center">
-            <div class="col-xs-2 ankunftrahmen-l ankunftrahmen-u ankunftrahmen-r">@Html.DisplayFor(e => e.nachname)</div>
-            <div class="col-xs-2 ankunftrahmen-u ankunftrahmen-r">@Html.DisplayFor(e => e.vorname)</div>
-            <div class="col-xs-3 ankunftrahmen-u">@Html.DisplayFor(e => e.geburtsdatum)</div>
-            <div class="col-xs-3 ankunftrahmen-l ankunftrahmen-u ankunftrahmen-r">@Html.DisplayFor(e => e.email)</div>
-            <div class="col-xs-2 ankunftrahmen-u ankunftrahmen-r">@Html.DisplayFor(e => e.zimmernummer)</div>
-        </div>
-        <div class="row text-center" id="ankunft-view">
-            <div class="col-xs-2 ankunftrahmen-l ankunftrahmen-u ankunftrahmen-r">@Html.DisplayFor(e => e.nachname)</div>
-            <div class="col-xs-2 ankunftrahmen-u ankunftrahmen-r">@Html.DisplayFor(e => e.vorname)</div>
-            <div class="col-xs-3 ankunftrahmen-u">@Html.DisplayFor(e => e.geburtsdatum)</div>
-            <div class="col-xs-3 ankunftrahmen-l ankunftrahmen-u ankunftrahmen-r">@Html.DisplayFor(e => e.email)</div>
-            <div class="col-xs-2 ankunftrahmen-u ankunftrahmen-r">@Html.DisplayFor(e => e.zimmernummer)</div>
-        </div>
-        <div class="row text-center">
-            <div class="col-xs-2 ankunftrahmen-l ankunftrahmen-u ankunftrahmen-r">@Html.DisplayFor(e => e.nachname)</div>
-            <div class="col-xs-2 ankunftrahmen-u ankunftrahmen-r">@Html.DisplayFor(e => e.vorname)</div>
-            <div class="col-xs-3 ankunftrahmen-u">@Html.DisplayFor(e => e.geburtsdatum)</div>
-            <div class="col-xs-3 ankunftrahmen-l ankunftrahmen-u ankunftrahmen-r">@Html.DisplayFor(e => e.email)</div>
-            <div class="col-xs-2 ankunftrahmen-u ankunftrahmen-r">@Html.DisplayFor(e => e.zimmernummer)</div>
-        </div><div class="row text-center" id="ankunft-view">
-            <div class="col-xs-2 ankunftrahmen-l ankunftrahmen-u ankunftrahmen-r">@Html.DisplayFor(e => e.nachname)</div>
-            <div class="col-xs-2 ankunftrahmen-u ankunftrahmen-r">@Html.DisplayFor(e => e.vorname)</div>
-            <div class="col-xs-3 ankunftrahmen-u">@Html.DisplayFor(e => e.geburtsdatum)</div>
-            <div class="col-xs-3 ankunftrahmen-l ankunftrahmen-u ankunftrahmen-r">@Html.DisplayFor(e => e.email)</div>
-            <div class="col-xs-2 ankunftrahmen-u ankunftrahmen-r">@Html.DisplayFor(e => e.zimmernummer)</div>
-        </div>
-        <div class="row text-center">
-            <div class="col-xs-2 ankunftrahmen-l ankunftrahmen-u ankunftrahmen-r">@Html.DisplayFor(e => e.nachname)</div>
-            <div class="col-xs-2 ankunftrahmen-u ankunftrahmen-r">@Html.DisplayFor(e => e.vorname)</div>
-            <div class="col-xs-3 ankunftrahmen-u">@Html.DisplayFor(e => e.geburtsdatum)</div>
-            <div class="col-xs-3 ankunftrahmen-l ankunftrahmen-u ankunftrahmen-r">@Html.DisplayFor(e => e.email)</div>
-            <div class="col-xs-2 ankunftrahmen-u ankunftrahmen-r">@Html.DisplayFor(e => e.zimmernummer)</div>
-        </div><div class="row text-center" id="ankunft-view">
-            <div class="col-xs-2 ankunftrahmen-l ankunftrahmen-u ankunftrahmen-r">@Html.DisplayFor(e => e.nachname)</div>
-            <div class="col-xs-2 ankunftrahmen-u ankunftrahmen-r">@Html.DisplayFor(e => e.vorname)</div>
-            <div class="col-xs-3 ankunftrahmen-u">@Html.DisplayFor(e => e.geburtsdatum)</div>
-            <div class="col-xs-3 ankunftrahmen-l ankunftrahmen-u ankunftrahmen-r">@Html.DisplayFor(e => e.email)</div>
-            <div class="col-xs-2 ankunftrahmen-u ankunftrahmen-r">@Html.DisplayFor(e => e.zimmernummer)</div>
-        </div>
-        <div class="row text-center">
-            <div class="col-xs-2 ankunftrahmen-l ankunftrahmen-u ankunftrahmen-r">@Html.DisplayFor(e => e.nachname)</div>
-            <div class="col-xs-2 ankunftrahmen-u ankunftrahmen-r">@Html.DisplayFor(e => e.vorname)</div>
-            <div class="col-xs-3 ankunftrahmen-u">@Html.DisplayFor(e => e.geburtsdatum)</div>
-            <div class="col-xs-3 ankunftrahmen-l ankunftrahmen-u ankunftrahmen-r">@Html.DisplayFor(e => e.email)</div>
-            <div class="col-xs-2 ankunftrahmen-u ankunftrahmen-r">@Html.DisplayFor(e => e.zimmernummer)</div>
-        </div><div class="row text-center" id="ankunft-view">
-            <div class="col-xs-2 ankunftrahmen-l ankunftrahmen-u ankunftrahmen-r">@Html.DisplayFor(e => e.nachname)</div>
-            <div class="col-xs-2 ankunftrahmen-u ankunftrahmen-r">@Html.DisplayFor(e => e.vorname)</div>
-            <div class="col-xs-3 ankunftrahmen-u">@Html.DisplayFor(e => e.geburtsdatum)</div>
-            <div class="col-xs-3 ankunftrahmen-l ankunftrahmen-u ankunftrahmen-r">@Html.DisplayFor(e => e.email)</div>
-            <div class="col-xs-2 ankunftrahmen-u ankunftrahmen-r">@Html.DisplayFor(e => e.zimmernummer)</div>
-        </div>
-        <div class="row text-center">
-            <div class="col-xs-2 ankunftrahmen-l ankunftrahmen-u ankunftrahmen-r">@Html.DisplayFor(e => e.nachname)</div>
-            <div class="col-xs-2 ankunftrahmen-u ankunftrahmen-r">@Html.DisplayFor(e => e.vorname)</div>
-            <div class="col-xs-3 ankunftrahmen-u">@Html.DisplayFor(e => e.geburtsdatum)</div>
-            <div class="col-xs-3 ankunftrahmen-l ankunftrahmen-u ankunftrahmen-r">@Html.DisplayFor(e => e.email)</div>
-            <div class="col-xs-2 ankunftrahmen-u ankunftrahmen-r">@Html.DisplayFor(e => e.zimmernummer)</div>
-        </div><div class="row text-center" id="ankunft-view">
-            <div class="col-xs-2 ankunftrahmen-l ankunftrahmen-u ankunftrahmen-r">@Html.DisplayFor(e => e.nachname)</div>
-            <div class="col-xs-2 ankunftrahmen-u ankunftrahmen-r">@Html.DisplayFor(e => e.vorname)</div>
-            <div class="col-xs-3 ankunftrahmen-u">@Html.DisplayFor(e => e.geburtsdatum)</div>
-            <div class="col-xs-3 ankunftrahmen-l ankunftrahmen-u ankunftrahmen-r">@Html.DisplayFor(e => e.email)</div>
-            <div class="col-xs-2 ankunftrahmen-u ankunftrahmen-r">@Html.DisplayFor(e => e.zimmernummer)</div>
-        </div>
-        <div class="row text-center">
-            <div class="col-xs-2 ankunftrahmen-l ankunftrahmen-u ankunftrahmen-r">@Html.DisplayFor(e => e.nachname)</div>
-            <div class="col-xs-2 ankunftrahmen-u ankunftrahmen-r">@Html.DisplayFor(e => e.vorname)</div>
-            <div class="col-xs-3 ankunftrahmen-u">@Html.DisplayFor(e => e.geburtsdatum)</div>
-            <div class="col-xs-3 ankunftrahmen-l ankunftrahmen-u ankunftrahmen-r">@Html.DisplayFor(e => e.email)</div>
-            <div class="col-xs-2 ankunftrahmen-u ankunftrahmen-r">@Html.DisplayFor(e => e.zimmernummer)</div>
-        </div><div class="row text-center" id="ankunft-view">
-            <div class="col-xs-2 ankunftrahmen-l ankunftrahmen-u ankunftrahmen-r">@Html.DisplayFor(e => e.nachname)</div>
-            <div class="col-xs-2 ankunftrahmen-u ankunftrahmen-r">@Html.DisplayFor(e => e.vorname)</div>
-            <div class="col-xs-3 ankunftrahmen-u">@Html.DisplayFor(e => e.geburtsdatum)</div>
-            <div class="col-xs-3 ankunftrahmen-l ankunftrahmen-u ankunftrahmen-r">@Html.DisplayFor(e => e.email)</div>
-            <div class="col-xs-2 ankunftrahmen-u ankunftrahmen-r">@Html.DisplayFor(e => e.zimmernummer)</div>
-        </div>
-        <div class="row text-center">
-            <div class="col-xs-2 ankunftrahmen-l ankunftrahmen-u ankunftrahmen-r">@Html.DisplayFor(e => e.nachname)</div>
-            <div class="col-xs-2 ankunftrahmen-u ankunftrahmen-r">@Html.DisplayFor(e => e.vorname)</div>
-            <div class="col-xs-3 ankunftrahmen-u">@Html.DisplayFor(e => e.geburtsdatum)</div>
-            <div class="col-xs-3 ankunftrahmen-l ankunftrahmen-u ankunftrahmen-r">@Html.DisplayFor(e => e.email)</div>
-            <div class="col-xs-2 ankunftrahmen-u ankunftrahmen-r">@Html.DisplayFor(e => e.zimmernummer)</div>
-        </div>*@
-    </div>
+
+        @foreach (var a in Model)
+        {
+                if (a.id % 2 == 0)
+                {
+                    <div class="row text-center" id="ankunft-view">
+                        <div class="col-xs-2 ankunftrahmen-l ankunftrahmen-u ankunftrahmen-r">@a.nachname</div>
+                        <div class="col-xs-2 ankunftrahmen-u ankunftrahmen-r">@a.vorname</div>
+                        <div class="col-xs-3 ankunftrahmen-u">@a.geburtsdatum.ToString("dd/MM/yyyy")</div>
+                        <div class="col-xs-3 ankunftrahmen-l ankunftrahmen-u ankunftrahmen-r">@a.email</div>
+                        <div class="col-xs-2 ankunftrahmen-u ankunftrahmen-r">@a.zimmernummer</div>
+                    </div>
+                }
+                else
+                {
+                    <div class="row text-center">
+                        <div class="col-xs-2 ankunftrahmen-l ankunftrahmen-u ankunftrahmen-r">@a.nachname</div>
+                        <div class="col-xs-2 ankunftrahmen-u ankunftrahmen-r">@a.vorname</div>
+                        <div class="col-xs-3 ankunftrahmen-u">@a.geburtsdatum.ToString("dd/MM/yyyy")</div>
+                        <div class="col-xs-3 ankunftrahmen-l ankunftrahmen-u ankunftrahmen-r">@a.email</div>
+                        <div class="col-xs-2 ankunftrahmen-u ankunftrahmen-r">@a.zimmernummer</div>
+                    </div>
+                }
+            }
+       
+
+
+
+
+</div>
 </div>
 
 <script src="~/Scripts/JavaScript.js"></script>

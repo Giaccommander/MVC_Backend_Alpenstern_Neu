@@ -5,36 +5,6 @@
     ViewBag.Title = "Index";
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <form action="/Rueckruf/RueckrufNeu" method="post">
     <div class="container">
         <div class="row">
@@ -48,35 +18,36 @@
                 <div class="col-lg-1"><h4>Check</h4></div>
             </div>
         </div>
-        @{ 
+        @{
             int anz = 0;
             foreach (var x in Model)
             {
                 anz++;
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="col-lg-1">
-                        <p>@anz</p>
-                    </div>
-                    <div class="col-lg-3">
-                        <p>@x.name</p>
-                    </div>
-                    <div class="col-lg-2">
-                        <p>@x.grund</p>
-                    </div>
-                    <div class="col-lg-2">
-                        <p>@x.datumWann</p>
-                    </div>
-                    <div class="col-lg-3">
-                        <p>@x.telefon</p>
-                    </div>
-                    <div class="col-lg-1">
-                        <input type="checkbox" class="form-control" />
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="col-lg-1">
+                            <p>@anz</p>
+                        </div>
+                        <div class="col-lg-3">
+                            <p>@x.name</p>
+                        </div>
+                        <div class="col-lg-2">
+                            <p>@x.grund</p>
+                        </div>
+                        <div class="col-lg-2">
+                            <p>@x.datumWann</p>
+                        </div>
+                        <div class="col-lg-3">
+                            <p>@x.telefon</p>
+                        </div>
+                        <div class="col-lg-1">
+                            @Html.ActionLink("Bearbeiten", "rueckrufBearbeiten", "Rueckruf")
+
+                        </div>
                     </div>
                 </div>
-            </div>
-                }
             }
+        }
         <div class="row">
             <div class="col-lg-2" style="padding:10px 0px 0px 10px;">
                 <button type="submit">Neu</button>

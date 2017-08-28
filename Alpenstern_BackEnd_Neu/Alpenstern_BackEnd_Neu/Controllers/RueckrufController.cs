@@ -1,14 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Alpenstern_BackEnd_Neu.Models;
+
 
 namespace Alpenstern_BackEnd_Neu.Controllers
 {
     public class RueckrufController : Controller
     {
+        private alpensternEntities_Neu db = new alpensternEntities_Neu();
         // GET: Rueckruf
         public ActionResult Index()
         {
@@ -36,6 +41,20 @@ namespace Alpenstern_BackEnd_Neu.Controllers
 
         public ActionResult RueckrufNeu()
         {
+            return View();
+        }
+
+        public ActionResult rueckrufBearbeiten(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Rueckruf rueckruf = db.Rueckruf.Find(id);
+            if (rueckruf == null)
+            {
+                return HttpNotFound();
+            }
             return View();
         }
     }

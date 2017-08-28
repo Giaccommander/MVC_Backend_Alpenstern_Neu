@@ -265,21 +265,6 @@
     <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>alpensterndb.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Testmodel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Testmodel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Testmodel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Testmodel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Testmodel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Testmodel.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Models\Zimmer.cs">
       <DependentUpon>alpensterndb.tt</DependentUpon>
     </Compile>
@@ -359,16 +344,6 @@
       <DependentUpon>alpensterndb.edmx</DependentUpon>
       <LastGenOutput>alpensterndb.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\Testmodel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Testmodel.edmx</DependentUpon>
-      <LastGenOutput>Testmodel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\Testmodel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Testmodel.edmx</DependentUpon>
-      <LastGenOutput>Testmodel.cs</LastGenOutput>
-    </Content>
     <Content Include="Scripts\02_BuchenJava.js" />
     <Content Include="Scripts\ai.0.22.19-build00125.js" />
     <Content Include="Scripts\ai.0.22.19-build00125.min.js" />
@@ -378,13 +353,6 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <EntityDeploy Include="Models\Testmodel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Testmodel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Testmodel.edmx.diagram">
-      <DependentUpon>Testmodel.edmx</DependentUpon>
     </Content>
     <EntityDeploy Include="Models\alpensterndb.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -446,6 +414,7 @@
     <Content Include="Views\Logins\Index.cshtml" />
     <Content Include="Views\Ort\LandListe.cshtml" />
     <Content Include="Views\Ort\LandDetails.cshtml" />
+    <Content Include="Views\Rueckruf\rueckrufBearbeiten.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

@@ -26,10 +26,12 @@ namespace Alpenstern_BackEnd_Neu.Controllers
                 {
                     var vmRueckruf = new RueckrufVM();
 
+                    vmRueckruf.id = x.id;
                     vmRueckruf.name = x.name;
                     vmRueckruf.telefon = x.telefon;
                     vmRueckruf.grund = x.grund;
                     vmRueckruf.datumWann = x.datum_erhalten;
+                    vmRueckruf.datumErledigt = x.datum_erledigt;
 
                     rrVM.Add(vmRueckruf);
                 }
@@ -44,6 +46,7 @@ namespace Alpenstern_BackEnd_Neu.Controllers
             return View();
         }
 
+        [HttpGet]
         public ActionResult rueckrufBearbeiten(int? id)
         {
             if (id == null)
@@ -55,6 +58,26 @@ namespace Alpenstern_BackEnd_Neu.Controllers
             {
                 return HttpNotFound();
             }
+            return View(rueckruf);
+        }
+
+        [HttpPost]
+        public ActionResult rueckrufBearbeitet(RueckrufVM rr)
+        {
+            var dbrueckruf = new Rueckruf();
+
+            dbrueckruf.name = rr.name;
+            dbrueckruf.grund = rr.grund;
+            dbrueckruf.telefon = rr.telefon;
+            dbrueckruf.datum_erhalten = rr.datumWann;
+            dbrueckruf.datum_erledigt = rr.datumErledigt;
+
+            using (var db = new alpensternEntities_Neu())
+            {
+                db.Rueckruf.Add(dbrueckruf);
+                db.SaveChanges();
+            }
+
             return View();
         }
     }

@@ -11,6 +11,7 @@ namespace Alpenstern_BackEnd_Neu.Models
         public string name { get; set; }
         public string telefon { get; set; }
         public string grund { get; set; }
-        public DateTime datumWann { get; set; }       
+        public DateTime datumWann { get; set; }  
+        public DateTime? datumErledigt { get; set; }     
     }
 }

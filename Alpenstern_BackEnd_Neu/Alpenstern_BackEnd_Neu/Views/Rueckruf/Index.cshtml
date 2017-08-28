@@ -5,57 +5,58 @@
     ViewBag.Title = "Index";
 }
 
+
+
 <form action="/Rueckruf/RueckrufNeu" method="post">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <h2>Rückruf Funktion</h2>
-                <div class="col-lg-1"><h4>Anz.</h4></div>
-                <div class="col-lg-3"><h4>Name</h4></div>
+                <div class="col-lg-2"><h4>Anz.</h4></div>
+                <div class="col-lg-2"><h4>Name</h4></div>
                 <div class="col-lg-2"><h4>Grund</h4></div>
                 <div class="col-lg-2"><h4>Datum</h4></div>
-                <div class="col-lg-3"><h4>Telefon</h4></div>
-                <div class="col-lg-1"><h4>Check</h4></div>
+                <div class="col-lg-2"><h4>Telefon</h4></div>
+                <div class="col-lg-2"><h4>Bearbeiten</h4></div>
             </div>
         </div>
         @{
             int anz = 0;
             foreach (var x in Model)
             {
-                anz++;
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="col-lg-1">
-                            <p>@anz</p>
-                        </div>
-                        <div class="col-lg-3">
-                            <p>@x.name</p>
-                        </div>
-                        <div class="col-lg-2">
-                            <p>@x.grund</p>
-                        </div>
-                        <div class="col-lg-2">
-                            <p>@x.datumWann</p>
-                        </div>
-                        <div class="col-lg-3">
-                            <p>@x.telefon</p>
-                        </div>
-                        <div class="col-lg-1">
-                            @Html.ActionLink("Bearbeiten", "rueckrufBearbeiten", "Rueckruf")
-
+                if (x.datumErledigt == null)
+                {
+                    anz++;
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="col-lg-2">
+                                <p>@anz</p>
+                            </div>
+                            <div class="col-lg-2">
+                                <p>@x.name</p>
+                            </div>
+                            <div class="col-lg-2">
+                                <p>@x.grund</p>
+                            </div>
+                            <div class="col-lg-2">
+                                <p>@x.datumWann</p>
+                            </div>
+                            <div class="col-lg-2">
+                                <p>@x.telefon</p>
+                            </div>
+                            <div class="col-lg-2">
+                                @Html.ActionLink("Bearbeiten", "rueckrufBearbeiten", new { id = x.id }, null)
+                            </div>
                         </div>
                     </div>
-                </div>
+                }               
             }
         }
         <div class="row">
             <div class="col-lg-2" style="padding:10px 0px 0px 10px;">
                 <button type="submit">Neu</button>
             </div>
-            <div class="col-lg-8"></div>
-            <div class="col-lg-2" style="padding:10px 0px 0px 80px;">
-                <button type="button">Erledigt</button>
-            </div>
+            <div class="col-lg-8"></div>            
         </div>
     </div>
 </form>

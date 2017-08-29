@@ -1,0 +1,48 @@
+﻿@model Alpenstern_BackEnd_Neu.Models.Mitarbeiter
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Mitarbeiter: </h2>
+
+<h3>
+    Sind Sie sicher, das Sie diesen Mitarbeiter entfernen wollen?
+</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.vorname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.vorname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.nachname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nachname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.passwort)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.passwort)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Entfernen" class="btn btn-default" /> |
+            @Html.ActionLink("Zurück zur Liste", "Index")
+        </div>
+    }
+</div>

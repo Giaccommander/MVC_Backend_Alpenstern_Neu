@@ -19,34 +19,40 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/Home/Index">Login</a>
+                @if (!Context.User.Identity.IsAuthenticated)
+                {
+                    <a class="navbar-brand" href="/Home/Index">Login</a>
+                }
             </div>
-            <div id="navbar" class="navbar-collapse collapse">                               
-               
-                    @if (Context.User.Identity.IsAuthenticated)
-                    {
-                        <ul class="nav navbar-nav">
-                            <li><a href="/Authentifizierung/MitarbeiterAnlegen">MA Anlegen<span class="sr-only">(current)</span></a></li>
-                            <li><a href="/Druckansicht/Index">Dashboard<span class="sr-only">(current)</span></a></li>
-                            <li><a href="/Buchung/Index">Buchungen<span class="sr-only">(current)</span></a></li>
-                            <li><a href="/Abreise/Index">Abreise<span class="sr-only">(current)</span></a></li>
-                            <li><a href="/Home/Ankunft">Ankunft<span class="sr-only">(current)</span></a></li>
-                            <li><a href="/Rueckruf/Index">Rückruf<span class="sr-only">(current)</span></a></li>
-
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Preise bearbeiten<span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="/Menues/Edit">Restaurant<span class="sr-only">(current)</span></a></li>
-                                    <li><a href="/Spa/Index">Spa - Wellness<span class="sr-only">(current)</span></a></li>                                   
-                                    <li><a href="/Zimmer/zimmerListe">Zimmer<span class="sr-only">(current)</span></a></li>
-                                    <li><a href="/Sortiment/Speciale">Specials<span class="sr-only">(current)</span></a></li>
-                                </ul>
-                            </li>
-                            <li class="active"><a href="/Authentifizierung/Logout">Logout <span class="sr-only">(current)</span></a></li>
-                        </ul>
-                    
-                    }
-                </ul>
+            <div id="navbar" class="navbar-collapse collapse">
+                @if (Context.User.Identity.IsAuthenticated)
+                {
+                    <ul class="nav navbar-nav">
+                        <li><div><h2>@User.Identity.Name</h2></div></li>
+                        <li><a href="/Mitarbeiter/Index">MA Anlegen<span class="sr-only">(current)</span></a></li>
+                        <li><a href="#">Dashboard<span class="sr-only">(current)</span></a></li>
+                        <li><a href="#">Buchungen<span class="sr-only">(current)</span></a></li>
+                        <li><a href="#">Abreise<span class="sr-only">(current)</span></a></li>
+                        <li><a href="#">Ankunft<span class="sr-only">(current)</span></a></li>                      
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Rückruf<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/Rueckruf/Index">Rückrufe bearbeiten<span class="sr-only">(current)</span></a></li>
+                                <li><a href="/Rueckruf/rueckrufBearbeitetListe">Rückrufe bearbeitet<span class="sr-only">(current)</span></a></li>                               
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Preise bearbeiten<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Restaurant<span class="sr-only">(current)</span></a></li>
+                                <li><a href="#">Spa - Wellness<span class="sr-only">(current)</span></a></li>
+                                <li><a href="#">Zimmer<span class="sr-only">(current)</span></a></li>
+                                <li><a href="#">Specials<span class="sr-only">(current)</span></a></li>
+                            </ul>
+                        </li>
+                        <li class="active"><a href="/Home/Logout">Logout <span class="sr-only">(current)</span></a></li>
+                    </ul>
+                }
             </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
     </nav>
@@ -56,7 +62,7 @@
         <footer>
             <p></p>
         </footer>
-    </div>   
+    </div>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

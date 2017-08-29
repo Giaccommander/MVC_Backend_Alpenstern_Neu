@@ -46,7 +46,7 @@ namespace Alpenstern_BackEnd_Neu.Controllers
         [AllowAnonymous]
         public ActionResult Index(LoginVM lvm)
         {
-            using (var datenbank = new alpensternEntities_Neu())
+            using (var datenbank = new alpenstern_finalEntities())
             {
                 //Login getrennt durch .
                 var loginString = lvm.Login.Split('.');
@@ -84,7 +84,7 @@ namespace Alpenstern_BackEnd_Neu.Controllers
 
                         System.Web.HttpContext.Current.Response.Cookies.Add(authCookie);
 
-                        return RedirectToAction("Ankunft");
+                        return RedirectToAction("LoginSucces");
                     }
                 }
             }
@@ -92,11 +92,15 @@ namespace Alpenstern_BackEnd_Neu.Controllers
         }
 
         [Authorize]
-        public ActionResult Ankunft()
+        public ActionResult LoginSucces()
         {
-            ViewBag.Message = "Ankunft Übersicht";
-
             return View();
+        }
+
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index");
         }
     }
 }

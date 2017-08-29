@@ -5,9 +5,7 @@
     ViewBag.Title = "Index";
 }
 
-
-
-<form action="/Rueckruf/RueckrufNeu" method="post">
+<form action="/Rueckruf/RueckrufNeu" method="get">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -54,7 +52,7 @@
         }
         <div class="row">
             <div class="col-lg-2" style="padding:10px 0px 0px 10px;">
-                <button type="submit">Neu</button>
+                <input type="submit" name="neu_erstellen" value="Neuen Rückruf erstellen" />
             </div>
             <div class="col-lg-8"></div>            
         </div>

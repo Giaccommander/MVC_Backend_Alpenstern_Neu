@@ -7,17 +7,18 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Alpenstern_BackEnd_Neu.Models;
-
+using System.Globalization;
 
 namespace Alpenstern_BackEnd_Neu.Controllers
 {
     public class RueckrufController : Controller
     {
-        private alpensternEntities_Neu db = new alpensternEntities_Neu();
+        private alpenstern_finalEntities db = new alpenstern_finalEntities();      
+
         // GET: Rueckruf
         public ActionResult Index()
         {
-            using (var db = new alpensternEntities_Neu())
+            using (var db = new alpenstern_finalEntities())
             {
                 var dbRueckruf = db.Rueckruf.ToList();
                 var rrVM = new List<RueckrufVM>();
@@ -34,16 +35,35 @@ namespace Alpenstern_BackEnd_Neu.Controllers
                     vmRueckruf.datumErledigt = x.datum_erledigt;
 
                     rrVM.Add(vmRueckruf);
-                }
-                        
+                }                        
             return View(rrVM);
             }
-
         }
 
+        [HttpGet]   
         public ActionResult RueckrufNeu()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult RueckrufNeu(RueckrufVM rrVM)
+        {                       
+            var dbRueckruf = new Rueckruf();
+           
+            dbRueckruf.id = rrVM.id;
+            dbRueckruf.name = rrVM.name;
+            dbRueckruf.grund = rrVM.grund;
+            dbRueckruf.datum_erhalten = DateTime.Now.ToUniversalTime();
+            dbRueckruf.telefon = rrVM.telefon;
+            dbRueckruf.datum_erledigt = null;
+
+            using (var db = new alpenstern_finalEntities())
+            {
+                db.Rueckruf.Add(dbRueckruf);
+                db.SaveChanges();
+            }
+            return RedirectToAction("Index");
         }
 
         [HttpGet]
@@ -62,23 +82,50 @@ namespace Alpenstern_BackEnd_Neu.Controllers
         }
 
         [HttpPost]
-        public ActionResult rueckrufBearbeitet(RueckrufVM rr)
+        public ActionResult rueckrufBearbeitet(Rueckruf rr)
         {
-            var dbrueckruf = new Rueckruf();
 
-            dbrueckruf.name = rr.name;
-            dbrueckruf.grund = rr.grund;
-            dbrueckruf.telefon = rr.telefon;
-            dbrueckruf.datum_erhalten = rr.datumWann;
-            dbrueckruf.datum_erledigt = rr.datumErledigt;
-
-            using (var db = new alpensternEntities_Neu())
+            using (var db = new alpenstern_finalEntities())
             {
-                db.Rueckruf.Add(dbrueckruf);
+                //erstellen einer Variable ... speichert den wert der gesuchten id 
+                var rueckruf = db.Rueckruf.Find(rr.id);
+
+                //erstelle ein neues Datum 
+                rueckruf.datum_erhalten = DateTime.Now.ToUniversalTime();
+
+                //in der Datenbank besthet ein eintrag mit einen status
+                //EntityState.Modified = Modifizier den Status mit der mitgegebenen Variable
+                db.Entry(rueckruf).State = EntityState.Modified;
+
+                //Datenbank änderungen abspeichern
                 db.SaveChanges();
             }
+            return RedirectToAction("Index");
+        }
 
-            return View();
+        [HttpGet]
+        public ActionResult rueckrufBearbeitetListe()
+        {
+            using (var db = new alpenstern_finalEntities())
+            {
+                var dbRueckruf = db.Rueckruf.ToList();
+                var rrVM = new List<RueckrufVM>();
+
+                foreach (var x in dbRueckruf)
+                {
+                    var vmRueckruf = new RueckrufVM();
+
+                    vmRueckruf.id = x.id;
+                    vmRueckruf.name = x.name;
+                    vmRueckruf.telefon = x.telefon;
+                    vmRueckruf.grund = x.grund;
+                    vmRueckruf.datumWann = x.datum_erhalten;
+                    vmRueckruf.datumErledigt = x.datum_erledigt;                    
+
+                    rrVM.Add(vmRueckruf);
+                }
+                return View(rrVM);
+            }
         }
     }
 }

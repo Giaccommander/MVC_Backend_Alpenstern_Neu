@@ -203,65 +203,86 @@
       <DependentUpon>AlpensternDB.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Anfrage.cs">
-      <DependentUpon>AlpensternDB.tt</DependentUpon>
+      <DependentUpon>Local508.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Ausstattung.cs">
-      <DependentUpon>AlpensternDB.tt</DependentUpon>
+      <DependentUpon>Local508.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Bilder.cs">
-      <DependentUpon>AlpensternDB.tt</DependentUpon>
+      <DependentUpon>Local508.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\BilderVM.cs" />
     <Compile Include="Models\Gast.cs">
-      <DependentUpon>AlpensternDB.tt</DependentUpon>
+      <DependentUpon>Local508.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Gastlogin.cs">
-      <DependentUpon>AlpensternDB.tt</DependentUpon>
+      <DependentUpon>Local508.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Kategorie.cs">
-      <DependentUpon>AlpensternDB.tt</DependentUpon>
+      <DependentUpon>Local508.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Kategorieanfrage.cs">
-      <DependentUpon>AlpensternDB.tt</DependentUpon>
+      <DependentUpon>Local508.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Kategorieausstattung.cs">
-      <DependentUpon>AlpensternDB.tt</DependentUpon>
+      <DependentUpon>Local508.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Komplettbuchung.cs">
-      <DependentUpon>AlpensternDB.tt</DependentUpon>
+      <DependentUpon>Local508.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Komplettpaket.cs">
-      <DependentUpon>AlpensternDB.tt</DependentUpon>
+      <DependentUpon>Local508.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Land.cs">
-      <DependentUpon>AlpensternDB.tt</DependentUpon>
+      <DependentUpon>Local508.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Local508.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Local508.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Local508.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Local508.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Local508.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Local508.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Login.cs">
-      <DependentUpon>AlpensternDB.tt</DependentUpon>
+      <DependentUpon>Local508.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Mitarbeiter.cs">
-      <DependentUpon>AlpensternDB.tt</DependentUpon>
+      <DependentUpon>Local508.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Rechnung.cs">
-      <DependentUpon>AlpensternDB.tt</DependentUpon>
+      <DependentUpon>Local508.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Rueckruf.cs">
-      <DependentUpon>AlpensternDB.tt</DependentUpon>
+      <DependentUpon>Local508.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Saison.cs">
-      <DependentUpon>AlpensternDB.tt</DependentUpon>
+      <DependentUpon>Local508.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>Local508.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagrams_Result.cs">
+      <DependentUpon>Local508.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Stadt.cs">
-      <DependentUpon>AlpensternDB.tt</DependentUpon>
+      <DependentUpon>Local508.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>AlpensternDB.tt</DependentUpon>
+      <DependentUpon>Local508.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Zimmer.cs">
-      <DependentUpon>AlpensternDB.tt</DependentUpon>
+      <DependentUpon>Local508.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Zimmerbuchung.cs">
-      <DependentUpon>AlpensternDB.tt</DependentUpon>
+      <DependentUpon>Local508.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -332,6 +353,16 @@
       <DependentUpon>AlpensternDB.edmx</DependentUpon>
       <LastGenOutput>AlpensternDB.cs</LastGenOutput>
     </Content>
+    <Content Include="Models\Local508.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Local508.edmx</DependentUpon>
+      <LastGenOutput>Local508.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Local508.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Local508.edmx</DependentUpon>
+      <LastGenOutput>Local508.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\02_BuchenJava.js" />
     <Content Include="Scripts\ai.0.22.19-build00125.js" />
     <Content Include="Scripts\ai.0.22.19-build00125.min.js" />
@@ -349,11 +380,25 @@
     <Content Include="Models\AlpensternDB.edmx.diagram">
       <DependentUpon>AlpensternDB.edmx</DependentUpon>
     </Content>
+    <EntityDeploy Include="Models\Local508.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Local508.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Local508.edmx.diagram">
+      <DependentUpon>Local508.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\JavaScript.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery-3.1.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.1.1.js" />
+    <Content Include="Scripts\jquery-3.1.1.min.js" />
+    <Content Include="Scripts\jquery-3.1.1.slim.js" />
+    <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
+    <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.1.1.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.filedrop.js" />
+    <Content Include="Scripts\jquery.filedrop.support.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -414,7 +459,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

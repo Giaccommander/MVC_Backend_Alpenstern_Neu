@@ -15,7 +15,8 @@ namespace Alpenstern_BackEnd_Neu.Controllers
 {
     public class BilderController : Controller
     {
-        private alpensternEntities db = new alpensternEntities();
+        private alpenstern_finalEntities db = new alpenstern_finalEntities();
+        private string TempPath;
 
         // GET: Bilder
         public ActionResult Index()
@@ -67,7 +68,7 @@ namespace Alpenstern_BackEnd_Neu.Controllers
         // finden Sie unter http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create( BilderVM img, HttpPostedFileBase file)
+        public ActionResult Create(BilderVM img, HttpPostedFileBase file)
         {
             var dbbilder = new Bilder();
             if (ModelState.IsValid && file != null)
@@ -78,7 +79,7 @@ namespace Alpenstern_BackEnd_Neu.Controllers
                 file.SaveAs(destinationFullPath);
 
                 dbbilder.bilderart = img.bilderart;
-                dbbilder.pfad = "/Content/images/upload/"+fileName;
+                dbbilder.pfad = "/Content/images/upload/" + fileName;
 
                 db.Bilder.Add(dbbilder);
                 db.SaveChanges();
@@ -91,7 +92,7 @@ namespace Alpenstern_BackEnd_Neu.Controllers
         // GET: Bilder/Edit/5
         public ActionResult Edit(int? id)
         {
-            
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -154,5 +155,6 @@ namespace Alpenstern_BackEnd_Neu.Controllers
             }
             base.Dispose(disposing);
         }
+        
     }
 }

@@ -17,7 +17,6 @@ namespace Alpenstern_BackEnd_Neu.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Gast()
         {
-            this.Anfrage = new HashSet<Anfrage>();
             this.Gastlogin = new HashSet<Gastlogin>();
         }
     
@@ -31,8 +30,6 @@ namespace Alpenstern_BackEnd_Neu.Models
         public string telefonnummer { get; set; }
         public string reisepassnummer { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Anfrage> Anfrage { get; set; }
         public virtual Stadt Stadt { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Gastlogin> Gastlogin { get; set; }

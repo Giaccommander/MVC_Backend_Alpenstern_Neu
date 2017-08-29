@@ -24,6 +24,7 @@ namespace Alpenstern_BackEnd_Neu.Models
         public string vorname { get; set; }
         public string nachname { get; set; }
         public string passwort { get; set; }
+        public string salt { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Zimmerbuchung> Zimmerbuchung { get; set; }

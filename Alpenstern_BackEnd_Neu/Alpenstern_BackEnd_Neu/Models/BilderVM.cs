@@ -10,10 +10,10 @@ namespace Alpenstern_BackEnd_Neu.Models
     public class BilderVM
     {
         public int id {get;set;}
-        
+        [Display(Name ="Anzeige Ort")]
         public string bilderart { get; set; }
         
-        
+        [Display(Name ="Original Vorschau")]
         public string pfad { get; set; }
     }
 }

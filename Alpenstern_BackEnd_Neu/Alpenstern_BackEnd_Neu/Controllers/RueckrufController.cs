@@ -54,7 +54,7 @@ namespace Alpenstern_BackEnd_Neu.Controllers
             dbRueckruf.id = rrVM.id;
             dbRueckruf.name = rrVM.name;
             dbRueckruf.grund = rrVM.grund;
-            dbRueckruf.datum_erhalten = DateTime.Now.ToUniversalTime();
+            dbRueckruf.datum_erhalten = DateTime.Now;
             dbRueckruf.telefon = rrVM.telefon;
             dbRueckruf.datum_erledigt = null;
 
@@ -91,9 +91,9 @@ namespace Alpenstern_BackEnd_Neu.Controllers
                 var rueckruf = db.Rueckruf.Find(rr.id);
 
                 //erstelle ein neues Datum 
-                rueckruf.datum_erhalten = DateTime.Now.ToUniversalTime();
+                rueckruf.datum_erledigt = DateTime.Now;
 
-                //in der Datenbank besthet ein eintrag mit einen status
+                //in der Datenbank besteht ein eintrag mit einen status
                 //EntityState.Modified = Modifizier den Status mit der mitgegebenen Variable
                 db.Entry(rueckruf).State = EntityState.Modified;
 

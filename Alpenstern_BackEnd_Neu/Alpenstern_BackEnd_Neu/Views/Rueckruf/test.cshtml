@@ -1,0 +1,59 @@
+﻿@model Alpenstern_BackEnd_Neu.Models.Rueckruf
+
+@{
+    ViewBag.Title = "RueckrufNeu";
+}
+
+@*@Html.Partial("~/Views/Home/_zfind.cshtml")*@
+
+<h2>Neuen Rückruf anlegen</h2>
+<div class="container">
+
+    <form action="/Rueckruf/RueckrufNeu" method="post">
+        <div class="row">
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-lg-2 col-md-2">
+                        @Html.LabelFor(model => model.name)
+                    </div>
+                    <div class="col-lg-10 col-md-10">
+                        @Html.EditorFor(model => model.name)
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-2 col-md-2">
+                    @Html.LabelFor(model => model.grund)
+                </div>
+                <div class="col-lg-10 col-md-10">
+                    @Html.EditorFor(model => model.grund)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-2 col-md-2">
+                    @Html.LabelFor(model => model.datum_erhalten)
+                </div>
+                <div class="col-lg-10 col-md-10">
+                    <input type="date" class="form-control" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-2 col-md-2">
+                    @Html.LabelFor(model => model.telefon)
+                </div>
+                <div class="col-lg-10 col-md-10">
+                    @Html.EditorFor(model => model.telefon)
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-2 col-md-2">
+            </div>
+            <div class="col-lg-10 col-md-10">
+                <input type="submit" name="Fertig" value="Fertig" />
+            </div>
+        </div>
+    </form>
+</div>
+

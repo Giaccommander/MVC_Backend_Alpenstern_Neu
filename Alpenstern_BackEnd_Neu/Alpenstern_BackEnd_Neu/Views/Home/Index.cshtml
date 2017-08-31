@@ -4,33 +4,31 @@
     ViewBag.Title = "Home Page";
 }
 
-<h1>Login</h1>
 
-
-@*@Model.Nachname
-
-    @Model.Vorname*@
-
-@*@Model.geburtsdatum*@
 
 
 @if(Context.User.Identity.IsAuthenticated)
 {
-    <h1>Name: @Context.User.Identity.Name</h1>
+    <h1>Eingelogt ist: @Context.User.Identity.Name</h1>
 }
 
-@using (Html.BeginForm())
+@if (!Context.User.Identity.IsAuthenticated)
 {
-    <div>        
-        @Html.EditorFor(e => e.Login)
-        <label for="Login">Login</label>
-    </div>
+    using (Html.BeginForm())
+    {
+        <h1>Login</h1>
+        <div>
+            @Html.EditorFor(e => e.Login)
+            <label for="Login">Login</label>
+        </div>
 
-    <div>
-        @Html.PasswordFor(e => e.Passwort)
-        <label for="passwort">Passwort</label>
-    </div>
-                              
-    <br />
-    <input type="submit" value="Login" />
+        <div>
+            @Html.PasswordFor(e => e.Passwort)
+            <label for="passwort">Passwort</label>
+        </div>
+
+        <br />
+        <input type="submit" value="Login" />
+    }
 }
+

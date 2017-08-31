@@ -1,4 +1,4 @@
-﻿// Die T4-Codegenerierung ist für Modell 'C:\Users\admin\Source\Repos\MVC_Backend_Alpenstern_Neu\Alpenstern_BackEnd_Neu\Alpenstern_BackEnd_Neu\Models\Testmodel.edmx' aktiviert. 
+﻿// Die T4-Codegenerierung ist für Modell 'C:\Users\admin\Source\Repos\MVC_Backend_Alpenstern_Neu\Alpenstern_BackEnd_Neu\Alpenstern_BackEnd_Neu\Models\Alpenstern508.edmx' aktiviert. 
 // Um die Generierung von Legacycode zu aktivieren, ändern Sie den Wert der Designer-Eigenschaft 'Code Generation Strategy'
 // in 'Legacy ObjectContext'. Diese Eigenschaft wird im Eigenschaftenfenster angezeigt, wenn das Modell
 // im Designer geöffnet ist.

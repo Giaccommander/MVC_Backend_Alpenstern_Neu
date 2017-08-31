@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e62dd728150f464aa6bd1dbb60d75353" Name="Diagram1">
+      <Diagram DiagramId="d439f26fea97425e9cb1b8db2f0bdb16" Name="Diagram1">
         <EntityTypeShape EntityType="alpenstern_finalModel.Anfrage" Width="1.5" PointX="0.75" PointY="10.25" IsExpanded="true" />
         <EntityTypeShape EntityType="alpenstern_finalModel.Ausstattung" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
         <EntityTypeShape EntityType="alpenstern_finalModel.Bilder" Width="1.5" PointX="5.75" PointY="1.5" IsExpanded="true" />

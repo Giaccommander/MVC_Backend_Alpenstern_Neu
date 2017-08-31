@@ -172,6 +172,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AbreiseController.cs" />
+    <Compile Include="Controllers\AnfrageController.cs" />
     <Compile Include="Controllers\AnkunftController.cs" />
     <Compile Include="Controllers\BuchungController.cs" />
     <Compile Include="Controllers\DruckansichtController.cs" />
@@ -222,6 +223,7 @@
     <Compile Include="Models\Anfrage.cs">
       <DependentUpon>Alpenstern508.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\AnfrageDatumVM.cs" />
     <Compile Include="Models\Ausstattung.cs">
       <DependentUpon>Alpenstern508.tt</DependentUpon>
     </Compile>
@@ -464,6 +466,11 @@
     <Content Include="Views\Mitarbeiter\Index.cshtml" />
     <Content Include="Views\Rueckruf\rueckrufBearbeitetListe.cshtml" />
     <Content Include="Views\Rueckruf\RueckrufNeu.cshtml" />
+    <Content Include="Views\Anfrage\Create.cshtml" />
+    <Content Include="Views\Anfrage\Delete.cshtml" />
+    <Content Include="Views\Anfrage\Details.cshtml" />
+    <Content Include="Views\Anfrage\Edit.cshtml" />
+    <Content Include="Views\Anfrage\Aufenthalt.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

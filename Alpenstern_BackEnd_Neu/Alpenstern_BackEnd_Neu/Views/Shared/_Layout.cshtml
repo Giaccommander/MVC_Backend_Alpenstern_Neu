@@ -29,25 +29,27 @@
                 {
                     <ul class="nav navbar-nav">
                         <li><div><h2>@User.Identity.Name</h2></div></li>
-                        <li><a href="/Mitarbeiter/Index">MA Anlegen<span class="sr-only">(current)</span></a></li>
-                        <li><a href="#">Dashboard<span class="sr-only">(current)</span></a></li>
-                        <li><a href="#">Buchungen<span class="sr-only">(current)</span></a></li>
-                        <li><a href="#">Abreise<span class="sr-only">(current)</span></a></li>
-                        <li><a href="#">Ankunft<span class="sr-only">(current)</span></a></li>                      
+
+                        <li><a href="#" id="fehlt">Buchungen<span class="sr-only">(current)</span></a></li>
+                        <li><a href="#" id="fehlt">Abreise<span class="sr-only">(current)</span></a></li>
+                        <li><a href="#" id="fehlt">Ankunft<span class="sr-only">(current)</span></a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Rückruf<span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="/Rueckruf/Index">Rückrufe bearbeiten<span class="sr-only">(current)</span></a></li>
-                                <li><a href="/Rueckruf/rueckrufBearbeitetListe">Rückrufe bearbeitet<span class="sr-only">(current)</span></a></li>                               
+                                <li><a href="/Rueckruf/rueckrufBearbeitetListe">Rückrufe bearbeitet<span class="sr-only">(current)</span></a></li>
                             </ul>
                         </li>
+                        <li>
+                            <a href="/Mitarbeiter/Index">MA Anlegen<span class="sr-only">(current)</span></a>
+                        </li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Preise bearbeiten<span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="fehlt">Preise bearbeiten<span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">Restaurant<span class="sr-only">(current)</span></a></li>
-                                <li><a href="#">Spa - Wellness<span class="sr-only">(current)</span></a></li>
-                                <li><a href="#">Zimmer<span class="sr-only">(current)</span></a></li>
-                                <li><a href="#">Specials<span class="sr-only">(current)</span></a></li>
+                                <li><a href="#" id="fehlt">Restaurant<span class="sr-only">(current)</span></a></li>
+                                <li><a href="#" id="fehlt">Spa - Wellness<span class="sr-only">(current)</span></a></li>
+                                <li><a href="#" id="fehlt">Zimmer<span class="sr-only">(current)</span></a></li>
+                                <li><a href="#" id="fehlt">Specials<span class="sr-only">(current)</span></a></li>
                             </ul>
                         </li>
                         <li class="active"><a href="/Home/Logout">Logout <span class="sr-only">(current)</span></a></li>

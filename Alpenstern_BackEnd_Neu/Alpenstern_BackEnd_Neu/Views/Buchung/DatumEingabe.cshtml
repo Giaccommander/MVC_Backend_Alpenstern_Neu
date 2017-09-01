@@ -1,0 +1,20 @@
+﻿@model Alpenstern_BackEnd_Neu.Models.BuchungVM
+
+@{
+    ViewBag.Title = "DatumEingabe";
+}
+
+<h2>DatumEingabe</h2>
+
+
+@using(Html.BeginForm())
+{
+
+    <p>Von: @Html.EditorFor(m => m.datumVon)</p>
+
+    <p>Bis: @Html.EditorFor(m => m.datumBis)</p>
+
+    <input type="submit" value="Zeige mir freie Zimmer" />
+
+}
+

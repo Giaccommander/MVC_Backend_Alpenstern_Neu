@@ -1,0 +1,16 @@
+﻿@model Alpenstern_BackEnd_Neu.Models.BuchungVM
+
+@{
+    ViewBag.Title = "KategorieWahl";
+}
+
+<h2>KategorieWahl</h2>
+
+<h3>Von: @Model.datumVon.ToString()</h3>
+<h3>Bis: @Model.datumBis.ToString()</h3>
+
+@foreach (var kat in Model.verfuegbareKategorien)
+{
+    <p>Kategorie @kat.Key: @Html.Editor("kat" + kat.Key)</p>
+}
+

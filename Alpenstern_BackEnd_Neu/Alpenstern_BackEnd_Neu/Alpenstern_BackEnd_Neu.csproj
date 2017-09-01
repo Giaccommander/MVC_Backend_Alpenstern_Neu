@@ -217,6 +217,7 @@
     <Compile Include="Models\Bilder.cs">
       <DependentUpon>AlpensternDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\BuchungVM.cs" />
     <Compile Include="Models\Gast.cs">
       <DependentUpon>AlpensternDB.tt</DependentUpon>
     </Compile>
@@ -413,6 +414,8 @@
     <Content Include="Views\Zimmer\AusstattungListe.cshtml" />
     <Content Include="Views\Ort\LandListe.cshtml" />
     <Content Include="Views\Ort\LandDetails.cshtml" />
+    <Content Include="Views\Buchung\DatumEingabe.cshtml" />
+    <Content Include="Views\Buchung\KategorieWahl.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

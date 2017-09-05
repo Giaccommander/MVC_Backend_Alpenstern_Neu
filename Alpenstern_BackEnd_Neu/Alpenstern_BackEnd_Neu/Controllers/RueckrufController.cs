@@ -14,19 +14,19 @@ namespace Alpenstern_BackEnd_Neu.Controllers
     public class RueckrufController : Controller
     {
         //Raum 508
-        //private alpenstern_finalEntities db = new alpenstern_finalEntities();
+        private alpenstern_finalEntities db = new alpenstern_finalEntities();
 
         //AKT-THOR
-        private alpensternEntities_Neu db = new alpensternEntities_Neu();
+        //private alpensternEntities_Neu db = new alpensternEntities_Neu();
 
         // GET: Rueckruf
         public ActionResult Index()
         {
             //Raum 508
-            //using (var db = new alpenstern_finalEntities())
+            using (var db = new alpenstern_finalEntities())
 
             //AKT_THOR
-            using (var db = new alpensternEntities_Neu())
+            //using (var db = new alpensternEntities_Neu())
             {
                 var dbRueckruf = db.Rueckruf.ToList();
                 var rrVM = new List<RueckrufVM>();
@@ -67,10 +67,10 @@ namespace Alpenstern_BackEnd_Neu.Controllers
             dbRueckruf.datum_erledigt = null;
 
             //Raum 508
-            //using (var db = new alpenstern_finalEntities())
+            using (var db = new alpenstern_finalEntities())
 
             //AKT_THOR
-            using (var db = new alpensternEntities_Neu())
+            //using (var db = new alpensternEntities_Neu())
             {
                 db.Rueckruf.Add(dbRueckruf);
                 db.SaveChanges();
@@ -98,10 +98,10 @@ namespace Alpenstern_BackEnd_Neu.Controllers
         {
 
             //Raum 508
-            //using (var db = new alpenstern_finalEntities())
+            using (var db = new alpenstern_finalEntities())
 
             //AKT_THOR
-            using (var db = new alpensternEntities_Neu())
+            //using (var db = new alpensternEntities_Neu())
             {
                 //erstellen einer Variable ... speichert den wert der gesuchten id 
                 var rueckruf = db.Rueckruf.Find(rr.id);
@@ -123,10 +123,10 @@ namespace Alpenstern_BackEnd_Neu.Controllers
         public ActionResult rueckrufBearbeitetListe()
         {
             //Raum 508
-            //using (var db = new alpenstern_finalEntities())
+            using (var db = new alpenstern_finalEntities())
 
             //AKT_THOR
-            using (var db = new alpensternEntities_Neu())
+            //using (var db = new alpensternEntities_Neu())
             {
                 var dbRueckruf = db.Rueckruf.ToList();
                 var rrVM = new List<RueckrufVM>();

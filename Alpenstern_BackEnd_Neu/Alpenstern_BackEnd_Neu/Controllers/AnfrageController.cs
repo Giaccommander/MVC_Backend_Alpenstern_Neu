@@ -12,7 +12,11 @@ namespace Alpenstern_BackEnd_Neu.Controllers
 {
     public class AnfrageController : Controller
     {
-        private alpensternEntities_Neu db = new alpensternEntities_Neu();
+        //Raum 508
+        private alpenstern_finalEntities db = new alpenstern_finalEntities();
+
+        //AKT-THOR
+        //private alpensternEntities_Neu db = new alpensternEntities_Neu();
 
         // GET: Anfrage
         public ActionResult Aufenthalt(AnfrageDatumVM anfrage)
@@ -20,157 +24,170 @@ namespace Alpenstern_BackEnd_Neu.Controllers
             //var anfrage = db.Anfrage.Include(a => a.Gast);
             //return View(anfrage.ToList());
 
-            using (var db = new alpensternEntities_Neu())
+            //Raum 508
+            using (var db = new alpenstern_finalEntities())
+
+            //AKT_THOR
+            //using (var db = new alpensternEntities_Neu())
             {
-                //var dbAnfrage = db.Anfrage.ToList();
-                //var dbzimmerNummer = db.Zimmer.ToList();
-                //var dbgast = db.Gast.ToList();
 
-                //var dAusgabe = new List<AnfrageDatumVM>();
+                var dbAnfrage = db.Anfrage.ToList();
+                var dbGast = db.Gast.ToList();
+                var dbZimmer = db.Zimmer.ToList();
 
-                //foreach (var item in dbAnfrage)
-                //{
-                //    var vmAnfrage = new AnfrageDatumVM();
+                var dbAusgabe = new List<AnfrageDatumVM>();
 
-                //    vmAnfrage.id = item.id;
-                //    vmAnfrage.datumVon = item.datumVon;
-                //    vmAnfrage.datumBis = item.datumBis;
-                //    vmAnfrage.datumAnfrage = item.datumAnfrage;
-                //    vmAnfrage.vorname = anfrage.vorname;
-                //    vmAnfrage.nachname = anfrage.nachname;
+                foreach (var x in dbAnfrage)
+                {
+                    var vmAnfrage = new AnfrageDatumVM();
 
-                //    if (vmAnfrage.zimmerNummer <= 0)
-                //    {
-                //        foreach (var x in dbzimmerNummer)
-                //        {
-                //            vmAnfrage.zimmerNummer = x.zimmerNummer;
-                            
-                //        }
-                //    }
-                //    if (vmAnfrage.vorname == null || vmAnfrage.nachname == null)
-                //    {
-                //        foreach (var y in dbgast)
-                //        {
-                //            vmAnfrage.vorname = y.vorname;
-                //            vmAnfrage.nachname = y.nachname;
-                           
-                //        }
-                //    }
+                    //var xxxxx = new AnfrageDatumVM();
 
+                    vmAnfrage.id = x.id;
+                    vmAnfrage.gastId = x.gast_id;
+                    vmAnfrage.datumVon = x.datumVon;
+                    vmAnfrage.datumBis = x.datumBis;
+                    vmAnfrage.datumAnfrage = x.datumAnfrage;
 
-                    dAusgabe.Add(vmAnfrage);
+                    foreach (var y in dbGast)
+                    {
+                        //var vmGast = new AnfrageDatumVM();
+
+                        ////vmAnfrage.gastId = y.id;
+
+                        //if (vmAnfrage.gastId == y.id)
+                        //{
+                        vmAnfrage.vorname = y.vorname;
+                        vmAnfrage.nachname = y.nachname;
+                    }
+                    foreach (var z in dbZimmer)
+                    {
+                        //var vmZimmer = new AnfrageDatumVM();
+
+                        vmAnfrage.zimmerNummer = z.zimmerNummer;
+
+                        //break;
+                    }
+                    //break;
+                    dbAusgabe.Add(vmAnfrage);
+
                 }
-                return View(dAusgabe);
+
+                //dbAusgabe.Add(xxxxx);
+                return View(dbAusgabe);
+
             }
+
+            //}
         }
 
 
-        // GET: Anfrage/Details/5
-        public ActionResult Details(int? id)
+    // GET: Anfrage/Details/5
+    public ActionResult Details(int? id)
+    {
+        if (id == null)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Anfrage anfrage = db.Anfrage.Find(id);
-            if (anfrage == null)
-            {
-                return HttpNotFound();
-            }
-            return View(anfrage);
+            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
         }
-
-        // GET: Anfrage/Create
-        public ActionResult Create()
+        Anfrage anfrage = db.Anfrage.Find(id);
+        if (anfrage == null)
         {
-            ViewBag.gast_id = new SelectList(db.Gast, "id", "vorname");
-            return View();
+            return HttpNotFound();
         }
+        return View(anfrage);
+    }
 
-        // POST: Anfrage/Create
-        // Aktivieren Sie zum Schutz vor übermäßigem Senden von Angriffen die spezifischen Eigenschaften, mit denen eine Bindung erfolgen soll. Weitere Informationen 
-        // finden Sie unter http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,gast_id,datumVon,datumBis,datumAnfrage,datumBearbeitet")] Anfrage anfrage)
+    // GET: Anfrage/Create
+    public ActionResult Create()
+    {
+        ViewBag.gast_id = new SelectList(db.Gast, "id", "vorname");
+        return View();
+    }
+
+    // POST: Anfrage/Create
+    // Aktivieren Sie zum Schutz vor übermäßigem Senden von Angriffen die spezifischen Eigenschaften, mit denen eine Bindung erfolgen soll. Weitere Informationen 
+    // finden Sie unter http://go.microsoft.com/fwlink/?LinkId=317598.
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public ActionResult Create([Bind(Include = "id,gast_id,datumVon,datumBis,datumAnfrage,datumBearbeitet")] Anfrage anfrage)
+    {
+        if (ModelState.IsValid)
         {
-            if (ModelState.IsValid)
-            {
-                db.Anfrage.Add(anfrage);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            ViewBag.gast_id = new SelectList(db.Gast, "id", "vorname", anfrage.gast_id);
-            return View(anfrage);
-        }
-
-        // GET: Anfrage/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Anfrage anfrage = db.Anfrage.Find(id);
-            if (anfrage == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.gast_id = new SelectList(db.Gast, "id", "vorname", anfrage.gast_id);
-            return View(anfrage);
-        }
-
-        // POST: Anfrage/Edit/5
-        // Aktivieren Sie zum Schutz vor übermäßigem Senden von Angriffen die spezifischen Eigenschaften, mit denen eine Bindung erfolgen soll. Weitere Informationen 
-        // finden Sie unter http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,gast_id,datumVon,datumBis,datumAnfrage,datumBearbeitet")] Anfrage anfrage)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(anfrage).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            ViewBag.gast_id = new SelectList(db.Gast, "id", "vorname", anfrage.gast_id);
-            return View(anfrage);
-        }
-
-        // GET: Anfrage/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Anfrage anfrage = db.Anfrage.Find(id);
-            if (anfrage == null)
-            {
-                return HttpNotFound();
-            }
-            return View(anfrage);
-        }
-
-        // POST: Anfrage/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Anfrage anfrage = db.Anfrage.Find(id);
-            db.Anfrage.Remove(anfrage);
+            db.Anfrage.Add(anfrage);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+        ViewBag.gast_id = new SelectList(db.Gast, "id", "vorname", anfrage.gast_id);
+        return View(anfrage);
     }
+
+    // GET: Anfrage/Edit/5
+    public ActionResult Edit(int? id)
+    {
+        if (id == null)
+        {
+            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        }
+        Anfrage anfrage = db.Anfrage.Find(id);
+        if (anfrage == null)
+        {
+            return HttpNotFound();
+        }
+        ViewBag.gast_id = new SelectList(db.Gast, "id", "vorname", anfrage.gast_id);
+        return View(anfrage);
+    }
+
+    // POST: Anfrage/Edit/5
+    // Aktivieren Sie zum Schutz vor übermäßigem Senden von Angriffen die spezifischen Eigenschaften, mit denen eine Bindung erfolgen soll. Weitere Informationen 
+    // finden Sie unter http://go.microsoft.com/fwlink/?LinkId=317598.
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public ActionResult Edit([Bind(Include = "id,gast_id,datumVon,datumBis,datumAnfrage,datumBearbeitet")] Anfrage anfrage)
+    {
+        if (ModelState.IsValid)
+        {
+            db.Entry(anfrage).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        ViewBag.gast_id = new SelectList(db.Gast, "id", "vorname", anfrage.gast_id);
+        return View(anfrage);
+    }
+
+    // GET: Anfrage/Delete/5
+    public ActionResult Delete(int? id)
+    {
+        if (id == null)
+        {
+            return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        }
+        Anfrage anfrage = db.Anfrage.Find(id);
+        if (anfrage == null)
+        {
+            return HttpNotFound();
+        }
+        return View(anfrage);
+    }
+
+    // POST: Anfrage/Delete/5
+    [HttpPost, ActionName("Delete")]
+    [ValidateAntiForgeryToken]
+    public ActionResult DeleteConfirmed(int id)
+    {
+        Anfrage anfrage = db.Anfrage.Find(id);
+        db.Anfrage.Remove(anfrage);
+        db.SaveChanges();
+        return RedirectToAction("Index");
+    }
+
+    protected override void Dispose(bool disposing)
+    {
+        if (disposing)
+        {
+            db.Dispose();
+        }
+        base.Dispose(disposing);
+    }
+}
 }

@@ -47,10 +47,10 @@ namespace Alpenstern_BackEnd_Neu.Controllers
         public ActionResult Index(LoginVM lvm)
         {
             //Raum 508
-            //using (var datenbank = new alpenstern_finalEntities())
+            using (var datenbank = new alpenstern_finalEntities())
 
             //AKT_THOR
-            using (var datenbank = new alpensternEntities_Neu())
+            //using (var datenbank = new alpensternEntities_Neu())
             {
                 //Login getrennt durch .
                 var loginString = lvm.Login.Split('.');

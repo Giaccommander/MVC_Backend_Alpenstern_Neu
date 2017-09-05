@@ -8,6 +8,7 @@ namespace Alpenstern_BackEnd_Neu.Models
     public class AnfrageDatumVM
     {
         public int id { get; set; }
+        public int gastId { get; set; }
         public DateTime datumVon { get; set; }
         public DateTime datumBis { get; set; }
         public DateTime datumAnfrage { get; set; }

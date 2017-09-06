@@ -52,15 +52,20 @@ namespace Alpenstern_BackEnd_Neu.Controllers
             //AKT_THOR
             //using (var datenbank = new alpensternEntities_Neu())
             {
+                
                 //Login getrennt durch .
-                var loginString = lvm.Login.Split('.');
+                List<string> loginString = lvm.Login.Split('.').ToList();
+                if (loginString.Count != 2)
+                {
+                        new Exception("scheis auf des ka naum");                    
+                }
 
                 //vorname ist 0 stelle
                 var vmVorname = loginString[0];
 
                 //nachname ist 1 stelle
                 var vmNachname = loginString[1];
-
+               
                 //existiert ein Login ?
                 //1
                 if (datenbank.Mitarbeiter.Any(n => n.nachname == vmNachname && n.vorname == vmVorname))

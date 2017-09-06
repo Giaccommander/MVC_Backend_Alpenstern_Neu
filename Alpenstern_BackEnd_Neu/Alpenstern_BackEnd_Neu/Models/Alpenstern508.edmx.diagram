@@ -40,6 +40,8 @@
         <AssociationConnector Association="alpenstern_finalModel.fk__Gastlogin__login" ManuallyRouted="false" />
         <AssociationConnector Association="alpenstern_finalModel.fk__Zimmerbuchung__Mitarbeiter" ManuallyRouted="false" />
         <AssociationConnector Association="alpenstern_finalModel.fk__Zimmerbuchung__Zimmer" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="alpenstern_finalModel.Spa" Width="1.5" PointX="7.375" PointY="7.75" />
+        <EntityTypeShape EntityType="alpenstern_finalModel.sysdiagrams" Width="1.5" PointX="9.375" PointY="7.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -1,70 +1,39 @@
-﻿
+﻿@model IEnumerable<Alpenstern_BackEnd_Neu.Models.Bilder>
+
 @{
     ViewBag.Title = "Index";
 }
-<style>
-    img {
-        max-height:250px;
-        max-width:250px;
-    }
-</style>
-<h2 class="text-center">Bilder Verwaltung und Übersicht</h2>
 
-<div class="container">
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Galerie Zimmer</th>
-                <th>Galerie Spa</th>
-                <th>Galerie Hotel</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Einzelzimmer</td>
-                <td>Alpenspa Außen</td>
-                <td>Alpenstern Fitness Eingang</td>
-            </tr>
-            <tr>
-                <td>Komfort Einzelzimmer</td>
-                <td>Alpenspa Caesarium</td>
-                <td>Alpenstern Frühstück</td>
-            </tr>
-            <tr>
-                <td>Alpenstern Suit</td>
-                <td>Alpenspa Dampfbad</td>
-                <td>Alpenstern Hallenbad</td>
-            </tr>
-            <tr>
-                <td>Gletscher Suit</td>
-                <td>Alpenspa Eingang</td>
-                <td>Alpenstern Kulinarik</td>
-            </tr>
-            <tr>
-                <td>Junior Suit</td>
-                <td>Alpenspa Emotionarium</td>
-                <td>Alpenstern Gletscher</td>
-            </tr>
-            <tr>
-                <td>Zirben Suit</td>
-                <td>Alpenspa Innen</td>
-                <td>Alpenstern Stausee</td>
-            </tr>
-            <tr>
-                <td>Tirol Suit</td>
-                <td>Alpenspa Relaxarium</td>
-                <td>Alpenstern Gourmet</td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>Alpenspa Ruheraum</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>Alpenspa Wuidera Sauna</td>
-                <td></td>
-            </tr>
-        </tbody>
-</div>
+<h2>Index</h2>
 
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.bilderart)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.pfad)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.bilderart)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pfad)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

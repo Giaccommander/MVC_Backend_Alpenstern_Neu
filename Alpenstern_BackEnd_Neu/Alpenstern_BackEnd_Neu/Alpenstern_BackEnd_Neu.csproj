@@ -176,8 +176,8 @@
     <Compile Include="Controllers\BuchungController.cs" />
     <Compile Include="Controllers\DruckansichtController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\RueckrufController.cs" />
     <Compile Include="Controllers\ImagesController.cs" />
+    <Compile Include="Controllers\RueckrufController.cs" />
     <Compile Include="Controllers\SortimentController.cs" />
     <Compile Include="Controllers\SpaController.cs" />
     <Compile Include="Controllers\SpeisenController.cs" />
@@ -376,11 +376,9 @@
     <Content Include="Views\Speisen\Index.cshtml" />
     <Content Include="Views\Home\_zfind.cshtml" />
     <Content Include="Views\Abreise\Index.cshtml" />
-    <Content Include="Views\Images\Index.cshtml" />
     <Content Include="Views\Buchung\Index.cshtml" />
     <Content Include="Views\Buchung\Persoenlichdaten.cshtml" />
     <Content Include="Views\Sortiment\Index.cshtml" />
-    <Content Include="Views\Images\Einstellungen.cshtml" />
     <Content Include="Views\Ankunft\Index.cshtml" />
     <Content Include="Views\Sortiment\Speciale.cshtml" />
     <Content Include="Views\Rueckruf\Index.cshtml" />
@@ -396,6 +394,11 @@
     <Content Include="Views\Vorlage_Logins\Details.cshtml" />
     <Content Include="Views\Vorlage_Logins\Edit.cshtml" />
     <Content Include="Views\Vorlage_Logins\Index.cshtml" />
+    <Content Include="Views\Images\Create.cshtml" />
+    <Content Include="Views\Images\Delete.cshtml" />
+    <Content Include="Views\Images\Details.cshtml" />
+    <Content Include="Views\Images\Edit.cshtml" />
+    <Content Include="Views\Images\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

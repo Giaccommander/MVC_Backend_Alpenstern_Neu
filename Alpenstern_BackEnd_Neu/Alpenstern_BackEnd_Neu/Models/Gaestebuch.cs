@@ -10,10 +10,13 @@
 namespace Alpenstern_BackEnd_Neu.Models
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class sp_helpdiagramdefinition_Result
+    public partial class Gaestebuch
     {
-        public Nullable<int> version { get; set; }
-        public byte[] definition { get; set; }
+        public int id { get; set; }
+        public string vorname { get; set; }
+        public string nachname { get; set; }
+        public string eintrag { get; set; }
     }
 }

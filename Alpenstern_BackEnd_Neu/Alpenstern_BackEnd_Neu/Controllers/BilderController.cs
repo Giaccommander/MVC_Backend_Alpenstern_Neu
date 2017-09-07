@@ -15,7 +15,7 @@ namespace Alpenstern_BackEnd_Neu.Controllers
 {
     public class BilderController : Controller
     {
-        private alpenstern_finalEntities db = new alpenstern_finalEntities();
+        private alpensternEntities db = new alpensternEntities();
         private string TempPath;
 
         // GET: Bilder
@@ -74,12 +74,19 @@ namespace Alpenstern_BackEnd_Neu.Controllers
             if (ModelState.IsValid && file != null)
             {
                 var fileName = Path.GetFileName(file.FileName);
-                var destinationFullPath = Path.Combine(Server.MapPath("~/Content/images/upload/"), fileName);
+                var destinationFullPath = Path.Combine(Server.MapPath("~/Content/images/Upload/"), fileName);
 
                 file.SaveAs(destinationFullPath);
 
+                
+                MemoryStream target = new MemoryStream();
+                file.InputStream.CopyTo(target);
+                byte[] data = target.ToArray();
+
                 dbbilder.bilderart = img.bilderart;
-                dbbilder.pfad = "/Content/images/upload/" + fileName;
+                dbbilder.pfad = "/Content/images/Upload/" + fileName;
+                dbbilder.dbimage = data;
+
 
                 db.Bilder.Add(dbbilder);
                 db.SaveChanges();

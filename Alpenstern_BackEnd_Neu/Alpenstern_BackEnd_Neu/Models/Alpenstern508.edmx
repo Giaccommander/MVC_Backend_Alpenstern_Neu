@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="alpenstern_finalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="alpenstern_finalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Anfrage">
           <Key>
             <PropertyRef Name="id" />
@@ -167,6 +167,15 @@ Warnung 6002: Für Tabelle/Sicht 'alpenstern_final.dbo.Komplettbuchung' ist kein
           <Property Name="monatBis" Type="tinyint" Nullable="false" />
           <Property Name="preisProzent" Type="decimal" Precision="5" Scale="2" Nullable="false" />
         </EntityType>
+        <EntityType Name="Spa">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bezeichnung" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="preis" Type="int" Nullable="false" />
+          <Property Name="einheit" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="Stadt">
           <Key>
             <PropertyRef Name="id" />
@@ -175,6 +184,16 @@ Warnung 6002: Für Tabelle/Sicht 'alpenstern_final.dbo.Komplettbuchung' ist kein
           <Property Name="land_id" Type="int" Nullable="false" />
           <Property Name="bezeichnung" Type="varchar" MaxLength="50" />
           <Property Name="plz" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="Zimmer">
           <Key>
@@ -400,7 +419,9 @@ Warnung 6002: Für Tabelle/Sicht 'alpenstern_final.dbo.Komplettbuchung' ist kein
           <EntitySet Name="Rechnung" EntityType="Self.Rechnung" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Rueckruf" EntityType="Self.Rueckruf" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Saison" EntityType="Self.Saison" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Spa" EntityType="Self.Spa" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Stadt" EntityType="Self.Stadt" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Zimmer" EntityType="Self.Zimmer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Zimmerbuchung" EntityType="Self.Zimmerbuchung" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Gastlogin" EntityType="Self.Gastlogin" store:Type="Tables" store:Schema="dbo">
@@ -490,8 +511,7 @@ Warnung 6002: Für Tabelle/Sicht 'alpenstern_final.dbo.Komplettbuchung' ist kein
             <End Role="Zimmerbuchung" EntitySet="Zimmerbuchung" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="alpenstern_finalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -986,7 +1006,28 @@ Warnung 6002: Für Tabelle/Sicht 'alpenstern_final.dbo.Komplettbuchung' ist kein
             <End Role="Zimmer" EntitySet="Zimmer" />
             <End Role="Zimmerbuchung" EntitySet="Zimmerbuchung" />
           </AssociationSet>
+          <EntitySet Name="Spa" EntityType="alpenstern_finalModel.Spa" />
+          <EntitySet Name="sysdiagrams" EntityType="alpenstern_finalModel.sysdiagrams" />
         </EntityContainer>
+        <EntityType Name="Spa">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="bezeichnung" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="preis" Type="Int32" Nullable="false" />
+          <Property Name="einheit" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1185,6 +1226,27 @@ Warnung 6002: Für Tabelle/Sicht 'alpenstern_final.dbo.Komplettbuchung' ist kein
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="kategorieanfrage_id" ColumnName="kategorieanfrage_id" />
                 <ScalarProperty Name="komplettpaket_id" ColumnName="komplettpaket_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Spa">
+            <EntityTypeMapping TypeName="alpenstern_finalModel.Spa">
+              <MappingFragment StoreEntitySet="Spa">
+                <ScalarProperty Name="einheit" ColumnName="einheit" />
+                <ScalarProperty Name="preis" ColumnName="preis" />
+                <ScalarProperty Name="bezeichnung" ColumnName="bezeichnung" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="alpenstern_finalModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

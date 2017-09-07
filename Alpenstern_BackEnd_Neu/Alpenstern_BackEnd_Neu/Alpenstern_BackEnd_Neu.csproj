@@ -172,6 +172,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AbreiseController.cs" />
+    <Compile Include="Controllers\AnfrageController.cs" />
     <Compile Include="Controllers\AnkunftController.cs" />
     <Compile Include="Controllers\BuchungController.cs" />
     <Compile Include="Controllers\DruckansichtController.cs" />
@@ -222,6 +223,7 @@
     <Compile Include="Models\Anfrage.cs">
       <DependentUpon>Alpenstern508.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\AnfrageDatumVM.cs" />
     <Compile Include="Models\Ausstattung.cs">
       <DependentUpon>Alpenstern508.tt</DependentUpon>
     </Compile>
@@ -273,12 +275,15 @@
     <Compile Include="Models\Saison.cs">
       <DependentUpon>Alpenstern508.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Spa.cs">
+      <DependentUpon>Alpenstern508.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Stadt.cs">
       <DependentUpon>Alpenstern508.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\StadtVM.cs" />
     <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>alpensterndb.tt</DependentUpon>
+      <DependentUpon>Alpenstern508.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Zimmer.cs">
       <DependentUpon>Alpenstern508.tt</DependentUpon>
@@ -447,7 +452,6 @@
     <Content Include="Views\Menues\Index.cshtml" />
     <Content Include="Views\Menues\Edit.cshtml" />
     <Content Include="Views\Zimmer\Index.cshtml" />
-    <Content Include="Views\Spa\Index.cshtml" />
     <Content Include="Views\Druckansicht\Index.cshtml" />
     <Content Include="Views\Zimmer\zimmerListe.cshtml" />
     <Content Include="Views\Logins\Create.cshtml" />
@@ -464,6 +468,15 @@
     <Content Include="Views\Mitarbeiter\Index.cshtml" />
     <Content Include="Views\Rueckruf\rueckrufBearbeitetListe.cshtml" />
     <Content Include="Views\Rueckruf\RueckrufNeu.cshtml" />
+    <Content Include="Views\Anfrage\Create.cshtml" />
+    <Content Include="Views\Anfrage\Delete.cshtml" />
+    <Content Include="Views\Anfrage\Details.cshtml" />
+    <Content Include="Views\Anfrage\Edit.cshtml" />
+    <Content Include="Views\Anfrage\Aufenthalt.cshtml" />
+    <Content Include="Views\Spa\Index.cshtml" />
+    <Content Include="Views\Spa\spaBearbeiten.cshtml" />
+    <Content Include="Views\Spa\spaLoeschen.cshtml" />
+    <Content Include="Views\Spa\spaNeu.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

@@ -13,7 +13,10 @@ namespace Alpenstern_BackEnd_Neu.Controllers
 {
     public class MitarbeiterController : Controller
     {
+        //Raum 508
         //private alpenstern_finalEntities db = new alpenstern_finalEntities();
+
+        //AKT-THOR
         private alpensternEntities_Neu db = new alpensternEntities_Neu();
 
         // GET: Mitarbeiter
@@ -54,7 +57,12 @@ namespace Alpenstern_BackEnd_Neu.Controllers
             dbMitarbeiter.passwort = Hashes.HashBerechnen(dbMitarbeiter.passwort);
 
             //Entitaet in der DB abspeichern
-            using (var db = new alpenstern_finalEntities())
+
+            //Raum 508
+            //using (var db = new alpenstern_finalEntities())
+
+            //AKT_THOR
+            using (var db = new alpensternEntities_Neu())
             {
                 db.Mitarbeiter.Add(dbMitarbeiter);
                 db.SaveChanges();

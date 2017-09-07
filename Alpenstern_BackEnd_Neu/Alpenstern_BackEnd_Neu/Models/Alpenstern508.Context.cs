@@ -44,5 +44,7 @@ namespace Alpenstern_BackEnd_Neu.Models
         public virtual DbSet<Gastlogin> Gastlogin { get; set; }
         public virtual DbSet<Kategorieausstattung> Kategorieausstattung { get; set; }
         public virtual DbSet<Komplettbuchung> Komplettbuchung { get; set; }
+        public virtual DbSet<Spa> Spa { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
     }
 }

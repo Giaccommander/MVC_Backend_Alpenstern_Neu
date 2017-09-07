@@ -1,0 +1,41 @@
+﻿@model Alpenstern_BackEnd_Neu.Models.Spa
+
+<h3>Wollen sie dieses Angebot Löschen?</h3>
+<div>    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.bezeichnung)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bezeichnung)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.preis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.preis)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.einheit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.einheit)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Löschen" class="btn btn-default" /> |
+            @Html.ActionLink("Zurück zur Liste", "Index")
+        </div>
+    }
+</div>

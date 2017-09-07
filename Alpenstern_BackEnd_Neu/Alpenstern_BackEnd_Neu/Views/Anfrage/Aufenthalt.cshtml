@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Alpenstern_BackEnd_Neu.Models.AnfrageDatumVM>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Heutiges Datum: @DateTime.Today.ToShortDateString()</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.datumVon)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.datumBis)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.datumAnfrage)
+        </th> 
+        <th>
+            @Html.DisplayNameFor(model => model.vorname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nachname)
+        </th>      
+        <th>
+            @Html.DisplayNameFor(model => model.zimmerNummer)
+        </th>  
+        <th></th>
+    </tr>
+
+@foreach (var item in Model)
+{
+
+    DateTime datetimeNow = DateTime.Today;
+
+    if (datetimeNow > item.datumVon && datetimeNow < item.datumBis)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.datumVon)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.datumBis)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.datumAnfrage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.vorname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nachname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.zimmerNummer)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.id })
+            </td>
+        </tr>
+    }
+}
+
+</table>

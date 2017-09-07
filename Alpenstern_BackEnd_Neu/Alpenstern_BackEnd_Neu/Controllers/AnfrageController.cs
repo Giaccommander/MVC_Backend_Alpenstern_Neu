@@ -13,7 +13,7 @@ namespace Alpenstern_BackEnd_Neu.Controllers
     public class AnfrageController : Controller
     {
         //Raum 508
-        private alpenstern_finalEntities db = new alpenstern_finalEntities();
+        private alpensternEntities db = new alpensternEntities();
 
         //AKT-THOR
         //private alpensternEntities_Neu db = new alpensternEntities_Neu();
@@ -25,7 +25,7 @@ namespace Alpenstern_BackEnd_Neu.Controllers
             //return View(anfrage.ToList());
 
             //Raum 508
-            using (var db = new alpenstern_finalEntities())
+            using (var db = new alpensternEntities())
 
             //AKT_THOR
             //using (var db = new alpensternEntities_Neu())

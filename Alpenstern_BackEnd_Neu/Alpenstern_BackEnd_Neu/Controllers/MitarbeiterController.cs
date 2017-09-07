@@ -13,11 +13,9 @@ namespace Alpenstern_BackEnd_Neu.Controllers
 {
     public class MitarbeiterController : Controller
     {
-        //Raum 508
-        //private alpenstern_finalEntities db = new alpenstern_finalEntities();
 
         //AKT-THOR
-        private alpensternEntities_Neu db = new alpensternEntities_Neu();
+        private alpensternEntities db = new alpensternEntities();
 
         // GET: Mitarbeiter
         public ActionResult Index()
@@ -62,7 +60,7 @@ namespace Alpenstern_BackEnd_Neu.Controllers
             //using (var db = new alpenstern_finalEntities())
 
             //AKT_THOR
-            using (var db = new alpensternEntities_Neu())
+            using (var db = new alpensternEntities())
             {
                 db.Mitarbeiter.Add(dbMitarbeiter);
                 db.SaveChanges();

@@ -12,11 +12,11 @@ namespace Alpenstern_BackEnd_Neu.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Bilder
+    public partial class Gaestebuch
     {
         public int id { get; set; }
-        public string bilderart { get; set; }
-        public string pfad { get; set; }
-        public byte[] dbimage { get; set; }
+        public string vorname { get; set; }
+        public string nachname { get; set; }
+        public string eintrag { get; set; }
     }
 }

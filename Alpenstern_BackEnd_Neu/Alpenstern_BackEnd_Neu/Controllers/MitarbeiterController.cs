@@ -13,7 +13,8 @@ namespace Alpenstern_BackEnd_Neu.Controllers
 {
     public class MitarbeiterController : Controller
     {
-        private alpenstern_finalEntities db = new alpenstern_finalEntities();
+        //private alpenstern_finalEntities db = new alpenstern_finalEntities();
+        private alpensternEntities_Neu db = new alpensternEntities_Neu();
 
         // GET: Mitarbeiter
         public ActionResult Index()

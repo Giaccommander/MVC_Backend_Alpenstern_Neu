@@ -1,0 +1,78 @@
+﻿@model Alpenstern_BackEnd_Neu.Models.Dinner
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h3>Sind Sie sicher das Sie dieses Menü löschen wollen?</h3>
+<div>
+    <h4>Dinner</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Menü
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bezeichnung)
+        </dd>
+
+        <dt>
+            €
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.preis)
+        </dd>
+
+        <dt>
+            Gang 1
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gang1)
+        </dd>
+
+        <dt>
+            Gang 2
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gang2)
+        </dd>
+
+        <dt>
+            Gang 3
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gang3)
+        </dd>
+
+        <dt>
+            Gang 4
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gang4)
+        </dd>
+
+        <dt>
+            Gang 5
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gang5)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Löschen" class="btn btn-default" /> |
+            @Html.ActionLink("Zurück zum Restaurant", "Index")
+        </div>
+    }
+</div>

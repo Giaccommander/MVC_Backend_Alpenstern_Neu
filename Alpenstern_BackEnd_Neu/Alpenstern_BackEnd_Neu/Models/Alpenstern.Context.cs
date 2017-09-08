@@ -47,5 +47,6 @@ namespace Alpenstern_BackEnd_Neu.Models
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Zimmer> Zimmer { get; set; }
         public virtual DbSet<Zimmerbuchung> Zimmerbuchung { get; set; }
+        public virtual DbSet<Dinner> Dinner { get; set; }
     }
 }

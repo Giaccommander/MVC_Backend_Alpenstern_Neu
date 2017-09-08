@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="alpensternModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="alpensternModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Anfrage">
           <Key>
             <PropertyRef Name="id" />
@@ -32,6 +32,19 @@
           <Property Name="pfad" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="dbimage" Type="varbinary(max)" Nullable="false" />
         </EntityType>
+        <EntityType Name="Dinner">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bezeichnung" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="preis" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="gang1" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="gang2" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="gang3" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="gang4" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="gang5" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="Gaestebuch">
           <Key>
             <PropertyRef Name="id" />
@@ -39,7 +52,7 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="vorname" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="nachname" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="eintrag" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="eintrag" Type="varchar" MaxLength="300" Nullable="false" />
         </EntityType>
         <EntityType Name="Gast">
           <Key>
@@ -406,6 +419,7 @@
           <EntitySet Name="Anfrage" EntityType="Self.Anfrage" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ausstattung" EntityType="Self.Ausstattung" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Bilder" EntityType="Self.Bilder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dinner" EntityType="Self.Dinner" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Gaestebuch" EntityType="Self.Gaestebuch" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Gast" EntityType="Self.Gast" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Gastlogin" EntityType="Self.Gastlogin" Schema="dbo" store:Type="Tables" />
@@ -490,8 +504,7 @@
             <End Role="Zimmerbuchung" EntitySet="Zimmerbuchung" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="alpensternModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -533,7 +546,7 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="vorname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="nachname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="eintrag" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="eintrag" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <EntityType Name="Gast">
           <Key>
@@ -1011,8 +1024,22 @@
             <End Role="Zimmer" EntitySet="Zimmer" />
             <End Role="Zimmerbuchung" EntitySet="Zimmerbuchung" />
           </AssociationSet>
-        </EntityContainer>
-      </Schema>
+          <EntitySet Name="Dinner" EntityType="alpensternModel.Dinner" />
+          </EntityContainer>
+        <EntityType Name="Dinner">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="bezeichnung" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="preis" Type="Decimal" Nullable="false" Precision="5" Scale="2" />
+          <Property Name="gang1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="gang2" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="gang3" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="gang4" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="gang5" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -1242,6 +1269,20 @@
                 <ScalarProperty Name="mitarbeiter_id" ColumnName="mitarbeiter_id" />
                 <ScalarProperty Name="kategorieanfrage_id" ColumnName="kategorieanfrage_id" />
                 <ScalarProperty Name="checkedStatus" ColumnName="checkedStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dinner">
+            <EntityTypeMapping TypeName="alpensternModel.Dinner">
+              <MappingFragment StoreEntitySet="Dinner">
+                <ScalarProperty Name="gang5" ColumnName="gang5" />
+                <ScalarProperty Name="gang4" ColumnName="gang4" />
+                <ScalarProperty Name="gang3" ColumnName="gang3" />
+                <ScalarProperty Name="gang2" ColumnName="gang2" />
+                <ScalarProperty Name="gang1" ColumnName="gang1" />
+                <ScalarProperty Name="preis" ColumnName="preis" />
+                <ScalarProperty Name="bezeichnung" ColumnName="bezeichnung" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

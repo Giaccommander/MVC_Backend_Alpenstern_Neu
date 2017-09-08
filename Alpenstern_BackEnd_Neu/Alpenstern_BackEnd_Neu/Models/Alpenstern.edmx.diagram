@@ -43,7 +43,8 @@
         <AssociationConnector Association="alpensternModel.fk__Stadt__Land" ManuallyRouted="false" />
         <AssociationConnector Association="alpensternModel.fk__Zimmerbuchung__Mitarbeiter" ManuallyRouted="false" />
         <AssociationConnector Association="alpensternModel.fk__Zimmerbuchung__Zimmer" ManuallyRouted="false" />
-      </Diagram>
+        <EntityTypeShape EntityType="alpensternModel.Dinner" Width="1.5" PointX="10.375" PointY="7.75" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

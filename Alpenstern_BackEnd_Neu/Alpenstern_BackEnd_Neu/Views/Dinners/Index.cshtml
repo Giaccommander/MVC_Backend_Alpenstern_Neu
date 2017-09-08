@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Alpenstern_BackEnd_Neu.Models.Dinner>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Alpenstern Restaurant</h2>
+
+<p>
+    @Html.ActionLink("Neues Menü erstellen", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Menü
+        </th>
+        <th>
+            Preis pro Menü
+        </th>
+        <th>
+            Gänge
+      </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.bezeichnung)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.preis)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.gang1)<br />
+            @Html.DisplayFor(modelItem => item.gang2)<br />        
+            @Html.DisplayFor(modelItem => item.gang3)<br />       
+            @Html.DisplayFor(modelItem => item.gang4)<br />        
+            @Html.DisplayFor(modelItem => item.gang5)
+        </td>
+        <td>
+            @Html.ActionLink("Bearbeiten", "Edit", new { id=item.id }) |           
+            @Html.ActionLink("Löschen", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

@@ -175,6 +175,7 @@
     <Compile Include="Controllers\AnfrageController.cs" />
     <Compile Include="Controllers\AnkunftController.cs" />
     <Compile Include="Controllers\BuchungController.cs" />
+    <Compile Include="Controllers\DinnersController.cs" />
     <Compile Include="Controllers\DruckansichtController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginsController.cs" />
@@ -183,8 +184,6 @@
     <Compile Include="Controllers\ImagesController.cs" />
     <Compile Include="Controllers\SortimentController.cs" />
     <Compile Include="Controllers\SpaController.cs" />
-    <Compile Include="Controllers\SpeisenController.cs" />
-    <Compile Include="Controllers\MenuesController.cs" />
     <Compile Include="Controllers\ZimmerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -213,6 +212,9 @@
       <DependentUpon>Alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Bilder.cs">
+      <DependentUpon>Alpenstern.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Dinner.cs">
       <DependentUpon>Alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Gaestebuch.cs">
@@ -249,6 +251,7 @@
       <DependentUpon>Alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LoginVM.cs" />
+    <Compile Include="Models\menueVM.cs" />
     <Compile Include="Models\Mitarbeiter.cs">
       <DependentUpon>Alpenstern.tt</DependentUpon>
     </Compile>
@@ -408,7 +411,6 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Speisen\Index.cshtml" />
     <Content Include="Views\Home\_zfind.cshtml" />
     <Content Include="Views\Abreise\Index.cshtml" />
     <Content Include="Views\Images\Index.cshtml" />
@@ -420,8 +422,6 @@
     <Content Include="Views\Sortiment\Speciale.cshtml" />
     <Content Include="Views\Rueckruf\Index.cshtml" />
     <Content Include="Views\Rueckruf\test.cshtml" />
-    <Content Include="Views\Menues\Index.cshtml" />
-    <Content Include="Views\Menues\Edit.cshtml" />
     <Content Include="Views\Zimmer\Index.cshtml" />
     <Content Include="Views\Druckansicht\Index.cshtml" />
     <Content Include="Views\Zimmer\zimmerListe.cshtml" />
@@ -448,6 +448,10 @@
     <Content Include="Views\Spa\spaBearbeiten.cshtml" />
     <Content Include="Views\Spa\spaLoeschen.cshtml" />
     <Content Include="Views\Spa\spaNeu.cshtml" />
+    <Content Include="Views\Dinners\Create.cshtml" />
+    <Content Include="Views\Dinners\Delete.cshtml" />
+    <Content Include="Views\Dinners\Edit.cshtml" />
+    <Content Include="Views\Dinners\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

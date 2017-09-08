@@ -15,5 +15,6 @@ namespace Alpenstern_BackEnd_Neu.Models
         
         
         public string pfad { get; set; }
+        public byte[] dbimage { get; set; }
     }
 }

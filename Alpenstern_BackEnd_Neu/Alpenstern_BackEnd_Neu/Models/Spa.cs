@@ -10,13 +10,13 @@
 namespace Alpenstern_BackEnd_Neu.Models
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class sp_helpdiagrams_Result
+    public partial class Spa
     {
-        public string Database { get; set; }
-        public string Name { get; set; }
-        public int ID { get; set; }
-        public string Owner { get; set; }
-        public int OwnerID { get; set; }
+        public int id { get; set; }
+        public string bezeichnung { get; set; }
+        public int preis { get; set; }
+        public string einheit { get; set; }
     }
 }

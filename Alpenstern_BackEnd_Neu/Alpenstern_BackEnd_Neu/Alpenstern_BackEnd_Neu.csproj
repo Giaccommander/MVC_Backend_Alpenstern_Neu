@@ -216,6 +216,8 @@
       <DependentUpon>Alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\buchungIndexVM.cs" />
+    <Compile Include="Models\BuchungsVM.cs" />
+    <Compile Include="Models\DruckansichtVM.cs" />
     <Compile Include="Models\Gaestebuch.cs">
       <DependentUpon>Alpenstern.tt</DependentUpon>
     </Compile>

@@ -177,7 +177,7 @@ namespace Alpenstern_BackEnd_Neu.Controllers
                     }
                 }
                 db.SaveChanges();
-                return View();
+                return RedirectToAction("Index","Druckansicht",bVm.radioAuswahl);
             }
         }
     }

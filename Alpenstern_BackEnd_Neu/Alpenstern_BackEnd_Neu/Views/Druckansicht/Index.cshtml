@@ -1,4 +1,4 @@
-﻿
+﻿@model Alpenstern_BackEnd_Neu.Models.PersonDatenVM
 @{
     ViewBag.Title = "Index";
 }
@@ -23,7 +23,8 @@
 
     <div class="row">
         <div class="col-lg-8">
-            Vorname Nachname<br />Musterstrasse 4<br />2580 Musterstadt<br /><br />
+           @Model.vorname
+               @Model.nachname<br />Musterstrasse 4<br />2580 Musterstadt<br /><br />
         </div>
         <div class="col-lg-8">
             <h4 class="schriftfett">Auflistung der Positionen</h4>

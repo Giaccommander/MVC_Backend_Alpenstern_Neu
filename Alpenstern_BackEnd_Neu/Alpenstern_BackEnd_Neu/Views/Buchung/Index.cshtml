@@ -1,177 +1,42 @@
-﻿
-
+﻿@model  Alpenstern_BackEnd_Neu.Models.buchungIndexVM
 
 @{
     ViewBag.Title = "Index";
 }
-<script src="~/Scripts/jquery-1.10.2.js"></script>
 
+<h1 class="text-center"> Buchung Suchen</h1>
+<div class="container">
 
-
-
-<form action="/Buchung/Persoenlichdaten" method="post">
-    <h1 class="text-center"> Buchung Suchen</h1>
-
-    <div class="container">
-        <div class="row text-center">
-            <div class="col-lg-3">
-                <h4>Nachname</h4>
-            </div>
-            <div class="col-lg-3">
-                <h4>Vorname</h4>
-
-            </div>
-            <div class="col-lg-3">
-                <h4>Buchungsnummer</h4>
-            </div>
-            <div class="col-lg-3">
-                <h4>Geburtsdatum</h4>
-            </div>
-        </div>
-        <!--Input-->
-        <div class="row text-center ">
-            <div class="col-lg-3">
-                <input type="text" name="nachname" class="form-control" onchange="ausgeben();" />
-            </div>
-            <div class="col-lg-3">
-                <input type="text" name="vorname" class="form-control" onchange="ausgeben();" />
-            </div>
-            <div class="col-lg-3">
-                <input type="text" name="buchungsnummer" class="form-control" onchange="ausgeben();" />
-            </div>
-            <div class="col-lg-3">
-                <input type="date" name="geburtsdatum" class="form-control" />
-            </div>
-        </div>
-
+    @using (Html.BeginForm())
+    {
         <div class="row">
-            <!--Datum Von-BIS-->
-            <div class="col-lg-3 abstand">
-                <h4>VON</h4>
-                <input id="date" type="date" value="2017-01-01" class="form-control">
-            </div>
-            <div class="col-lg-3 abstand">
-                <h4>BIS</h4>
-                <input id="date" type="date" value="2017-01-01" class="form-control">
-            </div>
-            <!--Personen-->
-            <div class="col-lg-3 abstand">
-                <h4>PERSONEN</h4>
-                <input class="form-control" type="number" name="name" value="" />
-            </div>
-            <!--DropBox-->
-            <div class="col-lg-3 abstand">
-                <h4>Zimmer</h4>
-                <select class="selectpicker form-control">
-                    <group label="Zimmer">
-                        <option>Einzelzimmer</option>
-                        <option>Einzelzimmer Komfort</option>
-                        <option>Juniorsuite</option>
-                        <option>Suite Tirol</option>
-                        <option>Zirbensuite</option>
-                        <option>Gletschersuite</option>
-                        <option>Suite Alpenstern</option>
-                    </group>
-                </select>
-            </div>
-        </div>
-
-        <div class="row">
-
             <div class="row">
-                <div class="col-lg-3">
+                <div class="col-lg-4">
+                    <h3>Nachname</h3>@Html.TextBox("nachname")
+                </div>
+                <div class="col col-lg-4 ">
+                    <h3>Vorname</h3>@Html.TextBox("vorname")
+                </div>
+                <div class="col col-lg-4 ">
+                    <h3>Geburtsdatum</h3>@Html.TextBox("gebdatum")
+                    <input type="submit" Value="Suche" />
 
-                </div>
-                <div class="col col-lg-3 ">
-                    <h3>Nachname</h3>
-                </div>
-                <div class="col col-lg-3 ">
-                    <h3>Vorname</h3>
-                </div>
-                <div class="col col-lg-3 ">
-                    <h3>Buchungsnummer</h3>
                 </div>
             </div>
 
-            <br /><br />
+        </div>
+        foreach (var kunde in Model.Liste)
+        {
+
             <div class="row" id="row1">
                 <div class="table table-bordered">
-                    <div class="col col-lg-3 zeilenHoehe">
-                        <input type="radio" id="checked1" name="fertig"/>
-                    </div>
-
-                    <div class="col col-lg-3 zeilenHoehe">
-                        <p id="nachname0"></p>
-                    </div>
-                    <div class="col col-lg-3 zeilenHoehe">
-                        <p id="vorname0"></p>
-                    </div>
-
-                    <div class="col col-lg-3 zeilenHoehe">
-                        <p id="buchungsnummer0"></p>
-                    </div>
+                    <div class="col-lg-4 zeilenHoehe">@Html.RadioButtonFor(m => m.radioAuswahl, kunde.id)@kunde.nachname</div>
+                    <div class="col-lg-4 zeilenHoehe">@kunde.vorname</div>
+                    <div class="col-lg-4 zeilenHoehe">@kunde.gebdatum</div>
                 </div>
             </div>
+        }
+        ViewBag.kD = "";
+    }
+</div>
 
-            <div class="row" id="row2">
-                <div class="table table-bordered">
-                    <div class="col col-lg-3 zeilenHoehe">
-                        <input type="radio" id="checked2" name="fertig" />
-                    </div>
-
-                    <div class="col col-lg-3 zeilenHoehe">
-                        <p id="nachname1"></p>
-                    </div>
-                    <div class="col col-lg-3 zeilenHoehe">
-                        <p id="vorname1"></p>
-                    </div>
-
-                    <div class="col col-lg-3 zeilenHoehe">
-                        <p id="buchungsnummer1"></p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row" id="row3">
-                <div class="table table-bordered">
-                    <div class="col col-lg-3 zeilenHoehe">
-                        <input type="radio" id="checked3" name="fertig"/>
-                    </div>
-                    <div class="col col-lg-3 zeilenHoehe">
-                        <p id="nachname2"></p>
-                    </div>
-                    <div class="col col-lg-3 zeilenHoehe">
-                        <p id="vorname2"></p>
-                    </div>
-
-                    <div class="col col-lg-3 zeilenHoehe">
-                        <p id="buchungsnummer2"></p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row" id="row4">
-                <div class="table table-bordered">
-                    <div class="col col-lg-3 zeilenHoehe">
-                        <input type="radio" id="checked4" name="fertig" />
-                    </div>
-
-                    <div class="col col-lg-3 zeilenHoehe">
-                        <p id="nachname3"></p>
-                    </div>
-                    <div class="col col-lg-3 zeilenHoehe">
-                        <p id="vorname3"></p>
-                    </div>
-
-                    <div class="col col-lg-3 zeilenHoehe">
-                        <p id="buchungsnummer3"></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <br />
-        <br />
-        <button type="submit">Weiter</button>
-    </div>
-</form>
-<script src="~/Scripts/02_BuchenJava.js"></script>

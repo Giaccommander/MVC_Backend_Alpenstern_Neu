@@ -1,4 +1,4 @@
-﻿@model Alpenstern_BackEnd_Neu.Models.PersonDatenVM
+﻿@model Alpenstern_BackEnd_Neu.Models.DruckansichtVM
 @{
     ViewBag.Title = "Index";
 }
@@ -23,8 +23,7 @@
 
     <div class="row">
         <div class="col-lg-8">
-           @Model.vorname
-               @Model.nachname<br />Musterstrasse 4<br />2580 Musterstadt<br /><br />
+            @Html.LabelFor(e => e.vorname)
         </div>
         <div class="col-lg-8">
             <h4 class="schriftfett">Auflistung der Positionen</h4>
@@ -134,35 +133,35 @@
         <div class="col-lg-3">Datum Unterschrift</div>
     </div>
     <hr />
-<footer>
-    <div class="row">
-        <div class="col-lg-4 schriftfett">Sitz des Unternehmens</div>
-        <div class="col-lg-4 schriftfett">Bankverbindung</div>
-        <div class="col-lg-4 schriftfett">Geschäftsführung</div>
-        
-    </div>
-    <div class="row">
-        <div class="col-lg-4">Musterbetrieb</div>
-        <div class="col-lg-4">SpK Musterbank</div>
-        <div class="col-lg-4">Max Mustermann</div>
-       
-    </div>
-    <div class="row">
-        <div class="col-lg-4">Musterstr.</div>
-        <div class="col-lg-4">IBAN: AT00 0000 0000 0000</div>
-        <div class="col-lg-4">St.-Nr.: 12345/2456</div>
-       
-    </div>
-    <div class="row">
-        <div class="col-lg-4">3213 Mustersatdt</div>
-        <div class="col-lg-4">BIC: KAJSKSXXX</div>
-        <div class="col-lg-4">UST-IdNr.: AT12354</div>
-    </div>
-</footer>
+    <footer>
+        <div class="row">
+            <div class="col-lg-4 schriftfett">Sitz des Unternehmens</div>
+            <div class="col-lg-4 schriftfett">Bankverbindung</div>
+            <div class="col-lg-4 schriftfett">Geschäftsführung</div>
+
+        </div>
+        <div class="row">
+            <div class="col-lg-4">Musterbetrieb</div>
+            <div class="col-lg-4">SpK Musterbank</div>
+            <div class="col-lg-4">Max Mustermann</div>
+
+        </div>
+        <div class="row">
+            <div class="col-lg-4">Musterstr.</div>
+            <div class="col-lg-4">IBAN: AT00 0000 0000 0000</div>
+            <div class="col-lg-4">St.-Nr.: 12345/2456</div>
+
+        </div>
+        <div class="row">
+            <div class="col-lg-4">3213 Mustersatdt</div>
+            <div class="col-lg-4">BIC: KAJSKSXXX</div>
+            <div class="col-lg-4">UST-IdNr.: AT12354</div>
+        </div>
+    </footer>
     <hr />
     <div class="row abstand">
         <div class="col-lg-4">
             <button type="button" class="btn">Drucken</button>
         </div>
     </div>
-    </div>
+</div>

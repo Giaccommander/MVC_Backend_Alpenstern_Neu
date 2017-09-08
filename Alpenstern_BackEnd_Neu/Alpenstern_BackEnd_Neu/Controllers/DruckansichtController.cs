@@ -12,9 +12,13 @@ namespace Alpenstern_BackEnd_Neu.Controllers
         // GET: Druckansicht
         public ActionResult Index(PersonDatenVM vm,buchungIndexVM bi)
         {
+            // Datenbank verbindung
             using(var db = new alpensternEntities())
             {
-
+                // neue variable vom ViewModel
+                var vmd = new DruckansichtVM();
+                // ViewModel befüllen vom PersonenDaten
+                vmd.vorname = vm.vorname;
 
 
 

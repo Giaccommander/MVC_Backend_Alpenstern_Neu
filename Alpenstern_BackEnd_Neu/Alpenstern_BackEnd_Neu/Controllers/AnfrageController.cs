@@ -75,6 +75,7 @@ namespace Alpenstern_BackEnd_Neu.Controllers
 
                 //dbAusgabe.Add(xxxxx);
                 return View(dbAusgabe);
+               
 
             }
 
@@ -115,8 +116,9 @@ namespace Alpenstern_BackEnd_Neu.Controllers
         {
             db.Anfrage.Add(anfrage);
             db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+            //return RedirectToAction("Index");
+             return RedirectToAction("Index", "Druckansicht", anfrage);
+            }
 
         ViewBag.gast_id = new SelectList(db.Gast, "id", "vorname", anfrage.gast_id);
         return View(anfrage);

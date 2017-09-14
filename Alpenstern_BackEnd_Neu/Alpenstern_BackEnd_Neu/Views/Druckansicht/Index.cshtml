@@ -3,8 +3,13 @@
     ViewBag.Title = "Index";
 }
 
+
+<link href="~/Scripts/Druckansicht.css" rel="stylesheet" />
+
+
+
 <div class="container " id="papierformat">
-    <h2>Druckansicht</h2>
+        <h2>Druckansicht</h2>
     <header>
         <div class="row">
             <div class="col-lg-8">
@@ -23,7 +28,15 @@
 
     <div class="row">
         <div class="col-lg-8">
-            @Html.LabelFor(e => e.vorname)
+            @Html.DisplayFor(e => e.vorname)
+            @Html.DisplayFor(e => e.nachname)<br />
+            @Html.DisplayFor(e => e.strasse)<br />
+            @Html.DisplayFor(e => e.plz)
+            @Html.DisplayFor(e => e.ort)
+
+            @*<label class="control-label">@Html.DisplayFor(e => e.vorname, new { htmlAttributes = new { @class = "style" } })</label>*@
+
+
         </div>
         <div class="col-lg-8">
             <h4 class="schriftfett">Auflistung der Positionen</h4>
@@ -31,11 +44,11 @@
     </div>
     <div class="row">
         <div class="col-lg-8"></div>
-        <div class="col-lg-4">KundenNr: 7</div>
+        <div class="col-lg-4"><label>KundenNr:</label>@Html.DisplayFor(e => e.id)</div>
     </div>
     <div class="row">
         <div class="col-lg-8"> Vielen Dank für Ihren Aufenthalt bla bla bls <br /><br /></div>
-        <div class="col-lg-4"> Datum: tt/mm/jjjj </div>
+        <div class="col-lg-4"> Datum: @DateTime.Now.ToShortDateString()  </div>
     </div>
     <div class="row">
         <div class="col-lg-8">Leistungen erbracht tt/mm/jjjj</div>

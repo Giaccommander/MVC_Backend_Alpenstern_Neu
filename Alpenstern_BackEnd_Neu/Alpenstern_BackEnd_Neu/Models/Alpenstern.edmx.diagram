@@ -19,7 +19,7 @@
         <EntityTypeShape EntityType="alpensternModel.Land" Width="1.5" PointX="1.5" PointY="24.125" IsExpanded="true" />
         <EntityTypeShape EntityType="alpensternModel.Login" Width="1.5" PointX="1.5" PointY="29.875" IsExpanded="true" />
         <EntityTypeShape EntityType="alpensternModel.Mitarbeiter" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="alpensternModel.Rechnung" Width="1.5" PointX="3" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="alpensternModel.Rechnung" Width="1.5" PointX="0.75" PointY="26.875" IsExpanded="true" />
         <EntityTypeShape EntityType="alpensternModel.Rueckruf" Width="1.5" PointX="7.75" PointY="4.875" IsExpanded="true" />
         <EntityTypeShape EntityType="alpensternModel.Saison" Width="1.5" PointX="7.75" PointY="7.875" IsExpanded="true" />
         <EntityTypeShape EntityType="alpensternModel.Spa" Width="1.5" PointX="9.75" PointY="1.875" IsExpanded="true" />

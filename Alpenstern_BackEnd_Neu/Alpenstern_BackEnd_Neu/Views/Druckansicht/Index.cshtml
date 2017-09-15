@@ -51,16 +51,16 @@
         <div class="col-lg-4"> Datum: @DateTime.Now.ToShortDateString()  </div>
     </div>
     <div class="row">
-        <div class="col-lg-8">Leistungen erbracht tt/mm/jjjj</div>
+        <div class="col-lg-8">Leistungen erbracht @DateTime.Now.ToShortDateString()</div>
         <div class="col-lg-4 schriftfett">Auflistungs-Nr. 2457567486 </div>
     </div>
     <div class="row schriftfett">
         <hr />
         <div class="col-lg-1"> POS </div>
-        <div class="col-lg-1"> Zimmer </div>
+        <div class="col-lg-1"> ZimmerNr </div>
         <div class="col-lg-2">Logis</div>
-        <div class="col-lg-2">Anreise</div>
-        <div class="col-lg-2">Abreise</div>
+        <div class="col-lg-2">Von</div>
+        <div class="col-lg-2">Bis</div>
         <div class="col-lg-1">Anzahl</div>
         <div class="col-lg-1">Einzelpreis</div>
         <div class="col-lg-2">Gesamtpreis</div>
@@ -70,8 +70,8 @@
         <div class="col-lg-1">1</div>
         <div class="col-lg-1">1</div>
         <div class="col-lg-2">Doppelzimmer</div>
-        <div class="col-lg-2">18.10.2017</div>
-        <div class="col-lg-2">25.10.2017</div>
+        <div class="col-lg-2">@Html.DisplayFor(e => e.datumVon)</div>
+        <div class="col-lg-2">@Html.DisplayFor(e => e.datumBis)</div>
         <div class="col-lg-1">X Nächte</div>
         <div class="col-lg-1">000,00&euro;</div>
         <div class="col-lg-2">000,0&euro;</div>

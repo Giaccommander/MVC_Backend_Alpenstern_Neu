@@ -24,8 +24,10 @@ namespace Alpenstern_BackEnd_Neu.Controllers
                 vmd.plz = vm.plz;
                 vmd.ort = vm.ort;
                 vmd.id = vm.id;
-              
-
+                vmd.zimmerNummer = vm.zimmerNummer;
+                vmd.datumVon=anfrage.datumVon;
+                vmd.datumVon = anfrage.datumBis;
+                
                 return View(vmd);
 
 

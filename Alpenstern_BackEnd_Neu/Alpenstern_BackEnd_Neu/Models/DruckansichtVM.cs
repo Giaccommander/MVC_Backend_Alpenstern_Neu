@@ -26,5 +26,8 @@ namespace Alpenstern_BackEnd_Neu.Models
         public decimal preis { get; set; }
         public int personenAnzahl { get; set; }
         public int groesse { get; set; }
+        public DateTime datumVon { get; set; }
+        public DateTime datumBis { get; set; }
+       
     }
 }

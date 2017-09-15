@@ -1,0 +1,48 @@
+﻿@model Alpenstern_BackEnd_Neu.Models.ZimmerBearbeitenVM
+@{
+    ViewBag.Title = "bearbeiten";
+}
+
+<h2>bearbeiten</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @*@Html.HiddenFor(model => model.id)*@
+
+        <div class="form-group">
+            <label for="Menü" class="col-md-2 control-label">Zimmer ID</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.zimId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.zimId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="Preis" class="col-md-2 control-label">Kategorie ID</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.katId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.katId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="Gang3" class="col-md-2 control-label">Zimmer Nr</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.zimmerNummer, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.zimmerNummer, "", new { @class = "text-danger" })
+            </div>
+        </div>       
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Speichern" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+<div>

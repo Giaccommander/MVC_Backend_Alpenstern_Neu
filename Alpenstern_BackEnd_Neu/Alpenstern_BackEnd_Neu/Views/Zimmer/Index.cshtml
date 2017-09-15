@@ -1,47 +1,63 @@
-﻿
+﻿@model IEnumerable<Alpenstern_BackEnd_Neu.Models.zimmerVM>
+
+
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Zimmer erstellen</h2>
+<h2>ZimmerListe</h2>
 
-<form action="/Zimmer/zimmerListe" method="post">
-    <div class="container" style="border-bottom:2px solid black">
-        <div class="row">
-            <div class="col-sm-2">                
-                <div class="dropdown">
-                    <label for="zimmerdropdown">Kategorie:</label>
-                    <select style="text-align:center;">
-                        <option>Einzelzimmer</option>
-                        <option>Komfort Einzelzimmer</option>
-                        <option>Juniorsuite</option>
-                        <option>Suite Tirol</option>
-                        <option>Zirbensuite</option>
-                        <option>Gletschersuite</option>
-                        <option>Suite Alpenstern</option>
-                    </select>
-                </div>
-            </div>
-            <div class="col-sm-2">
-                <label for="bildbeschreibung">Image:</label>
-                <img src="~/Content/Îmages/Hinterberger_Stausee.jpg" class="img-responsive" id="bildbeschreibung" />
-                <input type="file" style="padding:5px 0 5px 0;"/>
-            </div>
-            <div class="col-sm-4">
-                <label for="zbeschreibung">Beschreibung</label>
-                <textarea class="form-control" id="zbeschreibung" placeholder="Hier eingeben..." rows="5" cols="500" style="max-width:100%;"></textarea>
-            </div>
-            <div class="col-sm-2">
-                <label for="zimmerpreis">Preis:</label>
-                <input type="text" class="form-control" placeholder="*** &euro;" id="zimmerpreis" style="width:80px;" />
-            </div>
-            <div class="col-sm-2" style="padding-top:50px;">
-                <div class="btn-group-vertical " align="center">
-                    <button type="submit">Fertig!</button>
-                </div>
-            </div>
-        </div>
-    </div>   
-</form>
+<p>
+    @Html.ActionLink("Neues Zimmer anlegen", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.zimmerBezeichnung)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.groesse)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.anzPersonen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.preis)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.zimmerNummer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ausstattungsBezeichnung)
+        </th>
+        <th></th>
+    </tr>
 
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.zimmerBezeichnung)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.groesse)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.anzPersonen)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.preis)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.zimmerNummer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ausstattungsBezeichnung)
+            </td>
+            <td>
+                @Html.ActionLink("Bearbeiten", "bearbeiten", new { id = item.id }) 
+            </td>
+        </tr>
+    }
+
+</table>

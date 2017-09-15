@@ -1025,6 +1025,7 @@
             <End Role="Zimmerbuchung" EntitySet="Zimmerbuchung" />
           </AssociationSet>
           <EntitySet Name="Dinner" EntityType="alpensternModel.Dinner" />
+          <FunctionImport Name="usp_zimmerAnzeigen" ReturnType="Collection(alpensternModel.usp_zimmerAnzeigen_Result)" />
           </EntityContainer>
         <EntityType Name="Dinner">
           <Key>
@@ -1039,6 +1040,14 @@
           <Property Name="gang4" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="gang5" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
+        <ComplexType Name="usp_zimmerAnzeigen_Result">
+          <Property Type="String" Name="bezeichnung" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="groesse" Nullable="false" />
+          <Property Type="Int32" Name="personenAnzahl" Nullable="false" />
+          <Property Type="Decimal" Name="preis" Nullable="false" Precision="18" Scale="0" />
+          <Property Type="Int32" Name="zimmerNummer" Nullable="true" />
+          <Property Type="String" Name="bezeichnung1" Nullable="true" MaxLength="50" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->

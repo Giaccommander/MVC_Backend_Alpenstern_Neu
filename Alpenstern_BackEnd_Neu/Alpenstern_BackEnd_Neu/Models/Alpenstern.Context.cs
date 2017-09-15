@@ -12,6 +12,8 @@ namespace Alpenstern_BackEnd_Neu.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class alpensternEntities : DbContext
     {
@@ -48,5 +50,10 @@ namespace Alpenstern_BackEnd_Neu.Models
         public virtual DbSet<Zimmer> Zimmer { get; set; }
         public virtual DbSet<Zimmerbuchung> Zimmerbuchung { get; set; }
         public virtual DbSet<Dinner> Dinner { get; set; }
+    
+        public virtual ObjectResult<usp_zimmerAnzeigen_Result> usp_zimmerAnzeigen()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_zimmerAnzeigen_Result>("usp_zimmerAnzeigen");
+        }
     }
 }

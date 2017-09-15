@@ -276,12 +276,17 @@
     <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>Alpenstern.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\usp_zimmerAnzeigen_Result.cs">
+      <DependentUpon>Alpenstern.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Zimmer.cs">
       <DependentUpon>Alpenstern.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ZimmerBearbeitenVM.cs" />
     <Compile Include="Models\Zimmerbuchung.cs">
       <DependentUpon>Alpenstern.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\zimmerVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -422,9 +427,7 @@
     <Content Include="Views\Sortiment\Speciale.cshtml" />
     <Content Include="Views\Rueckruf\Index.cshtml" />
     <Content Include="Views\Rueckruf\test.cshtml" />
-    <Content Include="Views\Zimmer\Index.cshtml" />
     <Content Include="Views\Druckansicht\Index.cshtml" />
-    <Content Include="Views\Zimmer\zimmerListe.cshtml" />
     <Content Include="Views\Logins\Create.cshtml" />
     <Content Include="Views\Logins\Delete.cshtml" />
     <Content Include="Views\Logins\Details.cshtml" />
@@ -452,6 +455,13 @@
     <Content Include="Views\Dinners\Delete.cshtml" />
     <Content Include="Views\Dinners\Edit.cshtml" />
     <Content Include="Views\Dinners\Index.cshtml" />
+    <Content Include="Views\Kategorie\Create.cshtml" />
+    <Content Include="Views\Kategorie\Delete.cshtml" />
+    <Content Include="Views\Kategorie\Details.cshtml" />
+    <Content Include="Views\Kategorie\Edit.cshtml" />
+    <Content Include="Views\Kategorie\Index.cshtml" />
+    <Content Include="Views\Zimmer\Index.cshtml" />
+    <Content Include="Views\Zimmer\bearbeiten.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

@@ -179,6 +179,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginsController.cs" />
     <Compile Include="Controllers\MitarbeiterController.cs" />
+    <Compile Include="Controllers\RechnungController.cs" />
     <Compile Include="Controllers\RueckrufController.cs" />
     <Compile Include="Controllers\ImagesController.cs" />
     <Compile Include="Controllers\SortimentController.cs" />
@@ -260,6 +261,7 @@
     <Compile Include="Models\Rechnung.cs">
       <DependentUpon>Alpenstern.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\RechnungVM.cs" />
     <Compile Include="Models\Rueckruf.cs">
       <DependentUpon>Alpenstern.tt</DependentUpon>
     </Compile>
@@ -453,6 +455,7 @@
     <Content Include="Views\Spa\spaNeu.cshtml" />
     <Content Include="Views\Buchung\Index.cshtml" />
     <Content Include="Views\Buchung\Persoenlichdaten.cshtml" />
+    <Content Include="Views\Rechnung\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

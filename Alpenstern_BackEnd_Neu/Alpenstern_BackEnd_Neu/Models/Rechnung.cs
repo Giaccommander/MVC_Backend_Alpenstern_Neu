@@ -11,6 +11,7 @@ namespace Alpenstern_BackEnd_Neu.Models
 {
     using System;
     using System.Collections.Generic;
+
     
     public partial class Rechnung
     {

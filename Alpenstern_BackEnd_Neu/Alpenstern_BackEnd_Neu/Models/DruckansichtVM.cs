@@ -11,9 +11,7 @@ namespace Alpenstern_BackEnd_Neu.Models
         public int id { get; set; }
         public string vorname { get; set; }
         public string nachname { get; set; }
-        public DateTime gebDatum { get; set; }
         public string strasse { get; set; }
-        public string email { get; set; }
         public string telefonNr { get; set; }
         public string reisePassNr { get; set; }
         public string land { get; set; }
@@ -25,9 +23,16 @@ namespace Alpenstern_BackEnd_Neu.Models
         public string bezeichnung { get; set; }
         public decimal preis { get; set; }
         public int personenAnzahl { get; set; }
-        public int groesse { get; set; }
+        
+
+        // kommt aus Anfrage
         public DateTime datumVon { get; set; }
         public DateTime datumBis { get; set; }
-       
+
+        //Kommt aus rechnungen
+        public decimal gesamtpreis { get; set; }
+        public byte anzahlPersonen { get; set; }
+        public byte anzahlNaechte { get; set; }
+
     }
 }

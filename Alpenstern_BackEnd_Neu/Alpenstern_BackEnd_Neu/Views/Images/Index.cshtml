@@ -1,15 +1,14 @@
-﻿@model IEnumerable<Alpenstern_BackEnd_Neu.Models.BilderVM>
+﻿@model IEnumerable<Alpenstern_BackEnd_Neu.Models.Bilder>
 
 @{
-    ViewBag.Title = "Bilder Übersicht und Verwaltung";
+    ViewBag.Title = "Index";
 }
 
-<h2>Bilder Übersicht und Verwaltung</h2>
+<h2>Index</h2>
 
-<p><br />
-    @Html.ActionLink("Einzel Bilder Hinzufügen", "Create")
-    
-</p><br />
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
 <table class="table">
     <tr>
         <th>
@@ -27,9 +26,7 @@
             @Html.DisplayFor(modelItem => item.bilderart)
         </td>
         <td>
-            <img src="@item.pfad" alt="Alternate Text" height="100"/><br />
-            
-            <img src="data:image;base64,@System.Convert.ToBase64String(item.dbimage.)" width="80" height="80" />
+            @Html.DisplayFor(modelItem => item.pfad)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.id }) |

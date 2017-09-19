@@ -7,39 +7,20 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Alpenstern_BackEnd_Neu.Models;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.IO;
 
 namespace Alpenstern_BackEnd_Neu.Controllers
 {
-    public class BilderController : Controller
+    public class ImagesController : Controller
     {
         private alpensternEntities db = new alpensternEntities();
-        private string TempPath;
 
-        // GET: Bilder
+        // GET: Images
         public ActionResult Index()
         {
-            var vmListe = new List<BilderVM>();
-            var dbBilderListe = db.Bilder.ToList();
-
-            foreach (var b in dbBilderListe)
-            {
-                var vmbild = new BilderVM();
-
-                vmbild.id = b.id;
-                vmbild.bilderart = b.bilderart;
-                vmbild.pfad = b.pfad;
-
-                vmListe.Add(vmbild);
-            }
-
-
-            return View(vmListe);
+            return View(db.Bilder.ToList());
         }
 
-        // GET: Bilder/Details/5
+        // GET: Images/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -54,52 +35,32 @@ namespace Alpenstern_BackEnd_Neu.Controllers
             return View(bilder);
         }
 
-        // GET: Bilder/Create
+        // GET: Images/Create
         public ActionResult Create()
         {
-            var bildHinzufuegen = new BilderVM();
-
-
             return View();
         }
 
-        // POST: Bilder/Create
+        // POST: Images/Create
         // Aktivieren Sie zum Schutz vor übermäßigem Senden von Angriffen die spezifischen Eigenschaften, mit denen eine Bindung erfolgen soll. Weitere Informationen 
         // finden Sie unter http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(BilderVM img, HttpPostedFileBase file)
+        public ActionResult Create([Bind(Include = "id,bilderart,pfad")] Bilder bilder)
         {
-            var dbbilder = new Bilder();
-            if (ModelState.IsValid && file != null)
+            if (ModelState.IsValid)
             {
-                var fileName = Path.GetFileName(file.FileName);
-                var destinationFullPath = Path.Combine(Server.MapPath("~/Content/images/Upload/"), fileName);
-
-                file.SaveAs(destinationFullPath);
-
-                
-                MemoryStream target = new MemoryStream();
-                file.InputStream.CopyTo(target);
-                byte[] data = target.ToArray();
-
-                dbbilder.bilderart = img.bilderart;
-                dbbilder.pfad = "/Content/images/Upload/" + fileName;
-                dbbilder.dbimage = data;
-
-
-                db.Bilder.Add(dbbilder);
+                db.Bilder.Add(bilder);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(img);
+            return View(bilder);
         }
 
-        // GET: Bilder/Edit/5
+        // GET: Images/Edit/5
         public ActionResult Edit(int? id)
         {
-
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -112,7 +73,7 @@ namespace Alpenstern_BackEnd_Neu.Controllers
             return View(bilder);
         }
 
-        // POST: Bilder/Edit/5
+        // POST: Images/Edit/5
         // Aktivieren Sie zum Schutz vor übermäßigem Senden von Angriffen die spezifischen Eigenschaften, mit denen eine Bindung erfolgen soll. Weitere Informationen 
         // finden Sie unter http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -128,7 +89,7 @@ namespace Alpenstern_BackEnd_Neu.Controllers
             return View(bilder);
         }
 
-        // GET: Bilder/Delete/5
+        // GET: Images/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -143,7 +104,7 @@ namespace Alpenstern_BackEnd_Neu.Controllers
             return View(bilder);
         }
 
-        // POST: Bilder/Delete/5
+        // POST: Images/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
@@ -162,6 +123,5 @@ namespace Alpenstern_BackEnd_Neu.Controllers
             }
             base.Dispose(disposing);
         }
-        
     }
 }

@@ -16,7 +16,7 @@ namespace Alpenstern_BackEnd_Neu.Controllers
     public class BilderController : Controller
     {
         private alpensternEntities db = new alpensternEntities();
-        private string TempPath;
+        
 
         // GET: Bilder
         public ActionResult Index()
@@ -117,7 +117,7 @@ namespace Alpenstern_BackEnd_Neu.Controllers
         // finden Sie unter http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,bilderart,pfad")] Bilder bilder)
+        public ActionResult Edit([Bind(Include = "id,bilderart,pfad,dbimage")] Bilder bilder)
         {
             if (ModelState.IsValid)
             {

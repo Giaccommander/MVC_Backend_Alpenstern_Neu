@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="alpensternModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="alpensternModel508.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Anfrage">
           <Key>
             <PropertyRef Name="id" />
@@ -32,6 +32,29 @@
           <Property Name="pfad" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="dbimage" Type="varbinary(max)" Nullable="false" />
         </EntityType>
+        <EntityType Name="Dinner">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bezeichnung" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="preis" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="gang1" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="gang2" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="gang3" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="gang4" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="gang5" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Extras">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Babybett" Type="bit" />
+          <Property Name="Kinderstuhl" Type="bit" />
+          <Property Name="Kinderbetreuung" Type="bit" />
+          <Property Name="KinderProgramm" Type="bit" />
+        </EntityType>
         <EntityType Name="Gaestebuch">
           <Key>
             <PropertyRef Name="id" />
@@ -39,7 +62,7 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="vorname" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="nachname" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="eintrag" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="eintrag" Type="varchar" MaxLength="300" Nullable="false" />
         </EntityType>
         <EntityType Name="Gast">
           <Key>
@@ -55,13 +78,9 @@
           <Property Name="telefonnummer" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="reisepassnummer" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
-        <!--W√§hrend der Generierung sind Fehler aufgetreten:
-Warnung 6002: F√ºr Tabelle/Sicht 'alpenstern.dbo.Gastlogin' ist kein Prim√§rschl√ºssel definiert. Der Schl√ºssel wurde abgeleitet, und die Definition wurde als schreibgesch√ºtzte Tabelle/Sicht erstellt.-->
         <EntityType Name="Gastlogin">
           <Key>
             <PropertyRef Name="id" />
-            <PropertyRef Name="gast_id" />
-            <PropertyRef Name="login_id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="gast_id" Type="int" Nullable="false" />
@@ -85,27 +104,18 @@ Warnung 6002: F√ºr Tabelle/Sicht 'alpenstern.dbo.Gastlogin' ist kein Prim√§rschl
           <Property Name="kategorie_id" Type="int" Nullable="false" />
           <Property Name="anfrage_id" Type="int" Nullable="false" />
         </EntityType>
-        <!--W√§hrend der Generierung sind Fehler aufgetreten:
-Warnung 6002: F√ºr Tabelle/Sicht 'alpenstern.dbo.Kategorieausstattung' ist kein Prim√§rschl√ºssel definiert. Der Schl√ºssel wurde abgeleitet, und die Definition wurde als schreibgesch√ºtzte Tabelle/Sicht erstellt.-->
         <EntityType Name="Kategorieausstattung">
           <Key>
             <PropertyRef Name="id" />
-            <PropertyRef Name="ausstattung_id" />
-            <PropertyRef Name="kategorie_id" />
-            <PropertyRef Name="anzahl" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ausstattung_id" Type="int" Nullable="false" />
           <Property Name="kategorie_id" Type="int" Nullable="false" />
           <Property Name="anzahl" Type="tinyint" Nullable="false" />
         </EntityType>
-        <!--W√§hrend der Generierung sind Fehler aufgetreten:
-Warnung 6002: F√ºr Tabelle/Sicht 'alpenstern.dbo.Komplettbuchung' ist kein Prim√§rschl√ºssel definiert. Der Schl√ºssel wurde abgeleitet, und die Definition wurde als schreibgesch√ºtzte Tabelle/Sicht erstellt.-->
         <EntityType Name="Komplettbuchung">
           <Key>
             <PropertyRef Name="id" />
-            <PropertyRef Name="kategorieanfrage_id" />
-            <PropertyRef Name="komplettpaket_id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="kategorieanfrage_id" Type="int" Nullable="false" />
@@ -195,16 +205,6 @@ Warnung 6002: F√ºr Tabelle/Sicht 'alpenstern.dbo.Komplettbuchung' ist kein Prim√
           <Property Name="bezeichnung" Type="varchar" MaxLength="50" />
           <Property Name="plz" Type="varchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
         <EntityType Name="Zimmer">
           <Key>
             <PropertyRef Name="id" />
@@ -222,6 +222,30 @@ Warnung 6002: F√ºr Tabelle/Sicht 'alpenstern.dbo.Komplettbuchung' ist kein Prim√
           <Property Name="mitarbeiter_id" Type="int" Nullable="false" />
           <Property Name="kategorieanfrage_id" Type="int" Nullable="false" />
           <Property Name="checkedStatus" Type="bit" />
+        </EntityType>
+        <!--W√§hrend der Generierung sind Fehler aufgetreten:
+Warnung 6002: F√ºr Tabelle/Sicht 'alpenstern.dbo.get_carousel_imgs' ist kein Prim√§rschl√ºssel definiert. Der Schl√ºssel wurde abgeleitet, und die Definition wurde als schreibgesch√ºtzte Tabelle/Sicht erstellt.-->
+        <EntityType Name="get_carousel_imgs">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="bilderart" />
+            <PropertyRef Name="pfad" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bilderart" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="pfad" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <!--W√§hrend der Generierung sind Fehler aufgetreten:
+Warnung 6002: F√ºr Tabelle/Sicht 'alpenstern.dbo.get_zimmer_imgs' ist kein Prim√§rschl√ºssel definiert. Der Schl√ºssel wurde abgeleitet, und die Definition wurde als schreibgesch√ºtzte Tabelle/Sicht erstellt.-->
+        <EntityType Name="get_zimmer_imgs">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="bilderart" />
+            <PropertyRef Name="pfad" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bilderart" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="pfad" Type="varchar" MaxLength="500" Nullable="false" />
         </EntityType>
         <Association Name="fk__Anfrage__Gast">
           <End Role="Gast" Type="Self.Gast" Multiplicity="1" />
@@ -379,18 +403,6 @@ Warnung 6002: F√ºr Tabelle/Sicht 'alpenstern.dbo.Komplettbuchung' ist kein Prim√
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk__Zimmerbuchung__Kategorieanfrage">
-          <End Role="Kategorieanfrage" Type="Self.Kategorieanfrage" Multiplicity="1" />
-          <End Role="Zimmerbuchung" Type="Self.Zimmerbuchung" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kategorieanfrage">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Zimmerbuchung">
-              <PropertyRef Name="kategorieanfrage_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="fk__Zimmerbuchung__Mitarbeiter">
           <End Role="Mitarbeiter" Type="Self.Mitarbeiter" Multiplicity="1" />
           <End Role="Zimmerbuchung" Type="Self.Zimmerbuchung" Multiplicity="*" />
@@ -415,14 +427,48 @@ Warnung 6002: F√ºr Tabelle/Sicht 'alpenstern.dbo.Komplettbuchung' ist kein Prim√
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="alpensternModelStoreContainer">
+        <Association Name="FK_Zimmerbuchung_Kategorieanfrage">
+          <End Role="Kategorieanfrage" Type="Self.Kategorieanfrage" Multiplicity="1" />
+          <End Role="Zimmerbuchung" Type="Self.Zimmerbuchung" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategorieanfrage">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Zimmerbuchung">
+              <PropertyRef Name="kategorieanfrage_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="get_user_salt" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="char">
+          <Parameter Name="benutzername" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="login_user" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+          <Parameter Name="benutzername" Type="varchar" Mode="In" />
+          <Parameter Name="passwort" Type="char" Mode="In" />
+        </Function>
+        <Function Name="register_user" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+          <Parameter Name="benutzername" Type="varchar" Mode="In" />
+          <Parameter Name="passwort" Type="char" Mode="In" />
+          <Parameter Name="salt" Type="char" Mode="In" />
+        </Function>
+        <Function Name="register_user_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="benutzername" Type="varchar" Mode="In" />
+          <Parameter Name="passwort" Type="char" Mode="In" />
+          <Parameter Name="salt" Type="char" Mode="In" />
+        </Function>
+        <EntityContainer Name="alpensternModel508StoreContainer">
           <EntitySet Name="Anfrage" EntityType="Self.Anfrage" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ausstattung" EntityType="Self.Ausstattung" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Bilder" EntityType="Self.Bilder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dinner" EntityType="Self.Dinner" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Extras" EntityType="Self.Extras" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Gaestebuch" EntityType="Self.Gaestebuch" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Gast" EntityType="Self.Gast" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gastlogin" EntityType="Self.Gastlogin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Kategorie" EntityType="Self.Kategorie" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Kategorieanfrage" EntityType="Self.Kategorieanfrage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kategorieausstattung" EntityType="Self.Kategorieausstattung" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Komplettbuchung" EntityType="Self.Komplettbuchung" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Komplettpaket" EntityType="Self.Komplettpaket" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Land" EntityType="Self.Land" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Login" EntityType="Self.Login" Schema="dbo" store:Type="Tables" />
@@ -432,30 +478,21 @@ Warnung 6002: F√ºr Tabelle/Sicht 'alpenstern.dbo.Komplettbuchung' ist kein Prim√
           <EntitySet Name="Saison" EntityType="Self.Saison" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Spa" EntityType="Self.Spa" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Stadt" EntityType="Self.Stadt" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Zimmer" EntityType="Self.Zimmer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Zimmerbuchung" EntityType="Self.Zimmerbuchung" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Gastlogin" EntityType="Self.Gastlogin" store:Type="Tables" store:Schema="dbo">
+          <EntitySet Name="get_carousel_imgs" EntityType="Self.get_carousel_imgs" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
-    [Gastlogin].[id] AS [id], 
-    [Gastlogin].[gast_id] AS [gast_id], 
-    [Gastlogin].[login_id] AS [login_id]
-    FROM [dbo].[Gastlogin] AS [Gastlogin]</DefiningQuery>
+    [get_carousel_imgs].[id] AS [id], 
+    [get_carousel_imgs].[bilderart] AS [bilderart], 
+    [get_carousel_imgs].[pfad] AS [pfad]
+    FROM [dbo].[get_carousel_imgs] AS [get_carousel_imgs]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="Kategorieausstattung" EntityType="Self.Kategorieausstattung" store:Type="Tables" store:Schema="dbo">
+          <EntitySet Name="get_zimmer_imgs" EntityType="Self.get_zimmer_imgs" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
-    [Kategorieausstattung].[id] AS [id], 
-    [Kategorieausstattung].[ausstattung_id] AS [ausstattung_id], 
-    [Kategorieausstattung].[kategorie_id] AS [kategorie_id], 
-    [Kategorieausstattung].[anzahl] AS [anzahl]
-    FROM [dbo].[Kategorieausstattung] AS [Kategorieausstattung]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="Komplettbuchung" EntityType="Self.Komplettbuchung" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Komplettbuchung].[id] AS [id], 
-    [Komplettbuchung].[kategorieanfrage_id] AS [kategorieanfrage_id], 
-    [Komplettbuchung].[komplettpaket_id] AS [komplettpaket_id]
-    FROM [dbo].[Komplettbuchung] AS [Komplettbuchung]</DefiningQuery>
+    [get_zimmer_imgs].[id] AS [id], 
+    [get_zimmer_imgs].[bilderart] AS [bilderart], 
+    [get_zimmer_imgs].[pfad] AS [pfad]
+    FROM [dbo].[get_zimmer_imgs] AS [get_zimmer_imgs]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="fk__Anfrage__Gast" Association="Self.fk__Anfrage__Gast">
             <End Role="Gast" EntitySet="Gast" />
@@ -509,10 +546,6 @@ Warnung 6002: F√ºr Tabelle/Sicht 'alpenstern.dbo.Komplettbuchung' ist kein Prim√
             <End Role="Kategorie" EntitySet="Kategorie" />
             <End Role="Zimmer" EntitySet="Zimmer" />
           </AssociationSet>
-          <AssociationSet Name="fk__Zimmerbuchung__Kategorieanfrage" Association="Self.fk__Zimmerbuchung__Kategorieanfrage">
-            <End Role="Kategorieanfrage" EntitySet="Kategorieanfrage" />
-            <End Role="Zimmerbuchung" EntitySet="Zimmerbuchung" />
-          </AssociationSet>
           <AssociationSet Name="fk__Zimmerbuchung__Mitarbeiter" Association="Self.fk__Zimmerbuchung__Mitarbeiter">
             <End Role="Mitarbeiter" EntitySet="Mitarbeiter" />
             <End Role="Zimmerbuchung" EntitySet="Zimmerbuchung" />
@@ -521,11 +554,16 @@ Warnung 6002: F√ºr Tabelle/Sicht 'alpenstern.dbo.Komplettbuchung' ist kein Prim√
             <End Role="Zimmer" EntitySet="Zimmer" />
             <End Role="Zimmerbuchung" EntitySet="Zimmerbuchung" />
           </AssociationSet>
+          <AssociationSet Name="FK_Zimmerbuchung_Kategorieanfrage" Association="Self.FK_Zimmerbuchung_Kategorieanfrage">
+            <End Role="Kategorieanfrage" EntitySet="Kategorieanfrage" />
+            <End Role="Zimmerbuchung" EntitySet="Zimmerbuchung" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="alpensternModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="alpensternModel508" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Anfrage">
           <Key>
             <PropertyRef Name="id" />
@@ -557,6 +595,29 @@ Warnung 6002: F√ºr Tabelle/Sicht 'alpenstern.dbo.Komplettbuchung' ist kein Prim√
           <Property Name="pfad" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="dbimage" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
         </EntityType>
+        <EntityType Name="Dinner">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="bezeichnung" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="preis" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="gang1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="gang2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="gang3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="gang4" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="gang5" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Extras">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Babybett" Type="Boolean" />
+          <Property Name="Kinderstuhl" Type="Boolean" />
+          <Property Name="Kinderbetreuung" Type="Boolean" />
+          <Property Name="KinderProgramm" Type="Boolean" />
+        </EntityType>
         <EntityType Name="Gaestebuch">
           <Key>
             <PropertyRef Name="id" />
@@ -564,7 +625,7 @@ Warnung 6002: F√ºr Tabelle/Sicht 'alpenstern.dbo.Komplettbuchung' ist kein Prim√
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="vorname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="nachname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="eintrag" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="eintrag" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <EntityType Name="Gast">
           <Key>
@@ -582,6 +643,16 @@ Warnung 6002: F√ºr Tabelle/Sicht 'alpenstern.dbo.Komplettbuchung' ist kein Prim√
           <NavigationProperty Name="Anfrage" Relationship="Self.fk__Anfrage__Gast" FromRole="Gast" ToRole="Anfrage" />
           <NavigationProperty Name="Stadt" Relationship="Self.fk__Gast__Stadt" FromRole="Gast" ToRole="Stadt" />
           <NavigationProperty Name="Gastlogin" Relationship="Self.fk__Gastlogin__Gast" FromRole="Gast" ToRole="Gastlogin" />
+        </EntityType>
+        <EntityType Name="Gastlogin">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="gast_id" Type="Int32" Nullable="false" />
+          <Property Name="login_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Gast" Relationship="Self.fk__Gastlogin__Gast" FromRole="Gastlogin" ToRole="Gast" />
+          <NavigationProperty Name="Login" Relationship="Self.fk__Gastlogin__login" FromRole="Gastlogin" ToRole="Login" />
         </EntityType>
         <EntityType Name="Kategorie">
           <Key>
@@ -606,7 +677,28 @@ Warnung 6002: F√ºr Tabelle/Sicht 'alpenstern.dbo.Komplettbuchung' ist kein Prim√
           <NavigationProperty Name="Anfrage" Relationship="Self.fk__Kategorieanfrage__Anfrage" FromRole="Kategorieanfrage" ToRole="Anfrage" />
           <NavigationProperty Name="Kategorie" Relationship="Self.fk__Kategorieanfrage__Kategorie" FromRole="Kategorieanfrage" ToRole="Kategorie" />
           <NavigationProperty Name="Komplettbuchung" Relationship="Self.fk__Komplettbuchung__Kategorieanfrage" FromRole="Kategorieanfrage" ToRole="Komplettbuchung" />
-          <NavigationProperty Name="Zimmerbuchung" Relationship="Self.fk__Zimmerbuchung__Kategorieanfrage" FromRole="Kategorieanfrage" ToRole="Zimmerbuchung" />
+          <NavigationProperty Name="Zimmerbuchung" Relationship="Self.FK_Zimmerbuchung_Kategorieanfrage" FromRole="Kategorieanfrage" ToRole="Zimmerbuchung" />
+        </EntityType>
+        <EntityType Name="Kategorieausstattung">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ausstattung_id" Type="Int32" Nullable="false" />
+          <Property Name="kategorie_id" Type="Int32" Nullable="false" />
+          <Property Name="anzahl" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="Ausstattung" Relationship="Self.fk__Kategorieausstattung__Ausstattung" FromRole="Kategorieausstattung" ToRole="Ausstattung" />
+          <NavigationProperty Name="Kategorie" Relationship="Self.fk__Kategoireausstattung__Kategorie" FromRole="Kategorieausstattung" ToRole="Kategorie" />
+        </EntityType>
+        <EntityType Name="Komplettbuchung">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="kategorieanfrage_id" Type="Int32" Nullable="false" />
+          <Property Name="komplettpaket_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Kategorieanfrage" Relationship="Self.fk__Komplettbuchung__Kategorieanfrage" FromRole="Komplettbuchung" ToRole="Kategorieanfrage" />
+          <NavigationProperty Name="Komplettpaket" Relationship="Self.fk__Komplettbuchung__Komplettpaket" FromRole="Komplettbuchung" ToRole="Komplettpaket" />
         </EntityType>
         <EntityType Name="Komplettpaket">
           <Key>
@@ -699,16 +791,6 @@ Warnung 6002: F√ºr Tabelle/Sicht 'alpenstern.dbo.Komplettbuchung' ist kein Prim√
           <NavigationProperty Name="Gast" Relationship="Self.fk__Gast__Stadt" FromRole="Stadt" ToRole="Gast" />
           <NavigationProperty Name="Land" Relationship="Self.fk__Stadt__Land" FromRole="Stadt" ToRole="Land" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
         <EntityType Name="Zimmer">
           <Key>
             <PropertyRef Name="id" />
@@ -728,47 +810,29 @@ Warnung 6002: F√ºr Tabelle/Sicht 'alpenstern.dbo.Komplettbuchung' ist kein Prim√
           <Property Name="mitarbeiter_id" Type="Int32" Nullable="false" />
           <Property Name="kategorieanfrage_id" Type="Int32" Nullable="false" />
           <Property Name="checkedStatus" Type="Boolean" />
-          <NavigationProperty Name="Kategorieanfrage" Relationship="Self.fk__Zimmerbuchung__Kategorieanfrage" FromRole="Zimmerbuchung" ToRole="Kategorieanfrage" />
+          <NavigationProperty Name="Kategorieanfrage" Relationship="Self.FK_Zimmerbuchung_Kategorieanfrage" FromRole="Zimmerbuchung" ToRole="Kategorieanfrage" />
           <NavigationProperty Name="Mitarbeiter" Relationship="Self.fk__Zimmerbuchung__Mitarbeiter" FromRole="Zimmerbuchung" ToRole="Mitarbeiter" />
           <NavigationProperty Name="Zimmer" Relationship="Self.fk__Zimmerbuchung__Zimmer" FromRole="Zimmerbuchung" ToRole="Zimmer" />
         </EntityType>
-        <EntityType Name="Gastlogin">
+        <EntityType Name="get_carousel_imgs">
           <Key>
             <PropertyRef Name="id" />
-            <PropertyRef Name="gast_id" />
-            <PropertyRef Name="login_id" />
+            <PropertyRef Name="bilderart" />
+            <PropertyRef Name="pfad" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="gast_id" Type="Int32" Nullable="false" />
-          <Property Name="login_id" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Gast" Relationship="Self.fk__Gastlogin__Gast" FromRole="Gastlogin" ToRole="Gast" />
-          <NavigationProperty Name="Login" Relationship="Self.fk__Gastlogin__login" FromRole="Gastlogin" ToRole="Login" />
+          <Property Name="bilderart" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="pfad" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
-        <EntityType Name="Kategorieausstattung">
+        <EntityType Name="get_zimmer_imgs">
           <Key>
             <PropertyRef Name="id" />
-            <PropertyRef Name="ausstattung_id" />
-            <PropertyRef Name="kategorie_id" />
-            <PropertyRef Name="anzahl" />
+            <PropertyRef Name="bilderart" />
+            <PropertyRef Name="pfad" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ausstattung_id" Type="Int32" Nullable="false" />
-          <Property Name="kategorie_id" Type="Int32" Nullable="false" />
-          <Property Name="anzahl" Type="Byte" Nullable="false" />
-          <NavigationProperty Name="Ausstattung" Relationship="Self.fk__Kategorieausstattung__Ausstattung" FromRole="Kategorieausstattung" ToRole="Ausstattung" />
-          <NavigationProperty Name="Kategorie" Relationship="Self.fk__Kategoireausstattung__Kategorie" FromRole="Kategorieausstattung" ToRole="Kategorie" />
-        </EntityType>
-        <EntityType Name="Komplettbuchung">
-          <Key>
-            <PropertyRef Name="id" />
-            <PropertyRef Name="kategorieanfrage_id" />
-            <PropertyRef Name="komplettpaket_id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="kategorieanfrage_id" Type="Int32" Nullable="false" />
-          <Property Name="komplettpaket_id" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Kategorieanfrage" Relationship="Self.fk__Komplettbuchung__Kategorieanfrage" FromRole="Komplettbuchung" ToRole="Kategorieanfrage" />
-          <NavigationProperty Name="Komplettpaket" Relationship="Self.fk__Komplettbuchung__Komplettpaket" FromRole="Komplettbuchung" ToRole="Komplettpaket" />
+          <Property Name="bilderart" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="pfad" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <Association Name="fk__Anfrage__Gast">
           <End Role="Gast" Type="Self.Gast" Multiplicity="1" />
@@ -842,6 +906,18 @@ Warnung 6002: F√ºr Tabelle/Sicht 'alpenstern.dbo.Komplettbuchung' ist kein Prim√
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk__Gastlogin__login">
+          <End Role="Login" Type="Self.Login" Multiplicity="1" />
+          <End Role="Gastlogin" Type="Self.Gastlogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Login">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Gastlogin">
+              <PropertyRef Name="login_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fk__Kategoireausstattung__Kategorie">
           <End Role="Kategorie" Type="Self.Kategorie" Multiplicity="1" />
           <End Role="Kategorieausstattung" Type="Self.Kategorieausstattung" Multiplicity="*" />
@@ -890,7 +966,7 @@ Warnung 6002: F√ºr Tabelle/Sicht 'alpenstern.dbo.Komplettbuchung' ist kein Prim√
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk__Zimmerbuchung__Kategorieanfrage">
+        <Association Name="FK_Zimmerbuchung_Kategorieanfrage">
           <End Role="Kategorieanfrage" Type="Self.Kategorieanfrage" Multiplicity="1" />
           <End Role="Zimmerbuchung" Type="Self.Zimmerbuchung" Multiplicity="*" />
           <ReferentialConstraint>
@@ -926,18 +1002,6 @@ Warnung 6002: F√ºr Tabelle/Sicht 'alpenstern.dbo.Komplettbuchung' ist kein Prim√
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk__Gastlogin__login">
-          <End Role="Login" Type="Self.Login" Multiplicity="1" />
-          <End Role="Gastlogin" Type="Self.Gastlogin" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Login">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Gastlogin">
-              <PropertyRef Name="login_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="fk__Zimmerbuchung__Mitarbeiter">
           <End Role="Mitarbeiter" Type="Self.Mitarbeiter" Multiplicity="1" />
           <End Role="Zimmerbuchung" Type="Self.Zimmerbuchung" Multiplicity="*" />
@@ -966,10 +1030,15 @@ Warnung 6002: F√ºr Tabelle/Sicht 'alpenstern.dbo.Komplettbuchung' ist kein Prim√
           <EntitySet Name="Anfrage" EntityType="Self.Anfrage" />
           <EntitySet Name="Ausstattung" EntityType="Self.Ausstattung" />
           <EntitySet Name="Bilder" EntityType="Self.Bilder" />
+          <EntitySet Name="Dinner" EntityType="Self.Dinner" />
+          <EntitySet Name="Extras" EntityType="Self.Extras" />
           <EntitySet Name="Gaestebuch" EntityType="Self.Gaestebuch" />
           <EntitySet Name="Gast" EntityType="Self.Gast" />
+          <EntitySet Name="Gastlogin" EntityType="Self.Gastlogin" />
           <EntitySet Name="Kategorie" EntityType="Self.Kategorie" />
           <EntitySet Name="Kategorieanfrage" EntityType="Self.Kategorieanfrage" />
+          <EntitySet Name="Kategorieausstattung" EntityType="Self.Kategorieausstattung" />
+          <EntitySet Name="Komplettbuchung" EntityType="Self.Komplettbuchung" />
           <EntitySet Name="Komplettpaket" EntityType="Self.Komplettpaket" />
           <EntitySet Name="Land" EntityType="Self.Land" />
           <EntitySet Name="Login" EntityType="Self.Login" />
@@ -979,12 +1048,10 @@ Warnung 6002: F√ºr Tabelle/Sicht 'alpenstern.dbo.Komplettbuchung' ist kein Prim√
           <EntitySet Name="Saison" EntityType="Self.Saison" />
           <EntitySet Name="Spa" EntityType="Self.Spa" />
           <EntitySet Name="Stadt" EntityType="Self.Stadt" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Zimmer" EntityType="Self.Zimmer" />
           <EntitySet Name="Zimmerbuchung" EntityType="Self.Zimmerbuchung" />
-          <EntitySet Name="Gastlogin" EntityType="Self.Gastlogin" />
-          <EntitySet Name="Kategorieausstattung" EntityType="Self.Kategorieausstattung" />
-          <EntitySet Name="Komplettbuchung" EntityType="Self.Komplettbuchung" />
+          <EntitySet Name="get_carousel_imgs" EntityType="Self.get_carousel_imgs" />
+          <EntitySet Name="get_zimmer_imgs" EntityType="Self.get_zimmer_imgs" />
           <AssociationSet Name="fk__Anfrage__Gast" Association="Self.fk__Anfrage__Gast">
             <End Role="Gast" EntitySet="Gast" />
             <End Role="Anfrage" EntitySet="Anfrage" />
@@ -1009,6 +1076,10 @@ Warnung 6002: F√ºr Tabelle/Sicht 'alpenstern.dbo.Komplettbuchung' ist kein Prim√
             <End Role="Gast" EntitySet="Gast" />
             <End Role="Gastlogin" EntitySet="Gastlogin" />
           </AssociationSet>
+          <AssociationSet Name="fk__Gastlogin__login" Association="Self.fk__Gastlogin__login">
+            <End Role="Login" EntitySet="Login" />
+            <End Role="Gastlogin" EntitySet="Gastlogin" />
+          </AssociationSet>
           <AssociationSet Name="fk__Kategoireausstattung__Kategorie" Association="Self.fk__Kategoireausstattung__Kategorie">
             <End Role="Kategorie" EntitySet="Kategorie" />
             <End Role="Kategorieausstattung" EntitySet="Kategorieausstattung" />
@@ -1025,7 +1096,7 @@ Warnung 6002: F√ºr Tabelle/Sicht 'alpenstern.dbo.Komplettbuchung' ist kein Prim√
             <End Role="Kategorieanfrage" EntitySet="Kategorieanfrage" />
             <End Role="Komplettbuchung" EntitySet="Komplettbuchung" />
           </AssociationSet>
-          <AssociationSet Name="fk__Zimmerbuchung__Kategorieanfrage" Association="Self.fk__Zimmerbuchung__Kategorieanfrage">
+          <AssociationSet Name="FK_Zimmerbuchung_Kategorieanfrage" Association="Self.FK_Zimmerbuchung_Kategorieanfrage">
             <End Role="Kategorieanfrage" EntitySet="Kategorieanfrage" />
             <End Role="Zimmerbuchung" EntitySet="Zimmerbuchung" />
           </AssociationSet>
@@ -1037,10 +1108,6 @@ Warnung 6002: F√ºr Tabelle/Sicht 'alpenstern.dbo.Komplettbuchung' ist kein Prim√
             <End Role="Land" EntitySet="Land" />
             <End Role="Stadt" EntitySet="Stadt" />
           </AssociationSet>
-          <AssociationSet Name="fk__Gastlogin__login" Association="Self.fk__Gastlogin__login">
-            <End Role="Login" EntitySet="Login" />
-            <End Role="Gastlogin" EntitySet="Gastlogin" />
-          </AssociationSet>
           <AssociationSet Name="fk__Zimmerbuchung__Mitarbeiter" Association="Self.fk__Zimmerbuchung__Mitarbeiter">
             <End Role="Mitarbeiter" EntitySet="Mitarbeiter" />
             <End Role="Zimmerbuchung" EntitySet="Zimmerbuchung" />
@@ -1049,15 +1116,20 @@ Warnung 6002: F√ºr Tabelle/Sicht 'alpenstern.dbo.Komplettbuchung' ist kein Prim√
             <End Role="Zimmer" EntitySet="Zimmer" />
             <End Role="Zimmerbuchung" EntitySet="Zimmerbuchung" />
           </AssociationSet>
+          <FunctionImport Name="register_user_insert">
+            <Parameter Name="benutzername" Mode="In" Type="String" />
+            <Parameter Name="passwort" Mode="In" Type="String" />
+            <Parameter Name="salt" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="alpensternModelStoreContainer" CdmEntityContainer="alpensternEntities">
+        <EntityContainerMapping StorageEntityContainer="alpensternModel508StoreContainer" CdmEntityContainer="alpensternEntities">
           <EntitySetMapping Name="Anfrage">
-            <EntityTypeMapping TypeName="alpensternModel.Anfrage">
+            <EntityTypeMapping TypeName="alpensternModel508.Anfrage">
               <MappingFragment StoreEntitySet="Anfrage">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="gast_id" ColumnName="gast_id" />
@@ -1069,7 +1141,7 @@ Warnung 6002: F√ºr Tabelle/Sicht 'alpenstern.dbo.Komplettbuchung' ist kein Prim√
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Ausstattung">
-            <EntityTypeMapping TypeName="alpensternModel.Ausstattung">
+            <EntityTypeMapping TypeName="alpensternModel508.Ausstattung">
               <MappingFragment StoreEntitySet="Ausstattung">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="bezeichnung" ColumnName="bezeichnung" />
@@ -1077,7 +1149,7 @@ Warnung 6002: F√ºr Tabelle/Sicht 'alpenstern.dbo.Komplettbuchung' ist kein Prim√
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Bilder">
-            <EntityTypeMapping TypeName="alpensternModel.Bilder">
+            <EntityTypeMapping TypeName="alpensternModel508.Bilder">
               <MappingFragment StoreEntitySet="Bilder">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="bilderart" ColumnName="bilderart" />
@@ -1086,8 +1158,33 @@ Warnung 6002: F√ºr Tabelle/Sicht 'alpenstern.dbo.Komplettbuchung' ist kein Prim√
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Dinner">
+            <EntityTypeMapping TypeName="alpensternModel508.Dinner">
+              <MappingFragment StoreEntitySet="Dinner">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="bezeichnung" ColumnName="bezeichnung" />
+                <ScalarProperty Name="preis" ColumnName="preis" />
+                <ScalarProperty Name="gang1" ColumnName="gang1" />
+                <ScalarProperty Name="gang2" ColumnName="gang2" />
+                <ScalarProperty Name="gang3" ColumnName="gang3" />
+                <ScalarProperty Name="gang4" ColumnName="gang4" />
+                <ScalarProperty Name="gang5" ColumnName="gang5" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Extras">
+            <EntityTypeMapping TypeName="alpensternModel508.Extras">
+              <MappingFragment StoreEntitySet="Extras">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Babybett" ColumnName="Babybett" />
+                <ScalarProperty Name="Kinderstuhl" ColumnName="Kinderstuhl" />
+                <ScalarProperty Name="Kinderbetreuung" ColumnName="Kinderbetreuung" />
+                <ScalarProperty Name="KinderProgramm" ColumnName="KinderProgramm" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Gaestebuch">
-            <EntityTypeMapping TypeName="alpensternModel.Gaestebuch">
+            <EntityTypeMapping TypeName="alpensternModel508.Gaestebuch">
               <MappingFragment StoreEntitySet="Gaestebuch">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="vorname" ColumnName="vorname" />
@@ -1097,7 +1194,7 @@ Warnung 6002: F√ºr Tabelle/Sicht 'alpenstern.dbo.Komplettbuchung' ist kein Prim√
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Gast">
-            <EntityTypeMapping TypeName="alpensternModel.Gast">
+            <EntityTypeMapping TypeName="alpensternModel508.Gast">
               <MappingFragment StoreEntitySet="Gast">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="stadt_id" ColumnName="stadt_id" />
@@ -1111,8 +1208,17 @@ Warnung 6002: F√ºr Tabelle/Sicht 'alpenstern.dbo.Komplettbuchung' ist kein Prim√
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Gastlogin">
+            <EntityTypeMapping TypeName="alpensternModel508.Gastlogin">
+              <MappingFragment StoreEntitySet="Gastlogin">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="gast_id" ColumnName="gast_id" />
+                <ScalarProperty Name="login_id" ColumnName="login_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Kategorie">
-            <EntityTypeMapping TypeName="alpensternModel.Kategorie">
+            <EntityTypeMapping TypeName="alpensternModel508.Kategorie">
               <MappingFragment StoreEntitySet="Kategorie">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="bezeichnung" ColumnName="bezeichnung" />
@@ -1123,7 +1229,7 @@ Warnung 6002: F√ºr Tabelle/Sicht 'alpenstern.dbo.Komplettbuchung' ist kein Prim√
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Kategorieanfrage">
-            <EntityTypeMapping TypeName="alpensternModel.Kategorieanfrage">
+            <EntityTypeMapping TypeName="alpensternModel508.Kategorieanfrage">
               <MappingFragment StoreEntitySet="Kategorieanfrage">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="kategorie_id" ColumnName="kategorie_id" />
@@ -1131,8 +1237,27 @@ Warnung 6002: F√ºr Tabelle/Sicht 'alpenstern.dbo.Komplettbuchung' ist kein Prim√
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Kategorieausstattung">
+            <EntityTypeMapping TypeName="alpensternModel508.Kategorieausstattung">
+              <MappingFragment StoreEntitySet="Kategorieausstattung">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="ausstattung_id" ColumnName="ausstattung_id" />
+                <ScalarProperty Name="kategorie_id" ColumnName="kategorie_id" />
+                <ScalarProperty Name="anzahl" ColumnName="anzahl" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Komplettbuchung">
+            <EntityTypeMapping TypeName="alpensternModel508.Komplettbuchung">
+              <MappingFragment StoreEntitySet="Komplettbuchung">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="kategorieanfrage_id" ColumnName="kategorieanfrage_id" />
+                <ScalarProperty Name="komplettpaket_id" ColumnName="komplettpaket_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Komplettpaket">
-            <EntityTypeMapping TypeName="alpensternModel.Komplettpaket">
+            <EntityTypeMapping TypeName="alpensternModel508.Komplettpaket">
               <MappingFragment StoreEntitySet="Komplettpaket">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="bezeichnung" ColumnName="bezeichnung" />
@@ -1141,7 +1266,7 @@ Warnung 6002: F√ºr Tabelle/Sicht 'alpenstern.dbo.Komplettbuchung' ist kein Prim√
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Land">
-            <EntityTypeMapping TypeName="alpensternModel.Land">
+            <EntityTypeMapping TypeName="alpensternModel508.Land">
               <MappingFragment StoreEntitySet="Land">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="bezeichnung" ColumnName="bezeichnung" />
@@ -1149,7 +1274,7 @@ Warnung 6002: F√ºr Tabelle/Sicht 'alpenstern.dbo.Komplettbuchung' ist kein Prim√
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Login">
-            <EntityTypeMapping TypeName="alpensternModel.Login">
+            <EntityTypeMapping TypeName="alpensternModel508.Login">
               <MappingFragment StoreEntitySet="Login">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="benutzername" ColumnName="benutzername" />
@@ -1159,7 +1284,7 @@ Warnung 6002: F√ºr Tabelle/Sicht 'alpenstern.dbo.Komplettbuchung' ist kein Prim√
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Mitarbeiter">
-            <EntityTypeMapping TypeName="alpensternModel.Mitarbeiter">
+            <EntityTypeMapping TypeName="alpensternModel508.Mitarbeiter">
               <MappingFragment StoreEntitySet="Mitarbeiter">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="vorname" ColumnName="vorname" />
@@ -1170,7 +1295,7 @@ Warnung 6002: F√ºr Tabelle/Sicht 'alpenstern.dbo.Komplettbuchung' ist kein Prim√
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Rechnung">
-            <EntityTypeMapping TypeName="alpensternModel.Rechnung">
+            <EntityTypeMapping TypeName="alpensternModel508.Rechnung">
               <MappingFragment StoreEntitySet="Rechnung">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="anfrage_id" ColumnName="anfrage_id" />
@@ -1182,7 +1307,7 @@ Warnung 6002: F√ºr Tabelle/Sicht 'alpenstern.dbo.Komplettbuchung' ist kein Prim√
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Rueckruf">
-            <EntityTypeMapping TypeName="alpensternModel.Rueckruf">
+            <EntityTypeMapping TypeName="alpensternModel508.Rueckruf">
               <MappingFragment StoreEntitySet="Rueckruf">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -1194,7 +1319,7 @@ Warnung 6002: F√ºr Tabelle/Sicht 'alpenstern.dbo.Komplettbuchung' ist kein Prim√
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Saison">
-            <EntityTypeMapping TypeName="alpensternModel.Saison">
+            <EntityTypeMapping TypeName="alpensternModel508.Saison">
               <MappingFragment StoreEntitySet="Saison">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="bezeichnung" ColumnName="bezeichnung" />
@@ -1205,7 +1330,7 @@ Warnung 6002: F√ºr Tabelle/Sicht 'alpenstern.dbo.Komplettbuchung' ist kein Prim√
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Spa">
-            <EntityTypeMapping TypeName="alpensternModel.Spa">
+            <EntityTypeMapping TypeName="alpensternModel508.Spa">
               <MappingFragment StoreEntitySet="Spa">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="bezeichnung" ColumnName="bezeichnung" />
@@ -1215,7 +1340,7 @@ Warnung 6002: F√ºr Tabelle/Sicht 'alpenstern.dbo.Komplettbuchung' ist kein Prim√
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Stadt">
-            <EntityTypeMapping TypeName="alpensternModel.Stadt">
+            <EntityTypeMapping TypeName="alpensternModel508.Stadt">
               <MappingFragment StoreEntitySet="Stadt">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="land_id" ColumnName="land_id" />
@@ -1224,19 +1349,8 @@ Warnung 6002: F√ºr Tabelle/Sicht 'alpenstern.dbo.Komplettbuchung' ist kein Prim√
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="alpensternModel.sysdiagrams">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Zimmer">
-            <EntityTypeMapping TypeName="alpensternModel.Zimmer">
+            <EntityTypeMapping TypeName="alpensternModel508.Zimmer">
               <MappingFragment StoreEntitySet="Zimmer">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="kategorie_id" ColumnName="kategorie_id" />
@@ -1245,7 +1359,7 @@ Warnung 6002: F√ºr Tabelle/Sicht 'alpenstern.dbo.Komplettbuchung' ist kein Prim√
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Zimmerbuchung">
-            <EntityTypeMapping TypeName="alpensternModel.Zimmerbuchung">
+            <EntityTypeMapping TypeName="alpensternModel508.Zimmerbuchung">
               <MappingFragment StoreEntitySet="Zimmerbuchung">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="zimmer_id" ColumnName="zimmer_id" />
@@ -1255,34 +1369,25 @@ Warnung 6002: F√ºr Tabelle/Sicht 'alpenstern.dbo.Komplettbuchung' ist kein Prim√
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Gastlogin">
-            <EntityTypeMapping TypeName="alpensternModel.Gastlogin">
-              <MappingFragment StoreEntitySet="Gastlogin">
+          <EntitySetMapping Name="get_carousel_imgs">
+            <EntityTypeMapping TypeName="alpensternModel508.get_carousel_imgs">
+              <MappingFragment StoreEntitySet="get_carousel_imgs">
                 <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="gast_id" ColumnName="gast_id" />
-                <ScalarProperty Name="login_id" ColumnName="login_id" />
+                <ScalarProperty Name="bilderart" ColumnName="bilderart" />
+                <ScalarProperty Name="pfad" ColumnName="pfad" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Kategorieausstattung">
-            <EntityTypeMapping TypeName="alpensternModel.Kategorieausstattung">
-              <MappingFragment StoreEntitySet="Kategorieausstattung">
+          <EntitySetMapping Name="get_zimmer_imgs">
+            <EntityTypeMapping TypeName="alpensternModel508.get_zimmer_imgs">
+              <MappingFragment StoreEntitySet="get_zimmer_imgs">
                 <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="ausstattung_id" ColumnName="ausstattung_id" />
-                <ScalarProperty Name="kategorie_id" ColumnName="kategorie_id" />
-                <ScalarProperty Name="anzahl" ColumnName="anzahl" />
+                <ScalarProperty Name="bilderart" ColumnName="bilderart" />
+                <ScalarProperty Name="pfad" ColumnName="pfad" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Komplettbuchung">
-            <EntityTypeMapping TypeName="alpensternModel.Komplettbuchung">
-              <MappingFragment StoreEntitySet="Komplettbuchung">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="kategorieanfrage_id" ColumnName="kategorieanfrage_id" />
-                <ScalarProperty Name="komplettpaket_id" ColumnName="komplettpaket_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="register_user_insert" FunctionName="alpensternModel508.Store.register_user_insert" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

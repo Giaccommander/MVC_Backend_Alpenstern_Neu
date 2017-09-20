@@ -188,87 +188,96 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\alpensternDB.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>alpensternDB.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\alpensternDB.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>alpensternDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\alpensternDB.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>alpensternDB.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Models\Anfrage.cs">
-      <DependentUpon>alpensternDB.tt</DependentUpon>
+      <DependentUpon>Local_508.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Ausstattung.cs">
-      <DependentUpon>alpensternDB.tt</DependentUpon>
+      <DependentUpon>Local_508.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Bilder.cs">
-      <DependentUpon>alpensternDB.tt</DependentUpon>
+      <DependentUpon>Local_508.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\BilderVM.cs" />
+    <Compile Include="Models\Dinner.cs">
+      <DependentUpon>Local_508.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Extras.cs">
+      <DependentUpon>Local_508.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Gaestebuch.cs">
-      <DependentUpon>alpensternDB.tt</DependentUpon>
+      <DependentUpon>Local_508.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Gast.cs">
-      <DependentUpon>alpensternDB.tt</DependentUpon>
+      <DependentUpon>Local_508.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Gastlogin.cs">
-      <DependentUpon>alpensternDB.tt</DependentUpon>
+      <DependentUpon>Local_508.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\get_carousel_imgs.cs">
+      <DependentUpon>Local_508.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\get_zimmer_imgs.cs">
+      <DependentUpon>Local_508.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Kategorie.cs">
-      <DependentUpon>alpensternDB.tt</DependentUpon>
+      <DependentUpon>Local_508.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Kategorieanfrage.cs">
-      <DependentUpon>alpensternDB.tt</DependentUpon>
+      <DependentUpon>Local_508.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Kategorieausstattung.cs">
-      <DependentUpon>alpensternDB.tt</DependentUpon>
+      <DependentUpon>Local_508.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Komplettbuchung.cs">
-      <DependentUpon>alpensternDB.tt</DependentUpon>
+      <DependentUpon>Local_508.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Komplettpaket.cs">
-      <DependentUpon>alpensternDB.tt</DependentUpon>
+      <DependentUpon>Local_508.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Land.cs">
-      <DependentUpon>alpensternDB.tt</DependentUpon>
+      <DependentUpon>Local_508.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Local_508.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Local_508.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Local_508.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Local_508.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Local_508.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Local_508.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Login.cs">
-      <DependentUpon>alpensternDB.tt</DependentUpon>
+      <DependentUpon>Local_508.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Mitarbeiter.cs">
-      <DependentUpon>alpensternDB.tt</DependentUpon>
+      <DependentUpon>Local_508.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Rechnung.cs">
-      <DependentUpon>alpensternDB.tt</DependentUpon>
+      <DependentUpon>Local_508.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Rueckruf.cs">
-      <DependentUpon>alpensternDB.tt</DependentUpon>
+      <DependentUpon>Local_508.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Saison.cs">
-      <DependentUpon>alpensternDB.tt</DependentUpon>
+      <DependentUpon>Local_508.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Spa.cs">
-      <DependentUpon>alpensternDB.tt</DependentUpon>
+      <DependentUpon>Local_508.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Stadt.cs">
-      <DependentUpon>alpensternDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>alpensternDB.tt</DependentUpon>
+      <DependentUpon>Local_508.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Zimmer.cs">
-      <DependentUpon>alpensternDB.tt</DependentUpon>
+      <DependentUpon>Local_508.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Zimmerbuchung.cs">
-      <DependentUpon>alpensternDB.tt</DependentUpon>
+      <DependentUpon>Local_508.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -329,15 +338,15 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\alpensternDB.Context.tt">
+    <Content Include="Models\Local_508.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>alpensternDB.edmx</DependentUpon>
-      <LastGenOutput>alpensternDB.Context.cs</LastGenOutput>
+      <DependentUpon>Local_508.edmx</DependentUpon>
+      <LastGenOutput>Local_508.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\alpensternDB.tt">
+    <Content Include="Models\Local_508.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>alpensternDB.edmx</DependentUpon>
-      <LastGenOutput>alpensternDB.cs</LastGenOutput>
+      <DependentUpon>Local_508.edmx</DependentUpon>
+      <LastGenOutput>Local_508.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\02_BuchenJava.js" />
     <Content Include="Scripts\ai.0.22.19-build00125.js" />
@@ -349,12 +358,12 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EntityDeploy Include="Models\alpensternDB.edmx">
+    <EntityDeploy Include="Models\Local_508.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>alpensternDB.Designer.cs</LastGenOutput>
+      <LastGenOutput>Local_508.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\alpensternDB.edmx.diagram">
-      <DependentUpon>alpensternDB.edmx</DependentUpon>
+    <Content Include="Models\Local_508.edmx.diagram">
+      <DependentUpon>Local_508.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\JavaScript.js" />
@@ -414,6 +423,11 @@
     <Content Include="Views\Vorlage_Logins\Details.cshtml" />
     <Content Include="Views\Vorlage_Logins\Edit.cshtml" />
     <Content Include="Views\Vorlage_Logins\Index.cshtml" />
+    <Content Include="Views\Bilder\Create.cshtml" />
+    <Content Include="Views\Bilder\Delete.cshtml" />
+    <Content Include="Views\Bilder\Details.cshtml" />
+    <Content Include="Views\Bilder\Edit.cshtml" />
+    <Content Include="Views\Bilder\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

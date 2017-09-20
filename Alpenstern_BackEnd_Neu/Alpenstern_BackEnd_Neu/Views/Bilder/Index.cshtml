@@ -29,7 +29,7 @@
         <td>
             <img src="@item.pfad" alt="Alternate Text" height="100"/><br />
             
-            <img src="data:image;base64,@System.Convert.ToBase64String(item.dbimage.)" width="80" height="80" />
+            @*<img src="data:image;base64,@System.Convert.ToBase64String(item.dbimage.)" width="80" height="80" />*@
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.id }) |

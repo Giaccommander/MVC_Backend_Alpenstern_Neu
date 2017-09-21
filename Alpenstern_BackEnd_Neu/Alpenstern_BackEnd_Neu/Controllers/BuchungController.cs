@@ -16,7 +16,6 @@ namespace Alpenstern_BackEnd_Neu.Controllers
             var kundeDaten = (buchungIndexVM)TempData["filter"];
             // neue ViewModel variable 
             var vmKundenListe = new buchungIndexVM();
-            ViewBag.kD = kundeDaten;
             if (kundeDaten == null)
             {
 
@@ -108,43 +107,75 @@ namespace Alpenstern_BackEnd_Neu.Controllers
                 var dbLand = db.Land;
                 var dbOrt = db.Stadt;
                 var dbZimmer = db.Zimmer;
-                var dbkategorie = db.Kategorie;
+                var dbZimmerbuchung = db.Zimmerbuchung;
+                var dbAnfrage = db.Anfrage;
+                var dbKatAnfrage = db.Kategorieanfrage;
+                var dbKategorie = db.Kategorie;
                 foreach (var k in dbkundedaten)
                 {
                     if (k.id == vm.radioAuswahl)
                     {
                         var kundeMV = new PersonDatenVM();
-                        kundeMV.id = vm.radioAuswahl;
-                        kundeMV.vorname = k.vorname;
-                        kundeMV.nachname = k.nachname;
-                        kundeMV.reisePassNr = k.reisepassnummer;
-                        kundeMV.strasse = k.straße;
-                        kundeMV.gebDatum = k.geburtsdatum;
-                        kundeMV.email = k.email;
-                        kundeMV.telefonNr = k.telefonnummer;
+                        var daten = (
 
-                        foreach (var l in dbLand)
+                            from g in dbkundedaten
+                            join s in dbOrt on g.stadt_id equals s.id
+                            join l in dbLand on s.land_id equals l.id
+                            join a in dbAnfrage on g.id equals a.gast_id
+                            join kate in dbKatAnfrage on a.id equals kate.anfrage_id
+                            join zb in dbZimmerbuchung on kate.id equals zb.kategorieanfrage_id
+                            join zim in dbZimmer on zb.zimmer_id equals zim.id
+                            join kat in db.Kategorie on zim.kategorie_id equals kat.id
+                            where g.id == vm.radioAuswahl
+                            select new {
+                                g.id,
+                                zim.zimmerNummer,
+                                kat.bezeichnung,
+                                kat.preis,
+                                kat.personenAnzahl,
+                                kat.groesse,
+                                g.vorname,
+                                g.nachname,
+                                g.reisepassnummer,
+                                g.straße,
+                                g.geburtsdatum,
+                                g.email,
+                                g.telefonnummer
+                            });
+
+                        foreach (var ka in daten)
                         {
-                            kundeMV.land = l.bezeichnung;
-                        }
-                        foreach (var s in dbOrt)
-                        {
-                            kundeMV.ort = s.bezeichnung;
-                            kundeMV.plz = s.plz;
-                        }
-                        foreach (var ku in dbkategorie)
-                        {
-                            kundeMV.kategorieID = ku.id;
-                            kundeMV.bezeichnung = ku.bezeichnung;
-                            kundeMV.preis = ku.preis;
-                            kundeMV.personenAnzahl = ku.personenAnzahl;
-                            kundeMV.groesse = ku.groesse;
-                        }
-                        foreach (var z in dbZimmer)
-                        {
-                            kundeMV.zimmerID = z.id;
-                            kundeMV.kategorieID = z.kategorie_id;
-                            kundeMV.zimmerNummer = z.zimmerNummer;
+                            kundeMV.groesse = ka.groesse;
+                            kundeMV.bezeichnung = ka.bezeichnung;
+                            kundeMV.preis = ka.preis;
+                            kundeMV.personenAnzahl = ka.personenAnzahl;
+                            kundeMV.zimmerNummer = ka.zimmerNummer;
+                            kundeMV.vorname = ka.vorname;
+                            kundeMV.nachname = ka.nachname;
+                            kundeMV.reisePassNr = ka.reisepassnummer;
+                            kundeMV.strasse = ka.straße;
+                            kundeMV.gebDatum = ka.geburtsdatum;
+                            kundeMV.email = ka.email;
+                            kundeMV.telefonNr = ka.telefonnummer;
+                            foreach (var s in dbOrt)
+                            {
+                                if (k.stadt_id == s.id)
+                                {
+                                    kundeMV.ort = s.bezeichnung;
+                                    kundeMV.plz = s.plz;
+
+                                    foreach (var l in dbLand)
+                                    {
+                                        if (s.land_id == l.id)
+                                        {
+                                            kundeMV.land = l.bezeichnung;
+                                            break;
+                                        }
+                                    }
+                                    break;
+                                }
+                            }
+
                         }
                         Kunde = kundeMV;
                         break;

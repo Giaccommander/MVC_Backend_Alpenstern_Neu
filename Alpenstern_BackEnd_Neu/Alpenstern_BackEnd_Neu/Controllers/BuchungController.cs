@@ -109,12 +109,8 @@ namespace Alpenstern_BackEnd_Neu.Controllers
                 var dbOrt = db.Stadt;
                 var dbZimmer = db.Zimmer;
                 var dbkategorie = db.Kategorie;
-                var dbAnfrage = db.Anfrage;
-                var dbKatAnfrage = db.Kategorieanfrage;
                 foreach (var k in dbkundedaten)
                 {
-                    #region if region
-
                     if (k.id == vm.radioAuswahl)
                     {
                         var kundeMV = new PersonDatenVM();
@@ -126,39 +122,37 @@ namespace Alpenstern_BackEnd_Neu.Controllers
                         kundeMV.gebDatum = k.geburtsdatum;
                         kundeMV.email = k.email;
                         kundeMV.telefonNr = k.telefonnummer;
-                        #region ort und land rauslesen
 
+                        foreach (var l in dbLand)
+                        {
+                            kundeMV.land = l.bezeichnung;
+                        }
                         foreach (var s in dbOrt)
                         {
-                            if (k.stadt_id == s.id)
-                            {
-                                kundeMV.ort = s.bezeichnung;
-                                kundeMV.plz = s.plz;
-
-                                foreach (var l in dbLand)
-                                {
-                                    if (s.land_id == l.id)
-                                    {
-                                        kundeMV.land = l.bezeichnung;
-                                        break;
-                                    }
-                                }
-                                break;
-                            }
+                            kundeMV.ort = s.bezeichnung;
+                            kundeMV.plz = s.plz;
                         }
-                        #endregion
-                        #region kategorie und zimmer auslesen
-                        
-                        #endregion
+                        foreach (var ku in dbkategorie)
+                        {
+                            kundeMV.kategorieID = ku.id;
+                            kundeMV.bezeichnung = ku.bezeichnung;
+                            kundeMV.preis = ku.preis;
+                            kundeMV.personenAnzahl = ku.personenAnzahl;
+                            kundeMV.groesse = ku.groesse;
+                        }
+                        foreach (var z in dbZimmer)
+                        {
+                            kundeMV.zimmerID = z.id;
+                            kundeMV.kategorieID = z.kategorie_id;
+                            kundeMV.zimmerNummer = z.zimmerNummer;
+                        }
                         Kunde = kundeMV;
                         break;
                     }
-                    #endregion
                 }
-                return View(Kunde);
             }
+            return View(Kunde);
         }
-
 
         [HttpPost]
         public ActionResult Persoenlichdaten(PersonDatenVM vm, buchungIndexVM bVm)

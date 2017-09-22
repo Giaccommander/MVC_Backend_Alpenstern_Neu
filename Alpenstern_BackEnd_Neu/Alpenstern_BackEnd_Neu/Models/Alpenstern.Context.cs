@@ -12,6 +12,8 @@ namespace Alpenstern_BackEnd_Neu.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class alpensternEntities : DbContext
     {
@@ -47,5 +49,16 @@ namespace Alpenstern_BackEnd_Neu.Models
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Zimmer> Zimmer { get; set; }
         public virtual DbSet<Zimmerbuchung> Zimmerbuchung { get; set; }
+        public virtual DbSet<Dinner> Dinner { get; set; }
+        public virtual DbSet<Extras> Extras { get; set; }
+    
+        public virtual ObjectResult<usp_datenabfragen_Result3> usp_datenabfragen(Nullable<int> gastId)
+        {
+            var gastIdParameter = gastId.HasValue ?
+                new ObjectParameter("GastId", gastId) :
+                new ObjectParameter("GastId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_datenabfragen_Result3>("usp_datenabfragen", gastIdParameter);
+        }
     }
 }

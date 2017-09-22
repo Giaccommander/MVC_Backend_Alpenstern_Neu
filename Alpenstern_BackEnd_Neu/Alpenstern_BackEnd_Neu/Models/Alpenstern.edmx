@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="alpensternModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="alpensternModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Anfrage">
           <Key>
             <PropertyRef Name="id" />
@@ -32,6 +32,29 @@
           <Property Name="pfad" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="dbimage" Type="varbinary(max)" Nullable="false" />
         </EntityType>
+        <EntityType Name="Dinner">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bezeichnung" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="preis" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="gang1" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="gang2" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="gang3" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="gang4" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="gang5" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Extras">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Babybett" Type="bit" />
+          <Property Name="Kinderstuhl" Type="bit" />
+          <Property Name="Kinderbetreuung" Type="bit" />
+          <Property Name="KinderProgramm" Type="bit" />
+        </EntityType>
         <EntityType Name="Gaestebuch">
           <Key>
             <PropertyRef Name="id" />
@@ -39,7 +62,7 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="vorname" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="nachname" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="eintrag" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="eintrag" Type="varchar" MaxLength="300" Nullable="false" />
         </EntityType>
         <EntityType Name="Gast">
           <Key>
@@ -366,18 +389,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk__Zimmerbuchung__Kategorieanfrage">
-          <End Role="Kategorieanfrage" Type="Self.Kategorieanfrage" Multiplicity="1" />
-          <End Role="Zimmerbuchung" Type="Self.Zimmerbuchung" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kategorieanfrage">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Zimmerbuchung">
-              <PropertyRef Name="kategorieanfrage_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="fk__Zimmerbuchung__Mitarbeiter">
           <End Role="Mitarbeiter" Type="Self.Mitarbeiter" Multiplicity="1" />
           <End Role="Zimmerbuchung" Type="Self.Zimmerbuchung" Multiplicity="*" />
@@ -402,10 +413,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Zimmerbuchung_Kategorieanfrage">
+          <End Role="Kategorieanfrage" Type="Self.Kategorieanfrage" Multiplicity="1" />
+          <End Role="Zimmerbuchung" Type="Self.Zimmerbuchung" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategorieanfrage">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Zimmerbuchung">
+              <PropertyRef Name="kategorieanfrage_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="usp_datenabfragen" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="GastId" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="alpensternModelStoreContainer">
           <EntitySet Name="Anfrage" EntityType="Self.Anfrage" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ausstattung" EntityType="Self.Ausstattung" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Bilder" EntityType="Self.Bilder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dinner" EntityType="Self.Dinner" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Extras" EntityType="Self.Extras" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Gaestebuch" EntityType="Self.Gaestebuch" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Gast" EntityType="Self.Gast" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Gastlogin" EntityType="Self.Gastlogin" Schema="dbo" store:Type="Tables" />
@@ -477,10 +505,6 @@
             <End Role="Kategorie" EntitySet="Kategorie" />
             <End Role="Zimmer" EntitySet="Zimmer" />
           </AssociationSet>
-          <AssociationSet Name="fk__Zimmerbuchung__Kategorieanfrage" Association="Self.fk__Zimmerbuchung__Kategorieanfrage">
-            <End Role="Kategorieanfrage" EntitySet="Kategorieanfrage" />
-            <End Role="Zimmerbuchung" EntitySet="Zimmerbuchung" />
-          </AssociationSet>
           <AssociationSet Name="fk__Zimmerbuchung__Mitarbeiter" Association="Self.fk__Zimmerbuchung__Mitarbeiter">
             <End Role="Mitarbeiter" EntitySet="Mitarbeiter" />
             <End Role="Zimmerbuchung" EntitySet="Zimmerbuchung" />
@@ -489,9 +513,12 @@
             <End Role="Zimmer" EntitySet="Zimmer" />
             <End Role="Zimmerbuchung" EntitySet="Zimmerbuchung" />
           </AssociationSet>
+          <AssociationSet Name="FK_Zimmerbuchung_Kategorieanfrage" Association="Self.FK_Zimmerbuchung_Kategorieanfrage">
+            <End Role="Kategorieanfrage" EntitySet="Kategorieanfrage" />
+            <End Role="Zimmerbuchung" EntitySet="Zimmerbuchung" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="alpensternModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -533,7 +560,7 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="vorname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="nachname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="eintrag" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="eintrag" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <EntityType Name="Gast">
           <Key>
@@ -1011,7 +1038,107 @@
             <End Role="Zimmer" EntitySet="Zimmer" />
             <End Role="Zimmerbuchung" EntitySet="Zimmerbuchung" />
           </AssociationSet>
+          <EntitySet Name="Dinner" EntityType="alpensternModel.Dinner" />
+          <EntitySet Name="Extras" EntityType="alpensternModel.Extras" />
+          <FunctionImport Name="usp_datenabfragen" ReturnType="Collection(alpensternModel.usp_datenabfragen_Result3)">
+            <Parameter Name="GastId" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
+        <EntityType Name="Dinner">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="bezeichnung" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="preis" Type="Decimal" Nullable="false" Precision="5" Scale="2" />
+          <Property Name="gang1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="gang2" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="gang3" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="gang4" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="gang5" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Extras">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Babybett" Type="Boolean" />
+          <Property Name="Kinderstuhl" Type="Boolean" />
+          <Property Name="Kinderbetreuung" Type="Boolean" />
+          <Property Name="KinderProgramm" Type="Boolean" />
+        </EntityType>
+        <ComplexType Name="usp_datenabfragen_Result">
+          <Property Type="Int32" Name="GastID" Nullable="false" />
+          <Property Type="String" Name="vorname" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="nachname" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="reisepassnummer" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="straße" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="geburtsdatum" Nullable="false" Precision="23" />
+          <Property Type="String" Name="email" Nullable="false" MaxLength="40" />
+          <Property Type="String" Name="telefonnummer" Nullable="false" MaxLength="20" />
+          <Property Type="Int32" Name="groesse" Nullable="true" />
+          <Property Type="String" Name="bezeichnung" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="KatID" Nullable="true" />
+          <Property Type="Int32" Name="personenAnzahl" Nullable="true" />
+          <Property Type="Decimal" Name="preis" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="String" Name="Stadt" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Land" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="usp_datenabfragen_Result1">
+          <Property Type="Int32" Name="GastID" Nullable="false" />
+          <Property Type="String" Name="vorname" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="nachname" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="reisepassnummer" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="straße" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="geburtsdatum" Nullable="false" Precision="23" />
+          <Property Type="String" Name="email" Nullable="false" MaxLength="40" />
+          <Property Type="String" Name="telefonnummer" Nullable="false" MaxLength="20" />
+          <Property Type="Int32" Name="groesse" Nullable="true" />
+          <Property Type="String" Name="bezeichnung" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="KatID" Nullable="true" />
+          <Property Type="Int32" Name="personenAnzahl" Nullable="true" />
+          <Property Type="Int32" Name="zimmerNummer" Nullable="true" />
+          <Property Type="Decimal" Name="preis" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="String" Name="Stadt" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Land" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="usp_datenabfragen_Result2">
+          <Property Type="Int32" Name="GastID" Nullable="false" />
+          <Property Type="String" Name="vorname" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="nachname" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="reisepassnummer" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="straße" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="geburtsdatum" Nullable="false" Precision="23" />
+          <Property Type="String" Name="email" Nullable="false" MaxLength="40" />
+          <Property Type="String" Name="telefonnummer" Nullable="false" MaxLength="20" />
+          <Property Type="Int32" Name="groesse" Nullable="true" />
+          <Property Type="String" Name="bezeichnung" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="KatID" Nullable="true" />
+          <Property Type="Int32" Name="personenAnzahl" Nullable="true" />
+          <Property Type="Int32" Name="zimmerNummer" Nullable="true" />
+          <Property Type="Decimal" Name="preis" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="String" Name="Stadt" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Land" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="usp_datenabfragen_Result3">
+          <Property Type="Int32" Name="GastID" Nullable="false" />
+          <Property Type="String" Name="vorname" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="nachname" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="reisepassnummer" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="straße" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="geburtsdatum" Nullable="false" Precision="23" />
+          <Property Type="String" Name="email" Nullable="false" MaxLength="40" />
+          <Property Type="String" Name="telefonnummer" Nullable="false" MaxLength="20" />
+          <Property Type="Int32" Name="groesse" Nullable="true" />
+          <Property Type="String" Name="bezeichnung" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="KatID" Nullable="true" />
+          <Property Type="Int32" Name="personenAnzahl" Nullable="true" />
+          <Property Type="Int32" Name="zimmerNummer" Nullable="true" />
+          <Property Type="Decimal" Name="preis" Nullable="true" Precision="18" Scale="0" />
+          <Property Type="String" Name="Stadt" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="plz" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Land" Nullable="true" MaxLength="50" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1245,6 +1372,54 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Dinner">
+            <EntityTypeMapping TypeName="alpensternModel.Dinner">
+              <MappingFragment StoreEntitySet="Dinner">
+                <ScalarProperty Name="gang5" ColumnName="gang5" />
+                <ScalarProperty Name="gang4" ColumnName="gang4" />
+                <ScalarProperty Name="gang3" ColumnName="gang3" />
+                <ScalarProperty Name="gang2" ColumnName="gang2" />
+                <ScalarProperty Name="gang1" ColumnName="gang1" />
+                <ScalarProperty Name="preis" ColumnName="preis" />
+                <ScalarProperty Name="bezeichnung" ColumnName="bezeichnung" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Extras">
+            <EntityTypeMapping TypeName="alpensternModel.Extras">
+              <MappingFragment StoreEntitySet="Extras">
+                <ScalarProperty Name="KinderProgramm" ColumnName="KinderProgramm" />
+                <ScalarProperty Name="Kinderbetreuung" ColumnName="Kinderbetreuung" />
+                <ScalarProperty Name="Kinderstuhl" ColumnName="Kinderstuhl" />
+                <ScalarProperty Name="Babybett" ColumnName="Babybett" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="usp_datenabfragen" FunctionName="alpensternModel.Store.usp_datenabfragen">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="alpensternModel.usp_datenabfragen_Result3">
+                <ScalarProperty Name="GastID" ColumnName="GastID" />
+                <ScalarProperty Name="vorname" ColumnName="vorname" />
+                <ScalarProperty Name="nachname" ColumnName="nachname" />
+                <ScalarProperty Name="reisepassnummer" ColumnName="reisepassnummer" />
+                <ScalarProperty Name="straße" ColumnName="straße" />
+                <ScalarProperty Name="geburtsdatum" ColumnName="geburtsdatum" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="telefonnummer" ColumnName="telefonnummer" />
+                <ScalarProperty Name="groesse" ColumnName="groesse" />
+                <ScalarProperty Name="bezeichnung" ColumnName="bezeichnung" />
+                <ScalarProperty Name="KatID" ColumnName="KatID" />
+                <ScalarProperty Name="personenAnzahl" ColumnName="personenAnzahl" />
+                <ScalarProperty Name="zimmerNummer" ColumnName="zimmerNummer" />
+                <ScalarProperty Name="preis" ColumnName="preis" />
+                <ScalarProperty Name="Stadt" ColumnName="Stadt" />
+                <ScalarProperty Name="plz" ColumnName="plz" />
+                <ScalarProperty Name="Land" ColumnName="Land" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

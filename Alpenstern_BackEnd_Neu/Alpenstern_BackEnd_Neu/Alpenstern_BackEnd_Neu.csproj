@@ -216,6 +216,12 @@
       <DependentUpon>Alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\buchungIndexVM.cs" />
+    <Compile Include="Models\Dinner.cs">
+      <DependentUpon>Alpenstern.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Extras.cs">
+      <DependentUpon>Alpenstern.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Gaestebuch.cs">
       <DependentUpon>Alpenstern.tt</DependentUpon>
     </Compile>
@@ -273,6 +279,18 @@
     </Compile>
     <Compile Include="Models\StadtVM.cs" />
     <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>Alpenstern.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\usp_datenabfragen_Result.cs">
+      <DependentUpon>Alpenstern.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\usp_datenabfragen_Result1.cs">
+      <DependentUpon>Alpenstern.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\usp_datenabfragen_Result2.cs">
+      <DependentUpon>Alpenstern.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\usp_datenabfragen_Result3.cs">
       <DependentUpon>Alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Zimmer.cs">

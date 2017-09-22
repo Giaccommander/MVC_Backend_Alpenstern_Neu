@@ -16,10 +16,11 @@ namespace Alpenstern_BackEnd_Neu.Models
         public string telefonNr { get; set; }
         public string reisePassNr { get; set; }
         public string land { get; set; }
-        public string ort { get; set; }
+        public string stadt { get; set; }
         public string plz { get; set; }
         public int zimmerID { get; set; }
         public int kategorieID { get; set; }
+        public string katBezeichnung { get; set; }
         public int zimmerNummer { get; set; }
         public string bezeichnung { get; set; }
         public decimal preis { get; set; }

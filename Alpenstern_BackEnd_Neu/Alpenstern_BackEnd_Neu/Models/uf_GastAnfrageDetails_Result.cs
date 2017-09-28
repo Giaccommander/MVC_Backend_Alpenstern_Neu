@@ -13,6 +13,11 @@ namespace Alpenstern_BackEnd_Neu.Models
     
     public partial class uf_GastAnfrageDetails_Result
     {
+        public int GastId { get; set; }
+        public string vorname { get; set; }
+        public string nachname { get; set; }
+        public System.DateTime datumVon { get; set; }
+        public System.DateTime datumBis { get; set; }
         public Nullable<int> naechte { get; set; }
         public int zimmerNummer { get; set; }
         public string kategorie { get; set; }

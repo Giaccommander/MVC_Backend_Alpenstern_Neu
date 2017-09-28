@@ -15,10 +15,10 @@ namespace Alpenstern_BackEnd_Neu.Models
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class alpensternEntities2 : DbContext
+    public partial class masterEntities : DbContext
     {
-        public alpensternEntities2()
-            : base("name=alpensternEntities2")
+        public masterEntities()
+            : base("name=masterEntities")
         {
         }
     
@@ -34,11 +34,8 @@ namespace Alpenstern_BackEnd_Neu.Models
         public virtual DbSet<Extras> Extras { get; set; }
         public virtual DbSet<Gaestebuch> Gaestebuch { get; set; }
         public virtual DbSet<Gast> Gast { get; set; }
-        public virtual DbSet<Gastlogin> Gastlogin { get; set; }
         public virtual DbSet<Kategorie> Kategorie { get; set; }
         public virtual DbSet<Kategorieanfrage> Kategorieanfrage { get; set; }
-        public virtual DbSet<Kategorieausstattung> Kategorieausstattung { get; set; }
-        public virtual DbSet<Komplettbuchung> Komplettbuchung { get; set; }
         public virtual DbSet<Komplettpaket> Komplettpaket { get; set; }
         public virtual DbSet<Land> Land { get; set; }
         public virtual DbSet<Login> Login { get; set; }
@@ -50,10 +47,19 @@ namespace Alpenstern_BackEnd_Neu.Models
         public virtual DbSet<Stadt> Stadt { get; set; }
         public virtual DbSet<Zimmer> Zimmer { get; set; }
         public virtual DbSet<Zimmerbuchung> Zimmerbuchung { get; set; }
+        public virtual DbSet<Gastlogin> Gastlogin { get; set; }
+        public virtual DbSet<Kategorieausstattung> Kategorieausstattung { get; set; }
+        public virtual DbSet<Komplettbuchung> Komplettbuchung { get; set; }
+        public virtual DbSet<MSreplication_options> MSreplication_options { get; set; }
+        public virtual DbSet<spt_fallback_db> spt_fallback_db { get; set; }
+        public virtual DbSet<spt_fallback_dev> spt_fallback_dev { get; set; }
+        public virtual DbSet<spt_fallback_usg> spt_fallback_usg { get; set; }
+        public virtual DbSet<spt_monitor> spt_monitor { get; set; }
         public virtual DbSet<get_carousel_imgs> get_carousel_imgs { get; set; }
         public virtual DbSet<get_zimmer_imgs> get_zimmer_imgs { get; set; }
+        public virtual DbSet<spt_values> spt_values { get; set; }
     
-        [DbFunction("alpensternEntities2", "uf_GastAnfrageDetails")]
+        [DbFunction("masterEntities", "uf_GastAnfrageDetails")]
         public virtual IQueryable<uf_GastAnfrageDetails_Result> uf_GastAnfrageDetails(Nullable<int> gastid, Nullable<int> anfrageid)
         {
             var gastidParameter = gastid.HasValue ?
@@ -64,7 +70,7 @@ namespace Alpenstern_BackEnd_Neu.Models
                 new ObjectParameter("anfrageid", anfrageid) :
                 new ObjectParameter("anfrageid", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<uf_GastAnfrageDetails_Result>("[alpensternEntities2].[uf_GastAnfrageDetails](@gastid, @anfrageid)", gastidParameter, anfrageidParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<uf_GastAnfrageDetails_Result>("[masterEntities].[uf_GastAnfrageDetails](@gastid, @anfrageid)", gastidParameter, anfrageidParameter);
         }
     
         public virtual int register_user_insert(string benutzername, string passwort, string salt)
@@ -82,6 +88,16 @@ namespace Alpenstern_BackEnd_Neu.Models
                 new ObjectParameter("salt", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("register_user_insert", benutzernameParameter, passwortParameter, saltParameter);
+        }
+    
+        public virtual int sp_MScleanupmergepublisher()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_MScleanupmergepublisher");
+        }
+    
+        public virtual int sp_MSrepl_startup()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_MSrepl_startup");
         }
     }
 }

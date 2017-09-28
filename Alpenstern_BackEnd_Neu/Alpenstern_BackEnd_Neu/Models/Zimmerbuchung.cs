@@ -21,6 +21,7 @@ namespace Alpenstern_BackEnd_Neu.Models
         public Nullable<bool> checkedStatus { get; set; }
     
         public virtual Kategorieanfrage Kategorieanfrage { get; set; }
+        public virtual Kategorieanfrage Kategorieanfrage1 { get; set; }
         public virtual Mitarbeiter Mitarbeiter { get; set; }
         public virtual Zimmer Zimmer { get; set; }
     }

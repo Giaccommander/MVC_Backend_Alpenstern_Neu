@@ -13,7 +13,7 @@ namespace Alpenstern_BackEnd_Neu.Controllers
         // GET: Rechnung
         public ActionResult Index(DruckansichtVM vmd)
         {
-            using (var db=new alpensternEntities())
+            using (var db=new masterEntities())
             {
                 var re = new RechnungVM();
 

@@ -12,10 +12,13 @@ namespace Alpenstern_BackEnd_Neu.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Bilder
+    public partial class MSreplication_options
     {
-        public int id { get; set; }
-        public string bilderart { get; set; }
-        public string pfad { get; set; }
+        public string optname { get; set; }
+        public bool value { get; set; }
+        public int major_version { get; set; }
+        public int minor_version { get; set; }
+        public int revision { get; set; }
+        public int install_failures { get; set; }
     }
 }

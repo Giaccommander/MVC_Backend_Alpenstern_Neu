@@ -14,7 +14,7 @@ namespace Alpenstern_BackEnd_Neu.Controllers
         public ActionResult Index(PersonDatenVM vm,buchungIndexVM bi, AnfrageDatumVM anfrage, RechnungVM re)
         {
             // Datenbank verbindung
-            using(var db = new alpensternEntities1())
+            using(var db = new masterEntities())
             {
                 // neue variable vom ViewModel
                 var vmd = new DruckansichtVM();

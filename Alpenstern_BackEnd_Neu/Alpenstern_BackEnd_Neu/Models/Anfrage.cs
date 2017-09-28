@@ -28,7 +28,6 @@ namespace Alpenstern_BackEnd_Neu.Models
         public System.DateTime datumAnfrage { get; set; }
         public Nullable<System.DateTime> datumBearbeitet { get; set; }
     
-        public virtual Gast Gast { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Kategorieanfrage> Kategorieanfrage { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -19,6 +19,7 @@ namespace Alpenstern_BackEnd_Neu.Models
         {
             this.Komplettbuchung = new HashSet<Komplettbuchung>();
             this.Zimmerbuchung = new HashSet<Zimmerbuchung>();
+            this.Zimmerbuchung1 = new HashSet<Zimmerbuchung>();
         }
     
         public int id { get; set; }
@@ -31,5 +32,7 @@ namespace Alpenstern_BackEnd_Neu.Models
         public virtual ICollection<Komplettbuchung> Komplettbuchung { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Zimmerbuchung> Zimmerbuchung { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Zimmerbuchung> Zimmerbuchung1 { get; set; }
     }
 }

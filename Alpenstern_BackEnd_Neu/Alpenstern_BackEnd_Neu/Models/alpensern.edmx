@@ -1,0 +1,842 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="masterModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+        <EntityType Name="Anfrage">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="gast_id" Type="int" Nullable="false" />
+          <Property Name="datumVon" Type="date" Nullable="false" />
+          <Property Name="datumBis" Type="date" Nullable="false" />
+          <Property Name="datumAnfrage" Type="datetime" Nullable="false" />
+          <Property Name="datumBearbeitet" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Ausstattung">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bezeichnung" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Bilder">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bilderart" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="pfad" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Dinner">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bezeichnung" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="preis" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+          <Property Name="gang1" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="gang2" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="gang3" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="gang4" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="gang5" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Extras">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Babybett" Type="bit" />
+          <Property Name="Kinderstuhl" Type="bit" />
+          <Property Name="Kinderbetreuung" Type="bit" />
+          <Property Name="KinderProgramm" Type="bit" />
+        </EntityType>
+        <EntityType Name="Gaestebuch">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="vorname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="nachname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="eintrag" Type="varchar" MaxLength="300" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Gast">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="stadt_id" Type="int" Nullable="false" />
+          <Property Name="vorname" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="nachname" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="geburtsdatum" Type="datetime" Nullable="false" />
+          <Property Name="straße" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="telefonnummer" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="reisepassnummer" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <!--Während der Generierung sind Fehler aufgetreten:
+Warnung 6002: Für Tabelle/Sicht 'master.dbo.Gastlogin' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
+        <EntityType Name="Gastlogin">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="gast_id" />
+            <PropertyRef Name="login_id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="gast_id" Type="int" Nullable="false" />
+          <Property Name="login_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Kategorie">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bezeichnung" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="preis" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="personenAnzahl" Type="int" Nullable="false" />
+          <Property Name="groesse" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Kategorieanfrage">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kategorie_id" Type="int" Nullable="false" />
+          <Property Name="anfrage_id" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Während der Generierung sind Fehler aufgetreten:
+Warnung 6002: Für Tabelle/Sicht 'master.dbo.Kategorieausstattung' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
+        <EntityType Name="Kategorieausstattung">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="ausstattung_id" />
+            <PropertyRef Name="kategorie_id" />
+            <PropertyRef Name="anzahl" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ausstattung_id" Type="int" Nullable="false" />
+          <Property Name="kategorie_id" Type="int" Nullable="false" />
+          <Property Name="anzahl" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <!--Während der Generierung sind Fehler aufgetreten:
+Warnung 6002: Für Tabelle/Sicht 'master.dbo.Komplettbuchung' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
+        <EntityType Name="Komplettbuchung">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="kategorieanfrage_id" />
+            <PropertyRef Name="komplettpaket_id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kategorieanfrage_id" Type="int" Nullable="false" />
+          <Property Name="komplettpaket_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Komplettpaket">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bezeichnung" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="zuschlagProTag" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Land">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bezeichnung" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Login">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="benutzername" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="passwort" Type="char" MaxLength="64" Nullable="false" />
+          <Property Name="salt" Type="char" MaxLength="64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Mitarbeiter">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="vorname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="nachname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="passwort" Type="char" MaxLength="64" Nullable="false" />
+          <Property Name="salt" Type="char" MaxLength="64" Nullable="false" />
+        </EntityType>
+        <!--Während der Generierung sind Fehler aufgetreten:
+Warnung 6002: Für Tabelle/Sicht 'master.dbo.MSreplication_options' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
+        <EntityType Name="MSreplication_options">
+          <Key>
+            <PropertyRef Name="optname" />
+            <PropertyRef Name="value" />
+            <PropertyRef Name="major_version" />
+            <PropertyRef Name="minor_version" />
+            <PropertyRef Name="revision" />
+            <PropertyRef Name="install_failures" />
+          </Key>
+          <Property Name="optname" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="value" Type="bit" Nullable="false" />
+          <Property Name="major_version" Type="int" Nullable="false" />
+          <Property Name="minor_version" Type="int" Nullable="false" />
+          <Property Name="revision" Type="int" Nullable="false" />
+          <Property Name="install_failures" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rechnung">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="anfrage_id" Type="int" Nullable="false" />
+          <Property Name="gesamtpreis" Type="decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="anzahlPersonen" Type="tinyint" Nullable="false" />
+          <Property Name="anzahlNaechte" Type="tinyint" Nullable="false" />
+          <Property Name="datumAktualisiert" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rueckruf">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="telefon" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="grund" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="datum_erhalten" Type="datetime" Nullable="false" />
+          <Property Name="datum_erledigt" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Saison">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bezeichnung" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="monatVon" Type="tinyint" Nullable="false" />
+          <Property Name="monatBis" Type="tinyint" Nullable="false" />
+          <Property Name="preisProzent" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Spa">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bezeichnung" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="preis" Type="int" Nullable="false" />
+          <Property Name="einheit" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Während der Generierung sind Fehler aufgetreten:
+Warnung 6002: Für Tabelle/Sicht 'master.dbo.spt_fallback_db' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
+        <EntityType Name="spt_fallback_db">
+          <Key>
+            <PropertyRef Name="xserver_name" />
+            <PropertyRef Name="xdttm_ins" />
+            <PropertyRef Name="xdttm_last_ins_upd" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="dbid" />
+            <PropertyRef Name="status" />
+            <PropertyRef Name="version" />
+          </Key>
+          <Property Name="xserver_name" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="xdttm_ins" Type="datetime" Nullable="false" />
+          <Property Name="xdttm_last_ins_upd" Type="datetime" Nullable="false" />
+          <Property Name="xfallback_dbid" Type="smallint" />
+          <Property Name="name" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="dbid" Type="smallint" Nullable="false" />
+          <Property Name="status" Type="smallint" Nullable="false" />
+          <Property Name="version" Type="smallint" Nullable="false" />
+        </EntityType>
+        <!--Während der Generierung sind Fehler aufgetreten:
+Warnung 6002: Für Tabelle/Sicht 'master.dbo.spt_fallback_dev' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
+        <EntityType Name="spt_fallback_dev">
+          <Key>
+            <PropertyRef Name="xserver_name" />
+            <PropertyRef Name="xdttm_ins" />
+            <PropertyRef Name="xdttm_last_ins_upd" />
+            <PropertyRef Name="low" />
+            <PropertyRef Name="high" />
+            <PropertyRef Name="status" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="phyname" />
+          </Key>
+          <Property Name="xserver_name" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="xdttm_ins" Type="datetime" Nullable="false" />
+          <Property Name="xdttm_last_ins_upd" Type="datetime" Nullable="false" />
+          <Property Name="xfallback_low" Type="int" />
+          <Property Name="xfallback_drive" Type="char" MaxLength="2" />
+          <Property Name="low" Type="int" Nullable="false" />
+          <Property Name="high" Type="int" Nullable="false" />
+          <Property Name="status" Type="smallint" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="phyname" Type="varchar" MaxLength="127" Nullable="false" />
+        </EntityType>
+        <!--Während der Generierung sind Fehler aufgetreten:
+Warnung 6002: Für Tabelle/Sicht 'master.dbo.spt_fallback_usg' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
+        <EntityType Name="spt_fallback_usg">
+          <Key>
+            <PropertyRef Name="xserver_name" />
+            <PropertyRef Name="xdttm_ins" />
+            <PropertyRef Name="xdttm_last_ins_upd" />
+            <PropertyRef Name="dbid" />
+            <PropertyRef Name="segmap" />
+            <PropertyRef Name="lstart" />
+            <PropertyRef Name="sizepg" />
+            <PropertyRef Name="vstart" />
+          </Key>
+          <Property Name="xserver_name" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="xdttm_ins" Type="datetime" Nullable="false" />
+          <Property Name="xdttm_last_ins_upd" Type="datetime" Nullable="false" />
+          <Property Name="xfallback_vstart" Type="int" />
+          <Property Name="dbid" Type="smallint" Nullable="false" />
+          <Property Name="segmap" Type="int" Nullable="false" />
+          <Property Name="lstart" Type="int" Nullable="false" />
+          <Property Name="sizepg" Type="int" Nullable="false" />
+          <Property Name="vstart" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Während der Generierung sind Fehler aufgetreten:
+Warnung 6002: Für Tabelle/Sicht 'master.dbo.spt_monitor' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
+        <EntityType Name="spt_monitor">
+          <Key>
+            <PropertyRef Name="lastrun" />
+            <PropertyRef Name="cpu_busy" />
+            <PropertyRef Name="io_busy" />
+            <PropertyRef Name="idle" />
+            <PropertyRef Name="pack_received" />
+            <PropertyRef Name="pack_sent" />
+            <PropertyRef Name="connections" />
+            <PropertyRef Name="pack_errors" />
+            <PropertyRef Name="total_read" />
+            <PropertyRef Name="total_write" />
+            <PropertyRef Name="total_errors" />
+          </Key>
+          <Property Name="lastrun" Type="datetime" Nullable="false" />
+          <Property Name="cpu_busy" Type="int" Nullable="false" />
+          <Property Name="io_busy" Type="int" Nullable="false" />
+          <Property Name="idle" Type="int" Nullable="false" />
+          <Property Name="pack_received" Type="int" Nullable="false" />
+          <Property Name="pack_sent" Type="int" Nullable="false" />
+          <Property Name="connections" Type="int" Nullable="false" />
+          <Property Name="pack_errors" Type="int" Nullable="false" />
+          <Property Name="total_read" Type="int" Nullable="false" />
+          <Property Name="total_write" Type="int" Nullable="false" />
+          <Property Name="total_errors" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Stadt">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="land_id" Type="int" Nullable="false" />
+          <Property Name="bezeichnung" Type="varchar" MaxLength="50" />
+          <Property Name="plz" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Zimmer">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kategorie_id" Type="int" Nullable="false" />
+          <Property Name="zimmerNummer" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Zimmerbuchung">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="zimmer_id" Type="int" Nullable="false" />
+          <Property Name="mitarbeiter_id" Type="int" Nullable="false" />
+          <Property Name="kategorieanfrage_id" Type="int" Nullable="false" />
+          <Property Name="checkedStatus" Type="bit" />
+        </EntityType>
+        <!--Während der Generierung sind Fehler aufgetreten:
+Warnung 6002: Für Tabelle/Sicht 'master.dbo.get_carousel_imgs' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
+        <EntityType Name="get_carousel_imgs">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="bilderart" />
+            <PropertyRef Name="pfad" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bilderart" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="pfad" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <!--Während der Generierung sind Fehler aufgetreten:
+Warnung 6002: Für Tabelle/Sicht 'master.dbo.get_zimmer_imgs' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
+        <EntityType Name="get_zimmer_imgs">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="bilderart" />
+            <PropertyRef Name="pfad" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bilderart" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="pfad" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <!--Während der Generierung sind Fehler aufgetreten:
+Warnung 6002: Für Tabelle/Sicht 'master.dbo.spt_values' ist kein Primärschlüssel definiert. Der Schlüssel wurde abgeleitet, und die Definition wurde als schreibgeschützte Tabelle/Sicht erstellt.-->
+        <EntityType Name="spt_values">
+          <Key>
+            <PropertyRef Name="number" />
+            <PropertyRef Name="type" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="35" />
+          <Property Name="number" Type="int" Nullable="false" />
+          <Property Name="type" Type="nchar" MaxLength="3" Nullable="false" />
+          <Property Name="low" Type="int" />
+          <Property Name="high" Type="int" />
+          <Property Name="status" Type="int" />
+        </EntityType>
+        <Association Name="fk__Gast__Stadt">
+          <End Role="Stadt" Type="Self.Stadt" Multiplicity="1" />
+          <End Role="Gast" Type="Self.Gast" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stadt">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Gast">
+              <PropertyRef Name="stadt_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk__Gastlogin__Gast">
+          <End Role="Gast" Type="Self.Gast" Multiplicity="1" />
+          <End Role="Gastlogin" Type="Self.Gastlogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gast">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Gastlogin">
+              <PropertyRef Name="gast_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk__Gastlogin__login">
+          <End Role="Login" Type="Self.Login" Multiplicity="1" />
+          <End Role="Gastlogin" Type="Self.Gastlogin" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Login">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Gastlogin">
+              <PropertyRef Name="login_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk__Kategoireausstattung__Kategorie">
+          <End Role="Kategorie" Type="Self.Kategorie" Multiplicity="1" />
+          <End Role="Kategorieausstattung" Type="Self.Kategorieausstattung" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategorie">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Kategorieausstattung">
+              <PropertyRef Name="kategorie_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk__Kategorieanfrage__Anfrage">
+          <End Role="Anfrage" Type="Self.Anfrage" Multiplicity="1" />
+          <End Role="Kategorieanfrage" Type="Self.Kategorieanfrage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Anfrage">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Kategorieanfrage">
+              <PropertyRef Name="anfrage_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk__Kategorieanfrage__Kategorie">
+          <End Role="Kategorie" Type="Self.Kategorie" Multiplicity="1" />
+          <End Role="Kategorieanfrage" Type="Self.Kategorieanfrage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategorie">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Kategorieanfrage">
+              <PropertyRef Name="kategorie_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk__Kategorieausstattung__Ausstattung">
+          <End Role="Ausstattung" Type="Self.Ausstattung" Multiplicity="1" />
+          <End Role="Kategorieausstattung" Type="Self.Kategorieausstattung" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ausstattung">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Kategorieausstattung">
+              <PropertyRef Name="ausstattung_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk__Komplettbuchung__Kategorieanfrage">
+          <End Role="Kategorieanfrage" Type="Self.Kategorieanfrage" Multiplicity="1" />
+          <End Role="Komplettbuchung" Type="Self.Komplettbuchung" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategorieanfrage">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Komplettbuchung">
+              <PropertyRef Name="kategorieanfrage_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk__Komplettbuchung__Komplettpaket">
+          <End Role="Komplettpaket" Type="Self.Komplettpaket" Multiplicity="1" />
+          <End Role="Komplettbuchung" Type="Self.Komplettbuchung" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Komplettpaket">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Komplettbuchung">
+              <PropertyRef Name="komplettpaket_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk__Rechnung__Anfrage">
+          <End Role="Anfrage" Type="Self.Anfrage" Multiplicity="1" />
+          <End Role="Rechnung" Type="Self.Rechnung" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Anfrage">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Rechnung">
+              <PropertyRef Name="anfrage_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk__Stadt__Land">
+          <End Role="Land" Type="Self.Land" Multiplicity="1" />
+          <End Role="Stadt" Type="Self.Stadt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Land">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Stadt">
+              <PropertyRef Name="land_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk__Zimmer__Kategorie">
+          <End Role="Kategorie" Type="Self.Kategorie" Multiplicity="1" />
+          <End Role="Zimmer" Type="Self.Zimmer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategorie">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Zimmer">
+              <PropertyRef Name="kategorie_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk__Zimmerbuchung__Kategorieanfrage">
+          <End Role="Kategorieanfrage" Type="Self.Kategorieanfrage" Multiplicity="1" />
+          <End Role="Zimmerbuchung" Type="Self.Zimmerbuchung" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategorieanfrage">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Zimmerbuchung">
+              <PropertyRef Name="kategorieanfrage_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk__Zimmerbuchung__Mitarbeiter">
+          <End Role="Mitarbeiter" Type="Self.Mitarbeiter" Multiplicity="1" />
+          <End Role="Zimmerbuchung" Type="Self.Zimmerbuchung" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mitarbeiter">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Zimmerbuchung">
+              <PropertyRef Name="mitarbeiter_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk__Zimmerbuchung__Zimmer">
+          <End Role="Zimmer" Type="Self.Zimmer" Multiplicity="1" />
+          <End Role="Zimmerbuchung" Type="Self.Zimmerbuchung" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zimmer">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Zimmerbuchung">
+              <PropertyRef Name="zimmer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Zimmerbuchung_Kategorieanfrage">
+          <End Role="Kategorieanfrage" Type="Self.Kategorieanfrage" Multiplicity="1" />
+          <End Role="Zimmerbuchung" Type="Self.Zimmerbuchung" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategorieanfrage">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Zimmerbuchung">
+              <PropertyRef Name="kategorieanfrage_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="login_user" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+          <Parameter Name="benutzername" Type="varchar" Mode="In" />
+          <Parameter Name="passwort" Type="char" Mode="In" />
+        </Function>
+        <Function Name="register_user" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+          <Parameter Name="benutzername" Type="varchar" Mode="In" />
+          <Parameter Name="passwort" Type="char" Mode="In" />
+          <Parameter Name="salt" Type="char" Mode="In" />
+        </Function>
+        <Function Name="register_user_insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="benutzername" Type="varchar" Mode="In" />
+          <Parameter Name="passwort" Type="char" Mode="In" />
+          <Parameter Name="salt" Type="char" Mode="In" />
+        </Function>
+        <Function Name="sp_MScleanupmergepublisher" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_MSrepl_startup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="masterModelStoreContainer">
+          <EntitySet Name="Anfrage" EntityType="Self.Anfrage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ausstattung" EntityType="Self.Ausstattung" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bilder" EntityType="Self.Bilder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dinner" EntityType="Self.Dinner" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Extras" EntityType="Self.Extras" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gaestebuch" EntityType="Self.Gaestebuch" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gast" EntityType="Self.Gast" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kategorie" EntityType="Self.Kategorie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kategorieanfrage" EntityType="Self.Kategorieanfrage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Komplettpaket" EntityType="Self.Komplettpaket" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Land" EntityType="Self.Land" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Login" EntityType="Self.Login" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mitarbeiter" EntityType="Self.Mitarbeiter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rechnung" EntityType="Self.Rechnung" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rueckruf" EntityType="Self.Rueckruf" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Saison" EntityType="Self.Saison" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Spa" EntityType="Self.Spa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Stadt" EntityType="Self.Stadt" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Zimmer" EntityType="Self.Zimmer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Zimmerbuchung" EntityType="Self.Zimmerbuchung" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gastlogin" EntityType="Self.Gastlogin" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[Gastlogin].[id] AS [id], 
+[Gastlogin].[gast_id] AS [gast_id], 
+[Gastlogin].[login_id] AS [login_id]
+FROM [dbo].[Gastlogin] AS [Gastlogin]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Kategorieausstattung" EntityType="Self.Kategorieausstattung" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[Kategorieausstattung].[id] AS [id], 
+[Kategorieausstattung].[ausstattung_id] AS [ausstattung_id], 
+[Kategorieausstattung].[kategorie_id] AS [kategorie_id], 
+[Kategorieausstattung].[anzahl] AS [anzahl]
+FROM [dbo].[Kategorieausstattung] AS [Kategorieausstattung]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Komplettbuchung" EntityType="Self.Komplettbuchung" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[Komplettbuchung].[id] AS [id], 
+[Komplettbuchung].[kategorieanfrage_id] AS [kategorieanfrage_id], 
+[Komplettbuchung].[komplettpaket_id] AS [komplettpaket_id]
+FROM [dbo].[Komplettbuchung] AS [Komplettbuchung]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="MSreplication_options" EntityType="Self.MSreplication_options" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[MSreplication_options].[optname] AS [optname], 
+[MSreplication_options].[value] AS [value], 
+[MSreplication_options].[major_version] AS [major_version], 
+[MSreplication_options].[minor_version] AS [minor_version], 
+[MSreplication_options].[revision] AS [revision], 
+[MSreplication_options].[install_failures] AS [install_failures]
+FROM [dbo].[MSreplication_options] AS [MSreplication_options]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="spt_fallback_db" EntityType="Self.spt_fallback_db" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[spt_fallback_db].[xserver_name] AS [xserver_name], 
+[spt_fallback_db].[xdttm_ins] AS [xdttm_ins], 
+[spt_fallback_db].[xdttm_last_ins_upd] AS [xdttm_last_ins_upd], 
+[spt_fallback_db].[xfallback_dbid] AS [xfallback_dbid], 
+[spt_fallback_db].[name] AS [name], 
+[spt_fallback_db].[dbid] AS [dbid], 
+[spt_fallback_db].[status] AS [status], 
+[spt_fallback_db].[version] AS [version]
+FROM [dbo].[spt_fallback_db] AS [spt_fallback_db]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="spt_fallback_dev" EntityType="Self.spt_fallback_dev" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[spt_fallback_dev].[xserver_name] AS [xserver_name], 
+[spt_fallback_dev].[xdttm_ins] AS [xdttm_ins], 
+[spt_fallback_dev].[xdttm_last_ins_upd] AS [xdttm_last_ins_upd], 
+[spt_fallback_dev].[xfallback_low] AS [xfallback_low], 
+[spt_fallback_dev].[xfallback_drive] AS [xfallback_drive], 
+[spt_fallback_dev].[low] AS [low], 
+[spt_fallback_dev].[high] AS [high], 
+[spt_fallback_dev].[status] AS [status], 
+[spt_fallback_dev].[name] AS [name], 
+[spt_fallback_dev].[phyname] AS [phyname]
+FROM [dbo].[spt_fallback_dev] AS [spt_fallback_dev]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="spt_fallback_usg" EntityType="Self.spt_fallback_usg" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[spt_fallback_usg].[xserver_name] AS [xserver_name], 
+[spt_fallback_usg].[xdttm_ins] AS [xdttm_ins], 
+[spt_fallback_usg].[xdttm_last_ins_upd] AS [xdttm_last_ins_upd], 
+[spt_fallback_usg].[xfallback_vstart] AS [xfallback_vstart], 
+[spt_fallback_usg].[dbid] AS [dbid], 
+[spt_fallback_usg].[segmap] AS [segmap], 
+[spt_fallback_usg].[lstart] AS [lstart], 
+[spt_fallback_usg].[sizepg] AS [sizepg], 
+[spt_fallback_usg].[vstart] AS [vstart]
+FROM [dbo].[spt_fallback_usg] AS [spt_fallback_usg]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="spt_monitor" EntityType="Self.spt_monitor" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[spt_monitor].[lastrun] AS [lastrun], 
+[spt_monitor].[cpu_busy] AS [cpu_busy], 
+[spt_monitor].[io_busy] AS [io_busy], 
+[spt_monitor].[idle] AS [idle], 
+[spt_monitor].[pack_received] AS [pack_received], 
+[spt_monitor].[pack_sent] AS [pack_sent], 
+[spt_monitor].[connections] AS [connections], 
+[spt_monitor].[pack_errors] AS [pack_errors], 
+[spt_monitor].[total_read] AS [total_read], 
+[spt_monitor].[total_write] AS [total_write], 
+[spt_monitor].[total_errors] AS [total_errors]
+FROM [dbo].[spt_monitor] AS [spt_monitor]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="get_carousel_imgs" EntityType="Self.get_carousel_imgs" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[get_carousel_imgs].[id] AS [id], 
+[get_carousel_imgs].[bilderart] AS [bilderart], 
+[get_carousel_imgs].[pfad] AS [pfad]
+FROM [dbo].[get_carousel_imgs] AS [get_carousel_imgs]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="get_zimmer_imgs" EntityType="Self.get_zimmer_imgs" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[get_zimmer_imgs].[id] AS [id], 
+[get_zimmer_imgs].[bilderart] AS [bilderart], 
+[get_zimmer_imgs].[pfad] AS [pfad]
+FROM [dbo].[get_zimmer_imgs] AS [get_zimmer_imgs]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="spt_values" EntityType="Self.spt_values" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[spt_values].[name] AS [name], 
+[spt_values].[number] AS [number], 
+[spt_values].[type] AS [type], 
+[spt_values].[low] AS [low], 
+[spt_values].[high] AS [high], 
+[spt_values].[status] AS [status]
+FROM [dbo].[spt_values] AS [spt_values]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="fk__Gast__Stadt" Association="Self.fk__Gast__Stadt">
+            <End Role="Stadt" EntitySet="Stadt" />
+            <End Role="Gast" EntitySet="Gast" />
+          </AssociationSet>
+          <AssociationSet Name="fk__Gastlogin__Gast" Association="Self.fk__Gastlogin__Gast">
+            <End Role="Gast" EntitySet="Gast" />
+            <End Role="Gastlogin" EntitySet="Gastlogin" />
+          </AssociationSet>
+          <AssociationSet Name="fk__Gastlogin__login" Association="Self.fk__Gastlogin__login">
+            <End Role="Login" EntitySet="Login" />
+            <End Role="Gastlogin" EntitySet="Gastlogin" />
+          </AssociationSet>
+          <AssociationSet Name="fk__Kategoireausstattung__Kategorie" Association="Self.fk__Kategoireausstattung__Kategorie">
+            <End Role="Kategorie" EntitySet="Kategorie" />
+            <End Role="Kategorieausstattung" EntitySet="Kategorieausstattung" />
+          </AssociationSet>
+          <AssociationSet Name="fk__Kategorieanfrage__Anfrage" Association="Self.fk__Kategorieanfrage__Anfrage">
+            <End Role="Anfrage" EntitySet="Anfrage" />
+            <End Role="Kategorieanfrage" EntitySet="Kategorieanfrage" />
+          </AssociationSet>
+          <AssociationSet Name="fk__Kategorieanfrage__Kategorie" Association="Self.fk__Kategorieanfrage__Kategorie">
+            <End Role="Kategorie" EntitySet="Kategorie" />
+            <End Role="Kategorieanfrage" EntitySet="Kategorieanfrage" />
+          </AssociationSet>
+          <AssociationSet Name="fk__Kategorieausstattung__Ausstattung" Association="Self.fk__Kategorieausstattung__Ausstattung">
+            <End Role="Ausstattung" EntitySet="Ausstattung" />
+            <End Role="Kategorieausstattung" EntitySet="Kategorieausstattung" />
+          </AssociationSet>
+          <AssociationSet Name="fk__Komplettbuchung__Kategorieanfrage" Association="Self.fk__Komplettbuchung__Kategorieanfrage">
+            <End Role="Kategorieanfrage" EntitySet="Kategorieanfrage" />
+            <End Role="Komplettbuchung" EntitySet="Komplettbuchung" />
+          </AssociationSet>
+          <AssociationSet Name="fk__Komplettbuchung__Komplettpaket" Association="Self.fk__Komplettbuchung__Komplettpaket">
+            <End Role="Komplettpaket" EntitySet="Komplettpaket" />
+            <End Role="Komplettbuchung" EntitySet="Komplettbuchung" />
+          </AssociationSet>
+          <AssociationSet Name="fk__Rechnung__Anfrage" Association="Self.fk__Rechnung__Anfrage">
+            <End Role="Anfrage" EntitySet="Anfrage" />
+            <End Role="Rechnung" EntitySet="Rechnung" />
+          </AssociationSet>
+          <AssociationSet Name="fk__Stadt__Land" Association="Self.fk__Stadt__Land">
+            <End Role="Land" EntitySet="Land" />
+            <End Role="Stadt" EntitySet="Stadt" />
+          </AssociationSet>
+          <AssociationSet Name="fk__Zimmer__Kategorie" Association="Self.fk__Zimmer__Kategorie">
+            <End Role="Kategorie" EntitySet="Kategorie" />
+            <End Role="Zimmer" EntitySet="Zimmer" />
+          </AssociationSet>
+          <AssociationSet Name="fk__Zimmerbuchung__Kategorieanfrage" Association="Self.fk__Zimmerbuchung__Kategorieanfrage">
+            <End Role="Kategorieanfrage" EntitySet="Kategorieanfrage" />
+            <End Role="Zimmerbuchung" EntitySet="Zimmerbuchung" />
+          </AssociationSet>
+          <AssociationSet Name="fk__Zimmerbuchung__Mitarbeiter" Association="Self.fk__Zimmerbuchung__Mitarbeiter">
+            <End Role="Mitarbeiter" EntitySet="Mitarbeiter" />
+            <End Role="Zimmerbuchung" EntitySet="Zimmerbuchung" />
+          </AssociationSet>
+          <AssociationSet Name="fk__Zimmerbuchung__Zimmer" Association="Self.fk__Zimmerbuchung__Zimmer">
+            <End Role="Zimmer" EntitySet="Zimmer" />
+            <End Role="Zimmerbuchung" EntitySet="Zimmerbuchung" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Zimmerbuchung_Kategorieanfrage" Association="Self.FK_Zimmerbuchung_Kategorieanfrage">
+            <End Role="Kategorieanfrage" EntitySet="Kategorieanfrage" />
+            <End Role="Zimmerbuchung" EntitySet="Zimmerbuchung" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2006/04/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="alpensern" Alias="Self">
+        <EntityContainer Name="alpensernContainer">
+          <FunctionImport Name="register_user_insert">
+            <Parameter Name="benutzername" Mode="In" Type="String" />
+            <Parameter Name="passwort" Mode="In" Type="String" />
+            <Parameter Name="salt" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_MScleanupmergepublisher" />
+          <FunctionImport Name="sp_MSrepl_startup" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS" Space="C-S">
+        <Alias Key="Model" Value="alpensern" />
+        <Alias Key="Target" Value="alpensern.Store" />
+        <EntityContainerMapping CdmEntityContainer="alpensernContainer" StorageEntityContainer="alpensernTargetContainer">
+          <FunctionImportMapping FunctionImportName="register_user_insert" FunctionName="masterModel.Store.register_user_insert" />
+          <FunctionImportMapping FunctionImportName="sp_MScleanupmergepublisher" FunctionName="masterModel.Store.sp_MScleanupmergepublisher" />
+          <FunctionImportMapping FunctionImportName="sp_MSrepl_startup" FunctionName="masterModel.Store.sp_MSrepl_startup" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2007/06/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Kein" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

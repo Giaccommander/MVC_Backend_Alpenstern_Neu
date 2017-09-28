@@ -5,7 +5,6 @@ using System.Web;
 using System.Web.Mvc;
 using Alpenstern_BackEnd_Neu.Models;
 
-
 namespace Alpenstern_BackEnd_Neu.Controllers
 {
     public class DruckansichtController : Controller

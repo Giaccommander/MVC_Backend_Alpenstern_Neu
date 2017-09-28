@@ -12,7 +12,7 @@ namespace Alpenstern_BackEnd_Neu.Controllers
     public class SpaController : Controller
     {
         //Raum 508
-        private alpensternEntities db = new alpensternEntities();
+        private masterEntities db = new masterEntities();
 
         //AKT-THOR
         //private alpensternEntities_Neu db = new alpensternEntities_Neu();
@@ -21,7 +21,7 @@ namespace Alpenstern_BackEnd_Neu.Controllers
         // GET: Spa
         public ActionResult Index()
         {
-            using (var db = new alpensternEntities())
+            using (var db = new masterEntities())
             {
                 var dbSpa = db.Spa.ToList();
 
@@ -61,7 +61,7 @@ namespace Alpenstern_BackEnd_Neu.Controllers
             //using (var db = new alpenstern_finalEntities())
 
             //AKT_THOR
-            using (var db = new alpensternEntities())
+            using (var db = new masterEntities())
             {
                 db.Spa.Add(dbSpa);
                 db.SaveChanges();
@@ -89,7 +89,7 @@ namespace Alpenstern_BackEnd_Neu.Controllers
         public ActionResult spaBearbeiten(Spa x)
         {
             //Raum 508
-            using (var db = new alpensternEntities())
+            using (var db = new masterEntities())
 
             //AKT_THOR
             //using (var db = new alpensternEntities_Neu())

@@ -20,7 +20,7 @@ namespace Alpenstern_BackEnd_Neu.Controllers
             if (kundeDaten == null)
             {
 
-                using (var db = new alpensternEntities())
+                using (var db = new masterEntities())
                 //using (var db = new alpenstern_finalEntities())
                 //using (var db = new alpenstern_HeimEntities())
                 {
@@ -50,7 +50,7 @@ namespace Alpenstern_BackEnd_Neu.Controllers
         public ActionResult Index(string vorname, string nachname, DateTime? gebdatum, buchungIndexVM vm)
         {
 
-            using (var db = new alpensternEntities())
+            using (var db = new masterEntities())
             //using (var db = new alpenstern_finalEntities())
             //using (var db = new alpenstern_HeimEntities())
             {
@@ -100,7 +100,7 @@ namespace Alpenstern_BackEnd_Neu.Controllers
         public ActionResult Persoenlichdaten(buchungIndexVM vm)
         {
             var Kunde = new PersonDatenVM();
-            using (var db = new alpensternEntities())
+            using (var db = new masterEntities())
             //using (var db = new alpenstern_finalEntities())
             //using (var db = new alpenstern_HeimEntities())
             {
@@ -157,7 +157,7 @@ namespace Alpenstern_BackEnd_Neu.Controllers
         [HttpPost]
         public ActionResult Persoenlichdaten(PersonDatenVM vm, buchungIndexVM bVm)
         {
-            using (var db = new alpensternEntities())
+            using (var db = new masterEntities())
             {
                 vm.id = bVm.radioAuswahl;
                 foreach (var user in db.Gast)

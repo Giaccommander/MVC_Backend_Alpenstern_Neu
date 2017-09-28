@@ -34,6 +34,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <IncludeIisSettings>true</IncludeIisSettings>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -85,8 +86,72 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.XmlTransform, Version=2.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Xdt.2.1.1\lib\net40\Microsoft.Web.XmlTransform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NuGet.Commands, Version=4.3.0.5, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\NuGet.Commands.4.3.0\lib\net45\NuGet.Commands.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NuGet.Common, Version=4.3.0.5, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\NuGet.Common.4.3.0\lib\net45\NuGet.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NuGet.Configuration, Version=4.3.0.5, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\NuGet.Configuration.4.3.0\lib\net45\NuGet.Configuration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NuGet.DependencyResolver.Core, Version=4.3.0.5, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\NuGet.DependencyResolver.Core.4.3.0\lib\net45\NuGet.DependencyResolver.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NuGet.Frameworks, Version=4.3.0.5, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\NuGet.Frameworks.4.3.0\lib\net45\NuGet.Frameworks.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NuGet.LibraryModel, Version=4.3.0.5, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\NuGet.LibraryModel.4.3.0\lib\net45\NuGet.LibraryModel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NuGet.PackageManagement, Version=4.3.0.5, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\NuGet.PackageManagement.4.3.0\lib\net45\NuGet.PackageManagement.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NuGet.Packaging, Version=4.3.0.5, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\NuGet.Packaging.4.3.0\lib\net45\NuGet.Packaging.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NuGet.Packaging.Core, Version=4.3.0.5, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\NuGet.Packaging.Core.4.3.0\lib\net45\NuGet.Packaging.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NuGet.ProjectModel, Version=4.3.0.5, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\NuGet.ProjectModel.4.3.0\lib\net45\NuGet.ProjectModel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NuGet.Protocol, Version=4.3.0.5, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\NuGet.Protocol.4.3.0\lib\net45\NuGet.Protocol.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NuGet.Resolver, Version=4.3.0.5, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\NuGet.Resolver.4.3.0\lib\net45\NuGet.Resolver.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NuGet.Versioning, Version=4.3.0.5, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\NuGet.Versioning.4.3.0\lib\net45\NuGet.Versioning.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.2.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.4.1\lib\net45\System.Diagnostics.DiagnosticSource.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
@@ -191,101 +256,137 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helper\Hashes.cs" />
-    <Compile Include="Models\Alpenstern.Context.cs">
+    <Compile Include="Models\alpenstern.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Alpenstern.Context.tt</DependentUpon>
+      <DependentUpon>alpenstern.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Alpenstern.cs">
+    <Compile Include="Models\alpenstern.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>alpenstern.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Alpenstern.Designer.cs">
+    <Compile Include="Models\alpenstern.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Alpenstern.edmx</DependentUpon>
+      <DependentUpon>alpenstern.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Anfrage.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AnfrageDatumVM.cs" />
     <Compile Include="Models\Ausstattung.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Bilder.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\buchungIndexVM.cs" />
     <Compile Include="Models\BuchungsVM.cs" />
+    <Compile Include="Models\Dinner.cs">
+      <DependentUpon>alpenstern.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\DruckansichtVM.cs" />
+    <Compile Include="Models\Extras.cs">
+      <DependentUpon>alpenstern.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Gaestebuch.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Gast.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>alpenstern.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\GastAnfrageDetailsVM.cs" />
     <Compile Include="Models\Gastlogin.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\GastVM.cs" />
+    <Compile Include="Models\get_carousel_imgs.cs">
+      <DependentUpon>alpenstern.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\get_zimmer_imgs.cs">
+      <DependentUpon>alpenstern.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Kategorie.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Kategorieanfrage.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Kategorieausstattung.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Komplettbuchung.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Komplettpaket.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Land.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LandDetailsVM.cs" />
     <Compile Include="Models\landListeVM.cs" />
     <Compile Include="Models\Login.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LoginVM.cs" />
     <Compile Include="Models\Mitarbeiter.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MitarbeiterAnlegenVM.cs" />
+    <Compile Include="Models\MSreplication_options.cs">
+      <DependentUpon>alpenstern.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\PersonDatenVM.cs" />
     <Compile Include="Models\Rechnung.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RechnungVM.cs" />
     <Compile Include="Models\Rueckruf.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RueckrufVM.cs" />
     <Compile Include="Models\Saison.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Spa.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>alpenstern.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\spt_fallback_db.cs">
+      <DependentUpon>alpenstern.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\spt_fallback_dev.cs">
+      <DependentUpon>alpenstern.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\spt_fallback_usg.cs">
+      <DependentUpon>alpenstern.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\spt_monitor.cs">
+      <DependentUpon>alpenstern.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\spt_values.cs">
+      <DependentUpon>alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Stadt.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\StadtVM.cs" />
-    <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+    <Compile Include="Models\uf_GastAnfrageDetails_Result.cs">
+      <DependentUpon>alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Zimmer.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Zimmerbuchung.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\DBalpenstern.mdf" />
@@ -348,15 +449,15 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\Alpenstern.Context.tt">
+    <Content Include="Models\alpenstern.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Alpenstern.edmx</DependentUpon>
-      <LastGenOutput>Alpenstern.Context.cs</LastGenOutput>
+      <DependentUpon>alpenstern.edmx</DependentUpon>
+      <LastGenOutput>alpenstern.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\Alpenstern.tt">
+    <Content Include="Models\alpenstern.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Alpenstern.edmx</DependentUpon>
-      <LastGenOutput>Alpenstern.cs</LastGenOutput>
+      <DependentUpon>alpenstern.edmx</DependentUpon>
+      <LastGenOutput>alpenstern.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\02_BuchenJava.js" />
     <Content Include="Scripts\ai.0.22.19-build00125.js" />
@@ -368,13 +469,22 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EntityDeploy Include="Models\Alpenstern.edmx">
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <EntityDeploy Include="Models\alpenstern.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Alpenstern.Designer.cs</LastGenOutput>
+      <LastGenOutput>alpenstern.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\Alpenstern.edmx.diagram">
-      <DependentUpon>Alpenstern.edmx</DependentUpon>
+    <Content Include="Models\alpenstern.edmx.diagram">
+      <DependentUpon>alpenstern.edmx</DependentUpon>
     </Content>
+    <Content Include="App_Browsers\qt.browser" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\cldr.js" />
     <Content Include="Scripts\cldr\event.js" />
@@ -403,7 +513,9 @@
     <Content Include="Scripts\setDateFormat.js" />
     <Content Include="Scripts\SpecialeBearbeiten.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -457,7 +569,12 @@
     <Content Include="Views\Buchung\Persoenlichdaten.cshtml" />
     <Content Include="Views\Rechnung\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -472,6 +589,9 @@
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />

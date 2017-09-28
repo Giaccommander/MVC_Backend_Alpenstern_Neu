@@ -13,7 +13,7 @@ namespace Alpenstern_BackEnd_Neu.Controllers
     public class LoginsController : Controller
     {
       
-        private alpensternEntities db = new alpensternEntities();
+        private masterEntities db = new masterEntities();
         // GET: Logins
         public ActionResult Index()
         {

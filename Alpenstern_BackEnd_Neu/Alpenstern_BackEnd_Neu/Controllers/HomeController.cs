@@ -47,7 +47,7 @@ namespace Alpenstern_BackEnd_Neu.Controllers
         public ActionResult Index(LoginVM lvm)
         {
             //AKT_THOR
-            using (var datenbank = new alpensternEntities())
+            using (var datenbank = new masterEntities())
             {
                 
                 //Login getrennt durch .

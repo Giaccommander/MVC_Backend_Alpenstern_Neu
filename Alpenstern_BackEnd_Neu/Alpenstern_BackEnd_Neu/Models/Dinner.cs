@@ -12,17 +12,15 @@ namespace Alpenstern_BackEnd_Neu.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Zimmerbuchung
+    public partial class Dinner
     {
         public int id { get; set; }
-        public int zimmer_id { get; set; }
-        public int mitarbeiter_id { get; set; }
-        public int kategorieanfrage_id { get; set; }
-        public Nullable<bool> checkedStatus { get; set; }
-    
-        public virtual Kategorieanfrage Kategorieanfrage { get; set; }
-        public virtual Kategorieanfrage Kategorieanfrage1 { get; set; }
-        public virtual Mitarbeiter Mitarbeiter { get; set; }
-        public virtual Zimmer Zimmer { get; set; }
+        public string bezeichnung { get; set; }
+        public decimal preis { get; set; }
+        public string gang1 { get; set; }
+        public string gang2 { get; set; }
+        public string gang3 { get; set; }
+        public string gang4 { get; set; }
+        public string gang5 { get; set; }
     }
 }

@@ -12,7 +12,7 @@ namespace Alpenstern_BackEnd_Neu.Controllers
 {
     public class Vorlage_LoginsController : Controller
     {
-        private alpensternEntities db = new alpensternEntities();
+        private alpensternEntities2 db = new alpensternEntities2();
 
         // GET: Vorlage_Logins
         public ActionResult Index()

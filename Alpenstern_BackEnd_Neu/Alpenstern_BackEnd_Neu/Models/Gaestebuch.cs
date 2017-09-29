@@ -12,21 +12,11 @@ namespace Alpenstern_BackEnd_Neu.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Mitarbeiter
+    public partial class Gaestebuch
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Mitarbeiter()
-        {
-            this.Zimmerbuchung = new HashSet<Zimmerbuchung>();
-        }
-    
         public int id { get; set; }
         public string vorname { get; set; }
         public string nachname { get; set; }
-        public string passwort { get; set; }
-        public string salt { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Zimmerbuchung> Zimmerbuchung { get; set; }
+        public string eintrag { get; set; }
     }
 }

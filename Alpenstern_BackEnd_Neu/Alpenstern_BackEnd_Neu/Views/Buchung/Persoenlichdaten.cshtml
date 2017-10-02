@@ -111,16 +111,28 @@
                 @Html.EditorFor(a => a.gebDatum)
             </div>
         </div>
-        <div>@Html.EditorFor(a => a.email)</div>
-
         <div class="row">
             <div class="col-lg-2 col-md-2">
+                <label for="Email">Email</label>
             </div>
             <div class="col-lg-10 col-md-10">
-                <button type="submit" value="weiter"/> Weiter
+                @Html.EditorFor(a => a.email)
             </div>
         </div>
-
     </div>
 }
 
+    <div class="row">
+        <div class="col-lg-4">
+            <div>
+                <button type="submit" value="weiter" /> Speichern
+                @using (Html.BeginForm("Index", "DruckAnsicht"))
+            {
+                    <div>
+                        <button type="submit" value="rechnung" /> Rechnung
+                    </div>
+                }
+            </div>
+
+        </div>
+    </div>

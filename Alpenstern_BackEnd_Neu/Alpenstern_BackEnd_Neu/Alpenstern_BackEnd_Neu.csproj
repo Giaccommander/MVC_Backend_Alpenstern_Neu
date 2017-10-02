@@ -232,6 +232,15 @@
       <DependentUpon>Alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\GastVM.cs" />
+    <Compile Include="Models\get_carousel_imgs.cs">
+      <DependentUpon>Alpenstern.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\get_user_salt_Result.cs">
+      <DependentUpon>Alpenstern.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\get_zimmer_imgs.cs">
+      <DependentUpon>Alpenstern.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Kategorie.cs">
       <DependentUpon>Alpenstern.tt</DependentUpon>
     </Compile>
@@ -256,6 +265,9 @@
       <DependentUpon>Alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LoginVM.cs" />
+    <Compile Include="Models\login_user_Result.cs">
+      <DependentUpon>Alpenstern.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Mitarbeiter.cs">
       <DependentUpon>Alpenstern.tt</DependentUpon>
     </Compile>
@@ -264,6 +276,7 @@
     <Compile Include="Models\Rechnung.cs">
       <DependentUpon>Alpenstern.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\RechnungVM.cs" />
     <Compile Include="Models\Rueckruf.cs">
       <DependentUpon>Alpenstern.tt</DependentUpon>
     </Compile>
@@ -272,6 +285,12 @@
       <DependentUpon>Alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Spa.cs">
+      <DependentUpon>Alpenstern.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>Alpenstern.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagrams_Result.cs">
       <DependentUpon>Alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Stadt.cs">
@@ -284,13 +303,7 @@
     <Compile Include="Models\usp_datenabfragen_Result.cs">
       <DependentUpon>Alpenstern.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\usp_datenabfragen_Result1.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\usp_datenabfragen_Result2.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\usp_datenabfragen_Result3.cs">
+    <Compile Include="Models\usp_ZimmerAuslesen_Result.cs">
       <DependentUpon>Alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Zimmer.cs">

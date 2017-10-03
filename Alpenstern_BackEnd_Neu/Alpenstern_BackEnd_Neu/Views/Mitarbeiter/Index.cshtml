@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Alpenstern_BackEnd_Neu.Models.Mitarbeiter>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Alpenstern Mitarbeiter</h2>
+
+<p>
+    @Html.ActionLink("Neuen Mitarbeiter anlegen", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.vorname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nachname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.passwort)
+        </th>        
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.vorname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nachname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.passwort)
+        </td>       
+        <td>          
+            @Html.ActionLink("Entfernen", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+</table>

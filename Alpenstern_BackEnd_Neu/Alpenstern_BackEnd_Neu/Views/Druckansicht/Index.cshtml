@@ -1,4 +1,4 @@
-﻿﻿@model Alpenstern_BackEnd_Neu.Models.DruckansichtVM
+﻿
 @{
     ViewBag.Title = "Index";
 }
@@ -23,13 +23,7 @@
 
     <div class="row">
         <div class="col-lg-8">
-    
-            @Html.DisplayFor(e => e.vorname)
-            @Html.DisplayFor(e => e.nachname)<br />
-            @Html.DisplayFor(e => e.straße)<br />
-            @Html.DisplayFor(e => e.plz)
-            @Html.DisplayFor(e => e.Stadt)
-            
+            Vorname Nachname<br />Musterstrasse 4<br />2580 Musterstadt<br /><br />
         </div>
         <div class="col-lg-8">
             <h4 class="schriftfett">Auflistung der Positionen</h4>
@@ -41,10 +35,10 @@
     </div>
     <div class="row">
         <div class="col-lg-8"> Vielen Dank für Ihren Aufenthalt bla bla bls <br /><br /></div>
-        <div class="col-lg-4"> Datum: @DateTime.Now.ToShortDateString() </div>
+        <div class="col-lg-4"> Datum: tt/mm/jjjj </div>
     </div>
     <div class="row">
-        <div class="col-lg-8">Leistungen erbracht @DateTime.Now.ToShortDateString()</div>
+        <div class="col-lg-8">Leistungen erbracht tt/mm/jjjj</div>
         <div class="col-lg-4 schriftfett">Auflistungs-Nr. 2457567486 </div>
     </div>
     <div class="row schriftfett">
@@ -61,13 +55,13 @@
     </div>
     <div class="row">
         <div class="col-lg-1">1</div>
-        <div class="col-lg-1">@Html.EditorFor(e => e.zimmerNummer, new { htmlAttributes = new { @class = "form-control" } })</div>
-        <div class="col-lg-2">@Html.EditorFor(e => e.KategorieBez, new { htmlAttributes = new { @class = "form-control" } })</div>
-        <div class="col-lg-2">@Html.EditorFor(e => e.datumVon, new { htmlAttributes = new { @class = "form-control" } })</div>
-        <div class="col-lg-2">@Html.EditorFor(e => e.datumBis, new { htmlAttributes = new { @class = "form-control" } })</div>
-        <div class="col-lg-1">@Html.EditorFor(e => e.naechte, new { htmlAttributes = new { @class = "form-control" } })</div>
-        <div class="col-lg-1">@Html.EditorFor(e => e.preisProNacht, new { htmlAttributes = new { @class = "form-control" } })</div>
-        <div class="col-lg-2">@Html.EditorFor(e => e.zimmerPreisGesamt, new { htmlAttributes = new { @class = "form-control" } })</div>
+        <div class="col-lg-1">1</div>
+        <div class="col-lg-2">Doppelzimmer</div>
+        <div class="col-lg-2">18.10.2017</div>
+        <div class="col-lg-2">25.10.2017</div>
+        <div class="col-lg-1">X Nächte</div>
+        <div class="col-lg-1">000,00&euro;</div>
+        <div class="col-lg-2">000,0&euro;</div>
     </div>
     <div class="row">
         <div class="col-lg-1">2</div>

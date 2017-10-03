@@ -1,18 +1,20 @@
 ﻿@model Alpenstern_BackEnd_Neu.Models.Rueckruf
 
 @{
-    ViewBag.Title = "RueckrufNeu";
+    ViewBag.Title = "rueckrufBearbeiten";
 }
+<script src="~/Scripts/setDateFormat.js"></script>
+<h2>Rückruf Bearbeiten</h2>
 
-<h2>Neuen Rückruf anlegen</h2>
+<form action="/Rueckruf/rueckrufBearbeitet" method="post">
 
-@using (Html.BeginForm()) 
-{
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">       
+
+    <div class="form-horizontal"> 
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.id)
+
         <div class="form-group">
             @Html.LabelFor(model => model.name, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -32,19 +34,31 @@
         <div class="form-group">
             @Html.LabelFor(model => model.grund, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.grund,new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.grund, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.grund, "", new { @class = "text-danger" })
             </div>
-        </div>        
+        </div>
 
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Erstellen" class="btn btn-default" />
+            @Html.LabelFor(model => model.datum_erhalten, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input class="form-control text-box control-label col-md-2"  type="text" name="name" value="@Model.datum_erhalten" />
+                @Html.ValidationMessageFor(model => model.datum_erhalten, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-lg-10">
+                <input type="submit" name="rueckruf_bearbeiten" value="Bearbeiten" onclick="setDatumFormat()"/>
             </div>
         </div>
     </div>
-}
+</form>
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Zurück zur Liste", "Index", new { id = Model.id }, null)
 </div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

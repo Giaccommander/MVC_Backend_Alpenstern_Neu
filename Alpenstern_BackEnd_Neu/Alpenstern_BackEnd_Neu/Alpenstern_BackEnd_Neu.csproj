@@ -449,6 +449,28 @@
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
     <Content Include="Views\Ankunft\VMankunft.cshtml" />
+    <Content Include="Views\Anfrage\Aufenthalt.cshtml" />
+    <Content Include="Views\Anfrage\Create.cshtml" />
+    <Content Include="Views\Anfrage\Delete.cshtml" />
+    <Content Include="Views\Anfrage\Details.cshtml" />
+    <Content Include="Views\Anfrage\Edit.cshtml" />
+    <Content Include="Views\Home\LoginSucces.cshtml" />
+    <Content Include="Views\Logins\Create.cshtml" />
+    <Content Include="Views\Logins\Delete.cshtml" />
+    <Content Include="Views\Logins\Details.cshtml" />
+    <Content Include="Views\Logins\Edit.cshtml" />
+    <Content Include="Views\Logins\Index.cshtml" />
+    <Content Include="Views\Mitarbeiter\Create.cshtml" />
+    <Content Include="Views\Mitarbeiter\Delete.cshtml" />
+    <Content Include="Views\Mitarbeiter\Index.cshtml" />
+    <Content Include="Views\Ort\LandDetails.cshtml" />
+    <Content Include="Views\Ort\LandListe.cshtml" />
+    <Content Include="Views\Rueckruf\rueckrufBearbeiten.cshtml" />
+    <Content Include="Views\Rueckruf\rueckrufBearbeitetListe.cshtml" />
+    <Content Include="Views\Rueckruf\test.cshtml" />
+    <Content Include="Views\Spa\spaBearbeiten.cshtml" />
+    <Content Include="Views\Spa\spaLoeschen.cshtml" />
+    <Content Include="Views\Spa\spaNeu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

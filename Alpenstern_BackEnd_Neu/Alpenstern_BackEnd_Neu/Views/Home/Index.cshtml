@@ -1,51 +1,34 @@
-﻿@{
+﻿@model Alpenstern_BackEnd_Neu.Models.LoginVM
+
+@{
     ViewBag.Title = "Home Page";
 }
 
-<h1>Dashboard</h1>
 
 
 
-<center>
-    <form action="~/Buchung/Index.cshtml">
-        <table bgcolor="white" cellpadding="12" border="1">
-            <tr>
-                <td colspan="2">
-                    <center>
-                        <h1>
-                            <i>
-                                <b>
-                                    Login
-                                    Area
-                                </b>
-                            </i>
-                        </h1>
-                    </center>
-                </td>
-            </tr>
-            <tr>
-                <td><h1><i><b>UserID:</b></i></h1></td>
-                <td>
-                    <input name="id" type="text">
-                </td>
-            </tr>
-            <tr>
-                <td><h1><i><b>Password:</b></i></h1></td>
-                <td>
-                    <input name="pass" type="password">
-                </td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>
-                    <center>
-                        <button type="button" value="Login" onClick="pasuser(this.form)">
-                            Login
-                        </button>
-                    </center>
-                </td>
-            </tr>
-        </table>
-    </form>
-</center> 
-<script src="~/Scripts/JavaScript.js"></script>
+@if(Context.User.Identity.IsAuthenticated)
+{
+    <h1>Eingelogt ist: @Context.User.Identity.Name</h1>
+}
+
+@if (!Context.User.Identity.IsAuthenticated)
+{
+    using (Html.BeginForm())
+    {
+        <h1>Login</h1>
+        <div>
+            @Html.EditorFor(e => e.Login)
+            <label for="Login">Login</label>
+        </div>
+
+        <div>
+            @Html.PasswordFor(e => e.Passwort)
+            <label for="passwort">Passwort</label>
+        </div>
+
+        <br />
+        <input type="submit" value="Login" />
+    }
+}
+

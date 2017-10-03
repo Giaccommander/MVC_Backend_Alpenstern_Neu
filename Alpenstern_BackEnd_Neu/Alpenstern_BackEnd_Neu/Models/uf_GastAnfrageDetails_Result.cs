@@ -16,18 +16,8 @@ namespace Alpenstern_BackEnd_Neu.Models
         public int GastId { get; set; }
         public string vorname { get; set; }
         public string nachname { get; set; }
-        public string email { get; set; }
-        public string reisepassnummer { get; set; }
-        public string telefonnummer { get; set; }
-        public string straße { get; set; }
-        public System.DateTime geburtsdatum { get; set; }
         public System.DateTime datumVon { get; set; }
         public System.DateTime datumBis { get; set; }
-        public string Stadt { get; set; }
-        public string plz { get; set; }
-        public string Land { get; set; }
-        public int groeZimm { get; set; }
-        public string KategorieBez { get; set; }
         public Nullable<int> naechte { get; set; }
         public int zimmerNummer { get; set; }
         public string kategorie { get; set; }

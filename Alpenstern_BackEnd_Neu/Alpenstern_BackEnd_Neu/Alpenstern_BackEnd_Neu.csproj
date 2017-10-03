@@ -281,16 +281,7 @@
     <Compile Include="Models\Spa.cs">
       <DependentUpon>alpenstern.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>alpenstern.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sp_helpdiagrams_Result.cs">
-      <DependentUpon>alpenstern.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Stadt.cs">
-      <DependentUpon>alpenstern.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\uf_GastAnfrageDetails_Result.cs">

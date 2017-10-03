@@ -217,16 +217,6 @@ Warnung 6002: F√ºr Tabelle/Sicht 'alpenstern.dbo.Komplettbuchung' ist kein Prim√
           <Property Name="bezeichnung" Type="varchar" MaxLength="50" />
           <Property Name="plz" Type="varchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
         <EntityType Name="Zimmer">
           <Key>
             <PropertyRef Name="id" />
@@ -269,18 +259,6 @@ Warnung 6002: F√ºr Tabelle/Sicht 'alpenstern.dbo.get_zimmer_imgs' ist kein Prim√
           <Property Name="bilderart" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="pfad" Type="varchar" MaxLength="500" Nullable="false" />
         </EntityType>
-        <Association Name="fk__Anfrage__Gast">
-          <End Role="Gast" Type="Self.Gast" Multiplicity="1" />
-          <End Role="Anfrage" Type="Self.Anfrage" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Gast">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Anfrage">
-              <PropertyRef Name="gast_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="fk__Gast__Stadt">
           <End Role="Stadt" Type="Self.Stadt" Multiplicity="1" />
           <End Role="Gast" Type="Self.Gast" Multiplicity="*" />
@@ -473,7 +451,9 @@ Warnung 6002: F√ºr Tabelle/Sicht 'alpenstern.dbo.get_zimmer_imgs' ist kein Prim√
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="get_user_salt" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="char">
+          <Parameter Name="benutzername" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="login_user" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
           <Parameter Name="benutzername" Type="varchar" Mode="In" />
           <Parameter Name="passwort" Type="char" Mode="In" />
@@ -488,36 +468,6 @@ Warnung 6002: F√ºr Tabelle/Sicht 'alpenstern.dbo.get_zimmer_imgs' ist kein Prim√
           <Parameter Name="passwort" Type="char" Mode="In" />
           <Parameter Name="salt" Type="char" Mode="In" />
         </Function>
-        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="version" Type="int" Mode="In" />
-          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-        </Function>
-        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="version" Type="int" Mode="In" />
-          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-        </Function>
-        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
-        </Function>
-        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="uf_GastAnfrageDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="gastid" Type="int" Mode="In" />
           <Parameter Name="anfrageid" Type="int" Mode="In" />
@@ -527,18 +477,8 @@ Warnung 6002: F√ºr Tabelle/Sicht 'alpenstern.dbo.get_zimmer_imgs' ist kein Prim√
                 <Property Name="GastId" Type="int" Nullable="false" />
                 <Property Name="vorname" Type="varchar" MaxLength="20" Nullable="false" />
                 <Property Name="nachname" Type="varchar" MaxLength="20" Nullable="false" />
-                <Property Name="email" Type="varchar" MaxLength="40" Nullable="false" />
-                <Property Name="reisepassnummer" Type="varchar" MaxLength="20" Nullable="false" />
-                <Property Name="telefonnummer" Type="varchar" MaxLength="20" Nullable="false" />
-                <Property Name="stra√üe" Type="varchar" MaxLength="50" Nullable="false" />
-                <Property Name="geburtsdatum" Type="datetime" Nullable="false" />
                 <Property Name="datumVon" Type="date" Nullable="false" />
                 <Property Name="datumBis" Type="date" Nullable="false" />
-                <Property Name="Stadt" Type="varchar" MaxLength="50" />
-                <Property Name="plz" Type="varchar" MaxLength="50" />
-                <Property Name="Land" Type="varchar" MaxLength="50" />
-                <Property Name="groeZimm" Type="int" Nullable="false" />
-                <Property Name="KategorieBez" Type="varchar" MaxLength="50" Nullable="false" />
                 <Property Name="naechte" Type="int" />
                 <Property Name="zimmerNummer" Type="int" Nullable="false" />
                 <Property Name="kategorie" Type="varchar" MaxLength="50" Nullable="false" />
@@ -567,7 +507,6 @@ Warnung 6002: F√ºr Tabelle/Sicht 'alpenstern.dbo.get_zimmer_imgs' ist kein Prim√
           <EntitySet Name="Saison" EntityType="Self.Saison" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Spa" EntityType="Self.Spa" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Stadt" EntityType="Self.Stadt" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Zimmer" EntityType="Self.Zimmer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Zimmerbuchung" EntityType="Self.Zimmerbuchung" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Gastlogin" EntityType="Self.Gastlogin" store:Type="Tables" store:Schema="dbo">
@@ -606,10 +545,6 @@ Warnung 6002: F√ºr Tabelle/Sicht 'alpenstern.dbo.get_zimmer_imgs' ist kein Prim√
     [get_zimmer_imgs].[pfad] AS [pfad]
     FROM [dbo].[get_zimmer_imgs] AS [get_zimmer_imgs]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="fk__Anfrage__Gast" Association="Self.fk__Anfrage__Gast">
-            <End Role="Gast" EntitySet="Gast" />
-            <End Role="Anfrage" EntitySet="Anfrage" />
-          </AssociationSet>
           <AssociationSet Name="fk__Gast__Stadt" Association="Self.fk__Gast__Stadt">
             <End Role="Stadt" EntitySet="Stadt" />
             <End Role="Gast" EntitySet="Gast" />
@@ -684,18 +619,8 @@ Warnung 6002: F√ºr Tabelle/Sicht 'alpenstern.dbo.get_zimmer_imgs' ist kein Prim√
           <Property Name="GastId" Type="Int32" Nullable="false" />
           <Property Name="vorname" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="nachname" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="email" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="reisepassnummer" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="telefonnummer" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="stra√üe" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="geburtsdatum" Type="DateTime" Nullable="false" />
           <Property Name="datumVon" Type="DateTime" Nullable="false" />
           <Property Name="datumBis" Type="DateTime" Nullable="false" />
-          <Property Name="Stadt" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="plz" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Land" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="groeZimm" Type="Int32" Nullable="false" />
-          <Property Name="KategorieBez" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="naechte" Type="Int32" />
           <Property Name="zimmerNummer" Type="Int32" Nullable="false" />
           <Property Name="kategorie" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
@@ -712,7 +637,6 @@ Warnung 6002: F√ºr Tabelle/Sicht 'alpenstern.dbo.get_zimmer_imgs' ist kein Prim√
           <Property Name="datumBis" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="datumAnfrage" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="datumBearbeitet" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Gast" Relationship="Self.fk__Anfrage__Gast" FromRole="Anfrage" ToRole="Gast" />
           <NavigationProperty Name="Kategorieanfrage" Relationship="Self.fk__Kategorieanfrage__Anfrage" FromRole="Anfrage" ToRole="Kategorieanfrage" />
           <NavigationProperty Name="Rechnung" Relationship="Self.fk__Rechnung__Anfrage" FromRole="Anfrage" ToRole="Rechnung" />
         </EntityType>
@@ -777,7 +701,6 @@ Warnung 6002: F√ºr Tabelle/Sicht 'alpenstern.dbo.get_zimmer_imgs' ist kein Prim√
           <Property Name="email" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="telefonnummer" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="reisepassnummer" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Anfrage" Relationship="Self.fk__Anfrage__Gast" FromRole="Gast" ToRole="Anfrage" />
           <NavigationProperty Name="Stadt" Relationship="Self.fk__Gast__Stadt" FromRole="Gast" ToRole="Stadt" />
           <NavigationProperty Name="Gastlogin" Relationship="Self.fk__Gastlogin__Gast" FromRole="Gast" ToRole="Gastlogin" />
         </EntityType>
@@ -898,16 +821,6 @@ Warnung 6002: F√ºr Tabelle/Sicht 'alpenstern.dbo.get_zimmer_imgs' ist kein Prim√
           <NavigationProperty Name="Gast" Relationship="Self.fk__Gast__Stadt" FromRole="Stadt" ToRole="Gast" />
           <NavigationProperty Name="Land" Relationship="Self.fk__Stadt__Land" FromRole="Stadt" ToRole="Land" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
         <EntityType Name="Zimmer">
           <Key>
             <PropertyRef Name="id" />
@@ -990,18 +903,6 @@ Warnung 6002: F√ºr Tabelle/Sicht 'alpenstern.dbo.get_zimmer_imgs' ist kein Prim√
           <Property Name="bilderart" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="pfad" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
-        <Association Name="fk__Anfrage__Gast">
-          <End Role="Gast" Type="Self.Gast" Multiplicity="1" />
-          <End Role="Anfrage" Type="Self.Anfrage" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Gast">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Anfrage">
-              <PropertyRef Name="gast_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="fk__Kategorieanfrage__Anfrage">
           <End Role="Anfrage" Type="Self.Anfrage" Multiplicity="1" />
           <End Role="Kategorieanfrage" Type="Self.Kategorieanfrage" Multiplicity="*" />
@@ -1213,7 +1114,6 @@ Warnung 6002: F√ºr Tabelle/Sicht 'alpenstern.dbo.get_zimmer_imgs' ist kein Prim√
           <EntitySet Name="Saison" EntityType="Self.Saison" />
           <EntitySet Name="Spa" EntityType="Self.Spa" />
           <EntitySet Name="Stadt" EntityType="Self.Stadt" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Zimmer" EntityType="Self.Zimmer" />
           <EntitySet Name="Zimmerbuchung" EntityType="Self.Zimmerbuchung" />
           <EntitySet Name="Gastlogin" EntityType="Self.Gastlogin" />
@@ -1221,10 +1121,6 @@ Warnung 6002: F√ºr Tabelle/Sicht 'alpenstern.dbo.get_zimmer_imgs' ist kein Prim√
           <EntitySet Name="Komplettbuchung" EntityType="Self.Komplettbuchung" />
           <EntitySet Name="get_carousel_imgs" EntityType="Self.get_carousel_imgs" />
           <EntitySet Name="get_zimmer_imgs" EntityType="Self.get_zimmer_imgs" />
-          <AssociationSet Name="fk__Anfrage__Gast" Association="Self.fk__Anfrage__Gast">
-            <End Role="Gast" EntitySet="Gast" />
-            <End Role="Anfrage" EntitySet="Anfrage" />
-          </AssociationSet>
           <AssociationSet Name="fk__Kategorieanfrage__Anfrage" Association="Self.fk__Kategorieanfrage__Anfrage">
             <End Role="Anfrage" EntitySet="Anfrage" />
             <End Role="Kategorieanfrage" EntitySet="Kategorieanfrage" />
@@ -1298,48 +1194,7 @@ Warnung 6002: F√ºr Tabelle/Sicht 'alpenstern.dbo.get_zimmer_imgs' ist kein Prim√
             <Parameter Name="passwort" Mode="In" Type="String" />
             <Parameter Name="salt" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="sp_alterdiagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="version" Mode="In" Type="Int32" />
-            <Parameter Name="definition" Mode="In" Type="Binary" />
-          </FunctionImport>
-          <FunctionImport Name="sp_creatediagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="version" Mode="In" Type="Int32" />
-            <Parameter Name="definition" Mode="In" Type="Binary" />
-          </FunctionImport>
-          <FunctionImport Name="sp_dropdiagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(alpensternModel.sp_helpdiagramdefinition_Result)">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(alpensternModel.sp_helpdiagrams_Result)">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_renamediagram">
-            <Parameter Name="diagramname" Mode="In" Type="String" />
-            <Parameter Name="owner_id" Mode="In" Type="Int32" />
-            <Parameter Name="new_diagramname" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_upgraddiagrams" />
         </EntityContainer>
-        <ComplexType Name="sp_helpdiagramdefinition_Result">
-          <Property Type="Int32" Name="version" Nullable="true" />
-          <Property Type="Binary" Name="definition" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="sp_helpdiagrams_Result">
-          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
-          <Property Type="Int32" Name="OwnerID" Nullable="false" />
-        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1538,17 +1393,6 @@ Warnung 6002: F√ºr Tabelle/Sicht 'alpenstern.dbo.get_zimmer_imgs' ist kein Prim√
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="alpensternModel.sysdiagrams">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Zimmer">
             <EntityTypeMapping TypeName="alpensternModel.Zimmer">
               <MappingFragment StoreEntitySet="Zimmer">
@@ -1621,18 +1465,8 @@ Warnung 6002: F√ºr Tabelle/Sicht 'alpenstern.dbo.get_zimmer_imgs' ist kein Prim√
                 <ScalarProperty Name="GastId" ColumnName="GastId" />
                 <ScalarProperty Name="vorname" ColumnName="vorname" />
                 <ScalarProperty Name="nachname" ColumnName="nachname" />
-                <ScalarProperty Name="email" ColumnName="email" />
-                <ScalarProperty Name="reisepassnummer" ColumnName="reisepassnummer" />
-                <ScalarProperty Name="telefonnummer" ColumnName="telefonnummer" />
-                <ScalarProperty Name="stra√üe" ColumnName="stra√üe" />
-                <ScalarProperty Name="geburtsdatum" ColumnName="geburtsdatum" />
                 <ScalarProperty Name="datumVon" ColumnName="datumVon" />
                 <ScalarProperty Name="datumBis" ColumnName="datumBis" />
-                <ScalarProperty Name="Stadt" ColumnName="Stadt" />
-                <ScalarProperty Name="plz" ColumnName="plz" />
-                <ScalarProperty Name="Land" ColumnName="Land" />
-                <ScalarProperty Name="groeZimm" ColumnName="groeZimm" />
-                <ScalarProperty Name="KategorieBez" ColumnName="KategorieBez" />
                 <ScalarProperty Name="naechte" ColumnName="naechte" />
                 <ScalarProperty Name="zimmerNummer" ColumnName="zimmerNummer" />
                 <ScalarProperty Name="kategorie" ColumnName="kategorie" />
@@ -1642,30 +1476,6 @@ Warnung 6002: F√ºr Tabelle/Sicht 'alpenstern.dbo.get_zimmer_imgs' ist kein Prim√
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="register_user_insert" FunctionName="alpensternModel.Store.register_user_insert" />
-          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="alpensternModel.Store.sp_alterdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="alpensternModel.Store.sp_creatediagram" />
-          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="alpensternModel.Store.sp_dropdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="alpensternModel.Store.sp_helpdiagramdefinition">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="alpensternModel.sp_helpdiagramdefinition_Result">
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="alpensternModel.Store.sp_helpdiagrams">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="alpensternModel.sp_helpdiagrams_Result">
-                <ScalarProperty Name="Database" ColumnName="Database" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Owner" ColumnName="Owner" />
-                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="alpensternModel.Store.sp_renamediagram" />
-          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="alpensternModel.Store.sp_upgraddiagrams" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

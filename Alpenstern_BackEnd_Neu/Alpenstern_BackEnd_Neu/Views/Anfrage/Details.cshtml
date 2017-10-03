@@ -1,0 +1,58 @@
+﻿@model Alpenstern_BackEnd_Neu.Models.Anfrage
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Anfrage</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.datumVon)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.datumVon)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.datumBis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.datumBis)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.datumAnfrage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.datumAnfrage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.datumBearbeitet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.datumBearbeitet)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gast.vorname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gast.vorname)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

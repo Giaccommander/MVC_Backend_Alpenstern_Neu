@@ -1,0 +1,56 @@
+﻿
+@model List<Alpenstern_BackEnd_Neu.Models.RueckrufVM>
+
+@{
+    ViewBag.Title = "rueckrufBearbeitetListe";
+}
+
+<h2>Bereits bearbeitete Rückrufe</h2>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">            
+            <div class="col-lg-2"><h4>Anz.</h4></div>
+            <div class="col-lg-2"><h4>Name</h4></div>
+            <div class="col-lg-2"><h4>Grund</h4></div>
+            <div class="col-lg-2"><h4>Datum der Anfrage</h4></div>
+            <div class="col-lg-2"><h4>Telefon</h4></div>
+            <div class="col-lg-2"><h4>Bearbeitet am</h4></div>
+        </div>
+    </div>
+    @{
+        int anz = 0;
+        foreach (var x in Model)
+        {
+            if (x.datumErledigt != null)
+            {
+                anz++;
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="col-lg-2">
+                            <p>@anz</p>
+                        </div>
+                        <div class="col-lg-2">
+                            <p>@x.name</p>
+                        </div>
+                        <div class="col-lg-2">
+                            <p>@x.grund</p>
+                        </div>
+                        <div class="col-lg-2">
+                            <p>@x.datumWann</p>
+                        </div>
+                        <div class="col-lg-2">
+                            <p>@x.telefon</p>
+                        </div>
+                        <div class="col-lg-2">
+                            <p>@x.datumErledigt</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    }
+
+    @Html.ActionLink("Zurück zur Rückrufe", "Index")
+</div>

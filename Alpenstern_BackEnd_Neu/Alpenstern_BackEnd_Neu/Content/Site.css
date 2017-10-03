@@ -5,6 +5,10 @@
     background-size: cover;
 }
 
+#fehlt{
+    color:red;
+}
+
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;

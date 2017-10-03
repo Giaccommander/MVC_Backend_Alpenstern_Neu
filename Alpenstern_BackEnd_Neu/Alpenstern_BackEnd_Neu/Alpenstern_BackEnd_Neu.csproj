@@ -172,107 +172,153 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AbreiseController.cs" />
+    <Compile Include="Controllers\AnfrageController.cs" />
     <Compile Include="Controllers\AnkunftController.cs" />
-    <Compile Include="Controllers\BilderController.cs" />
     <Compile Include="Controllers\BuchungController.cs" />
     <Compile Include="Controllers\DruckansichtController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ImagesController.cs" />
+    <Compile Include="Controllers\LoginsController.cs" />
+    <Compile Include="Controllers\MitarbeiterController.cs" />
     <Compile Include="Controllers\RueckrufController.cs" />
+    <Compile Include="Controllers\ImagesController.cs" />
     <Compile Include="Controllers\SortimentController.cs" />
     <Compile Include="Controllers\SpaController.cs" />
     <Compile Include="Controllers\SpeisenController.cs" />
     <Compile Include="Controllers\MenuesController.cs" />
-    <Compile Include="Controllers\Vorlage_LoginsController.cs" />
     <Compile Include="Controllers\ZimmerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\alpensternDB.Context.cs">
+    <Compile Include="Helper\Hashes.cs" />
+    <Compile Include="Models\Alpenstern.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>alpensternDB.Context.tt</DependentUpon>
+      <DependentUpon>Alpenstern.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\alpensternDB.cs">
+    <Compile Include="Models\Alpenstern.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>alpensternDB.tt</DependentUpon>
+      <DependentUpon>Alpenstern.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\alpensternDB.Designer.cs">
+    <Compile Include="Models\Alpenstern.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>alpensternDB.edmx</DependentUpon>
+      <DependentUpon>Alpenstern.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Anfrage.cs">
-      <DependentUpon>alpensternDB.tt</DependentUpon>
+      <DependentUpon>Alpenstern.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\AnfrageDatumVM.cs" />
     <Compile Include="Models\Ausstattung.cs">
-      <DependentUpon>alpensternDB.tt</DependentUpon>
+      <DependentUpon>Alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Bilder.cs">
-      <DependentUpon>alpensternDB.tt</DependentUpon>
+      <DependentUpon>Alpenstern.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\BilderVM.cs" />
+    <Compile Include="Models\buchungIndexVM.cs" />
+    <Compile Include="Models\Dinner.cs">
+      <DependentUpon>Alpenstern.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Extras.cs">
+      <DependentUpon>Alpenstern.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Gaestebuch.cs">
-      <DependentUpon>alpensternDB.tt</DependentUpon>
+      <DependentUpon>Alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Gast.cs">
-      <DependentUpon>alpensternDB.tt</DependentUpon>
+      <DependentUpon>Alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Gastlogin.cs">
-      <DependentUpon>alpensternDB.tt</DependentUpon>
+      <DependentUpon>Alpenstern.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GastVM.cs" />
+    <Compile Include="Models\get_carousel_imgs.cs">
+      <DependentUpon>Alpenstern.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\get_user_salt_Result.cs">
+      <DependentUpon>Alpenstern.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\get_zimmer_imgs.cs">
+      <DependentUpon>Alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Kategorie.cs">
-      <DependentUpon>alpensternDB.tt</DependentUpon>
+      <DependentUpon>Alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Kategorieanfrage.cs">
-      <DependentUpon>alpensternDB.tt</DependentUpon>
+      <DependentUpon>Alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Kategorieausstattung.cs">
-      <DependentUpon>alpensternDB.tt</DependentUpon>
+      <DependentUpon>Alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Komplettbuchung.cs">
-      <DependentUpon>alpensternDB.tt</DependentUpon>
+      <DependentUpon>Alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Komplettpaket.cs">
-      <DependentUpon>alpensternDB.tt</DependentUpon>
+      <DependentUpon>Alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Land.cs">
-      <DependentUpon>alpensternDB.tt</DependentUpon>
+      <DependentUpon>Alpenstern.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\LandDetailsVM.cs" />
+    <Compile Include="Models\landListeVM.cs" />
     <Compile Include="Models\Login.cs">
-      <DependentUpon>alpensternDB.tt</DependentUpon>
+      <DependentUpon>Alpenstern.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LoginVM.cs" />
+    <Compile Include="Models\login_user_Result.cs">
+      <DependentUpon>Alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Mitarbeiter.cs">
-      <DependentUpon>alpensternDB.tt</DependentUpon>
+      <DependentUpon>Alpenstern.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\MitarbeiterAnlegenVM.cs" />
+    <Compile Include="Models\PersonDatenVM.cs" />
     <Compile Include="Models\Rechnung.cs">
-      <DependentUpon>alpensternDB.tt</DependentUpon>
+      <DependentUpon>Alpenstern.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\RechnungVM.cs" />
     <Compile Include="Models\Rueckruf.cs">
-      <DependentUpon>alpensternDB.tt</DependentUpon>
+      <DependentUpon>Alpenstern.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\RueckrufVM.cs" />
     <Compile Include="Models\Saison.cs">
-      <DependentUpon>alpensternDB.tt</DependentUpon>
+      <DependentUpon>Alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Spa.cs">
-      <DependentUpon>alpensternDB.tt</DependentUpon>
+      <DependentUpon>Alpenstern.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>Alpenstern.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagrams_Result.cs">
+      <DependentUpon>Alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Stadt.cs">
-      <DependentUpon>alpensternDB.tt</DependentUpon>
+      <DependentUpon>Alpenstern.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\StadtVM.cs" />
     <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>alpensternDB.tt</DependentUpon>
+      <DependentUpon>Alpenstern.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\usp_datenabfragen_Result.cs">
+      <DependentUpon>Alpenstern.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\usp_ZimmerAuslesen_Result.cs">
+      <DependentUpon>Alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Zimmer.cs">
-      <DependentUpon>alpensternDB.tt</DependentUpon>
+      <DependentUpon>Alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Zimmerbuchung.cs">
-      <DependentUpon>alpensternDB.tt</DependentUpon>
+      <DependentUpon>Alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\DBalpenstern.mdf" />
+    <Content Include="App_Data\DBalpenstern_log.ldf">
+      <DependentUpon>DBalpenstern.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\alpenKlein.png" />
@@ -329,15 +375,15 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\alpensternDB.Context.tt">
+    <Content Include="Models\Alpenstern.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>alpensternDB.edmx</DependentUpon>
-      <LastGenOutput>alpensternDB.Context.cs</LastGenOutput>
+      <DependentUpon>Alpenstern.edmx</DependentUpon>
+      <LastGenOutput>Alpenstern.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\alpensternDB.tt">
+    <Content Include="Models\Alpenstern.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>alpensternDB.edmx</DependentUpon>
-      <LastGenOutput>alpensternDB.cs</LastGenOutput>
+      <DependentUpon>Alpenstern.edmx</DependentUpon>
+      <LastGenOutput>Alpenstern.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\02_BuchenJava.js" />
     <Content Include="Scripts\ai.0.22.19-build00125.js" />
@@ -349,33 +395,30 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EntityDeploy Include="Models\alpensternDB.edmx">
+    <EntityDeploy Include="Models\Alpenstern.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>alpensternDB.Designer.cs</LastGenOutput>
+      <LastGenOutput>Alpenstern.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\alpensternDB.edmx.diagram">
-      <DependentUpon>alpensternDB.edmx</DependentUpon>
+    <Content Include="Models\Alpenstern.edmx.diagram">
+      <DependentUpon>Alpenstern.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\dropzone\basic.css" />
-    <Content Include="Scripts\dropzone\basic.min.css" />
-    <Content Include="Scripts\dropzone\dropzone-amd-module.js" />
-    <Content Include="Scripts\dropzone\dropzone-amd-module.min.js" />
-    <Content Include="Scripts\dropzone\dropzone.css" />
-    <Content Include="Scripts\dropzone\dropzone.js" />
-    <Content Include="Scripts\dropzone\dropzone.min.css" />
-    <Content Include="Scripts\dropzone\dropzone.min.js" />
+    <Content Include="Scripts\cldr.js" />
+    <Content Include="Scripts\cldr\event.js" />
+    <Content Include="Scripts\cldr\supplemental.js" />
+    <Content Include="Scripts\cldr\unresolved.js" />
+    <Content Include="Scripts\globalize.js" />
+    <Content Include="Scripts\globalize\currency.js" />
+    <Content Include="Scripts\globalize\date.js" />
+    <Content Include="Scripts\globalize\message.js" />
+    <Content Include="Scripts\globalize\number.js" />
+    <Content Include="Scripts\globalize\plural.js" />
+    <Content Include="Scripts\globalize\relative-time.js" />
+    <Content Include="Scripts\globalize\unit.js" />
     <Content Include="Scripts\JavaScript.js" />
-    <None Include="Scripts\jquery-3.1.1.intellisense.js" />
-    <Content Include="Scripts\jquery-3.1.1.js" />
-    <Content Include="Scripts\jquery-3.1.1.min.js" />
-    <Content Include="Scripts\jquery-3.1.1.slim.js" />
-    <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
-    <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
-    <Content Include="Scripts\jquery-3.1.1.min.map" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.filedrop.js" />
-    <Content Include="Scripts\jquery.filedrop.support.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -383,11 +426,10 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\setDateFormat.js" />
     <Content Include="Scripts\SpecialeBearbeiten.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config">
-      <SubType>Designer</SubType>
-    </Content>
+    <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -398,41 +440,56 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Ankunft.cshtml" />
-    <Content Include="Views\Home\Rueckruf.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Speisen\Index.cshtml" />
     <Content Include="Views\Home\_zfind.cshtml" />
     <Content Include="Views\Abreise\Index.cshtml" />
-    <Content Include="Views\Buchung\Index.cshtml" />
-    <Content Include="Views\Buchung\Persoenlichdaten.cshtml" />
+    <Content Include="Views\Images\Index.cshtml" />
     <Content Include="Views\Sortiment\Index.cshtml" />
+    <Content Include="Views\Images\Einstellungen.cshtml" />
     <Content Include="Views\Ankunft\Index.cshtml" />
     <Content Include="Views\Sortiment\Speciale.cshtml" />
     <Content Include="Views\Rueckruf\Index.cshtml" />
-    <Content Include="Views\Rueckruf\RueckrufNeu.cshtml" />
+    <Content Include="Views\Rueckruf\test.cshtml" />
     <Content Include="Views\Menues\Index.cshtml" />
     <Content Include="Views\Menues\Edit.cshtml" />
     <Content Include="Views\Zimmer\Index.cshtml" />
-    <Content Include="Views\Spa\Index.cshtml" />
     <Content Include="Views\Druckansicht\Index.cshtml" />
     <Content Include="Views\Zimmer\zimmerListe.cshtml" />
-    <Content Include="Views\Vorlage_Logins\Create.cshtml" />
-    <Content Include="Views\Vorlage_Logins\Delete.cshtml" />
-    <Content Include="Views\Vorlage_Logins\Details.cshtml" />
-    <Content Include="Views\Vorlage_Logins\Edit.cshtml" />
-    <Content Include="Views\Vorlage_Logins\Index.cshtml" />
+    <Content Include="Views\Logins\Create.cshtml" />
+    <Content Include="Views\Logins\Delete.cshtml" />
+    <Content Include="Views\Logins\Details.cshtml" />
+    <Content Include="Views\Logins\Edit.cshtml" />
+    <Content Include="Views\Logins\Index.cshtml" />
+    <Content Include="Views\Ort\LandListe.cshtml" />
+    <Content Include="Views\Ort\LandDetails.cshtml" />
+    <Content Include="Views\Rueckruf\rueckrufBearbeiten.cshtml" />
+    <Content Include="Views\Home\LoginSucces.cshtml" />
+    <Content Include="Views\Mitarbeiter\Create.cshtml" />
+    <Content Include="Views\Mitarbeiter\Delete.cshtml" />
+    <Content Include="Views\Mitarbeiter\Index.cshtml" />
+    <Content Include="Views\Rueckruf\rueckrufBearbeitetListe.cshtml" />
+    <Content Include="Views\Rueckruf\RueckrufNeu.cshtml" />
+    <Content Include="Views\Anfrage\Create.cshtml" />
+    <Content Include="Views\Anfrage\Delete.cshtml" />
+    <Content Include="Views\Anfrage\Details.cshtml" />
+    <Content Include="Views\Anfrage\Edit.cshtml" />
+    <Content Include="Views\Anfrage\Aufenthalt.cshtml" />
+    <Content Include="Views\Spa\Index.cshtml" />
+    <Content Include="Views\Spa\spaBearbeiten.cshtml" />
+    <Content Include="Views\Spa\spaLoeschen.cshtml" />
+    <Content Include="Views\Spa\spaNeu.cshtml" />
+    <Content Include="Views\Buchung\Index.cshtml" />
+    <Content Include="Views\Buchung\Persoenlichdaten.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-    <Folder Include="Content\Images\Upload\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

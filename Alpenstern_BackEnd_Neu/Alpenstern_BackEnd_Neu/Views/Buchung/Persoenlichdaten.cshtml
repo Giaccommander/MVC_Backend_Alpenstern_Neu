@@ -120,19 +120,19 @@
             </div>
         </div>
     </div>
-}
 
-    <div class="row">
-        <div class="col-lg-4">
-            <div>
-                <button type="submit" value="weiter" /> Speichern
-                @using (Html.BeginForm("Index", "DruckAnsicht"))
+<div class="row">
+    <div class="col-lg-4">
+        <div>
+            <button type="submit" value="weiter" /> Speichern
+            @using (Html.BeginForm("Index", "Druckansicht",))
             {
-                    <div>
-                        <button type="submit" value="rechnung" /> Rechnung
-                    </div>
-                }
-            </div>
-
+                <div>
+                    <button type="submit" value="rechnung" /> Rechnung
+                </div>
+            }
         </div>
+
     </div>
+</div>
+}

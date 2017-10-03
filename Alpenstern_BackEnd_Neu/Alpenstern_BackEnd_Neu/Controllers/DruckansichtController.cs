@@ -10,11 +10,13 @@ namespace Alpenstern_BackEnd_Neu.Controllers
     public class DruckansichtController : Controller
     {
         // GET: Druckansicht
-        public ActionResult Index(PersonDatenVM vm)
+        public ActionResult Index(PersonDatenVM vm, buchungIndexVM be)
         {
-            using(var db = new alpensternEntities())
+            using (var db = new alpensternEntities())
             {
-                var rVM = new RechnungVM();
+                var rVM = new DruckAnsichtVM();
+                var dbAnfrage = db.Anfrage.Find(be.radioAuswahl);
+                var rFunktion = db.uf_GastAnfrageDetails(be.radioAuswahl, rVM.anfrageID);
 
                 rVM.id = vm.id;
                 rVM.vorname = vm.vorname;
@@ -26,9 +28,9 @@ namespace Alpenstern_BackEnd_Neu.Controllers
                 rVM.kategorieID = vm.kategorieID;
                 rVM.personenAnzahl = vm.personenAnzahl;
 
+            return View(rVM);
 
             }
-            return View();
         }
     }
 }

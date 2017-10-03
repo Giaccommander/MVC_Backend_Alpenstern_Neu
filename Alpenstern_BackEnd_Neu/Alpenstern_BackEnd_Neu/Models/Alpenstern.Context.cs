@@ -48,11 +48,8 @@ namespace Alpenstern_BackEnd_Neu.Models
         public virtual DbSet<Saison> Saison { get; set; }
         public virtual DbSet<Spa> Spa { get; set; }
         public virtual DbSet<Stadt> Stadt { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Zimmer> Zimmer { get; set; }
         public virtual DbSet<Zimmerbuchung> Zimmerbuchung { get; set; }
-        public virtual DbSet<get_carousel_imgs> get_carousel_imgs { get; set; }
-        public virtual DbSet<get_zimmer_imgs> get_zimmer_imgs { get; set; }
     
         [DbFunction("alpensternEntities", "get_user_salt")]
         public virtual IQueryable<get_user_salt_Result> get_user_salt(string benutzername)
@@ -78,6 +75,20 @@ namespace Alpenstern_BackEnd_Neu.Models
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<login_user_Result>("[alpensternEntities].[login_user](@benutzername, @passwort)", benutzernameParameter, passwortParameter);
         }
     
+        [DbFunction("alpensternEntities", "uf_GastAnfrageDetails")]
+        public virtual IQueryable<uf_GastAnfrageDetails_Result> uf_GastAnfrageDetails(Nullable<int> gastid, Nullable<int> anfrageid)
+        {
+            var gastidParameter = gastid.HasValue ?
+                new ObjectParameter("gastid", gastid) :
+                new ObjectParameter("gastid", typeof(int));
+    
+            var anfrageidParameter = anfrageid.HasValue ?
+                new ObjectParameter("anfrageid", anfrageid) :
+                new ObjectParameter("anfrageid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<uf_GastAnfrageDetails_Result>("[alpensternEntities].[uf_GastAnfrageDetails](@gastid, @anfrageid)", gastidParameter, anfrageidParameter);
+        }
+    
         public virtual int register_user(string benutzername, string passwort, string salt)
         {
             var benutzernameParameter = benutzername != null ?
@@ -93,109 +104,6 @@ namespace Alpenstern_BackEnd_Neu.Models
                 new ObjectParameter("salt", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("register_user", benutzernameParameter, passwortParameter, saltParameter);
-        }
-    
-        public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            var versionParameter = version.HasValue ?
-                new ObjectParameter("version", version) :
-                new ObjectParameter("version", typeof(int));
-    
-            var definitionParameter = definition != null ?
-                new ObjectParameter("definition", definition) :
-                new ObjectParameter("definition", typeof(byte[]));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_alterdiagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
-        }
-    
-        public virtual int sp_creatediagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            var versionParameter = version.HasValue ?
-                new ObjectParameter("version", version) :
-                new ObjectParameter("version", typeof(int));
-    
-            var definitionParameter = definition != null ?
-                new ObjectParameter("definition", definition) :
-                new ObjectParameter("definition", typeof(byte[]));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_creatediagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
-        }
-    
-        public virtual int sp_dropdiagram(string diagramname, Nullable<int> owner_id)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_dropdiagram", diagramnameParameter, owner_idParameter);
-        }
-    
-        public virtual ObjectResult<sp_helpdiagramdefinition_Result> sp_helpdiagramdefinition(string diagramname, Nullable<int> owner_id)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagramdefinition_Result>("sp_helpdiagramdefinition", diagramnameParameter, owner_idParameter);
-        }
-    
-        public virtual ObjectResult<sp_helpdiagrams_Result> sp_helpdiagrams(string diagramname, Nullable<int> owner_id)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagrams_Result>("sp_helpdiagrams", diagramnameParameter, owner_idParameter);
-        }
-    
-        public virtual int sp_renamediagram(string diagramname, Nullable<int> owner_id, string new_diagramname)
-        {
-            var diagramnameParameter = diagramname != null ?
-                new ObjectParameter("diagramname", diagramname) :
-                new ObjectParameter("diagramname", typeof(string));
-    
-            var owner_idParameter = owner_id.HasValue ?
-                new ObjectParameter("owner_id", owner_id) :
-                new ObjectParameter("owner_id", typeof(int));
-    
-            var new_diagramnameParameter = new_diagramname != null ?
-                new ObjectParameter("new_diagramname", new_diagramname) :
-                new ObjectParameter("new_diagramname", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_renamediagram", diagramnameParameter, owner_idParameter, new_diagramnameParameter);
-        }
-    
-        public virtual int sp_upgraddiagrams()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
         }
     
         public virtual ObjectResult<usp_datenabfragen_Result> usp_datenabfragen(Nullable<int> gastId)

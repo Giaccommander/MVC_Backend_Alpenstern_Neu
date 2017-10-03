@@ -117,7 +117,8 @@ namespace Alpenstern_BackEnd_Neu.Controllers
                 kundeMV.telefonNr = ka.telefonnummer;
                 kundeMV.katBezeichnung = ka.bezeichnung;
 
-                return View(kundeMV);
+                //return View(kundeMV);
+                return RedirectToAction("Index", "Druckansicht", kundeMV);
             }
         }
 

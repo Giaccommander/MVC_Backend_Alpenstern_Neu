@@ -5,9 +5,10 @@ using System.Web;
 
 namespace Alpenstern_BackEnd_Neu.Models
 {
-    public class RechnungVM
+    public class DruckAnsichtVM
     {
         public int id { get; set; }
+        public int anfrageID { get; set; }
         public string vorname { get; set; }
         public string nachname { get; set; }
         public string strasse { get; set; }

@@ -190,127 +190,115 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helper\Hashes.cs" />
-    <Compile Include="Models\Alpenstern.Context.cs">
+    <Compile Include="Models\alpenstern.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Alpenstern.Context.tt</DependentUpon>
+      <DependentUpon>alpenstern.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Alpenstern.cs">
+    <Compile Include="Models\alpenstern.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>alpenstern.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Alpenstern.Designer.cs">
+    <Compile Include="Models\alpenstern.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Alpenstern.edmx</DependentUpon>
+      <DependentUpon>alpenstern.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Anfrage.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AnfrageDatumVM.cs" />
     <Compile Include="Models\Ausstattung.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Bilder.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\buchungIndexVM.cs" />
     <Compile Include="Models\Dinner.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Extras.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Gaestebuch.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Gast.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Gastlogin.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\GastVM.cs" />
-    <Compile Include="Models\get_carousel_imgs.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\get_user_salt_Result.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\get_zimmer_imgs.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Kategorie.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Kategorieanfrage.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Kategorieausstattung.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Komplettbuchung.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Komplettpaket.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Land.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LandDetailsVM.cs" />
     <Compile Include="Models\landListeVM.cs" />
     <Compile Include="Models\Login.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LoginVM.cs" />
     <Compile Include="Models\login_user_Result.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Mitarbeiter.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MitarbeiterAnlegenVM.cs" />
     <Compile Include="Models\PersonDatenVM.cs" />
     <Compile Include="Models\Rechnung.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>alpenstern.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\RechnungVM.cs" />
+    <Compile Include="Models\DruckAnsichtVM.cs" />
     <Compile Include="Models\Rueckruf.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RueckrufVM.cs" />
     <Compile Include="Models\Saison.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Spa.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sp_helpdiagrams_Result.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Stadt.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\StadtVM.cs" />
-    <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+    <Compile Include="Models\uf_GastAnfrageDetails_Result.cs">
+      <DependentUpon>alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\usp_datenabfragen_Result.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\usp_ZimmerAuslesen_Result.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Zimmer.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Zimmerbuchung.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -375,15 +363,15 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\Alpenstern.Context.tt">
+    <Content Include="Models\alpenstern.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Alpenstern.edmx</DependentUpon>
-      <LastGenOutput>Alpenstern.Context.cs</LastGenOutput>
+      <DependentUpon>alpenstern.edmx</DependentUpon>
+      <LastGenOutput>alpenstern.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\Alpenstern.tt">
+    <Content Include="Models\alpenstern.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Alpenstern.edmx</DependentUpon>
-      <LastGenOutput>Alpenstern.cs</LastGenOutput>
+      <DependentUpon>alpenstern.edmx</DependentUpon>
+      <LastGenOutput>alpenstern.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\02_BuchenJava.js" />
     <Content Include="Scripts\ai.0.22.19-build00125.js" />
@@ -395,12 +383,12 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EntityDeploy Include="Models\Alpenstern.edmx">
+    <EntityDeploy Include="Models\alpenstern.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Alpenstern.Designer.cs</LastGenOutput>
+      <LastGenOutput>alpenstern.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\Alpenstern.edmx.diagram">
-      <DependentUpon>Alpenstern.edmx</DependentUpon>
+    <Content Include="Models\alpenstern.edmx.diagram">
+      <DependentUpon>alpenstern.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\cldr.js" />

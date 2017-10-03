@@ -15,8 +15,8 @@ namespace Alpenstern_BackEnd_Neu.Controllers
             using (var db = new alpensternEntities())
             {
                 var rVM = new DruckAnsichtVM();
-                var dbAnfrage = db.Anfrage.Find(be.radioAuswahl);
-                var rFunktion = db.uf_GastAnfrageDetails(be.radioAuswahl, rVM.anfrageID);
+                //var dbAnfrage = db.Anfrage.Find(be.radioAuswahl);
+                //var rFunktion = db.uf_GastAnfrageDetails(be.radioAuswahl, rVM.anfrageID);
 
                 rVM.id = vm.id;
                 rVM.vorname = vm.vorname;

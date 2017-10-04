@@ -21,5 +21,12 @@ namespace Alpenstern_BackEnd_Neu.Models
         public decimal preis { get; set; }
         public int personenAnzahl { get; set; }
         public int GastID { get; set; }
+        public DateTime datumVon { get; set; }
+        public DateTime datumBis { get; set; }
+        public int? naechte { get; set; }
+        public int zimmerNummer { get; set; }
+        public string kategorie { get; set; }
+        public decimal preisProNacht { get; set; }
+        public decimal? zimmerPreisGesamt { get; set; }
     }
 }

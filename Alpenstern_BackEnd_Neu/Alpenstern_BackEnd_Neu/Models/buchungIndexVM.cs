@@ -15,6 +15,7 @@ namespace Alpenstern_BackEnd_Neu.Models
         public int radioAuswahl { get; set; }
         public List<buchungIndexVM> Liste{ get; set; }
         public int GastID { get; set; }
+       
 
         public buchungIndexVM()
         {

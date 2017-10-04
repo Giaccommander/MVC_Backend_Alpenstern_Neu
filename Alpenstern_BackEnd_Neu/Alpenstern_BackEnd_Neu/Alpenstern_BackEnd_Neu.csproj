@@ -470,7 +470,9 @@
     <Content Include="Views\Buchung\Index.cshtml" />
     <Content Include="Views\Buchung\Persoenlichdaten.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="DateTime\Today\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />

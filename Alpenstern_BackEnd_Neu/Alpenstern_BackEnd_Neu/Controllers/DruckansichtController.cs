@@ -28,6 +28,8 @@ namespace Alpenstern_BackEnd_Neu.Controllers
                 rVM.kategorieID = vm.kategorieID;
                 rVM.personenAnzahl = vm.personenAnzahl;
                 rVM.GastID = vm.id;
+                rVM.katBezeichnung = vm.katBezeichnung;
+              
 
             return View(rVM);
 

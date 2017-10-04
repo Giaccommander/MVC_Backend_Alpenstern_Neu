@@ -12,11 +12,11 @@
                 <img src="~/Content/Images/alpenKlein.png" />
             </div>
             <div class="col-lg-4">
-
-                <h4 class="schriftfett">Hotel Alpenstern</h4><br />Musterstrasse 4<br />2580 Musterstadt<br /><br />
-                Ihre Ansprechperson<br />Frau Muster<br />Telefon<br />Telefon: 000/000000<br />Telefax: 000/0000<br /><br />
+                <h4 class="schriftfett">Hotel Alpenstern**** Exzellenz</h4><br />
+                Alpenstern Hotel-Betriebs-GmbH<br/>Schneeberg 3<br />A-6293 Hinterberg<br /><br />
+                Ihre Ansprechperson<br />Patrick Knofel<br />Telefon: + 43 8752 5087<br />Telefax: + 43 8752 5087-99<br /><br />
                 Email:<br />
-                testadresse@alpenstern.at
+                office@alpenstern.at
             </div>
         </div>
     </header>
@@ -25,7 +25,9 @@
         <div class="col-lg-8">
             @Html.DisplayFor(e => e.vorname)
             @Html.DisplayFor(e=>e.nachname)<br />
-            @Html.DisplayFor(e =>e.strasse)<br />2580 Musterstadt<br /><br />
+            @Html.DisplayFor(e =>e.strasse)<br />
+            @Html.DisplayFor(e => e.plz)
+            @Html.DisplayFor(e => e.stadt)<br /><br />
         </div>
         <div class="col-lg-8">
             <h4 class="schriftfett">Auflistung der Positionen</h4>
@@ -33,14 +35,14 @@
     </div>
     <div class="row">
         <div class="col-lg-8"></div>
-        <div class="col-lg-4">KundenNr: 7</div>
+        <div class="col-lg-4">KundenNr: @Html.DisplayFor(e => e.GastID)</div>
     </div>
     <div class="row">
-        <div class="col-lg-8"> Vielen Dank für Ihren Aufenthalt bla bla bls <br /><br /></div>
-        <div class="col-lg-4"> Datum: tt/mm/jjjj </div>
+        <div class="col-lg-8"> Vielen Dank für Ihren Aufenthalt  <br /><br /></div>
+        <div class="col-lg-4"> Datum: @DateTime.Today.ToShortDateString() </div>
     </div>
     <div class="row">
-        <div class="col-lg-8">Leistungen erbracht tt/mm/jjjj</div>
+        <div class="col-lg-8">Leistungen erbracht am: @DateTime.Today.ToShortDateString()</div>
         <div class="col-lg-4 schriftfett">Auflistungs-Nr. 2457567486 </div>
     </div>
     <div class="row schriftfett">
@@ -65,28 +67,7 @@
         <div class="col-lg-1">000,00&euro;</div>
         <div class="col-lg-2">000,0&euro;</div>
     </div>
-    <div class="row">
-        <div class="col-lg-1">2</div>
-        <div class="col-lg-1">1</div>
-        <div class="col-lg-2">Frühstück</div>
-        <div class="col-lg-2">18.10.2017</div>
-        <div class="col-lg-2">25.10.2017</div>
-        <div class="col-lg-1">X Nächte</div>
-        <div class="col-lg-1">000,00&euro;</div>
-        <div class="col-lg-2">000,00&euro;</div>
-    </div>
-    <div class="row">
-        <div class="col-lg-1"></div>
-        <div class="col-lg-1"></div>
-        <div class="col-lg-2"></div>
-        <div class="col-lg-2 schriftfett"></div>
-        <div class="col-lg-2 schriftfett">Zahlbetrag Brutto</div>
-        <div class="col-lg-1"></div>
-        <div class="col-lg-1"></div>
-        <div class="col-lg-2 schriftfett">000,00&euro;</div>
-        <hr />
-    </div>
-    <div class="row">
+     <div class="row">
         <div class="col-lg-1"></div>
         <div class="col-lg-1"></div>
         <div class="col-lg-2"></div>

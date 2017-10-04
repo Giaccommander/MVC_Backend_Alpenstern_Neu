@@ -20,5 +20,6 @@ namespace Alpenstern_BackEnd_Neu.Models
         public string bezeichnung { get; set; }
         public decimal preis { get; set; }
         public int personenAnzahl { get; set; }
+        public int GastID { get; set; }
     }
 }

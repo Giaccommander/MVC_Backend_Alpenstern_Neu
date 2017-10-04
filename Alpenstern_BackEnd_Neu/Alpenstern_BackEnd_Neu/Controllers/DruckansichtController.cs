@@ -18,7 +18,7 @@ namespace Alpenstern_BackEnd_Neu.Controllers
                 //var dbAnfrage = db.Anfrage.Find(be.radioAuswahl);
                 //var rFunktion = db.uf_GastAnfrageDetails(be.radioAuswahl, rVM.anfrageID);
 
-                rVM.id = vm.id;
+             
                 rVM.vorname = vm.vorname;
                 rVM.nachname = vm.nachname;
                 rVM.strasse = vm.strasse;
@@ -27,6 +27,7 @@ namespace Alpenstern_BackEnd_Neu.Controllers
                 rVM.katBezeichnung = vm.katBezeichnung;
                 rVM.kategorieID = vm.kategorieID;
                 rVM.personenAnzahl = vm.personenAnzahl;
+                rVM.GastID = vm.id;
 
             return View(rVM);
 

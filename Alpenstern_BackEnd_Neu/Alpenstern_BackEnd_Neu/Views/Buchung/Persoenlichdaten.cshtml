@@ -4,7 +4,20 @@
 }
 
 <h2>Persönliche Daten</h2>
-
+<script type="text/javascript">
+    function fuckyou() {
+        alert("wtf");
+        $.ajax({
+            url: "/Buchung/FuckYou",
+            type: "POST",
+            dataType: "json",
+            data: { id: document.getElementById("Land").options[document.getElementById("Land").selectedIndex].value },
+            success: function (data) {
+                alert(data);
+            }
+        });
+    };
+</script>
 @using (Html.BeginForm())
 {
     <div class="container">
@@ -70,7 +83,7 @@
                 <label for="land">Land</label>
             </div>
             <div class="col-lg-3 col-md-3">
-                @Html.EditorFor(a => a.land)
+                @Html.DropDownListFor(m => m.land, Model.landListe, new { @id = "Land", @onclick = "fuckyou()" })
             </div>
             <div class="col-lg-2 col-md-2">
                 <label for="preis">Preis</label>
@@ -84,7 +97,7 @@
                 <label for="ort">Ort</label>
             </div>
             <div class="col-lg-10 col-md-10">
-                @Html.EditorFor(a => a.stadt)
+                @Html.DropDownListFor(m => m.stadt, Model.stadtListe)
             </div>
         </div>
         <div class="row">
@@ -119,20 +132,8 @@
                 @Html.EditorFor(a => a.email)
             </div>
         </div>
+
+        <button type="submit" value="weiter" /> Speichern
     </div>
+
 }
-
-    <div class="row">
-        <div class="col-lg-4">
-            <div>
-                <button type="submit" value="weiter" /> Speichern
-                @using (Html.BeginForm("Index", "DruckAnsicht"))
-            {
-                    <div>
-                        <button type="submit" value="rechnung" /> Rechnung
-                    </div>
-                }
-            </div>
-
-        </div>
-    </div>

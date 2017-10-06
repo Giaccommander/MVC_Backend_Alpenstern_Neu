@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace Alpenstern_BackEnd_Neu.Models
 {
@@ -26,12 +27,10 @@ namespace Alpenstern_BackEnd_Neu.Models
         public decimal preis { get; set; }
         public int personenAnzahl { get; set; }
         public int groesse { get; set; }
-        //public List<PersonDatenVM> liste { get; set; }
-        
-        //public PersonDatenVM()
-        //{
-        //    liste = new List<PersonDatenVM>();
-        //}
+
+        public SelectList landListe {get;set;}
+        public SelectList stadtListe { get; set; }
+ 
 
     }
 }

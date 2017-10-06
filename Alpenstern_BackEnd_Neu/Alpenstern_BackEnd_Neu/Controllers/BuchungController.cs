@@ -93,12 +93,21 @@ namespace Alpenstern_BackEnd_Neu.Controllers
             }
         }
 
+        [HttpPost]
+        public JsonResult FuckYou(string name)
+        {
+            string i = "FUUUUUUUUUUUCK YOOOOUUUUUUUUUUUUUUUUUUUU";
+            return Json(null, JsonRequestBehavior.AllowGet);
+        }
+
         [HttpGet]
         public ActionResult Persoenlichdaten(buchungIndexVM vm)
         {
             var kundeMV = new PersonDatenVM();
             using (var db = new alpensternEntities())
             {
+
+                #region MyRegion
                 var ka = db.usp_datenabfragen(vm.radioAuswahl).FirstOrDefault();
                 kundeMV.stadt = ka.Stadt;
                 kundeMV.land = ka.Land;
@@ -116,6 +125,34 @@ namespace Alpenstern_BackEnd_Neu.Controllers
                 kundeMV.plz = ka.plz;
                 kundeMV.telefonNr = ka.telefonnummer;
                 kundeMV.katBezeichnung = ka.bezeichnung;
+
+                #endregion
+                var dLand = new List<string>();
+                foreach (var l in db.Land)
+                {
+                    dLand.Add(l.bezeichnung);
+                }
+                var sl = new SelectList(dLand, db.Land.FirstOrDefault(l => l.bezeichnung == kundeMV.land).id);
+                kundeMV.landListe = sl;
+
+                var dLandmitStadte = new Dictionary<string, List<Stadt>>();
+
+                var stadtListeVonLand = new List<string>();
+
+                foreach (Land l in db.Land)
+                {
+                    var staedtePerLand = new List<Stadt>();
+                    if (l.bezeichnung == kundeMV.land)
+                    {
+                        foreach (var s in l.Stadt)
+                        {
+                            stadtListeVonLand.Add(s.bezeichnung);
+                        }
+                    }
+                    dLandmitStadte.Add(l.bezeichnung, staedtePerLand);
+                }
+                var slStadt = new SelectList(stadtListeVonLand, (int)0);
+                kundeMV.stadtListe = slStadt;
 
                 return View(kundeMV);
             }
@@ -141,11 +178,12 @@ namespace Alpenstern_BackEnd_Neu.Controllers
                         editUser.email = vm.email;
                         editUser.telefonnummer = vm.telefonNr;
                         user.stadt_id = user.stadt_id;
+                        editUser.stadt_id = db.Stadt.FirstOrDefault(s => s.bezeichnung == vm.stadt).id;
                     }
                 }
                 db.SaveChanges();
                 TempData["filter"] = null;
-                return View();
+                return RedirectToAction("Index", "Buchung");
             }
         }
     }

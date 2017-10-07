@@ -19,7 +19,8 @@ namespace Alpenstern_BackEnd_Neu.Controllers
             if (kundeDaten == null)
             {
 
-                using (var db = new alpensternEntities())
+                //using (var db = new alpensternEntities())
+                using (var db = new alpensternEntitiesHeim())
                 {
                     //Daten aus der Datenbank holen
                     var dbKundenListe = db.Gast.ToList();
@@ -47,9 +48,8 @@ namespace Alpenstern_BackEnd_Neu.Controllers
         public ActionResult Index(string vorname, string nachname, DateTime? gebdatum, buchungIndexVM vm)
         {
 
-            using (var db = new alpensternEntities())
-            //using (var db = new alpenstern_finalEntities())
-            //using (var db = new alpenstern_HeimEntities())
+            //using (var db = new alpensternEntities())
+            using (var db = new alpensternEntitiesHeim())
             {
                 var vmKundenListe = new buchungIndexVM();
                 var dbKundenListe = db.Gast.ToList();
@@ -93,18 +93,27 @@ namespace Alpenstern_BackEnd_Neu.Controllers
             }
         }
 
-        [HttpPost]
-        public JsonResult FuckYou(string name)
+        [HttpGet]
+        public JsonResult Ajax()  
         {
-            string i = "FUUUUUUUUUUUCK YOOOOUUUUUUUUUUUUUUUUUUUU";
-            return Json(null, JsonRequestBehavior.AllowGet);
+            using (var db = new alpensternEntitiesHeim())
+            {
+                var cities = db.Stadt.Select(c => new
+                {
+                    ID = c.id,
+                    Text = c.bezeichnung
+                }).ToList();
+               
+                return Json(cities, JsonRequestBehavior.AllowGet);
+            }
         }
 
         [HttpGet]
         public ActionResult Persoenlichdaten(buchungIndexVM vm)
         {
             var kundeMV = new PersonDatenVM();
-            using (var db = new alpensternEntities())
+            //using (var db = new alpensternEntities())
+            using (var db = new alpensternEntitiesHeim())
             {
 
                 #region MyRegion
@@ -161,12 +170,13 @@ namespace Alpenstern_BackEnd_Neu.Controllers
         [HttpPost]
         public ActionResult Persoenlichdaten(PersonDatenVM vm, buchungIndexVM bVm)
         {
-            using (var db = new alpensternEntities())
+            //using (var db = new alpensternEntities())
+            using (var db = new alpensternEntitiesHeim())
             {
-                vm.id = bVm.radioAuswahl;
+                vm.Gastid = bVm.radioAuswahl;
                 foreach (var user in db.Gast)
                 {
-                    if (user.id == vm.id)
+                    if (user.id == vm.Gastid)
                     {
                         db.Entry(user).State = System.Data.Entity.EntityState.Modified;
                         var editUser = db.Entry(user).Entity;

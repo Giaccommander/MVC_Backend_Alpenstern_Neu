@@ -8,7 +8,7 @@ namespace Alpenstern_BackEnd_Neu.Models
 {
     public class PersonDatenVM
     {
-        public int id { get; set; }
+        public int Gastid { get; set; }
         public string vorname { get; set; }
         public string nachname { get; set; }
         public DateTime gebDatum { get; set; }
@@ -28,9 +28,10 @@ namespace Alpenstern_BackEnd_Neu.Models
         public int personenAnzahl { get; set; }
         public int groesse { get; set; }
 
+        public int StadtID { get; set; }
+        public int LandID { get; set; }
         public SelectList landListe {get;set;}
         public SelectList stadtListe { get; set; }
  
-
     }
 }

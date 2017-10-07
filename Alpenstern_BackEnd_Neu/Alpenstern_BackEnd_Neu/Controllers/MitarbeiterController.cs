@@ -15,7 +15,7 @@ namespace Alpenstern_BackEnd_Neu.Controllers
     {
 
         //AKT-THOR
-        private alpensternEntities db = new alpensternEntities();
+        private alpensternEntitiesHeim db = new alpensternEntitiesHeim();
 
         // GET: Mitarbeiter
         public ActionResult Index()
@@ -60,7 +60,7 @@ namespace Alpenstern_BackEnd_Neu.Controllers
             //using (var db = new alpenstern_finalEntities())
 
             //AKT_THOR
-            using (var db = new alpensternEntities())
+                //using (var db = new alpensternEntities())
             {
                 db.Mitarbeiter.Add(dbMitarbeiter);
                 db.SaveChanges();

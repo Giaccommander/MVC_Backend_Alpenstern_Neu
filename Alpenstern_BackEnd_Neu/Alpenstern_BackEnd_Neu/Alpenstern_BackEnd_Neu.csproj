@@ -206,86 +206,101 @@
       <DependentUpon>Alpenstern.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Anfrage.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>HeimDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AnfrageDatumVM.cs" />
     <Compile Include="Models\Ausstattung.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>HeimDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Bilder.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>HeimDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\buchungIndexVM.cs" />
     <Compile Include="Models\Dinner.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>HeimDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Extras.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>HeimDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Gaestebuch.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>HeimDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Gast.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>HeimDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Gastlogin.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>HeimDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\GastVM.cs" />
     <Compile Include="Models\get_carousel_imgs.cs">
       <DependentUpon>Alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\get_user_salt_Result.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>HeimDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\get_zimmer_imgs.cs">
       <DependentUpon>Alpenstern.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\HeimDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HeimDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HeimDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HeimDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HeimDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HeimDB.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\Kategorie.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>HeimDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Kategorieanfrage.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>HeimDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Kategorieausstattung.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>HeimDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Komplettbuchung.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>HeimDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Komplettpaket.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>HeimDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Land.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>HeimDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LandDetailsVM.cs" />
     <Compile Include="Models\landListeVM.cs" />
     <Compile Include="Models\Login.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>HeimDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\LoginVM.cs" />
     <Compile Include="Models\login_user_Result.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>HeimDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Mitarbeiter.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>HeimDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MitarbeiterAnlegenVM.cs" />
     <Compile Include="Models\PersonDatenVM.cs" />
     <Compile Include="Models\Rechnung.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>HeimDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RechnungVM.cs" />
     <Compile Include="Models\Rueckruf.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>HeimDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RueckrufVM.cs" />
     <Compile Include="Models\Saison.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>HeimDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Spa.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>HeimDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
       <DependentUpon>Alpenstern.tt</DependentUpon>
@@ -294,23 +309,23 @@
       <DependentUpon>Alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Stadt.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>HeimDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\StadtVM.cs" />
     <Compile Include="Models\sysdiagrams.cs">
       <DependentUpon>Alpenstern.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\usp_datenabfragen_Result.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>HeimDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\usp_ZimmerAuslesen_Result.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>HeimDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Zimmer.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>HeimDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Zimmerbuchung.cs">
-      <DependentUpon>Alpenstern.tt</DependentUpon>
+      <DependentUpon>HeimDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -385,6 +400,16 @@
       <DependentUpon>Alpenstern.edmx</DependentUpon>
       <LastGenOutput>Alpenstern.cs</LastGenOutput>
     </Content>
+    <Content Include="Models\HeimDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HeimDB.edmx</DependentUpon>
+      <LastGenOutput>HeimDB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\HeimDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HeimDB.edmx</DependentUpon>
+      <LastGenOutput>HeimDB.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\02_BuchenJava.js" />
     <Content Include="Scripts\ai.0.22.19-build00125.js" />
     <Content Include="Scripts\ai.0.22.19-build00125.min.js" />
@@ -401,6 +426,13 @@
     </EntityDeploy>
     <Content Include="Models\Alpenstern.edmx.diagram">
       <DependentUpon>Alpenstern.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\HeimDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>HeimDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\HeimDB.edmx.diagram">
+      <DependentUpon>HeimDB.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\cldr.js" />

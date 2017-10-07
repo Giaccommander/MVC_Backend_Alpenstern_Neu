@@ -4,20 +4,26 @@
 }
 
 <h2>Persönliche Daten</h2>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script type="text/javascript">
-    function fuckyou() {
-        alert("wtf");
-        $.ajax({
-            url: "/Buchung/FuckYou",
-            type: "POST",
-            dataType: "json",
-            data: { id: document.getElementById("Land").options[document.getElementById("Land").selectedIndex].value },
-            success: function (data) {
-                alert(data);
-            }
+    $(function () {
+        var cities = $('#stadtliste');
+        $('#LandListe').change(function () {
+            var id = $(this).val();
+            $.getJSON(url = "/Buchung/Ajax", data = { LandId: id },
+                function (response) {
+                    cities.empty();
+                    $.each(response, function (index, item) {
+                        cities.append($("<option></option>").text(item.Text).val(item.ID));
+                    });
+                })
         });
-    };
+    });
+
 </script>
+
+
+
 @using (Html.BeginForm())
 {
     <div class="container">
@@ -83,7 +89,7 @@
                 <label for="land">Land</label>
             </div>
             <div class="col-lg-3 col-md-3">
-                @Html.DropDownListFor(m => m.land, Model.landListe, new { @id = "Land", @onclick = "fuckyou()" })
+                @Html.DropDownListFor(m => m.land, Model.landListe, new { @id = "LandListe" })
             </div>
             <div class="col-lg-2 col-md-2">
                 <label for="preis">Preis</label>
@@ -97,7 +103,7 @@
                 <label for="ort">Ort</label>
             </div>
             <div class="col-lg-10 col-md-10">
-                @Html.DropDownListFor(m => m.stadt, Model.stadtListe)
+                @Html.DropDownListFor(m => m.stadt, Model.stadtListe, new { @id = "stadtliste" })
             </div>
         </div>
         <div class="row">
@@ -137,3 +143,4 @@
     </div>
 
 }
+

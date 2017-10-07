@@ -23,7 +23,7 @@ namespace Alpenstern_BackEnd_Neu.Controllers
         public ActionResult Index()
         {
             //Raum 508
-            using (var db = new alpensternEntities())
+                //using (var db = new alpensternEntities())
 
             //AKT_THOR
             //using (var db = new alpensternEntities_Neu())
@@ -67,7 +67,7 @@ namespace Alpenstern_BackEnd_Neu.Controllers
             dbRueckruf.datum_erledigt = null;
 
             //Raum 508
-            using (var db = new alpensternEntities())
+                //using (var db = new alpensternEntities())
 
             //AKT_THOR
             //using (var db = new alpensternEntities_Neu())
@@ -98,7 +98,7 @@ namespace Alpenstern_BackEnd_Neu.Controllers
         {
 
             //Raum 508
-            using (var db = new alpensternEntities())
+                //using (var db = new alpensternEntities())
 
             //AKT_THOR
             //using (var db = new alpensternEntities_Neu())
@@ -123,7 +123,7 @@ namespace Alpenstern_BackEnd_Neu.Controllers
         public ActionResult rueckrufBearbeitetListe()
         {
             //Raum 508
-            using (var db = new alpensternEntities())
+                //using (var db = new alpensternEntities())
 
             //AKT_THOR
             //using (var db = new alpensternEntities_Neu())

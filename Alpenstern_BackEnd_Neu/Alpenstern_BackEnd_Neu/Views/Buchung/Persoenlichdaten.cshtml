@@ -8,9 +8,10 @@
 <script type="text/javascript">
     $(function () {
         var cities = $('#stadtliste');
+
+
         $('#LandListe').change(function () {
-            var id = $(this).val();
-            $.getJSON(url = "/Buchung/Ajax", data = { LandId: id },
+            $.getJSON(url = "/Buchung/Ajax", data = { LandName: $(this).val() },
                 function (response) {
                     cities.empty();
                     $.each(response, function (index, item) {
@@ -32,28 +33,27 @@
                 <label for="vorname">Vorname</label>
             </div>
             <div class="col-lg-3 col-md-3">
-                @Html.EditorFor(a => a.vorname)
+                @Html.EditorFor(a => a.vorname, new { htmlAttributes = new { @class = "form-control" } })
             </div>
             <div class="col-lg-2 col-md-2">
                 <label for="zimmerNummer">Zimmernummer</label>
             </div>
             <div class="col-lg-3 col-md-3">
-                @Html.EditorFor(a => a.zimmerNummer)
+                @Html.EditorFor(a => a.zimmerNummer, new { htmlAttributes = new { @class = "form-control" } })
             </div>
         </div>
-
         <div class="row">
             <div class="col-lg-2 col-md-2">
                 <label for="nachname">Nachname</label>
             </div>
             <div class="col-lg-3 col-md-3">
-                @Html.EditorFor(a => a.nachname)
+                @Html.EditorFor(a => a.nachname, new { htmlAttributes = new { @class = "form-control" } })
             </div>
             <div class="col-lg-2 col-md-2">
                 <label for="bezeichnung">Kategorie</label>
             </div>
             <div class="col-lg-3 col-md-3">
-                @Html.EditorFor(a => a.katBezeichnung)
+                @Html.EditorFor(a => a.katBezeichnung, new { htmlAttributes = new { @class = "form-control" } })
             </div>
         </div>
         <div class="row">
@@ -61,13 +61,13 @@
                 <label for="telefon">Telefon</label>
             </div>
             <div class="col-lg-3 col-md-3">
-                @Html.EditorFor(a => a.telefonNr)
+                @Html.EditorFor(a => a.telefonNr, new { htmlAttributes = new { @class = "form-control" } })
             </div>
             <div class="col-lg-2 col-md-2">
                 <label for="personenAnzahl">Personenanzahl</label>
             </div>
             <div class="col-lg-3 col-md-3">
-                @Html.EditorFor(a => a.personenAnzahl)
+                @Html.EditorFor(a => a.personenAnzahl, new { htmlAttributes = new { @class = "form-control" } })
             </div>
         </div>
         <div class="row">
@@ -75,13 +75,13 @@
                 <label for="adresse">Adresse</label>
             </div>
             <div class="col-lg-3 col-md-3">
-                @Html.EditorFor(a => a.strasse)
+                @Html.EditorFor(a => a.strasse, new { htmlAttributes = new { @class = "form-control" } })
             </div>
             <div class="col-lg-2 col-md-2">
                 <label for="preis">m²</label>
             </div>
             <div class="col-lg-3 col-md-3">
-                @Html.EditorFor(a => a.groesse)
+                @Html.EditorFor(a => a.groesse, new { htmlAttributes = new { @class = "form-control" } })
             </div>
         </div>
         <div class="row">
@@ -89,58 +89,55 @@
                 <label for="land">Land</label>
             </div>
             <div class="col-lg-3 col-md-3">
-                @Html.DropDownListFor(m => m.land, Model.landListe, new { @id = "LandListe" })
+                @Html.DropDownListFor(m => m.LandID, Model.landListe, new { @id = "LandListe", @class = "form-control" })
             </div>
             <div class="col-lg-2 col-md-2">
                 <label for="preis">Preis</label>
             </div>
             <div class="col-lg-3 col-md-3">
-                @Html.EditorFor(a => a.preis)
+                @Html.EditorFor(a => a.preis, new { htmlAttributes = new { @class = "form-control" } })
             </div>
         </div>
         <div class="row">
             <div class="col-lg-2 col-md-2">
                 <label for="ort">Ort</label>
             </div>
-            <div class="col-lg-10 col-md-10">
-                @Html.DropDownListFor(m => m.stadt, Model.stadtListe, new { @id = "stadtliste" })
+            <div class="col-lg-3 col-md-3">
+                @Html.DropDownListFor(m => m.stadt, Model.stadtListe, new { @id = "stadtliste", @class = "form-control" })
             </div>
         </div>
         <div class="row">
             <div class="col-lg-2 col-md-2">
                 <label for="plz">Plz</label>
             </div>
-            <div class="col-lg-10 col-md-10">
-                @Html.EditorFor(a => a.plz)
+            <div class="col-lg-3 col-md-3">
+                @Html.EditorFor(a => a.plz, new { htmlAttributes = new { @class = "form-control" } })
             </div>
         </div>
         <div class="row">
             <div class="col-lg-2 col-md-2">
                 <label for="pass">Pass.Nr.</label>
             </div>
-            <div class="col-lg-10 col-md-10">
-                @Html.EditorFor(a => a.reisePassNr)
+            <div class="col-lg-3 col-md-3">
+                @Html.EditorFor(a => a.reisePassNr, new { htmlAttributes = new { @class = "form-control" } })
             </div>
         </div>
         <div class="row">
             <div class="col-lg-2 col-md-2">
                 <label for="gebdatum">Geb.Dat</label>
             </div>
-            <div class="col-lg-10 col-md-10">
-                @Html.EditorFor(a => a.gebDatum)
+            <div class="col-lg-3 col-md-3">
+                @Html.EditorFor(a => a.gebDatum, new { htmlAttributes = new { @class = "form-control" } })
             </div>
         </div>
         <div class="row">
             <div class="col-lg-2 col-md-2">
                 <label for="Email">Email</label>
             </div>
-            <div class="col-lg-10 col-md-10">
-                @Html.EditorFor(a => a.email)
+            <div class="col-lg-3 col-md-3">
+                @Html.EditorFor(a => a.email, new { htmlAttributes = new { @class = "form-control" } })
             </div>
+            <button type="submit" value="weiter" /> Speichern
         </div>
-
-        <button type="submit" value="weiter" /> Speichern
     </div>
-
 }
-

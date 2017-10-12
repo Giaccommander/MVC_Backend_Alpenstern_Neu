@@ -19,8 +19,8 @@ namespace Alpenstern_BackEnd_Neu.Controllers
             if (kundeDaten == null)
             {
 
-                //using (var db = new alpensternEntities())
-                using (var db = new alpensternEntitiesHeim())
+                using (var db = new alpensternEntities())
+                //using (var db = new alpensternEntitiesHeim())
                 {
                     //Daten aus der Datenbank holen
                     var dbKundenListe = db.Gast.ToList();
@@ -48,8 +48,8 @@ namespace Alpenstern_BackEnd_Neu.Controllers
         public ActionResult Index(string vorname, string nachname, DateTime? gebdatum, buchungIndexVM vm)
         {
 
-            //using (var db = new alpensternEntities())
-            using (var db = new alpensternEntitiesHeim())
+            using (var db = new alpensternEntities())
+            //using (var db = new alpensternEntitiesHeim())
             {
                 var vmKundenListe = new buchungIndexVM();
                 var dbKundenListe = db.Gast.ToList();
@@ -94,15 +94,18 @@ namespace Alpenstern_BackEnd_Neu.Controllers
         }
 
         [HttpGet]
-        public JsonResult Ajax()  
+        public JsonResult Ajax(string LandName)  
         {
-            using (var db = new alpensternEntitiesHeim())
+            using (var db = new alpensternEntities())
             {
+                var land = db.Land.FirstOrDefault(e => e.bezeichnung == LandName );
+
                 var cities = db.Stadt.Select(c => new
                 {
                     ID = c.id,
-                    Text = c.bezeichnung
-                }).ToList();
+                    Text = c.bezeichnung,
+                    LANDID = c.land_id
+                }).Where(c => c.LANDID == land.id).ToList();
                
                 return Json(cities, JsonRequestBehavior.AllowGet);
             }
@@ -112,8 +115,8 @@ namespace Alpenstern_BackEnd_Neu.Controllers
         public ActionResult Persoenlichdaten(buchungIndexVM vm)
         {
             var kundeMV = new PersonDatenVM();
-            //using (var db = new alpensternEntities())
-            using (var db = new alpensternEntitiesHeim())
+            using (var db = new alpensternEntities())
+            //using (var db = new alpensternEntitiesHeim())
             {
 
                 #region MyRegion
@@ -141,13 +144,11 @@ namespace Alpenstern_BackEnd_Neu.Controllers
                 {
                     dLand.Add(l.bezeichnung);
                 }
+
                 var sl = new SelectList(dLand, db.Land.FirstOrDefault(l => l.bezeichnung == kundeMV.land).id);
                 kundeMV.landListe = sl;
 
-                var dLandmitStadte = new Dictionary<string, List<Stadt>>();
-
                 var stadtListeVonLand = new List<string>();
-
                 foreach (Land l in db.Land)
                 {
                     var staedtePerLand = new List<Stadt>();
@@ -158,7 +159,6 @@ namespace Alpenstern_BackEnd_Neu.Controllers
                             stadtListeVonLand.Add(s.bezeichnung);
                         }
                     }
-                    dLandmitStadte.Add(l.bezeichnung, staedtePerLand);
                 }
                 var slStadt = new SelectList(stadtListeVonLand, (int)0);
                 kundeMV.stadtListe = slStadt;
